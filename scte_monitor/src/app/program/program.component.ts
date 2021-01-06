@@ -24,10 +24,10 @@ export class ProgramComponent implements OnInit {
   public startOutput: boolean;
   public endOutput: boolean;
 
-  public breakDurationExact: boolean;
-  public breakDurationExactAmount: number;
-  public breakDurationExactOutput: boolean;
-  public breakDurationExactAmountOutput: number;
+  public segmentationDurationExact: boolean;
+  public segmentationDurationExactAmount: number;
+  public segmentationDurationExactOutput: boolean;
+  public segmentationDurationExactAmountOutput: number;
 
   public config: KeyObject;
   public existingTemplates = <string[]>[];
@@ -45,9 +45,14 @@ export class ProgramComponent implements OnInit {
 	})
   }
 
+  // remove() {
+  //   console.log(this.index)
+  //   this.parentRef.clear(this.index == 6)
+  // }
+
   remove() {
-    console.log(this.index)
-    this.parentRef.clear()
+    const index = this.existingTemplates.findIndex(this.config = this.config.value[6]);
+    this.existingTemplates.splice(index, -1); // Removes one element, starting from index
   }
 
   ngOnInit(): void {
@@ -82,35 +87,35 @@ export class ProgramComponent implements OnInit {
     }
   }
 
-  public setExactBreakDuration(input_trigger: boolean) {
+  public setExactSegmentationDuration(input_trigger: boolean) {
     if(input_trigger) {
-      this.Program.value[0].program_start.input_trigger.break_duration_max = this.Program.value[0].program_start.input_trigger.break_duration_min = this.breakDurationExactAmount;
+      this.Program.value[0].program_start.input_trigger.segmentation_duration_max = this.Program.value[0].program_start.input_trigger.segmentation_duration_min = this.segmentationDurationExactAmount;
     } else {
-      this.Program.value[0].program_start.output_trigger.break_duration_max = this.Program.value[0].program_start.output_trigger.break_duration_min = this.breakDurationExactAmountOutput;
+      this.Program.value[0].program_start.output_trigger.segmentation_duration_max = this.Program.value[0].program_start.output_trigger.segmentation_duration_min = this.segmentationDurationExactAmountOutput;
 
     }
   }
 
-  public makeExactBreakDuration(exact, input_trigger: boolean) {
-    console.log(this.breakDurationExact)
+  public makeExactSegmentationDuration(exact, input_trigger: boolean) {
+    console.log(this.segmentationDurationExact)
     if(exact == "true") {
       if (input_trigger) {
-        this.breakDurationExact = true
-        this.Program.value[0].program_start.input_trigger.break_duration_max = this.Program.value[0].program_start.input_trigger.break_duration_min
+        this.segmentationDurationExact = true
+        this.Program.value[0].program_start.input_trigger.segmentation_duration_max = this.Program.value[0].program_start.input_trigger.segmentation_duration_min
       } else {
-        this.breakDurationExactOutput = true
-        this.Program.value[0].program_start.output_trigger.break_duration_max = this.Program.value[0].program_start.output_trigger.break_duration_min
+        this.segmentationDurationExactOutput = true
+        this.Program.value[0].program_start.output_trigger.segmentation_duration_max = this.Program.value[0].program_start.output_trigger.segmentation_duration_min
       }
     } else {
       if (input_trigger) {
-        this.breakDurationExact = false
-        this.Program.value[0].program_start.input_trigger.break_duration_max = this.Program.value[0].program_start.input_trigger.break_duration_min + 1
+        this.segmentationDurationExact = false
+        this.Program.value[0].program_start.input_trigger.segmentation_duration_max = this.Program.value[0].program_start.input_trigger.segmentation_duration_min + 1
       } else {
-        this.breakDurationExactOutput = false
-        this.Program.value[0].program_start.output_trigger.break_duration_max = this.Program.value[0].program_start.output_trigger.break_duration_min + 1
+        this.segmentationDurationExactOutput = false
+        this.Program.value[0].program_start.output_trigger.segmentation_duration_max = this.Program.value[0].program_start.output_trigger.segmentation_duration_min + 1
       }
     }
-    console.log(this.breakDurationExact)
+    console.log(this.segmentationDurationExact)
   }
 
   public logProgram() {

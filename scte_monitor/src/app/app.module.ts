@@ -48,12 +48,21 @@ const routes: Routes = [
     RouterModule.forRoot([{ path: '', component: ControlComponent }]),
     
     RouterModule.forRoot([{ path: 'control', component: ControlComponent, children: [ 
-      { path: 'local-break', component: LocalBreakComponent } ]}
+      { path: 'local-break', component: LocalBreakComponent },
+      { path: 'content-id', component: ContentIdComponent },
+      { path: 'placement-opportunity', component: PlacementOpportunityComponent },
+      { path: 'program', component: ProgramComponent },
+      { path: 'provider-ad', component: ProviderAdComponent }
+     ]}
     ]),
     
   ],
   entryComponents: [
     LocalBreakComponent,
+    ContentIdComponent,
+    PlacementOpportunityComponent,
+    ProgramComponent,
+    ProviderAdComponent
   ],
   providers: [NetworkNamesService],
   bootstrap: [AppComponent]

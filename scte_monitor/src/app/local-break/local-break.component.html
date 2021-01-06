@@ -1,7 +1,7 @@
 <div style="margin:5px">
     <!-- Accordion start -->
     <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
-        <ngb-panel id="idx" *ngFor="let item of config?.value.slice(3); let idx = index">
+        <ngb-panel id="idx" *ngFor="let item of config?.value | slice:3:4; let idx = index">
             <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                     <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">{{item.key}}</button></h3>

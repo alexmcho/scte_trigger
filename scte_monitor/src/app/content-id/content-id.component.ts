@@ -9,6 +9,7 @@ import { KeyNumberArray } from "../key-value"
 import { KeyObject } from "../key-value";
 // import { ContentId } from "../template_definitions";
 import { LoadJsonService } from '../load-json.service';
+import { NetworkNamesService } from '../network-names.service';
 
 @Component({
   selector: 'app-content-id',
@@ -23,18 +24,19 @@ export class ContentIdComponent implements OnInit {
   public startOutput: boolean;
   public endOutput: boolean;
 
-  public breakDurationExact: boolean;
-  public breakDurationExactAmount: number;
-  public breakDurationExactOutput: boolean;
-  public breakDurationExactAmountOutput: number;
+  // public segmentationDurationExact: boolean;
+  // public segmentationDurationExactAmount: number;
+  // public segmentationDurationExactOutput: boolean;
+  // public segmentationDurationExactAmountOutput: number;
 
   public config: KeyObject;
   public existingTemplates = <string[]>[];
 
   @Input() contentId: any;
 
-  constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver) {
+  constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private NetworkNamesService:NetworkNamesService) {
     let url = "/assets/config.json"
+    // let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		console.log(this.config)
@@ -44,9 +46,14 @@ export class ContentIdComponent implements OnInit {
 	})
   }
 
+  // remove() {
+  //   console.log(this.index)
+  //   this.parentRef.clear(this.index == 4)
+  // }
+
   remove() {
-    console.log(this.index)
-    this.parentRef.clear()
+    const index = this.existingTemplates.findIndex(this.config = this.config.value[4]);
+    this.existingTemplates.splice(index, -1); // Removes one element, starting from index
   }
 
   ngOnInit(): void {
@@ -59,7 +66,7 @@ export class ContentIdComponent implements OnInit {
 
   setStartOutput() {
     try {
-      if(this.contentId.value[0].content_id_6_start.action == 'REPLACE') {
+      if(this.contentId.value[0].content_id_start.action == 'REPLACE') {
         this.startOutput = true;
       } else {
         this.startOutput = false;
@@ -71,7 +78,7 @@ export class ContentIdComponent implements OnInit {
 
   setEndOutput() {
     try {
-      if(this.contentId.value[0].content_id_6_end.action == 'REPLACE') {
+      if(this.contentId.value[0].content_id_end.action == 'REPLACE') {
         this.endOutput = true;
       } else {
         this.endOutput = false;
@@ -81,45 +88,45 @@ export class ContentIdComponent implements OnInit {
     }
   }
 
-  public setExactBreakDuration(input_trigger: boolean) {
-    if(input_trigger) {
-      this.contentId.value[0].content_id_6_start.input_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.input_trigger.break_duration_min = this.breakDurationExactAmount;
-    } else {
-      this.contentId.value[0].content_id_6_start.output_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.output_trigger.break_duration_min = this.breakDurationExactAmountOutput;
+  // public setExactSegmentationDuration(input_trigger: boolean) {
+  //   if(input_trigger) {
+  //     this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_min = this.segmentationDurationExactAmount;
+  //   } else {
+  //     this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_min = this.segmentationDurationExactAmountOutput;
 
-    }
-  }
+  //   }
+  // }
 
-  public makeExactBreakDuration(exact, input_trigger: boolean) {
-    console.log(this.breakDurationExact)
-    if(exact == "true") {
-      if (input_trigger) {
-        this.breakDurationExact = true
-        this.contentId.value[0].content_id_6_start.input_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.input_trigger.break_duration_min
-      } else {
-        this.breakDurationExactOutput = true
-        this.contentId.value[0].content_id_6_start.output_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.output_trigger.break_duration_min
-      }
-    } else {
-      if (input_trigger) {
-        this.breakDurationExact = false
-        this.contentId.value[0].content_id_6_start.input_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.input_trigger.break_duration_min + 1
-      } else {
-        this.breakDurationExactOutput = false
-        this.contentId.value[0].content_id_6_start.output_trigger.break_duration_max = this.contentId.value[0].content_id_6_start.output_trigger.break_duration_min + 1
-      }
-    }
-    console.log(this.breakDurationExact)
-  }
+  // public makeExactSegmentationDuration(exact, input_trigger: boolean) {
+  //   console.log(this.segmentationDurationExact)
+  //   if(exact == "true") {
+  //     if (input_trigger) {
+  //       this.segmentationDurationExact = true
+  //       this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_min
+  //     } else {
+  //       this.segmentationDurationExactOutput = true
+  //       this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_min
+  //     }
+  //   } else {
+  //     if (input_trigger) {
+  //       this.segmentationDurationExact = false
+  //       this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_min + 1
+  //     } else {
+  //       this.segmentationDurationExactOutput = false
+  //       this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.output_trigger.segmentation_duration_min + 1
+  //     }
+  //   }
+  //   console.log(this.segmentationDurationExact)
+  // }
 
   public logContentId() {
     console.log(this.contentId)
   }
   private rebuildJson(node: any): string {
 		let result = ''
-		if(node.key == "national_break") {
+		if(node.key == "content_id") {
 			console.log(node.value[0])
-      		result += '"national_break":'
+      		result += '"content_id":'
 			result += JSON.stringify(node.value[0])
 		}
 		else {

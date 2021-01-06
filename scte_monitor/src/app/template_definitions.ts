@@ -74,5 +74,112 @@ export interface ContentId {
         "output_trigger": {
             "segmentation_type_id": "isnumeric",
         }
+    },
+    "content_id_end": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+        }
+    }
+}
+
+export interface PlacementOpportunity {
+    "placement_opportunity_start": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        }
+    },
+    "placement_opportunity_end": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": 1,
+            "duration_flag": false
+        },
+        "output_trigger": {
+            "segmentation_type_id": 1,
+            "duration_flag": false
+        }
+    }
+}
+
+export interface Program {
+    "program_start": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        }
+    },
+    "program_end": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": false
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": false
+
+        }
+    }
+}
+
+export interface ProviderAd {
+    "provider_ad_start": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": true,
+            "segmentation_auto_return": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        }
+    },
+    "provider_ad_end": {
+        "splice_command_type": 5,
+        "input_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        },
+        "output_trigger": {
+            "segmentation_type_id": "isnumeric",
+            "duration_flag": false,
+            "segmentation_duration_min": number,
+            "segmentation_duration_max": number
+        }
     }
 }

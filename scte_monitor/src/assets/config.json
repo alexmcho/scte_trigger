@@ -51,59 +51,73 @@
     "content_id_start": {
       "splice_command_type": 5,
       "input_trigger": {
-        "segmentation_type_id": "isnumeric"
+        "segmentation_type_id": 1,
+        "duration_flag": true
       },
       "output_trigger": {
-        "segmentation_type_id": "isnumeric"
+        "segmentation_type_id": 1,
+        "duration_flag": true
       }
     }
   },
   "placement_opportunity": { 
-    "local_break_start": {
+    "placement_opportunity_start": {
       "splice_command_type": 5,
       "input_trigger": {
-        "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "splice_type_id": 1,
+        "segmentation_type_id": 52,
+        "duration_flag": true,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       },
       "output_trigger": {
-        "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "splice_type_id": 1,
+        "duration_flag": true,
+        "segmentation_type_id": 52,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       }
     },
-    "break_duration_deviation_tolerance": 0.1
+    "segmentation_duration_deviation_tolerance": 0.1
   },
   "program": { 
-    "local_break_start": {
+    "program_start": {
       "splice_command_type": 5,
       "input_trigger": {
         "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "segmentation_type_id": 16,
+        "duration_flag": true,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       },
       "output_trigger": {
         "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "segmentation_type_id": 16,
+        "duration_flag": true,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       }
     },
-    "break_duration_deviation_tolerance": 0.1
+    "segmentation_duration_deviation_tolerance": 0.1
   },
   "provider_ad": { 
-    "local_break_start": {
+    "provider_ad_start": {
       "splice_command_type": 5,
       "input_trigger": {
         "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "segmentation_type_id": 50,
+        "duration_flag": true,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       },
       "output_trigger": {
         "splice_event_id": "isnumeric",
-        "break_duration_min": 58,
-        "break_duration_max": 62
+        "segmentation_type_id": 50,
+        "duration_flag": true,
+        "segmentation_duration_min": 58,
+        "segmentation_duration_max": 62
       }
     },
-    "break_duration_deviation_tolerance": 0.1
+    "segmentation_duration_deviation_tolerance": 0.1
   }
 }

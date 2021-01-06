@@ -1,7 +1,7 @@
 <div style="margin:5px">
     <!-- Accordion start -->
     <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
-        <ngb-panel id="idx" *ngFor="let item of config?.value.slice(3); let idx = index">
+        <ngb-panel id="idx" *ngFor="let item of config?.value | slice:4:5; let idx = index">
             <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                     <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Content Id</button></h3>
@@ -30,13 +30,31 @@
     </form>
 
     <!-- Segmentation Type Id  -->
-    <tr>
+    <label for="content_id_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
+    <table id="content_id_start_table" class ="table table-striped">
+        <tbody>
+        <tr>
         <th>segmentation_type_id</th><td></td>
-        <td><select [(ngModel)]="contentId?.value[0].content_id_start.input_trigger.splice_event_id" class="form-control">
-            <option value="isnumeric">Must Be Numeric</option>
+        <td><select [(ngModel)]="contentId?.value[0].content_id_start.input_trigger.segmentation_type_id" class="form-control">
+            <option [ngValue]="1">1</option>
         </select></td>
-    </tr>
+        </tr>
+        </tbody>
+    </table>
 
+    <!-- Segmentation Type Id - Start - Output Trigger -->
+    <!-- <div *ngIf="contentId?.value[0].content_id_start.action=='REPLACE'">
+        <label for="content_id_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
+        <table id="content_id_start_table" class ="table table-striped">
+            <tbody>
+                <tr>
+                    <th>segmentation_type_id</th><td></td>
+                    <td><select [(ngModel)]="contentId?.value[0].content_id_start.input_trigger.splice_event_id" class="form-control">
+                        <option [ngValue]="1">1</option>
+                    </select></td>
+                </tr>
+            </tbody>
+        </table> -->
     <!-- Properties End -->
     <!-- Properties VCR Hide -->
     </div>

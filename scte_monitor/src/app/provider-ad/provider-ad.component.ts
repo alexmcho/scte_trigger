@@ -7,7 +7,7 @@ import { KeyBool } from "../key-value"
 import { KeyStringArray } from "../key-value";
 import { KeyNumberArray } from "../key-value"
 import { KeyObject } from "../key-value";
-// import { ProviderAd } from "../template_definitions";
+import { ProviderAd } from "../template_definitions";
 
 import { LoadJsonService } from '../load-json.service';
 
@@ -24,10 +24,10 @@ export class ProviderAdComponent implements OnInit {
   public startOutput: boolean;
   public endOutput: boolean;
 
-  public breakDurationExact: boolean;
-  public breakDurationExactAmount: number;
-  public breakDurationExactOutput: boolean;
-  public breakDurationExactAmountOutput: number;
+  public segmentationDurationExact: boolean;
+  public segmentationDurationExactAmount: number;
+  public segmentationDurationExactOutput: boolean;
+  public segmentationDurationExactAmountOutput: number;
 
   public config: KeyObject;
   public existingTemplates = <string[]>[];
@@ -45,9 +45,14 @@ export class ProviderAdComponent implements OnInit {
 	})
   }
 
+  // remove() {
+  //   console.log(this.index)
+  //   this.parentRef.clear(this.index == 7)
+  // }
+
   remove() {
-    console.log(this.index)
-    this.parentRef.clear()
+    const index = this.existingTemplates.findIndex(this.config = this.config.value[7]);
+    this.existingTemplates.splice(index, -1); // Removes one element, starting from index
   }
 
   ngOnInit(): void {
@@ -82,35 +87,35 @@ export class ProviderAdComponent implements OnInit {
     }
   }
 
-  public setExactBreakDuration(input_trigger: boolean) {
+  public setExactSegmentationDuration(input_trigger: boolean) {
     if(input_trigger) {
-      this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_min = this.breakDurationExactAmount;
+      this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_min = this.segmentationDurationExactAmount;
     } else {
-      this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_min = this.breakDurationExactAmountOutput;
+      this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_min = this.segmentationDurationExactAmountOutput;
 
     }
   }
 
-  public makeExactBreakDuration(exact, input_trigger: boolean) {
-    console.log(this.breakDurationExact)
+  public makeExactSegmentationDuration(exact, input_trigger: boolean) {
+    console.log(this.segmentationDurationExact)
     if(exact == "true") {
       if (input_trigger) {
-        this.breakDurationExact = true
-        this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_min
+        this.segmentationDurationExact = true
+        this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_min
       } else {
-        this.breakDurationExactOutput = true
-        this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_min
+        this.segmentationDurationExactOutput = true
+        this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_min
       }
     } else {
       if (input_trigger) {
-        this.breakDurationExact = false
-        this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.break_duration_min + 1
+        this.segmentationDurationExact = false
+        this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.input_trigger.segmentation_duration_min + 1
       } else {
-        this.breakDurationExactOutput = false
-        this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.break_duration_min + 1
+        this.segmentationDurationExactOutput = false
+        this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_max = this.providerAd.value[0].provider_ad_start.output_trigger.segmentation_duration_min + 1
       }
     }
-    console.log(this.breakDurationExact)
+    console.log(this.segmentationDurationExact)
   }
 
   public logProviderAd() {
@@ -118,9 +123,9 @@ export class ProviderAdComponent implements OnInit {
   }
   private rebuildJson(node: any): string {
 		let result = ''
-		if(node.key == "national_break") {
+		if(node.key == "provider_ad") {
 			console.log(node.value[0])
-      		result += '"national_break":'
+      		result += '"provider_ad":'
 			result += JSON.stringify(node.value[0])
 		}
 		else {

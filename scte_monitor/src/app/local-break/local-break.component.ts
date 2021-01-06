@@ -45,9 +45,33 @@ export class LocalBreakComponent implements OnInit {
 	})
   }
 
+  // remove() {
+  //   console.log(this.index)
+  //   this.parentRef.clear(this.index == 3)
+  // }
+
+  // remove() {
+  //   fetch("/assets/config.json").then(config => config.json()).then(json => {this.config.value[3]({isLoaded: true, index: json.index})});
+  //   const index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
+  //   this.existingTemplates.splice(index, -1); // Removes one element, starting from index
+  // }
+
+  // remove() {
+  //   fetch("/assets/config.json").then(config => config.json()).then(json => {this.getConfig({isLoaded: true, index: json.index})});
+  //   const index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
+  //   this.existingTemplates.splice(index, -1); // Removes one element, starting from index
+  // }
+
+  // remove() {
+  //   fetch("/assets/config.json").then(config => config.json()).then(json => {this.config.value[3]({isLoaded: true, index: Array})});
+  //   let index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
+  //   this.existingTemplates.splice(index, -1); // Removes one element, starting from index
+  // }
+
   remove() {
-    console.log(this.index)
-    this.parentRef.clear()
+  fetch("/assets/config.json").then(config => config.json()).then(item => {this.config.value[3]({isLoaded: true, item})});
+  var index = this.config.value.findIndex(this.config = this.config.value[3]);
+  this.config.value.splice(index, -1); // Removes one element, starting from index
   }
 
   ngOnInit(): void {

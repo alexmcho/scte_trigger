@@ -22,18 +22,18 @@ import { NetworkNamesService } from '../network-names.service';
 export class ControlComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
+
   closeResult = ''; 
 
   @ViewChild('viewContainerRef', { read: ViewContainerRef }) VCR: ViewContainerRef;
-  index: number = 0;
-  componentsReferences = Array<ComponentRef<LocalBreakComponent>>();
-  localbreak_index: number = 0;
-  contentid_index: number = 1;
-  placementopportunity_index: number = 2;
-  program_index: number = 3;
-  providerad_index: number = 4;
+  index = [];
+  componentsReferences = Array<ComponentRef<any>>();
+  localbreak_index: number = 3;
+  contentid_index: number = 4;
+  placementopportunity_index: number = 5;
+  program_index: number = 6;
+  providerad_index: number = 7;
   networklink: String;
-
 
   constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private modalService: NgbModal, private NetworkNamesService:NetworkNamesService) {
 	let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
@@ -46,12 +46,11 @@ export class ControlComponent implements OnInit {
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		console.log(this.config)
-		for(let i = 3; i < this.config.value.length; i++) {
+		for(let i = 0; i < this.config.value.length; i++) {
 			this.existingTemplates.push(this.config.value[i].key)
 		}
 	})
   }
-
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -71,9 +70,9 @@ export class ControlComponent implements OnInit {
     }
   }
 
-  clear() {
-    this.VCR.remove();
-  }
+//   clear(index) {
+// 	this.VCR.remove(index)
+//   }
 
   createLocalBreakComponent() {
 	let componentFactory = this.CFR.resolveComponentFactory(LocalBreakComponent);
@@ -83,8 +82,9 @@ export class ControlComponent implements OnInit {
     childComponent.index = ++this.localbreak_index;
     childComponent.parentRef = this;
 
-    // add reference for newly created component
-    // this.componentsReferences.push(childComponentRef);
+	// add reference for newly created component
+	// componentsrefernces -> array componentref
+    this.componentsReferences.push(childComponentRef);
   }
 
   createContentIdComponent() {
@@ -168,6 +168,66 @@ export class ControlComponent implements OnInit {
 			}
 			delete this.config.value[i].value[0].include_break_end  // drop the include_break_end flag
 		}
+		else if(this.config.value[i].key == "content_id") {
+			// If the content_id_start action is not REPLACE then drop the content_id_start output trigger
+			if(this.config.value[i].value[0].content_id_start.action != 'REPLACE') {
+				delete this.config.value[i].value[0].content_id_start.output_trigger
+			}
+			// If the content_id_end action is not REPLACE then drop the content_id_end output trigger
+			if(this.config.value[i].value[0].content_id_end.action != 'REPLACE') {
+				delete this.config.value[i].value[0].content_id_end.output_trigger
+			}
+			// If the user has indicated not to include content_id_end then delete it from config
+			if(!this.config.value[i].value[0].include_break_end) {
+				delete this.config.value[i].value[0].content_id_end
+			}
+			delete this.config.value[i].value[0].include_break_end  // drop the include_break_end flag
+		}
+		else if(this.config.value[i].key == "placement_opportunity") {
+			// If the placement_opportunity_start action is not REPLACE then drop the placement_opportunity_start output trigger
+			if(this.config.value[i].value[0].placement_opportunity_start.action != 'REPLACE') {
+				delete this.config.value[i].value[0].placement_opportunity_start.output_trigger
+			}
+			// If the placement_opportunity_end action is not REPLACE then drop the placement_opportunity_end output trigger
+			if(this.config.value[i].value[0].placement_opportunity_end.action != 'REPLACE') {
+				delete this.config.value[i].value[0].placement_opportunity_end.output_trigger
+			}
+			// If the user has indicated not to include placement_opportunity_end then delete it from config
+			if(!this.config.value[i].value[0].include_break_end) {
+				delete this.config.value[i].value[0].placement_opportunity_end
+			}
+			delete this.config.value[i].value[0].include_break_end  // drop the include_break_end flag
+		}
+		else if(this.config.value[i].key == "program") {
+			// If the program_start action is not REPLACE then drop the program_start output trigger
+			if(this.config.value[i].value[0].program_start.action != 'REPLACE') {
+				delete this.config.value[i].value[0].program_start.output_trigger
+			}
+			// If the program_end action is not REPLACE then drop the program_end output trigger
+			if(this.config.value[i].value[0].program_end.action != 'REPLACE') {
+				delete this.config.value[i].value[0].program_end.output_trigger
+			}
+			// If the user has indicated not to include program_end then delete it from config
+			if(!this.config.value[i].value[0].include_break_end) {
+				delete this.config.value[i].value[0].program_end
+			}
+			delete this.config.value[i].value[0].include_break_end  // drop the include_break_end flag
+		}
+		else if(this.config.value[i].key == "providerAd") {
+			// If the provider_ad_start action is not REPLACE then drop the provider_ad_start output trigger
+			if(this.config.value[i].value[0].provider_ad_start.action != 'REPLACE') {
+				delete this.config.value[i].value[0].provider_ad_start.output_trigger
+			}
+			// If the provider_ad_end action is not REPLACE then drop the provider_ad_end output trigger
+			if(this.config.value[i].value[0].provider_ad_end.action != 'REPLACE') {
+				delete this.config.value[i].value[0].provider_ad_end.output_trigger
+			}
+			// If the user has indicated not to include provider_ad_end then delete it from config
+			if(!this.config.value[i].value[0].include_break_end) {
+				delete this.config.value[i].value[0].provider_ad_end
+			}
+			delete this.config.value[i].value[0].include_break_end  // drop the include_break_end flag
+		}
 	}
     let newConfig = "{"
 		for(let i = 0; i < this.config.value.length; i++) {
@@ -193,6 +253,30 @@ export class ControlComponent implements OnInit {
 		this.config.value.splice(3, 0, templateObject)
 		this.existingTemplates.push("local_break")
 	  }
+	  else if(templateType == "content_id" && !this.existingTemplates.includes("content_id")) {
+		let template = this.LoadJsonService.addContentId({})
+		let templateObject = <KeyObject> {key: "content_id", path: "config.value[4]", type: "contentId", value: [template]}
+		this.config.value.splice(4, 0, templateObject)
+		this.existingTemplates.push("content_id")
+	  }
+	  else if(templateType == "placement_opportunity" && !this.existingTemplates.includes("placement_opportunity")) {
+		let template = this.LoadJsonService.addContentId({})
+		let templateObject = <KeyObject> {key: "placement_opportunity", path: "config.value[5]", type: "placementOpportunity", value: [template]}
+		this.config.value.splice(5, 0, templateObject)
+		this.existingTemplates.push("placement_opportunity")
+	  }
+	  else if(templateType == "program" && !this.existingTemplates.includes("program")) {
+		let template = this.LoadJsonService.addContentId({})
+		let templateObject = <KeyObject> {key: "program", path: "config.value[6]", type: "Program", value: [template]}
+		this.config.value.splice(6, 0, templateObject)
+		this.existingTemplates.push("program")
+	  }
+	  else if(templateType == "provider_ad" && !this.existingTemplates.includes("provider_ad")) {
+		let template = this.LoadJsonService.addContentId({})
+		let templateObject = <KeyObject> {key: "provider_ad", path: "config.value[7]", type: "providerAd", value: [template]}
+		this.config.value.splice(7, 0, templateObject)
+		this.existingTemplates.push("provider_ad")
+	  }
 	  console.log(this.config)
   }
 
@@ -206,9 +290,9 @@ export class ControlComponent implements OnInit {
 
   private rebuildJson(node: any): string {
 		let result = ''
-		if(node.key == "local_break") {
+		if(node.key == "local_break", "content_id", "placement_opportunity", "program", "provider_ad") {
 			console.log(node.value[0])
-      		result += '"local_break":'
+      		result += '"local_break", "content_id", "placement_opportunity", "program", "provider_ad":'
 			result += JSON.stringify(node.value[0])
 		}
 		else {

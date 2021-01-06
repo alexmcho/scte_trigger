@@ -1,7 +1,7 @@
 <div style="margin:5px">
     <!-- Accordion start -->
     <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
-        <ngb-panel id="idx" *ngFor="let item of config?.value.slice(3); let idx = index">
+        <ngb-panel id="idx" *ngFor="let item of config?.value | slice:7:8; let idx = index">
             <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                     <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Provider Ad</button></h3>
@@ -30,39 +30,91 @@
         </div>
     </form>
     <!-- Segmentation Type Id  -->
-    <tr>
+    <label for="provider_ad_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
+    <table id="provider_ad_start_table" class ="table table-striped">
+        <tbody>
+        <tr>
         <th>segmentation_type_id</th><td></td>
-        <td><select [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.splice_event_id" class="form-control">
-            <option value="isnumeric">Must Be Numeric</option>
+        <td><select [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_type_id" class="form-control">
+            <option [ngValue]="50">50</option>
         </select></td>
-    </tr>
-    <!-- Segmentation Duration -->
-    <tr *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.duration_flag==true">
-        <th>break_duration</th>
-        <td ><select (change)="makeExactBreakDuration($event.target.value, true)" class="form-control">
-            <option value="" disabled selected hidden>Change Break Duration Type</option>
-            <option value=true>Exact Time (seconds)</option>
-            <option value=false>Time Range (seconds)</option>
-        </select></td>
-        <td *ngIf="breakDurationExact">
-            <input [(ngModel)]="breakDurationExactAmount" (change)="setExactBreakDuration(true)" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.break_duration_min}}>
-        </td>
-        <td *ngIf="!breakDurationExact">
-            <div class="form-group row">
-                <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                <div class="col-sm-4">
-                    <input [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.break_duration_min" id="break_duration_min" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.break_duration_min}}>
+        </tr>
+    <!-- Duration Flag for Segmentation Duration -->
+        <tr>
+            <th>duration_flag</th><td></td>
+            <td><select [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.duration_flag" class="form-control">
+                <option [ngValue]="true">true</option>
+                <option [ngValue]="false">false</option>
+            </select></td>
+        </tr>
+    <!-- Segmentation Duration - Input -->
+        <tr *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.duration_flag==true">
+            <th>segmentation_duration</th>
+            <td ><select (change)="makeExactSegmentationDuration($event.target.value, true)" class="form-control">
+                <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
+                <option value=true>Exact Time (seconds)</option>
+                <option value=false>Time Range (seconds)</option>
+            </select></td>
+        <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min==providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
+            <td *ngIf="segmentationDurationExact">
+                <input [(ngModel)]="segmentationDurationExactAmount" (change)="setExactSegmentationDuration(true)" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min}}>
+            </td>
+        <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min!=providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
+            <td *ngIf="!segmentationDurationExact">
+                <div class="form-group row">
+                    <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                    <div class="col-sm-4">
+                        <input [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min" id="segmentation_duration_min" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min}}>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                <div class="col-sm-4">
-                    <input [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.break_duration_max" id="break_duration_max" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.break_duration_max}}>
-                </div>
-            </div>                
-        </td>
-    </tr>
-    
+                <div class="form-group row">
+                    <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                    <div class="col-sm-4">
+                        <input [(ngModel)]="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max" id="segmentation_duration_max" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max}}>
+                    </div>
+                </div> 
+            </td>
+        </tr>
+
+    <!-- Properties End -->
+        </tbody>
+    </table>
+
+<!-- Provider Ad Start - Output Trigger -->
+    <div *ngIf="providerAd?.value[0].provider_ad_start.action=='REPLACE'">
+        <label for="provider_ad_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
+        <table id="provider_ad_start_table" class ="table table-striped">
+            <tbody>
+                <tr *ngIf="providerAd?.value[0].provider_ad_start.output_trigger.duration_flag==true">
+                    <th>segmentation_duration</th>
+                    <td ><select (change)="makeExactSegmentationDuration($event.target.value, false)" class="form-control">
+                        <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
+                        <option value=true>Exact Time (seconds)</option>
+                        <option value=false>Time Range (seconds)</option>
+                    </select></td>
+                    <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min==providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
+                    <td *ngIf="segmentationDurationExactOutput">
+                        <input [(ngModel)]="segmentationDurationExactAmountOutput" (change)="setExactSegmentationDuration(false)" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_min}}>
+                    </td>
+                    <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min!=providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
+                    <td *ngIf="!segmentationDurationExactOutput">
+                        <div class="form-group row">
+                            <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                            <div class="col-sm-4">
+                                <input [(ngModel)]="providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_min" id="segmentation_duration_min" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_min}}>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                            <div class="col-sm-4">
+                                <input [(ngModel)]="providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_max" id="segmentation_duration_max" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_max}}>
+                            </div>
+                        </div>                
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- Properties End -->
     <!-- Properties VCR Hide -->
     </div>

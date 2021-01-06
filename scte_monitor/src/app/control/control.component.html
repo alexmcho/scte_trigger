@@ -55,18 +55,12 @@
     </div>
     <br>
     <br>
-
-
-    
+<!-- Preload Existing Network Configuration -->
     <div *ngFor="let con of config?.value">
       <div *ngFor="let item of con?.value; let i = index">
             <p  class="form-control" style="width: 100%; display:flex" >{{con?.value[i].key}} : : &nbsp;&nbsp;&nbsp;&nbsp; {{con?.value[i].value}}
       </div>
     </div>
-
-
-
-
 <!-- Add New Segment Dropdown-->
     <div class="row">
         <div class="col">
