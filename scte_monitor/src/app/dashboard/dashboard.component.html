@@ -2,7 +2,8 @@
     <h1 class="h2">SCTE Monitor Dashboard</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
 
-        <!-- Remove Network and Confirm Modal -->
+
+    <!-- Add New Network and Confirm Modal -->
     <ng-template #content let-modal>
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Create Network</h4>
@@ -20,13 +21,13 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="saveButton()">Save</button>
+          <button type="button" class="btn btn-outline-dark" (click)="saveButton();modal.dismiss()">Save</button>
         </div>
       </ng-template>
       <hr>
 
         <div class="btn-group mr-2">
-            <button type="button" class="btn btn-sm btn-outline-primary" (click)="open(content)">Add New Network</button>
+            <button type="button" class="btn btn-sm btn-outline-primary" routerLink="/add-control">Add New Network</button>
         </div>
     </div>
 </div>

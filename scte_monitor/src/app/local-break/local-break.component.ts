@@ -10,6 +10,7 @@ import { KeyObject } from "../key-value";
 import { LocalBreak } from "../template_definitions";
 
 import { LoadJsonService } from '../load-json.service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-local-break',
@@ -36,6 +37,7 @@ export class LocalBreakComponent implements OnInit {
 
   constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver) {
     let url = "/assets/config.json"
+    // let url = "http://127.0.0.1:8000/get/COOKHD-6216.dfw.1080"
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		console.log(this.config)
@@ -68,10 +70,17 @@ export class LocalBreakComponent implements OnInit {
   //   this.existingTemplates.splice(index, -1); // Removes one element, starting from index
   // }
 
+  // remove(in: number) {
+  // fetch("/assets/config.json").then(config => config.json()).then(item => {this.config.value[3]({isLoaded: true, item})});
+  // var index = this.config.value.findIndex(this.config = this.config.value[3]);
+  // // this.config.value.splice(index, -1); // Removes one element, starting from index
+  // delete this.config.value[];
+  // }
+
   remove() {
-  fetch("/assets/config.json").then(config => config.json()).then(item => {this.config.value[3]({isLoaded: true, item})});
-  var index = this.config.value.findIndex(this.config = this.config.value[3]);
-  this.config.value.splice(index, -1); // Removes one element, starting from index
+    fetch("/assets/config.json").then(config => config.json()).then(json => {this.config.value[3]({isLoaded: true, index: Array})});
+    let index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
+    this.existingTemplates.splice(index, 1); // Removes one element, starting from index
   }
 
   ngOnInit(): void {

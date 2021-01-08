@@ -20,6 +20,8 @@ import { PlacementOpportunityComponent } from './placement-opportunity/placement
 import { ProgramComponent } from './program/program.component';
 import { ProviderAdComponent } from './provider-ad/provider-ad.component';
 import { NetworkNamesService } from './network-names.service';
+import { AddControlComponent } from './add-control/add-control.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [ 
 ];
@@ -37,6 +39,8 @@ const routes: Routes = [
     PlacementOpportunityComponent,
     ProgramComponent,
     ProviderAdComponent,
+    AddControlComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ const routes: Routes = [
       { path: 'content-id', component: ContentIdComponent },
       { path: 'placement-opportunity', component: PlacementOpportunityComponent },
       { path: 'program', component: ProgramComponent },
-      { path: 'provider-ad', component: ProviderAdComponent }
+      { path: 'provider-ad', component: ProviderAdComponent },
+      { path: 'add-control', component: AddControlComponent }
      ]}
     ]),
     
@@ -62,7 +67,8 @@ const routes: Routes = [
     ContentIdComponent,
     PlacementOpportunityComponent,
     ProgramComponent,
-    ProviderAdComponent
+    ProviderAdComponent,
+    AddControlComponent
   ],
   providers: [NetworkNamesService],
   bootstrap: [AppComponent]

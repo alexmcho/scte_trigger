@@ -1,0 +1,7 @@
+.deleteEmail_svg {
+    fill: red;
+}
+.deleteEmail_svg:hover {
+    fill: darkred;
+    cursor: pointer;
+}

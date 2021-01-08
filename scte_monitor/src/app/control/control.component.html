@@ -1,19 +1,62 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script>
+  function validateForm() {
+    var x = document.forms["myForm"]["network"].value;
+    if (x == "" || x == null) {
+      alert("Name must be filled out");
+      return false;
+    }
+  }
+  </script>
+
 <!-- Network_ID -->
 <div style="margin:20px"> <!-- Edited margin from margin:50px to margin:20px -->
     <div *ngFor="let con of config?.value">
       <div *ngFor="let item of con?.value">
         <span *ngIf="item.key=='network_id'">
-            <h3>{{item.value}}
-            <button class="btn btn-sm btn-outline-primary" (click)="open(content)" style="float: right;">Remove Network</button>
+            <h3>{{item.value}}&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-link p-0" (click)="openEditModal(content)">Edit Network ID</button>
+            <!-- <button class="material-icons" (click)="remove()" style="font-size:24px; color:rgb(0, 174, 255); float: right;">delete</button> -->
+            <button class="delete-button btn-outline" style="float: right;" (click)="openRemoveModal(contentRemove)"><i class="material-icons">delete</i></button>
             </h3>
         </span>
       </div>
     </div>
 
+<!-- Edit Network ID and Confirm Modal -->
+  <ng-template #content let-modal>
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title-edit">Edit Network ID</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form>
+        <div *ngFor="let con of config?.value">
+          <div *ngFor="let item of con?.value; let i = index">
+            <span *ngIf="item.key=='network_id'">
+                <input [(ngModel)]="con?.value[i].value" placeholder="con?.value[i].value" [ngModelOptions]="{standalone: true}" class="form-control" style="width: 100%; display:flex">
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="saveChanges()">Confirm</button>
+    </div>
+
+  </ng-template>
+
+
 <!-- Remove Network and Confirm Modal -->
-    <ng-template #content let-modal>
+    <ng-template #contentRemove let-modal>
+
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Confirm Changes</h4>
+          <h4 class="modal-title" id="modal-basic-title-remove">Confirm Changes</h4>
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -32,35 +75,38 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+          <button type="button" class="btn btn-outline-dark" (click)="remove();modal.dismiss()">Confirm</button>
         </div>
       </ng-template>
-      <hr>
 
 <!-- Added Break | Recipient Email Address -->
-    <br> 
+    <br>
+    <hr/> 
     <h5>Recipient Email Addresses (seperated by ","):</h5>
+    <br>
     <div *ngFor="let con of config?.value">
       <div *ngFor="let item of con?.value; let i = index">
-        <span *ngIf="item.key=='network_id'">
-            <input [(ngModel)]="con?.value[i].value" placeholder="con?.value[i].value" class="form-control" style="width: 100%; display:flex">
+        <span *ngIf="item.key=='recipient_emails'">
+            <!-- <h5 style="width: 100%; display:flex">{{item.value}}</h5> -->
+            <input style="width: 100%; display:flex" disabled placeholder="{{item.value}}">
         </span>
       </div>
     </div>
+    <hr/>
 <!-- Validation Frequency -->
-    <div *ngFor="let item of config?.value; let i = index" style="margin-top:10px">
-        <span *ngIf="item.key=='frequency'">
-            <span style="font-size:1.25rem; font-weight:500">Validation Frequency (sec): </span><input [(ngModel)]="config?.value[i].value" placeholder=item.value type=number step=any class="form-control" style="width:75px; display:inline-block">
+
+<!-- <h6>Validation Frequency (sec): </h6>
+<div *ngFor="let con of config?.value">
+    <div *ngFor="let item of con?.value; let i = index" style="margin-top:10px">
+        <span *ngIf="item.key=='frequency'"> -->
+            <!-- <input disabled [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" type=number step=any class="form-control" style="width:75px; display:inline-block"> -->
+            <!-- <input disabled [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" type=number class="form-control" style="width:75px;">
         </span>
     </div>
+  </div>
     <br>
-    <br>
-<!-- Preload Existing Network Configuration -->
-    <div *ngFor="let con of config?.value">
-      <div *ngFor="let item of con?.value; let i = index">
-            <p  class="form-control" style="width: 100%; display:flex" >{{con?.value[i].key}} : : &nbsp;&nbsp;&nbsp;&nbsp; {{con?.value[i].value}}
-      </div>
-    </div>
+    <br> -->
+
 <!-- Add New Segment Dropdown-->
     <div class="row">
         <div class="col">
@@ -81,6 +127,73 @@
     </div>
     <br>
     <hr/>
-<!-- Eliminated margin, originally set to margin:20px -->
-    <button class="btn btn-sm btn-outline-primary mr-2" style="margin:0px" (click)="saveChanges()">Save Changes</button>
+
+<!-- Preload Existing Network Configuration (2) -->
+<!-- <ng-template #contentConfig let-modal> -->
+  <div class="modal-body-2">
+    <ng-template #editContentConfig>
+      <!-- <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" required></form> -->
+
+        <th>&nbsp;&nbsp;Edit Network Configuration</th>
+        <tbody>
+        <hr>
+        <tr><td>&nbsp;&nbsp; Recipient Emails : </td><td><input #recipient_emails type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Network ID : </td><td><input #network_id type="text" name="network" ng-model="network"></td></tr>
+        <hr>
+        <tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Validate Splice Count : </td><td><input #validate_splice_count type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Local Break Start : </td><td><input #local_break_start type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Coommand Type : </td><td><input #splice_command_type type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Action : </td><td><input #action type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Input Trigger : </td><td><input #input_trigger type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Event ID : </td><td><input #splice_event_id type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Out of Network Indicator : </td><td><input #out_of_network_indicator type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Duration Flag : </td><td><input #duration_flag type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Immediate Flag : </td><td><input #splice_immediate_flag type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Auto Return : </td><td><input #break_auto_return type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Min : </td><td><input #break_duration_min type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Max : </td><td><input #break_duration_max type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Output Trigger : </td><td><input #output_trigger type="text"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
+        <hr>
+        <!-- <div ng-hide="!network"> -->
+        <tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
+        (click)="saveChange(recipient_emails.value, frequency.value, network_id.value, local_break.value, expected_splices_per_hour.value, 
+        validate_splice_count.value, local_break_start.value, splice_command_type.value, action.value, input_trigger.value,
+        splice_event_id.value, out_of_network_indicator.value, duration_flag.value, splice_immediate_flag.value, 
+        break_auto_return.value, break_duration_min.value, break_duration_max.value, output_trigger.value,
+        local_break_end.value, break_duration_deviation_tolerance.value)">Save Changes</button></div></td></tr></tbody>
+        <!-- </div> -->
+
+    </ng-template>
+  </div>
+
+  <div>
+  <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
+    <ngb-panel>
+        <ng-template ngbPanelHeader let-opened="opened">
+          <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Current Network Configuration</button>
+                  <button class="btn btn-link m-0" (click)="openConfigModal(editContentConfig)" style="float: right;">Edit Network</button>
+          </h3>
+              <ng-template ngbPanelContent>
+                <div *ngFor="let con of config?.value">
+                  <div *ngFor="let item of con?.value; let i = index">
+                    <body>
+                      <p  class="form-control" style="width: 25%; display:flex" >{{con?.value[i].key}} : &nbsp;&nbsp; 
+                      <p #network_id type="text" class="form-control" style="width: 25%; display:flex; align-items: right;">{{con?.value[i].value}}"
+                    </body>
+                  </div>
+                </div>
+              </ng-template>
+        </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  
+  <br>
+  <hr/>
+
+<!-- Closing Div-->
 </div>

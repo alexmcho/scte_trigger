@@ -1,0 +1,33 @@
+<th>&nbsp;&nbsp;Add New Network</th>
+<tbody>
+<hr>
+<tr><td>&nbsp;&nbsp; ID : </td><td><input #id type="number"></td></tr>
+<tr><td>&nbsp;&nbsp; Recipient Emails : </td><td><input #recipient_emails type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Network ID : </td><td><input #network_id type="text" name="network" ng-model="network"></td></tr>
+<hr>
+<tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Validate Splice Count : </td><td><input #validate_splice_count type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Local Break Start : </td><td><input #local_break_start type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Splice Coommand Type : </td><td><input #splice_command_type type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Action : </td><td><input #action type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Input Trigger : </td><td><input #input_trigger type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Splice Event ID : </td><td><input #splice_event_id type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Out of Network Indicator : </td><td><input #out_of_network_indicator type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Duration Flag : </td><td><input #duration_flag type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Splice Immediate Flag : </td><td><input #splice_immediate_flag type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Auto Return : </td><td><input #break_auto_return type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Min : </td><td><input #break_duration_min type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Max : </td><td><input #break_duration_max type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Output Trigger : </td><td><input #output_trigger type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
+<hr>
+<!-- <div ng-hide="!network"> -->
+<tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
+(click)="addNetwork(id.value, recipient_emails.value, frequency.value, network_id.value, local_break.value, expected_splices_per_hour.value, 
+validate_splice_count.value, local_break_start.value, splice_command_type.value, action.value, input_trigger.value,
+splice_event_id.value, out_of_network_indicator.value, duration_flag.value, splice_immediate_flag.value, 
+break_auto_return.value, break_duration_min.value, break_duration_max.value, output_trigger.value,
+local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</button></div></td></tr></tbody>
