@@ -15,7 +15,7 @@
     <div *ngFor="let con of config?.value">
       <div *ngFor="let item of con?.value">
         <span *ngIf="item.key=='network_id'">
-            <h3>{{item.value}}&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-link p-0" (click)="openEditModal(content)">Edit Network ID</button>
+            <h3>{{item.value}}&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-link p-0" (click)="openEditModal(content)"></button>
             <!-- <button class="material-icons" (click)="remove()" style="font-size:24px; color:rgb(0, 174, 255); float: right;">delete</button> -->
             <button class="delete-button btn-outline" style="float: right;" (click)="openRemoveModal(contentRemove)"><i class="material-icons">delete</i></button>
             </h3>
@@ -137,27 +137,27 @@
         <th>&nbsp;&nbsp;Edit Network Configuration</th>
         <tbody>
         <hr>
-        <tr><td>&nbsp;&nbsp; Recipient Emails : </td><td><input #recipient_emails type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Network ID : </td><td><input #network_id type="text" name="network" ng-model="network"></td></tr>
+        <tr><td>&nbsp;&nbsp; Recipient Emails : </td><td><input #recipient_emails type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Network ID : </td><td><input #network_id type="text" name="network" ng-model="network" class="form-control"></td></tr>
         <hr>
-        <tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Validate Splice Count : </td><td><input #validate_splice_count type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Local Break Start : </td><td><input #local_break_start type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Splice Coommand Type : </td><td><input #splice_command_type type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Action : </td><td><input #action type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Input Trigger : </td><td><input #input_trigger type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Splice Event ID : </td><td><input #splice_event_id type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Out of Network Indicator : </td><td><input #out_of_network_indicator type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Duration Flag : </td><td><input #duration_flag type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Splice Immediate Flag : </td><td><input #splice_immediate_flag type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Break Auto Return : </td><td><input #break_auto_return type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Break Duration Min : </td><td><input #break_duration_min type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Break Duration Max : </td><td><input #break_duration_max type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Output Trigger : </td><td><input #output_trigger type="text"> </td></tr>
-        <tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text"></td></tr>
-        <tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
+        <tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Validate Splice Count : </td><td><input #validate_splice_count type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Local Break Start : </td><td><input #local_break_start type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Coommand Type : </td><td><input #splice_command_type type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Action : </td><td><input #action type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Input Trigger : </td><td><input #input_trigger type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Event ID : </td><td><input #splice_event_id type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Out of Network Indicator : </td><td><input #out_of_network_indicator type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Duration Flag : </td><td><input #duration_flag type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Splice Immediate Flag : </td><td><input #splice_immediate_flag type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Auto Return : </td><td><input #break_auto_return type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Min : </td><td><input #break_duration_min type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Max : </td><td><input #break_duration_max type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Output Trigger : </td><td><input #output_trigger type="text" class="form-control"> </td></tr>
+        <tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text" class="form-control"></td></tr>
+        <tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text" class="form-control"></td></tr>
         <hr>
         <!-- <div ng-hide="!network"> -->
         <tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
@@ -182,8 +182,8 @@
                 <div *ngFor="let con of config?.value">
                   <div *ngFor="let item of con?.value; let i = index">
                     <body>
-                      <p  class="form-control" style="width: 25%; display:flex" >{{con?.value[i].key}} : &nbsp;&nbsp; 
-                      <p #network_id type="text" class="form-control" style="width: 25%; display:flex; align-items: right;">{{con?.value[i].value}}"
+                      <p  class="form-control" style="width: 50%; display:flex; float:left;" >{{con?.value[i].key}} : &nbsp;&nbsp; 
+                      <p  class="form-control" style="width: 50%; display:flex; float:left;">{{con?.value[i].value}}"
                     </body>
                   </div>
                 </div>
