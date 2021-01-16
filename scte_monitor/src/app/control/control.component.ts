@@ -12,6 +12,11 @@ import { NetworkNamesService } from '../network-names.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LbcComponent } from '../lbc/lbc.component';
+import { CicComponent } from '../cic/cic.component';
+import { PocComponent } from '../poc/poc.component';
+import { PcComponent } from '../pc/pc.component';
+import { PacComponent } from '../pac/pac.component';
 //import { networkInterfaces } from 'os';
 
 @Component({
@@ -25,6 +30,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ControlComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
+
+  test:string;
   recipient_emails: string;
   frequency: string;
   network_id: string;
@@ -45,6 +52,7 @@ export class ControlComponent implements OnInit {
   output_trigger: string;
   local_break_end: string;
   break_duration_deviation_tolerance: string;
+  stringArr: [];
 
 
 //   public preloadConfig() {
@@ -91,11 +99,10 @@ export class ControlComponent implements OnInit {
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		console.log(this.config)
-		for(let i = 0; i < this.config.value.length; i++) {
-			this.existingTemplates.push(this.config.value[i].key)
-		}
 	})
+
   }
+  
 
   remove() {
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
@@ -144,7 +151,7 @@ export class ControlComponent implements OnInit {
 //   }
   
   createLocalBreakComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(LocalBreakComponent);
+	let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -155,9 +162,10 @@ export class ControlComponent implements OnInit {
 	// componentsrefernces -> array componentref
     // this.componentsReferences.push(childComponentRef);
   }
+  
 
   createContentIdComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(ContentIdComponent);
+	let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -169,7 +177,7 @@ export class ControlComponent implements OnInit {
   }
 
   createPlacementOpportunityComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(PlacementOpportunityComponent);
+	let componentFactory = this.CFR.resolveComponentFactory(PocComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -181,7 +189,7 @@ export class ControlComponent implements OnInit {
   }
 
   createProgramComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(ProgramComponent);
+	let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -193,7 +201,7 @@ export class ControlComponent implements OnInit {
   }
 
   createProviderAdComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(ProviderAdComponent);
+	let componentFactory = this.CFR.resolveComponentFactory(PacComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -330,8 +338,95 @@ export class ControlComponent implements OnInit {
 	this.LoadJsonService.writeConfig(newConfig).subscribe();
 	// window.location.reload();
   }
+  saveLocalBreak() {
 
 
+	
+	const local_expected_splices_hour = <HTMLInputElement> document.getElementById("local_expected_splices_hour");
+	const local_splice_command_start = <HTMLInputElement> document.getElementById("local_splice_command_start");
+	const local_break_action = <HTMLInputElement> document.getElementById("local_break_action");
+	const local_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_splice_immidiate_flag");
+	const local_break_splice_event_id = <HTMLInputElement> document.getElementById("local_break_splice_event_id");
+	const local_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_duration_flag");
+	const local_break_duration_min = <HTMLInputElement> document.getElementById("local_break_duration_min");
+	const local_break_duration_max = <HTMLInputElement> document.getElementById("local_break_duration_max");
+	const local_break_auto_return = <HTMLInputElement> document.getElementById("local_break_auto_return");
+	const local_break_output_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_break_output_splice_immidiate_flag");
+	const local_break_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_output_splice_event_id");
+	const local_break_output_duration_flag = <HTMLInputElement> document.getElementById("local_break_output_duration_flag");
+	const local_break_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_output_break_duration_min");
+	const local_break_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_output_break_duration_max");
+
+	const local_break_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_output_break_auto_return");
+	const local_break_splice_command = <HTMLInputElement> document.getElementById("local_break_splice_command");
+	const local_break_end_input_trigger = <HTMLInputElement> document.getElementById("local_break_end_input_trigger");
+	const local_break_end_input_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_break_end_input_splice_immidiate_flag");
+	const local_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_input_splice_event_id");
+	const local_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_output_splice_immediate_flag");
+	const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
+	const local_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_devation_tolerance");
+	
+	const content_id_splice_command_type_start = <HTMLInputElement> document.getElementById("content_id_splice_command_type_start");
+	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+
+	const placement_splice_comand_type_start = <HTMLInputElement> document.getElementById("placement_splice_comand_type_start");
+	const placement_segmentation_type_id = <HTMLInputElement> document.getElementById("placement_segmentation_type_id");
+	const placement_duration_flag = <HTMLInputElement> document.getElementById("placement_duration_flag");
+	const placement_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_segmentation_duration_min");
+	const placement_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_segmentation_duration_max");
+	const placement_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_min");
+	const placement_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_max");
+
+
+	const program_splice_comand_type_start = <HTMLInputElement> document.getElementById("program_splice_comand_type_start");
+	const program_segmentation_type_id = <HTMLInputElement> document.getElementById("program_segmentation_type_id");
+	const program_duration_flag = <HTMLInputElement> document.getElementById("program_duration_flag");
+	const program_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_segmentation_duration_min");
+	const program_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_segmentation_duration_max");
+	const program_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_min");
+	const program_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_max");
+
+	
+
+	const providerad_splice_comand_type_start = <HTMLInputElement> document.getElementById("providerad_splice_comand_type_start");
+	const providerad_segmentation_type_id = <HTMLInputElement> document.getElementById("providerad_segmentation_type_id");
+	const providerad_duration_flag = <HTMLInputElement> document.getElementById("providerad_duration_flag");
+	const providerad_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_min");
+	const providerad_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_max");
+	const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
+	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
+
+
+
+	
+
+	
+	
+	let newConfig = {
+		"network_id": this.NetworkNamesService.getName()
+		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
+			local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
+			local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
+			local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
+			local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
+			local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]
+		,"contentid":[content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
+		,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
+			placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
+		,"program":[program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
+			program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
+		,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
+			providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
+	}
+	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+	return this.HttpClient.put("http://127.0.0.1:8000/update/"+ this.NetworkNamesService.getName(), newConfig ,{headers: postHeaders}).
+	subscribe(Response => console.log(Response));
+  }
+  buttonCheck(){
+	const button = <HTMLInputElement> document.getElementById("check_local_break_component");
+	console.log(button.value)
+
+  }
   saveChange( 
 	recipient_emails: string, frequency: string, network_id: string, local_break: string, 
 	expected_splices_hour: string, validate_splice_count: string, local_break_start: string, 

@@ -22,6 +22,11 @@ import { ProviderAdComponent } from './provider-ad/provider-ad.component';
 import { NetworkNamesService } from './network-names.service';
 import { AddControlComponent } from './add-control/add-control.component';
 import { UpdateComponent } from './update/update.component';
+import { LbcComponent } from './lbc/lbc.component';
+import { CicComponent } from './cic/cic.component';
+import { PocComponent } from './poc/poc.component';
+import { PcComponent } from './pc/pc.component';
+import { PacComponent } from './pac/pac.component';
 
 const routes: Routes = [ 
 ];
@@ -41,6 +46,11 @@ const routes: Routes = [
     ProviderAdComponent,
     AddControlComponent,
     UpdateComponent,
+    LbcComponent,
+    CicComponent,
+    PocComponent,
+    PcComponent,
+    PacComponent,
   ],
   imports: [
     BrowserModule,

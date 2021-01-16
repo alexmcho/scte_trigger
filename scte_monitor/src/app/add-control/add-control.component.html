@@ -1,4 +1,4 @@
-<th>&nbsp;&nbsp;Add New Network</th>
+<!-- <th>&nbsp;&nbsp;Add New Network</th>
 <tbody>
 <hr>
 <tr><td>&nbsp;&nbsp; ID : </td><td><input #id type="number"></td></tr>
@@ -25,9 +25,27 @@
 <tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
 <hr>
 <!-- <div ng-hide="!network"> -->
-<tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
-(click)="addNetwork(id.value, recipient_emails.value, frequency.value, network_id.value, local_break.value, expected_splices_per_hour.value, 
-validate_splice_count.value, local_break_start.value, splice_command_type.value, action.value, input_trigger.value,
-splice_event_id.value, out_of_network_indicator.value, duration_flag.value, splice_immediate_flag.value, 
-break_auto_return.value, break_duration_min.value, break_duration_max.value, output_trigger.value,
-local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</button></div></td></tr></tbody>
+
+    <div class="row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Add New Segment</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button type="button" (click)="createLocalBreakComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Local Break</button> 
+              <button type="button" (click)="createContentIdComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Content Id</button> 
+              <button type="button" (click)="createPlacementOpportunityComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Placement Opportunity</button> 
+              <button type="button" (click)="createProgramComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Program</button> 
+              <button type="button" (click)="createProviderAdComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Provider ad</button>           
+            </div>
+          </div>
+        </div>
+    </div>
+    <div>
+        <ng-template #viewContainerRef></ng-template>
+    </div>
+    <br>
+    <hr/>
+Enter Email:<input id="emails" type="text">
+Enter Network Name: <input id="networkName" type="text">
+<div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
+(click)="addNewNetwork()">Add Network</button></div> 

@@ -349,5 +349,7 @@ export class DashboardComponent implements OnInit {
     this.getNetworks().subscribe(
 			networkArr => this.networks = networkArr
     )
+
+    
   }
 }
