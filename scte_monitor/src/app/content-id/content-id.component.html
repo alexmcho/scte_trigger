@@ -1,0 +1,61 @@
+<div style="margin:5px">
+    <!-- Accordion start -->
+    <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
+        <ngb-panel id="idx" *ngFor="let item of config?.value | slice:4:5; let idx = index">
+            <ng-template ngbPanelHeader let-opened="opened">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Content Id</button></h3>
+                    <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
+                </div>
+            </ng-template>
+            <ng-template ngbPanelContent *ngIf="item.key=='content_id'">
+                <app-content-id [contentId]="item"></app-content-id>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <!-- Accordion end -->
+</div>
+    <!-- Properties VCR Hide -->
+    <div [hidden]="!contentId"> 
+
+    <!-- Content Id Start -->
+    <br><h4>Content Id Start:</h4>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="splice_command_type_start">Splice Command Type: </label>
+            <select [(ngModel)]="contentId?.value[0].content_id_start.splice_command_type" name="splice_command_type_start" class="form-control" id="splice_comand_type_start" style="margin-left: 10px;">
+                <option [ngValue]="5">5</option>
+            </select>
+        </div>
+    </form>
+
+    <!-- Segmentation Type Id  -->
+    <label for="content_id_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
+    <table id="content_id_start_table" class ="table table-striped">
+        <tbody>
+        <tr>
+        <th>segmentation_type_id</th><td></td>
+        <td><select [(ngModel)]="contentId?.value[0].content_id_start.input_trigger.segmentation_type_id" class="form-control">
+            <option [ngValue]="1">1</option>
+        </select></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Segmentation Type Id - Start - Output Trigger -->
+    <!-- <div *ngIf="contentId?.value[0].content_id_start.action=='REPLACE'">
+        <label for="content_id_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
+        <table id="content_id_start_table" class ="table table-striped">
+            <tbody>
+                <tr>
+                    <th>segmentation_type_id</th><td></td>
+                    <td><select [(ngModel)]="contentId?.value[0].content_id_start.input_trigger.splice_event_id" class="form-control">
+                        <option [ngValue]="1">1</option>
+                    </select></td>
+                </tr>
+            </tbody>
+        </table> -->
+    <!-- Properties End -->
+    <!-- Properties VCR Hide -->
+    </div>
+    <!-- End -->

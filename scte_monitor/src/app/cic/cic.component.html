@@ -1,0 +1,41 @@
+
+    <ngb-accordion style="margin: 10px">
+      <ngb-panel>
+          <ng-template ngbPanelHeader let-opened="opened">
+            <div class="d-flex align-items-center justify-content-between">
+            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Content Id</button></h3>
+            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
+            </div>
+            <ng-template ngbPanelContent>
+                 
+                  
+                    <!-- Properties VCR Hide -->
+                
+                    <!-- Content Id Start -->
+                    <br><h4>Content Id Start:</h4>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="splice_command_type_start">Splice Command Type: </label>
+                            <select id="content_id_splice_command_type_start"  class="form-control"  style="margin-left: 10px;">
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </form>
+                
+                    <!-- Segmentation Type Id  -->
+                    <label for="content_id_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
+                    <table id="content_id_start_table" class ="table table-striped">
+                        <tbody>
+                        <tr>
+                        <th>segmentation_type_id</th><td></td>
+                        <td><select id="content_id_segmentation_type_id" class="form-control">
+                            <option value="1">1</option>
+                        </select></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                
+                </ng-template>
+          </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
