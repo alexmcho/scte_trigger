@@ -1,19 +1,9 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-
-import { KeyNumber } from "../key-value";
-import { KeyString } from "../key-value";
-import { KeyBool } from "../key-value"
-import { KeyStringArray } from "../key-value";
-import { KeyNumberArray } from "../key-value"
 import { KeyObject } from "../key-value";
 import { LoadJsonService } from '../load-json.service';
-import { LocalBreak } from "../template_definitions";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NetworkNamesService } from '../network-names.service';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { asWindowsPath } from '@angular-devkit/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -51,32 +41,8 @@ export class DashboardComponent implements OnInit {
   local_break_end: String;
   break_duration_deviation_tolerance: String;
 
-  // recipient_emails: string;
-  // frequency: string;
-  // network_id: string;
-  // local_break: string;
-  // expected_splices_hour: string;
-  // validate_splice_count: string;
-  // local_break_start: string;
-  // splice_command_type: string;
-  // action: string;
-  // input_trigger: string;
-  // splice_event_id: string;
-  // out_of_network_indicator: string;
-  // duration_flag: string;
-  // splice_immediate_flag: string;
-  // break_auto_return: string;
-  // break_duration_min: string;
-  // break_duration_max: string;
-  // output_trigger: string;
-  // local_break_end: string;
-  // break_duration_deviation_tolerance: string;
-  
-
-
   constructor(private LoadJsonService: LoadJsonService, private modalService: NgbModal, private httpClient:HttpClient, private NetworkNamesService: NetworkNamesService) {
     let url = "http://127.0.0.1:8000/get/"+this.NetworkNamesService.getName();
-    //let url = "/assets/config.json"
       this.LoadJsonService.getConfig(url).subscribe(data => {
       this.config = data;
       console.log(this.config)
@@ -106,40 +72,6 @@ export class DashboardComponent implements OnInit {
     getNetworks(){
       return this.httpClient.get<String>("http://127.0.0.1:8000/networks")
     }
-
-    // saveButton(){
-    //   var body: HTMLTableElement = <HTMLTableElement> document.getElementById("tbody1");
-    //   var inputValue = (<HTMLInputElement>document.getElementById("networkName")).value;
-    //   var row = body.insertRow(1);
-    //   var cell1 = row.insertCell(0);
-    //   var cell2 = row.insertCell(1);
-    //   //cell1.innerHTML = i.toString();
-    //   cell2.innerHTML = inputValue.toString();
-    //   this.addNetwork(inputValue);
-    //   // window.location.reload();
-    // }
-
-    // addNetwork(networkname: String){
-    //   console.log("ADDNETWORK")
-    //   var network = {
-
-    //     "network_id":networkname
-    //     ,"local_brk_start_action":""
-    //     ,"local_brk_start_splice_immidate_flag":""
-    //     ,"local_brk_start_splice_event_id":""
-    //     ,"local_brk_start_duration_flag":""
-    //     ,"local_brk_star_duration_min":""
-    //     ,"local_brk_star_duration_max":""
-    //     ,"local_brk_end_action":""
-    //     ,"local_brk_end_splice_immidiate_flag":""
-    //     ,"local_brk_end_splice_event_id":""
-    // }
-
-    // console.log(network)
-    // let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-    // this.httpClient.post("http://127.0.0.1:8000/addNetworkName", network, {headers: postHeaders})
-    // .subscribe(Response => console.log(Response));
-    // }
 
     saveButton(){
       var body: HTMLTableElement = <HTMLTableElement> document.getElementById("tbody1");
@@ -281,12 +213,9 @@ export class DashboardComponent implements OnInit {
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       cell2.innerHTML = inputValue20.toString();
-
-      //cell1.innerHTML = i.toString();
       
       this.addNetwork(inputValue1,inputValue2,inputValue3,inputValue4,inputValue5,inputValue6,inputValue7,inputValue8,inputValue9,inputValue10
         ,inputValue11,inputValue12,inputValue13,inputValue14,inputValue15,inputValue16,inputValue17,inputValue18,inputValue19,inputValue20);
-      // window.location.reload();
     }
 
     addNetwork( 
@@ -334,22 +263,9 @@ export class DashboardComponent implements OnInit {
       }
     }
   
-  
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
-    }
-  
   ngOnInit(): void {
     this.getNetworks().subscribe(
 			networkArr => this.networks = networkArr
     )
-
-    
   }
 }

@@ -44,7 +44,7 @@
         "duration_flag": false,
         "splice_immediate_flag": false
       }
-    },
+    }, 
     "break_duration_deviation_tolerance": 0.1
   }, 
   "content_id": { 
