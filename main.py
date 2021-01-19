@@ -135,12 +135,11 @@ def show_connection_test():
 
 @app.get("/get/{network}")
 async def read_user_item(network: str):
-    String = str(dumps(x.find({"network_id": network})))
-    
-    fix1 = String[1:]
-    fix2 = fix1[:-2]
-    
-    return dumps(fix2)
+    networks = []
+    string = str(network)
+    for nodes in x.find({"network_id": string}):
+        networks.append(nodes)
+    return networks
 
 
 @app.get("/networks")
@@ -158,6 +157,13 @@ def networks():
         return "list empty"
     return final_network_list
     
+    
+@app.get("/idCounter")
+def networks():
+    for t in x.find({"_id":0}):
+        counter = str(t)
+    counter = int(counter.split(":")[2].split("}")[0])
+    return counter
     
 '''
     Method POST
@@ -225,6 +231,23 @@ async def update_configuration(network: str, body=Body(..., media_type="applicat
     except Exception as ex:
         return str(ex)
 
+
+@app.put("/updateCounterId", status_code=status.HTTP_200_OK)
+def update_configuration():
+    try:
+        counter = ""
+        for t in x.find({"_id":0}):
+            counter = str(t)
+        counter = int(counter.split(":")[2].split("}")[0])
+
+        query = {'_id': 0}
+        newCount = {"$set":{ "COUNTER_ID": counter+1}}
+        
+        x.update_one(query,  newCount)
+        
+        return "Data has been successfully inserted"
+    except Exception as ex:
+        return str(ex)
 '''
     Method DELETE
 '''

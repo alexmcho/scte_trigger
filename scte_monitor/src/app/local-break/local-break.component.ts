@@ -11,10 +11,6 @@ import { LocalBreak } from "../template_definitions";
 
 import { LoadJsonService } from '../load-json.service';
 import { __values } from 'tslib';
-import { NetworkNamesService } from '../network-names.service';
-
-import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-local-break',
@@ -37,35 +33,19 @@ export class LocalBreakComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
 
-  // public existingTemplates = []; 
-
   @Input() localBreak: any;
 
-  constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private NetworkNamesService:NetworkNamesService, private HttpClient: HttpClient,) {
-    // let url = "/assets/config.json"
+  constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver) {
+    let url = "/assets/config.json"
     // let url = "http://127.0.0.1:8000/get/COOKHD-6216.dfw.1080"
-    let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
-
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
-    // console.log(this.config)
-    console.log(typeof(this.config));
-		for(let i = 0; i < this.config.value[0].length; i++) {
-      console.log(this.config.value.length)
-			this.existingTemplates.push(this.config.value[0].value[i])
-    }
-    console.log(this.existingTemplates.length)
+		console.log(this.config)
+		for(let i = 3; i < this.config.value.length; i++) {
+			this.existingTemplates.push(this.config.value[i].key)
+		}
 	})
   }
-
-  // addSegment(Array: []) {
-  //   console.log(Array)
-  //   for(let i = 0; i < Array.length; i++) {
-  //     if (Array[0].value[0].value ) {
-  //       this.existingTemplates.push(this.config.value[0].value[i])
-  //     }
-  //   }
-  // }
 
   // remove() {
   //   console.log(this.index)
@@ -102,7 +82,7 @@ export class LocalBreakComponent implements OnInit {
     let index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
     this.existingTemplates.splice(index, 1); // Removes one element, starting from index
   }
-  
+
   ngOnInit(): void {
     // console.log(this.localBreak)
   }
