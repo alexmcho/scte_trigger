@@ -1,258 +1,244 @@
-<ngb-accordion style="margin: 10px">
-    <ngb-panel>
-        <ng-template ngbPanelHeader let-opened="opened">
-          <div class="d-flex align-items-center justify-content-between">
-          <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Local Break</button></h3>
-          <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
-          </div>
-              <ng-template ngbPanelContent>
-                <span *ngFor="let items of item?.value; let i = index">
-                  
-                </span>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" >
-                  <label class="custom-control-label" for="validate_splice_count">Validate Splice Count</label>
-              </div>
-              <form class=form-inline>
-                  <div class="form-group">
-                      <label for="expected_splices_hour">Expected Splices Per Hour: </label>
-                      <input value = "{{item.value[0]}}" id ="local_expected_splices_hour"class="form-control" name="expected_splices_hour"  type="number" step=any  style="display:inline-block;margin-left:10px;width:60px" placeholder={{item.value[0]}}>
-                  </div>
-              </form>
-              <!-- Local Break Start -->
-              <br><h4>Local Break Start:</h4>
-              <form class="form-inline">
-                  <div class="form-group">
-                      <label for="splice_command_type_start">Splice Command Type: </label>
-                      <select  id = "local_splice_command_start" name="splice_command_type_start" class="form-control"  style="margin-left: 10px;">
-                          <option  value="{{item.value[1]}}" >Current: {{item.value[1]}}</option>
-                          <option value="5">5</option>
-                      </select>
-                  </div>
-              </form>
-              <!-- local break start - Input Trigger -->
-              <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
-              <table  class ="table table-striped">
-                  <tbody>
-                    <tr>
-                  </tr>
-                      <tr>
-                          <th>Action</th><td></td>
-                          <td><select id="local_break_action"  class="form-control" >
-                              <option  value="{{item.value[2]}}" >Current: {{item.value[2]}}</option>
-                              <option  value="Noop" >NOOP</option>
-                              <option value="Delete" >DELETE</option>
-                              <option   value="replace">REPLACE</option>
-                          </select></td>
-                          
-                      </tr>
-                      <tr>
-                          <th>splice_immediate_flag</th><td></td>
+<div style="margin:0px">
+    <!-- Accordion start -->
+    <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
+        <ngb-panel id="idx" *ngFor="let item of config?.value[0].value[3]; let idx = index">
+            <ng-template ngbPanelHeader let-opened="opened">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">{{item.key}}</button></h3>
+                    <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
+                </div>
+            </ng-template>
+            <ng-template ngbPanelContent *ngIf="item.key=='local_break'">
+                <app-local-break [localBreak]="item"></app-local-break>
+            </ng-template>
+        </ngb-panel>
+    </ngb-accordion>
+    <!-- Accordion end -->
+</div>
+    <!-- Properties VCR Hide -->
+    <div [hidden]="!localBreak"> 
+    <!-- Properties Start -->
+    <!-- Validate Splice Count -->
+    <div class="custom-control custom-switch">
+        <input [(ngModel)]="localBreak?.value[0].validate_splice_count" type="checkbox" class="custom-control-input" id="validate_splice_count">
+        <label class="custom-control-label" for="validate_splice_count">Validate Splice Count</label>
+    </div>
+    <form class=form-inline>
+        <div *ngIf="localBreak?.value[0].validate_splice_count" class="form-group">
+            <label for="expected_splices_hour">Expected Splices Per Hour: </label>
+            <input [(ngModel)]="localBreak?.value[0].expected_splices_hour" class="form-control" name="expected_splices_hour" id="expected_splices_hour" type="number" step=any placeholder={{localBreak?.value[0].expected_splices_hour}} style="display:inline-block;margin-left:10px;width:60px">
+        </div>
+    </form>
+    <!-- Local Break Start -->
+    <br><h4>Local Break Start:</h4>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="splice_command_type_start">Splice Command Type: </label>
+            <select [(ngModel)]="localBreak?.value[0].local_break_start.splice_command_type" name="splice_command_type_start" class="form-control" id="splice_comand_type_start" style="margin-left: 10px;">
+                <option [ngValue]="5">5</option>
+            </select>
+        </div>
+    </form>
+    <!-- local break start - Input Trigger -->
+    <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
+    <table id="local_break_start_table" class ="table table-striped">
+        <tbody>
+            <tr>
+                <th>Action</th><td></td>
+                <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action">
+                    <option>NOOP</option>
+                    <option>DELETE</option>
+                    <option>REPLACE</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th>splice_immediate_flag</th><td></td>
+                <td><select [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.splice_immediate_flag" class="form-control">
+                    <option [ngValue]="true">true</option>
+                    <option [ngValue]="false">false</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th>splice_event_id</th><td></td>
+                <td><select [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.splice_event_id" class="form-control">
+                    <option value="isnumeric">Must Be Numeric</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th>duration_flag</th><td></td>
+                <td><select [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.duration_flag" class="form-control">
+                    <option [ngValue]="true">true</option>
+                    <option [ngValue]="false">false</option>
+                </select></td>
+            </tr>
+            <tr *ngIf="localBreak?.value[0].local_break_start.input_trigger.duration_flag==true">
+                <th>break_duration</th>
+                <td ><select (change)="makeExactBreakDuration($event.target.value, true)" class="form-control">
+                    <option value="" disabled selected hidden>Change Break Duration Type</option>
+                    <option value=true>Exact Time (seconds)</option>
+                    <option value=false>Time Range (seconds)</option>
+                </select></td>
+                <td *ngIf="breakDurationExact">
+                    <input [(ngModel)]="breakDurationExactAmount" (change)="setExactBreakDuration(true)" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_min}}>
+                </td>
 
-                          <td><select id="local_splice_immidiate_flag" class="form-control">
-                              <option value="{{item.value[3]}}">Current : {{item.value[3]}}</option>
-                              <option value = "true">true</option>
-                              <option value="false">false</option>
-                          </select></td>
-                      
-                      </tr>
-                      <tr>
-                          <th>splice_event_id</th><td></td>
-                          <td><select id="local_break_splice_event_id" class="form-control">
-                              <option value="{{item.value[4]}}">Current : {{item.value[4]}}</option>
-                              <option value="isnumeric">Must Be Numeric</option>
-                          </select></td>
-                     
-                      </tr>
-                      <tr>
-                          <th>duration_flag</th><td></td>
-                          <td><select id="local_break_duration_flag" class="form-control">
-                              <option value="{{item.value[5]}}">Current : {{item.value[5]}}</option>
-                              <option value="true" >true</option>
-                              <option value="false">false</option>
-                          </select></td>
-                      </tr>
-                      <tr>
-                          <th>break_duration</th>
-                          <td ><select  id= "local_break_break_duration" class="form-control">
-                              <option value="" >Change Break Duration Type</option>
-                              <option >Exact Time (seconds)</option>
-                              <option >Time Range (seconds)</option>
-                          </select></td>
-                          <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min==localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
-                          <td *ngIf="breakDurationExact">
-                              <input   class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_min}}>
-                          </td>
-                          <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min!=localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
-                          <td *ngIf="!breakDurationExact">
-                              <div class="form-group row">
-                                  <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="local_break_duration_min" class="form-control" type="number" step=any value = "{{item.value[6]}}" placeholder = {{item.value[6]}}>
-                                  </div>
-                              </div>
-                              <div class="form-group row">
-                                  <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="local_break_duration_max" class="form-control" type="number" step=any value = "{{item.value[6]}}" placeholder = {{item.value[7]}}>
-                                  </div>
-                              </div>                
-                          </td>
-                      </tr>
-                      <tr >
-                          <th>break_auto_return</th><td></td>
-                          <td><select id="local_break_auto_return" class ="form-control">
-                              <option value="{{item.value[8]}}">Current : {{item.value[8]}}</option>
-                              <option value="true">true</option>
-                              <option value="false" >false</option>
-                          </select></td>
-                      </tr>
-                      <tr></tr>
-                  </tbody>
-              </table>
-          <!-- local break start - Output Trigger -->
-              <div >
-                  <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
-                  <table  class ="table table-striped">
-                      <tbody>
-                          <tr>
-                              <th>splice_immediate_flag</th><td></td>
-                              <td><select id="local_break_output_splice_immidiate_flag" class="form-control">
-                                  <option value="{{item.value[9]}}">Current : {{item.value[9]}}</option>
-                                  <option value="true">true</option>
-                                  <option value="false">false</option>
-                              </select></td>
-                          </tr>
-                          <tr>
-                              <th>splice_event_id</th><td></td>
-                              <td><select id="local_break_output_splice_event_id" class="form-control">
-                                  <option value="{{item.value[10]}}">Current : {{item.value[10]}}</option>
-                                  <option value="isnumeric">Must Be Numeric</option>
-                              </select></td>
-                          </tr>
-                          <tr>
-                              <th>duration_flag</th><td></td>
-                              <td><select id="local_break_output_duration_flag" class="form-control">
-                                  <option value="{{item.value[11]}}">Current : {{item.value[11]}}</option>
-                                  <option value="true" >true</option>
-                                  <option value="false">false</option>
-                              </select></td>
-                          </tr>
-                          <tr >
-                              <th>break_duration</th>
-                              <td ><select  class="form-control">
-                                  <option >Change Break Duration Type</option>
-                                  <option >Exact Time (seconds)</option>
-                                  <option >Time Range (seconds)</option>
-                              </select></td>
-                              <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min==localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
-                              <td *ngIf="breakDurationExactOutput">
-                                  <input  class="form-control" type="number" step=any >
-                              </td>
-                              <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min!=localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
-                              <td *ngIf="!breakDurationExactOutput">
-                                  <div class="form-group row">
-                                      <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                      <div class="col-sm-4">
-                                          <input id= "local_break_output_break_duration_min" class="form-control" type="number" step=any value = "{{item.value[12]}}" placeholder = {{item.value[12]}}>
-                                      </div>
-                                  </div>
-                                  <div class="form-group row">
-                                      <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                      <div class="col-sm-4">
-                                          <input  id="local_break_output_break_duration_max" class="form-control" type="number" step=any value = "{{item.value[13]}}" placeholder = {{item.value[13]}}>
-                                      </div>
-                                  </div>                
-                              </td>
-                          </tr>
-                          <tr >
-                              <th>break_auto_return</th><td></td>
-                              <td><select id="local_break_output_break_auto_return" class ="form-control">
-                                  <option value="{{item.value[14]}}">Current : {{item.value[14]}}</option>
-                                  <option value="true">true</option>
-                                  <option value="false">false</option>
-                              </select></td>
-                          </tr>
-                          <tr></tr>
-                      </tbody>
-                  </table>
-              </div>
-          <!-- Local Break End -->
-              <div class="custom-control custom-switch">
-                  <input  type="checkbox" class="custom-control-input" >
-                  <label class="custom-control-label" for="localBreakEndSwitch">Include Local Break End</label>
-              </div>
-              <div>
-                  <br><h4>Local Break End:</h4>
-                  <form class="form-inline">
-                      <div class="form-group">
-                          <label for="splice_command_type_end">Splice Command Type: </label>
-                          <select id="local_break_splice_command" name="splice_command_type_end" class="form-control"  style="margin-left: 10px;">
-                              <option value="{{item.value[15]}}">Current : {{item.value[15]}}</option>
-                              <option value="5">5</option>
-                          </select>
-                      </div>
-                  </form>
-          <!-- local break end - Input Trigger -->
-                  <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Input Trigger</label>
-                  <table id="local_break_end_table" class="table table-striped" >
-                      <tbody>
-                          <tr>
-                              <th>Action</th><td></td>
-                              <td><select id="local_break_end_input_trigger" class="form-control"  aria-placeholder="">
-                                  <option value="{{item.value[16]}}">Current : {{item.value[16]}}</option>
-                                  <option value="NOOP">NOOP</option>
-                                  <option value="DELETE">DELETE</option>
-                                  <option value="REPLACE">REPLACE</option>
-                              </select></td>
-                          </tr>
-                          <tr>
-                              <th>splice_immediate_flag</th><td></td>
-                              <td><select id="local_break_end_input_splice_immidiate_flag" class="form-control">
-                                  <option value="{{item.value[17]}}">Current : {{item.value[17]}}</option>
-                                  <option value="true">true</option>
-                                  <option value="false">false</option>
-                              </select></td>
-                          </tr>
-                          <tr>
-                              <th>splice_event_id</th><td></td>
-                              <td><select id="local_break_end_input_splice_event_id" class="form-control">
-                                  <option value="{{item.value[18]}}">Current : {{item.value[18]}}</option>
-                                  <option value="isnumeric">Must Be Numeric</option>
-                              </select></td>
-                          </tr>
-                      </tbody>
-                  </table>
-          <!-- local break end - Output Trigger -->
-                  <div >
-                      <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
-                      <table id="local_break_end_table" class="table table-striped" >
-                          <tbody>
-                              <tr>
-                                  <th>splice_immediate_flag</th><td></td>
-                                  <td><select id="local_break_end_output_splice_immediate_flag" class="form-control">
-                                      <option value="{{item.value[19]}}">Current : {{item.value[19]}}</option>
-                                      <option value="true">true</option>
-                                      <option value="false">false</option>
-                                  </select></td>
-                              </tr>
-                              <tr>
-                                  <th>splice_event_id</th><td></td>
-                                  <td><select id="local_break_end_output_splice_event_id" class="form-control">
-                                      <option value="{{item.value[20]}}">Current : {{item.value[20]}}</option>
-                                      <option value="isnumeric">Must Be Numeric</option>
-                                  </select></td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-              <br>
-              <div >
-                  <label for="break_duration_deviation_tolerance">Break Duration Deviation Tolerance (ms):</label>
-                  <input id="local_break_end_devation_tolerance" type=number step=any class="form-control" value="{{item.value[21]}}"  style="width:auto; display:inline-block; margin-left: 10px;">
-              </div>
-              </ng-template>
-        </ng-template>
-    </ngb-panel>
-  </ngb-accordion>
+                <td *ngIf="!breakDurationExact">
+                    <div class="form-group row">
+                        <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                        <div class="col-sm-4">
+                            <input [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.break_duration_min" id="break_duration_min" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_min}}>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                        <div class="col-sm-4">
+                            <input [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.break_duration_max" id="break_duration_max" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_max}}>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="localBreak?.value[0].local_break_start.input_trigger.duration_flag==true">
+                <th>break_auto_return</th><td></td>
+                <td><select [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.break_auto_return" class ="form-control">
+                    <option [ngValue]="true">true</option>
+                    <option [ngValue]="false">false</option>
+                </select></td>
+            </tr>
+            <tr></tr>
+        </tbody>
+    </table>
+<!-- local break start - Output Trigger -->
+    <div *ngIf="localBreak?.value[0].local_break_start.action=='REPLACE'">
+        <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
+        <table id="local_break_start_table" class ="table table-striped">
+            <tbody>
+                <tr>
+                    <th>splice_immediate_flag</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.splice_immediate_flag" class="form-control">
+                        <option [ngValue]="true">true</option>
+                        <option [ngValue]="false">false</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>splice_event_id</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[11].local_break_start.output_trigger.splice_event_id" class="form-control">
+                        <option value="isnumeric">Must Be Numeric</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>duration_flag</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.duration_flag" class="form-control">
+                        <option [ngValue]="true">true</option>
+                        <option [ngValue]="false">false</option>
+                    </select></td>
+                </tr>
+                <tr *ngIf="localBreak?.value[0].local_break_start.output_trigger.duration_flag==true">
+                    <th>break_duration</th>
+                    <td ><select (change)="makeExactBreakDuration($event.target.value, false)" class="form-control">
+                        <option value="" disabled selected hidden>Change Break Duration Type</option>
+                        <option value=true>Exact Time (seconds)</option>
+                        <option value=false>Time Range (seconds)</option>
+                    </select></td>
+                    <td *ngIf="breakDurationExactOutput">
+                        <input [(ngModel)]="breakDurationExactAmountOutput" (change)="setExactBreakDuration(false)" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.output_trigger.break_duration_min}}>
+                    </td>
+                    
+                    <td *ngIf="!breakDurationExactOutput">
+                        <div class="form-group row">
+                            <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                            <div class="col-sm-4">
+                                <input [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.break_duration_min" id="break_duration_min" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.output_trigger.break_duration_min}}>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                            <div class="col-sm-4">
+                                <input [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.break_duration_max" id="break_duration_max" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.output_trigger.break_duration_max}}>
+                            </div>
+                        </div>                
+                    </td>
+                </tr>
+                <tr *ngIf="localBreak?.value[0].local_break_start.output_trigger.duration_flag==true">
+                    <th>break_auto_return</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.break_auto_return" class ="form-control">
+                        <option [ngValue]="true">true</option>
+                        <option [ngValue]="false">false</option>
+                    </select></td>
+                </tr>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+<!-- Local Break End -->
+    <div class="custom-control custom-switch">
+        <input [(ngModel)]="localBreak?.value[0].include_break_end" type="checkbox" class="custom-control-input" id="localBreakEndSwitch">
+        <label class="custom-control-label" for="localBreakEndSwitch">Include Local Break End</label>
+    </div>
+    <div *ngIf="localBreak?.value[0].include_break_end">
+        <br><h4>Local Break End:</h4>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="splice_command_type_end">Splice Command Type: </label>
+                <select [(ngModel)]="localBreak?.value[0].local_break_end.splice_command_type" name="splice_command_type_end" class="form-control" id="splice_comand_type_end" style="margin-left: 10px;">
+                    <option [ngValue]="5">5</option>
+                </select>
+            </div>
+        </form>
+<!-- local break end - Input Trigger -->
+        <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Input Trigger</label>
+        <table id="local_break_end_table" class="table table-striped" >
+            <tbody>
+                <tr>
+                    <th>Action</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_end.action" (change)="this.setEndOutput()" class="form-control" id="action">
+                        <option>NOOP</option>
+                        <option>DELETE</option>
+                        <option>REPLACE</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>splice_immediate_flag</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_end.input_trigger.splice_immediate_flag" class="form-control">
+                        <option [ngValue]="true">true</option>
+                        <option [ngValue]="false">false</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>splice_event_id</th><td></td>
+                    <td><select [(ngModel)]="localBreak?.value[0].local_break_end.input_trigger.splice_event_id" class="form-control">
+                        <option value="isnumeric">Must Be Numeric</option>
+                    </select></td>
+                </tr>
+            </tbody>
+        </table>
+<!-- local break end - Output Trigger -->
+        <div *ngIf="localBreak?.value[0].local_break_end.action=='REPLACE'">
+            <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
+            <table id="local_break_end_table" class="table table-striped" >
+                <tbody>
+                    <tr>
+                        <th>splice_immediate_flag</th><td></td>
+                        <td><select [(ngModel)]="localBreak?.value[0].local_break_end.output_trigger.splice_immediate_flag" class="form-control">
+                            <option [ngValue]="true">true</option>
+                            <option [ngValue]="false">false</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th>splice_event_id</th><td></td>
+                        <td><select [(ngModel)]="localBreak?.value[0].local_break_end.output_trigger.splice_event_id" class="form-control">
+                            <option value="isnumeric">Must Be Numeric</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="localBreak?.value[0].include_break_end">
+        <label for="break_duration_deviation_tolerance">Break Duration Deviation Tolerance (ms):</label>
+        <input [(ngModel)]="localBreak?.value[0].break_duration_deviation_tolerance" type=number step=any class="form-control" id="break_duration_deviation_tolerance" placeholder="{{localBreak?.value[0].break_duration_deviation_tolerance}}" style="width:auto; display:inline-block; margin-left: 10px;">
+    </div>
+    <!-- Properties End -->
+    <!-- Properties VCR Hide -->
+    </div>
+    <!-- End -->
