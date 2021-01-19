@@ -338,10 +338,17 @@ export class ControlComponent implements OnInit {
 	this.LoadJsonService.writeConfig(newConfig).subscribe();
 	// window.location.reload();
   }
+
+ TestsFunction() {
+    var T = document.getElementById("TestsDiv");
+	T.style.display = "none";  // <-- Set it to block
+	
+}
+
   saveLocalBreak() {
 
+	const emails = <HTMLInputElement> document.getElementById("emails");
 
-	
 	const local_expected_splices_hour = <HTMLInputElement> document.getElementById("local_expected_splices_hour");
 	const local_splice_command_start = <HTMLInputElement> document.getElementById("local_splice_command_start");
 	const local_break_action = <HTMLInputElement> document.getElementById("local_break_action");
@@ -403,7 +410,8 @@ export class ControlComponent implements OnInit {
 	
 	
 	let newConfig = {
-		"network_id": this.NetworkNamesService.getName()
+		"emails": emails
+		,"network_id": this.NetworkNamesService.getName()
 		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
 			local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
 			local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
@@ -422,6 +430,7 @@ export class ControlComponent implements OnInit {
 	return this.HttpClient.put("http://127.0.0.1:8000/update/"+ this.NetworkNamesService.getName(), newConfig ,{headers: postHeaders}).
 	subscribe(Response => console.log(Response));
   }
+  
   buttonCheck(){
 	const button = <HTMLInputElement> document.getElementById("check_local_break_component");
 	console.log(button.value)

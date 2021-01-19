@@ -30,7 +30,7 @@ import { PcComponent } from '../pc/pc.component';
 export class AddControlComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
-  counterID: Number;
+  counterID: any;
   recipient_emails: string;
   frequency: string;
   network_id: string;
@@ -402,7 +402,7 @@ export class AddControlComponent implements OnInit {
 	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
 	
 	let newConfig = {
-		"_id":198
+		"_id":this.counterID
 		,"emails": emails.value
 		,"network_id": networkName.value
 		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
@@ -419,9 +419,12 @@ export class AddControlComponent implements OnInit {
 		,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
 			providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
 	}
+
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
       this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
 	  .subscribe(Response => console.log(Response));
+	this.HttpClient.put("http://127.0.0.1:8000/updateCounterId" ,{headers: postHeaders}).
+	subscribe(Response => console.log(Response));
 	  this.router.navigate(['/dashboard']);
   }
 
@@ -576,8 +579,17 @@ export class AddControlComponent implements OnInit {
 		}
 		return result
 	}
+	getId(){
+		return this.HttpClient.get<Number>("http://127.0.0.1:8000/idCounter")
+	}
 	ngOnInit(): void {
 		console.log(this.config)
+
+		this.getId().subscribe(count =>{
+			this.counterID = Number(count)
+			
+			
+		})
 	  }
 	
 

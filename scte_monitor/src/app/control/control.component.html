@@ -88,7 +88,7 @@
       <div *ngFor="let item of con?.value; let i = index">
         <span *ngIf="item.key=='emails'">
             <!-- <h5 style="width: 100%; display:flex">{{item.value}}</h5> -->
-            <input style="width: 100%; display:flex" value="{{item.value}}">
+            <input id ="emails" style="width: 100%; display:flex" value="{{item.value}}">
         </span>
       </div>
     </div>
@@ -204,13 +204,13 @@
 
   <div *ngFor="let con of config?.value">
     <div *ngFor="let item of con?.value; let i = index">
-      <span *ngIf="item.key=='localbreak'">
-        <ngb-accordion style="margin: 10px">
+      <span *ngIf="item.key=='localbreak'" >
+        <ngb-accordion style="margin: 10px" id="TestsDiv" style="display:block">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                 <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Local Break</button></h3>
-                <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
+                <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="TestsFunction()" style="margin-left: auto; font-size:large;">Remove</button></h3>
                 </div>
                     <ng-template ngbPanelContent>
                       <span *ngFor="let items of item?.value; let i = index">
@@ -641,7 +641,7 @@
 
 
 
-      <span *ngIf="item.key=='program'">
+      <span *ngIf="item.key=='pro'">
         <ngb-accordion style="margin: 10px">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
@@ -901,3 +901,4 @@
 </div>
  
 </div>
+

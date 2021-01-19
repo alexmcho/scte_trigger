@@ -103,9 +103,9 @@ export class DashboardComponent implements OnInit {
       });
     }
 
-    getNetworks(){
-      return this.httpClient.get<String>("http://127.0.0.1:8000/networks")
-    }
+      getNetworks(){
+        return this.httpClient.get<String>("http://127.0.0.1:8000/networks")
+      }
 
     // saveButton(){
     //   var body: HTMLTableElement = <HTMLTableElement> document.getElementById("tbody1");
