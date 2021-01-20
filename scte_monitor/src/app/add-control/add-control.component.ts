@@ -52,6 +52,15 @@ export class AddControlComponent implements OnInit {
   local_break_end: string;
   break_duration_deviation_tolerance: string;
   id: number; 
+  
+  localIsON:boolean = false;
+  contentIsOn:boolean = false;
+  providerIsOn:boolean = false;
+  placementIsOn:boolean = false;
+  programIsOn:boolean = false;
+
+
+
 
 
 //   public preloadConfig() {
@@ -151,6 +160,8 @@ export class AddControlComponent implements OnInit {
 //   }
   
   createLocalBreakComponent() {
+	if(!this.localIsON){
+	  this.localIsON = true;
 	let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
@@ -160,10 +171,13 @@ export class AddControlComponent implements OnInit {
 
 	// add reference for newly created component
 	// componentsrefernces -> array componentref
-    // this.componentsReferences.push(childComponentRef);
+	// this.componentsReferences.push(childComponentRef);
+	}
   }
 
   createContentIdComponent() {
+	if(!this.contentIsOn){
+	this.contentIsOn = true;
 	let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
@@ -172,10 +186,13 @@ export class AddControlComponent implements OnInit {
     // childComponent.parentRef = this;
 
     // add reference for newly created component
-    // this.componentsReferences.push(childComponentRef);
+	// this.componentsReferences.push(childComponentRef);
+	}
   }
 
   createPlacementOpportunityComponent() {
+	if(!this.placementIsOn){
+	this.placementIsOn = true;
 	let componentFactory = this.CFR.resolveComponentFactory(PocComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
@@ -184,15 +201,19 @@ export class AddControlComponent implements OnInit {
     // childComponent.parentRef = this;
 
     // add reference for newly created component
-    // this.componentsReferences.push(childComponentRef);
+	// this.componentsReferences.push(childComponentRef);
+	}
   }
 
   createProgramComponent() {
+	if(!this.programIsOn){
+	this.programIsOn = true;
 	let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
-    childComponent.index = ++this.program_index;
+	childComponent.index = ++this.program_index;
+	}
     // childComponent.parentRef = this;
 
     // add reference for newly created component
@@ -200,6 +221,8 @@ export class AddControlComponent implements OnInit {
   }
 
   createProviderAdComponent() {
+	if(!this.providerIsOn){
+	this.providerIsOn = true;
 	let componentFactory = this.CFR.resolveComponentFactory(PacComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
@@ -208,7 +231,8 @@ export class AddControlComponent implements OnInit {
     // childComponent.parentRef = this;
 
     // add reference for newly created component
-    // this.componentsReferences.push(childComponentRef);
+	// this.componentsReferences.push(childComponentRef);
+	}
   }
 
   
@@ -338,7 +362,6 @@ export class AddControlComponent implements OnInit {
 	// window.location.reload();
   }
 
-
   
 
   addNewNetwork() {
@@ -361,7 +384,6 @@ export class AddControlComponent implements OnInit {
 	const local_break_output_duration_flag = <HTMLInputElement> document.getElementById("local_break_output_duration_flag");
 	const local_break_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_output_break_duration_min");
 	const local_break_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_output_break_duration_max");
-
 	const local_break_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_output_break_auto_return");
 	const local_break_splice_command = <HTMLInputElement> document.getElementById("local_break_splice_command");
 	const local_break_end_input_trigger = <HTMLInputElement> document.getElementById("local_break_end_input_trigger");
@@ -371,8 +393,33 @@ export class AddControlComponent implements OnInit {
 	const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
 	const local_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_devation_tolerance");
 	
+	let localBreakArr= [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
+		local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
+		local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
+		local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
+		local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
+		local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]	
+
+	if(this.localIsON){
+	let localJson = JSON.stringify(localBreakArr)
+	var localBreak = JSON.parse(localJson)
+	}
+	else{
+		localBreak = []
+	}
+
 	const content_id_splice_command_type_start = <HTMLInputElement> document.getElementById("content_id_splice_command_type_start");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+
+	if (this.contentIsOn) {
+	let contentIdArry= [content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
+	
+	let contentJson = JSON.stringify(contentIdArry)
+	var content = JSON.parse(contentJson)
+	}
+	else{
+		content = []
+	}
 
 	const placement_splice_comand_type_start = <HTMLInputElement> document.getElementById("placement_splice_comand_type_start");
 	const placement_segmentation_type_id = <HTMLInputElement> document.getElementById("placement_segmentation_type_id");
@@ -381,7 +428,17 @@ export class AddControlComponent implements OnInit {
 	const placement_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_segmentation_duration_max");
 	const placement_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_min");
 	const placement_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_max");
-
+	
+	if(this.placementIsOn){
+	let placementArr= [placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
+		placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
+	
+	let placementJson = JSON.stringify(placementArr)
+	var placement = JSON.parse(placementJson)
+	}
+	else{
+		placement = []
+	}
 
 	const program_splice_comand_type_start = <HTMLInputElement> document.getElementById("program_splice_comand_type_start");
 	const program_segmentation_type_id = <HTMLInputElement> document.getElementById("program_segmentation_type_id");
@@ -390,9 +447,18 @@ export class AddControlComponent implements OnInit {
 	const program_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_segmentation_duration_max");
 	const program_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_min");
 	const program_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_max");
+	
+	if(this.programIsOn){
+	let programArr= [program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
+		program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]
+	let programJson = JSON.stringify(programArr)
+	var program = JSON.parse(programJson)
+	}
+	else{
+		program = []
+	}
 
 	
-
 	const providerad_splice_comand_type_start = <HTMLInputElement> document.getElementById("providerad_splice_comand_type_start");
 	const providerad_segmentation_type_id = <HTMLInputElement> document.getElementById("providerad_segmentation_type_id");
 	const providerad_duration_flag = <HTMLInputElement> document.getElementById("providerad_duration_flag");
@@ -401,24 +467,32 @@ export class AddControlComponent implements OnInit {
 	const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
 	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
 	
+	if(this.providerIsOn){
+	let providerArr = [providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
+		providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
+	let providerJson = JSON.stringify(providerArr)
+	var provider = JSON.parse(providerJson)
+	}
+	else{
+		provider = []
+	}
+
+
+
+
+		
 	let newConfig = {
 		"_id":this.counterID
 		,"emails": emails.value
 		,"network_id": networkName.value
-		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
-			local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
-			local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
-			local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
-			local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
-			local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]
-		,"contentid":[content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
-		,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
-			placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
-		,"program":[program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
-			program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
-		,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
-			providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
+		,"localbreak": localBreak
+		,"contentid": content
+		,"placement": placement
+		,"pro":program
+		,"providerad":provider
+	
 	}
+
 
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
       this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
