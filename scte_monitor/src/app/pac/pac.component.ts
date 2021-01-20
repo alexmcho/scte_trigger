@@ -15,4 +15,9 @@ export class PacComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  removeProvider() {
+		var T = document.getElementById("RemoveProvider");
+		T.style.display = "none";  // <-- Set it to block
+	}
+
 }

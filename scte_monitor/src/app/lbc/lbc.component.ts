@@ -15,4 +15,9 @@ export class LbcComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  removeLocal() {
+		var T = document.getElementById("RemoveLocal");
+		T.style.display = "none";  // <-- Set it to block
+	}
+
 }

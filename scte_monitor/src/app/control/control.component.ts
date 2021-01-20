@@ -217,6 +217,8 @@ userNameOnRequired:boolean = false;
   }
 
   saveLocalBreak() {
+	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
+
 	const local_expected_splices_hour = <HTMLInputElement> document.getElementById("local_expected_splices_hour");
 	const local_splice_command_start = <HTMLInputElement> document.getElementById("local_splice_command_start");
 	const local_break_action = <HTMLInputElement> document.getElementById("local_break_action");
@@ -269,7 +271,9 @@ userNameOnRequired:boolean = false;
 	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
 
 	let newConfig = {
+
 		"network_id": this.NetworkNamesService.getName()
+		,"validation_frequency": validation_frequency.value
 		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
 			local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
 			local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
@@ -287,16 +291,18 @@ userNameOnRequired:boolean = false;
 		,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
 			providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
 	}
+	console.log('Test Save ');
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
 	return this.HttpClient.put("http://127.0.0.1:8000/update/"+ this.NetworkNamesService.getName(), newConfig ,{headers: postHeaders}).
 	subscribe(Response => console.log(Response));
+	
   }
 
   buttonCheck(){
 	const button = <HTMLInputElement> document.getElementById("check_local_break_component");
 	console.log(button.value)
   }
-
+  
   saveChange( 
 	recipient_emails: string, frequency: string, network_id: string, local_break: string, 
 	expected_splices_hour: string, validate_splice_count: string, local_break_start: string, 

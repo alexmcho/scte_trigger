@@ -80,7 +80,7 @@
     <form class="form-horizontal" [formGroup]="form">
       <div *ngFor="let con of config?.value">
         <div *ngFor="let item of con?.value; let i = index">
-          <span *ngIf="item.key=='recipient_emails'">
+          <span *ngIf="item.key=='emails'">
             <div style="margin-bottom:10px;">
               <span style="font-weight:500;">Recipient Email Addresses&nbsp;</span><span style="display:inline-block">separated by (","):</span>
             </div>
@@ -101,10 +101,10 @@
     </div>
   <div *ngFor="let con of config?.value">
       <div *ngFor="let item of con?.value; let i = index" style="margin-top:10px">
-          <span *ngIf="item.key=='frequency'"> 
+          <span *ngIf="item.key=='validation_frequency'"> 
             <div>
               <!-- <p style="font-weight:500;">Validation Frequency (sec):  -->
-              <input [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" type=number step=any class="form-control" style="width:70px; display:inline-block"> 
+              <input [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" id="validation_frequency" type=number step=any class="form-control" style="width:70px; display:inline-block"> 
             </div>  
           </span>
       </div>
@@ -140,7 +140,7 @@
 
   <!-- LOCAL BREAK SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='localbreak'">
-    <ngb-accordion style="margin: 10px" id="RemoveLocal" style="display:block">
+    <ngb-accordion id="RemoveLocal" style="margin-bottom: 10px; display:block">
       <ngb-panel>
         <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -400,7 +400,7 @@
 
   <!-- CONTENT ID SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='contentid'">
-    <ngb-accordion id="RemoveContent" style="margin: 10px">
+    <ngb-accordion id="RemoveContent" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -444,7 +444,7 @@
 
   <!-- PLACEMENT OPPORTUNITY SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='placement'">
-    <ngb-accordion id="RemovePlacement" style="margin: 10px">
+    <ngb-accordion id="RemovePlacement" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -564,7 +564,7 @@
 
   <!-- PROGRAM SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='pro'">
-    <ngb-accordion id="RemoveProgram" style="margin: 10px">
+    <ngb-accordion id="RemoveProgram" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -688,7 +688,7 @@
 
   <!-- PROVIDER AD SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='providerad'">
-    <ngb-accordion id="RemoveProvider" style="margin: 10px">
+    <ngb-accordion id="RemoveProvider" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
               <div class="d-flex align-items-center justify-content-between">

@@ -46,6 +46,8 @@ local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</butto
 
 
 <!-- Add New Network -->
+<!-- <form class="form-horizontal" [formGroup]="form"> -->
+
 <div>
   <div>
     <br>
@@ -55,9 +57,19 @@ local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</butto
   </div>
   <div>
     <h6>Enter Network Name: </h6><input id="networkName" type="text" class="form-control" style="width:40%">
+    <!-- <h6>Enter Network Name: </h6><input id="networkName" type="text" class="form-control" style="width:40%" formControlName="network_id" > -->
+      <!-- <div *ngIf="isFieldRequired('network_id')" class="text-danger" style="display: inline-block">*Network ID Required</div>
+      <div *ngIf="isFieldInvalid('network_id')" class="text-danger" style="display: inline-block">*Network ID Invalid</div> -->
   </div>
   <div>
     <h6>Enter Email: </h6><input id="emails" type="text" class="form-control" style="width:40%">
+      <!-- <div *ngIf="isFieldRequired('emails')" class="text-danger" style="display: inline-block">*Email Required</div>
+      <div *ngIf="isFieldInvalid('emails')" class="text-danger" style="display: inline-block">*Email Invalid</div> -->
+  </div>
+  <div>
+    <h6>Enter Validation Frequency: </h6><input id="validation_frequency" type=number step=any class="form-control" style="width:40%">
+      <!-- <div *ngIf="isFieldRequired('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Required</div>
+      <div *ngIf="isFieldInvalid('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Invalid</div> -->
   </div>
   <br>
   <hr/>
@@ -81,3 +93,5 @@ local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</butto
   <hr/>
   <div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin-bottom:50px;float:right;" (click)="addNewNetwork()">Add Network</button></div>
 </div>
+
+<!-- </form> -->

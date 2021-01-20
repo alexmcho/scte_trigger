@@ -35,7 +35,7 @@ export class AddControlComponent implements OnInit {
   
   counterID: Number;
   recipient_emails: string;
-  frequency: string;
+  validation_frequency: string;
   network_id: string;
   local_break: string;
   expected_splices_hour: string;
@@ -128,17 +128,18 @@ export class AddControlComponent implements OnInit {
 	}
 
   ngOnInit(): void {
-  console.log(this.config)
-  this.getNetworks().subscribe(
-    networkArr => this.networks = networkArr
-  )
-	this.form = this.formBuilder.group({
-		"recipient_emails":  [null, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]],
-		"network_id":  [null, [Validators.required, Validators.pattern("")]]
-  })
-  this.getId().subscribe(count =>{
-    this.counterID = Number(count)
-  })
+    console.log(this.config)
+    this.getNetworks().subscribe(
+      networkArr => this.networks = networkArr
+    )
+    // this.form = this.formBuilder.group({
+    //   "emails":  [null, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]]
+    //   ,"network_id":  [null, [Validators.required, Validators.pattern("")]]
+    //   ,"validation_frequency":  [null, [Validators.required, Validators.pattern("")]]
+    // })
+    this.getId().subscribe(count =>{
+      this.counterID = Number(count)
+    })
   }
   
   
@@ -160,31 +161,31 @@ export class AddControlComponent implements OnInit {
     return this.config
   }
 
-  removeLocal() {
-		var T = document.getElementById("RemoveLocal");
-		T.style.display = "none";  // <-- Set it to block
-	}
-
-	removeContent() {
-		var T = document.getElementById("RemoveContent");
-		T.style.display = "none";  // <-- Set it to block
-	}
-
-	removePlacement() {
-		var T = document.getElementById("RemovePlacement");
-		T.style.display = "none";  // <-- Set it to block
-	}
-
-	removeProgram() {
-		var T = document.getElementById("RemoveProgram");
-		T.style.display = "none";  // <-- Set it to block
-	}
-
-	removeProvider() {
-		var T = document.getElementById("RemoveProvider");
-		T.style.display = "none";  // <-- Set it to block
-	}
+  // removeLocal() {
+	// 	var T = document.getElementById("RemoveLocal");
+	// 	T.style.display = "none";  // <-- Set it to block
+  // }
   
+  // removeContent() {
+	// 	var T = document.getElementById("RemoveContent");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
+  
+  // removePlacement() {
+	// 	var T = document.getElementById("RemovePlacement");
+	// 	T.style.display = "none";  // <-- Set it to block
+  // }
+  
+  // removeProgram() {
+	// 	var T = document.getElementById("RemoveProgram");
+	// 	T.style.display = "none";  // <-- Set it to block
+  // }
+  
+  // removeProvider() {
+	// 	var T = document.getElementById("RemoveProvider");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
+
   createLocalBreakComponent() {
     let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
       let childComponentRef = this.VCR.createComponent(componentFactory);
@@ -253,6 +254,8 @@ export class AddControlComponent implements OnInit {
   
     const networkName = <HTMLInputElement> document.getElementById("networkName");
   
+    const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
+
     const local_expected_splices_hour = <HTMLInputElement> document.getElementById("local_expected_splices_hour");
     const local_splice_command_start = <HTMLInputElement> document.getElementById("local_splice_command_start");
     const local_break_action = <HTMLInputElement> document.getElementById("local_break_action");
@@ -309,6 +312,7 @@ export class AddControlComponent implements OnInit {
       let newConfig = {
         "_id":this.counterID
         ,"emails": emails.value
+        ,"validation_frequency": validation_frequency.value
         ,"network_id": networkName.value
         ,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
           local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
