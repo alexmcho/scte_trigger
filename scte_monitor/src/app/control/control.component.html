@@ -180,7 +180,7 @@
                             <th>Action</th><td></td>
                             <td><select id="local_break_action"  class="form-control" >
                                 <option  value="{{item.value[2]}}" >Current: {{item.value[2]}}</option>
-                                <option  value="Noop" >NOOP</option>
+                                <option  value="NOOP" >NOOP</option>
                                 <option value="Delete" >DELETE</option>
                                 <option   value="replace">REPLACE</option>
                             </select></td>
@@ -234,12 +234,12 @@
                                 <div class="form-group row">
                                     <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
                                     <div class="col-sm-4">
-                                        <input  id="local_break_duration_max" class="form-control" type="number" step=any value = "{{item.value[6]}}" placeholder = {{item.value[7]}}>
+                                        <input  id="local_break_duration_max" class="form-control" type="number" step=any value = "{{item.value[7]}}" placeholder = {{item.value[7]}}>
                                     </div>
-                                </div>                
+                                </div>
                             </td>
                         </tr>
-                        <tr >
+                        <tr>
                             <th>break_auto_return</th><td></td>
                             <td><select id="local_break_auto_return" class ="form-control">
                                 <option value="{{item.value[8]}}">Current : {{item.value[8]}}</option>
