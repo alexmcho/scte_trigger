@@ -27,6 +27,7 @@ import {CicComponent } from './cic/cic.component';
 import {PocComponent } from './poc/poc.component';
 import {PcComponent } from './pc/pc.component';
 import {PacComponent } from './pac/pac.component';
+import {NbcComponent } from './nbc/nbc.component';
 
 const routes: Routes = [ 
 ];
@@ -49,7 +50,8 @@ const routes: Routes = [
     CicComponent,
     PocComponent,
     PcComponent,
-    PacComponent
+    PacComponent,
+    NbcComponent
   ],
   imports: [
     BrowserModule,

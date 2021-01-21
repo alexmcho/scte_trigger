@@ -11,6 +11,7 @@ import { CicComponent } from '../cic/cic.component';
 import { PocComponent } from '../poc/poc.component';
 import { PcComponent } from '../pc/pc.component';
 import { PacComponent } from '../pac/pac.component';
+import { NbcComponent } from '../nbc/nbc.component';
 import { HostListener } from '@angular/core';
 
 @Component({
@@ -120,30 +121,35 @@ userNameOnRequired:boolean = false;
 		this.router.navigate(['/dashboard']);
 	}
   
-	removeLocal() {
-		var T = document.getElementById("RemoveLocal");
-		T.style.display = "none";  // <-- Set it to block
-	}
+	// removeLocal() {
+	// 	var T = document.getElementById("RemoveLocal");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
 
-	removeContent() {
-		var T = document.getElementById("RemoveContent");
-		T.style.display = "none";  // <-- Set it to block
-	}
+	// removeContent() {
+	// 	var T = document.getElementById("RemoveContent");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
 
-	removePlacement() {
-		var T = document.getElementById("RemovePlacement");
-		T.style.display = "none";  // <-- Set it to block
-	}
+	// removePlacement() {
+	// 	var T = document.getElementById("RemovePlacement");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
 
-	removeProgram() {
-		var T = document.getElementById("RemoveProgram");
-		T.style.display = "none";  // <-- Set it to block
-	}
+	// removeProgram() {
+	// 	var T = document.getElementById("RemoveProgram");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
 
-	removeProvider() {
-		var T = document.getElementById("RemoveProvider");
-		T.style.display = "none";  // <-- Set it to block
-	}
+	// removeProvider() {
+	// 	var T = document.getElementById("RemoveProvider");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
+
+	// removeNational() {
+	// 	var T = document.getElementById("RemoveProvider");
+	// 	T.style.display = "none";  // <-- Set it to block
+	// }
   
   createLocalBreakComponent() {
 	let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
@@ -183,6 +189,15 @@ userNameOnRequired:boolean = false;
 
   createProviderAdComponent() {
 	let componentFactory = this.CFR.resolveComponentFactory(PacComponent);
+    let childComponentRef = this.VCR.createComponent(componentFactory);
+	let childComponent = childComponentRef.instance;
+	
+    childComponent.index = ++this.providerad_index;
+    childComponent.parentRef = this;
+  }
+
+  createNationalBreakComponent() {
+	let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 	let childComponent = childComponentRef.instance;
 	
@@ -270,8 +285,33 @@ userNameOnRequired:boolean = false;
 	const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
 	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
 
-	let newConfig = {
+	const national_expected_splices_hour = <HTMLInputElement> document.getElementById("national_expected_splices_hour");
+	const national_break_action = <HTMLInputElement> document.getElementById("national_break_action");
+	const national_splice_command_start = <HTMLInputElement> document.getElementById("national_splice_command_start");
+	const national_segmentation_type_id_start = <HTMLInputElement> document.getElementById("national_segmentation_type_id_start");
+	const national_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_splice_immediate_flag");
+	const national_break_splice_event_id = <HTMLInputElement> document.getElementById("national_break_splice_event_id");
+	const national_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_duration_flag");
+	const national_break_duration_min = <HTMLInputElement> document.getElementById("national_break_duration_min");
+	const national_break_duration_max = <HTMLInputElement> document.getElementById("national_break_duration_max");
+	const national_break_auto_return = <HTMLInputElement> document.getElementById("national_break_auto_return");
+	const national_break_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_output_splice_immediate_flag");
+	const national_break_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_output_splice_event_id");
+	const national_break_output_duration_flag = <HTMLInputElement> document.getElementById("national_break_output_duration_flag");
+	const national_break_output_break_duration_min = <HTMLInputElement> document.getElementById("national_break_output_break_duration_min");
+	const national_break_output_break_duration_max = <HTMLInputElement> document.getElementById("national_break_output_break_duration_max");
 
+	const national_break_output_break_auto_return = <HTMLInputElement> document.getElementById("national_break_output_break_auto_return");
+	const national_break_splice_command = <HTMLInputElement> document.getElementById("national_break_splice_command");
+	const national_segmentation_type_id_end = <HTMLInputElement> document.getElementById("national_segmentation_type_id_end");
+	const national_break_end_input_trigger = <HTMLInputElement> document.getElementById("national_break_end_input_trigger");
+	const national_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_input_splice_immediate_flag");
+	const national_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_input_splice_event_id");
+	const national_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_output_splice_immediate_flag");
+	const national_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_output_splice_event_id");
+	const national_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_devation_tolerance");
+
+	let newConfig = {
 		"network_id": this.NetworkNamesService.getName()
 		,"validation_frequency": validation_frequency.value
 		,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
@@ -281,15 +321,19 @@ userNameOnRequired:boolean = false;
 			local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
 			local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]
 		,"contentid":[content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
-		
 		,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
 			placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
-			
 		,"pro":[program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
 			program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
-
 		,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
 			providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
+		,"nationalbreak": [national_expected_splices_hour.value,national_break_action.value,national_splice_command_start.value,national_segmentation_type_id_start.value,national_splice_immediate_flag.value,national_break_splice_event_id.value,
+			national_break_duration_flag.value, national_break_duration_min.value,national_break_duration_max.value,national_break_auto_return.value,national_break_output_splice_immediate_flag.value,
+			national_break_output_splice_event_id.value,national_break_output_duration_flag.value,national_break_output_break_duration_min.value, national_break_output_break_duration_max.value,
+			national_break_output_break_auto_return.value, national_break_splice_command.value,national_segmentation_type_id_end.value, national_break_end_input_trigger.value,
+			national_break_end_input_splice_immediate_flag.value,national_break_end_input_splice_event_id.value,national_break_end_output_splice_immediate_flag.value,
+			national_break_end_output_splice_event_id.value,national_break_end_devation_tolerance.value]
+		
 	}
 	console.log('Test Save ');
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})

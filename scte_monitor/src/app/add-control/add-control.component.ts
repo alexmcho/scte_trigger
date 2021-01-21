@@ -16,6 +16,7 @@ import { CicComponent } from '../cic/cic.component';
 import { PacComponent } from '../pac/pac.component';
 import { PocComponent } from '../poc/poc.component';
 import { PcComponent } from '../pc/pc.component';
+import { NbcComponent } from '../nbc/nbc.component';
 
 @Component({
   selector: 'app-add-control',
@@ -161,42 +162,12 @@ export class AddControlComponent implements OnInit {
     return this.config
   }
 
-  // removeLocal() {
-	// 	var T = document.getElementById("RemoveLocal");
-	// 	T.style.display = "none";  // <-- Set it to block
-  // }
-  
-  // removeContent() {
-	// 	var T = document.getElementById("RemoveContent");
-	// 	T.style.display = "none";  // <-- Set it to block
-	// }
-  
-  // removePlacement() {
-	// 	var T = document.getElementById("RemovePlacement");
-	// 	T.style.display = "none";  // <-- Set it to block
-  // }
-  
-  // removeProgram() {
-	// 	var T = document.getElementById("RemoveProgram");
-	// 	T.style.display = "none";  // <-- Set it to block
-  // }
-  
-  // removeProvider() {
-	// 	var T = document.getElementById("RemoveProvider");
-	// 	T.style.display = "none";  // <-- Set it to block
-	// }
-
   createLocalBreakComponent() {
     let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
       let childComponentRef = this.VCR.createComponent(componentFactory);
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.localbreak_index;
-      // childComponent.parentRef = this;
-  
-    // add reference for newly created component
-    // componentsrefernces -> array componentref
-      // this.componentsReferences.push(childComponentRef);
     }
     
     createContentIdComponent() {
@@ -205,10 +176,6 @@ export class AddControlComponent implements OnInit {
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.contentid_index;
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-      // this.componentsReferences.push(childComponentRef);
     }
     
     createPlacementOpportunityComponent() {
@@ -217,10 +184,6 @@ export class AddControlComponent implements OnInit {
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.placementopportunity_index;
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-      // this.componentsReferences.push(childComponentRef);
     }
   
     createProgramComponent() {
@@ -229,10 +192,6 @@ export class AddControlComponent implements OnInit {
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.program_index;
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-      // this.componentsReferences.push(childComponentRef);
     }
   
     createProviderAdComponent() {
@@ -241,11 +200,15 @@ export class AddControlComponent implements OnInit {
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.providerad_index;
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-      // this.componentsReferences.push(childComponentRef);
     }
+
+    createNationalBreakComponent() {
+      let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
+        let childComponentRef = this.VCR.createComponent(componentFactory);
+      let childComponent = childComponentRef.instance;
+      
+        childComponent.index = ++this.providerad_index;
+      }
 
     addNewNetwork() {
 
@@ -305,8 +268,32 @@ export class AddControlComponent implements OnInit {
       const providerad_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_max");
       const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
       const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
+
+      const national_expected_splices_hour = <HTMLInputElement> document.getElementById("national_expected_splices_hour");
+      const national_break_action = <HTMLInputElement> document.getElementById("national_break_action");
+      const national_splice_command_start = <HTMLInputElement> document.getElementById("national_splice_command_start");
+      const national_segmentation_type_id_start = <HTMLInputElement> document.getElementById("national_segmentation_type_id_start");
+      const national_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_splice_immediate_flag");
+      const national_break_splice_event_id = <HTMLInputElement> document.getElementById("national_break_splice_event_id");
+      const national_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_duration_flag");
+      const national_break_duration_min = <HTMLInputElement> document.getElementById("national_break_duration_min");
+      const national_break_duration_max = <HTMLInputElement> document.getElementById("national_break_duration_max");
+      const national_break_auto_return = <HTMLInputElement> document.getElementById("national_break_auto_return");
+      const national_break_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_output_splice_immediate_flag");
+      const national_break_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_output_splice_event_id");
+      const national_break_output_duration_flag = <HTMLInputElement> document.getElementById("national_break_output_duration_flag");
+      const national_break_output_break_duration_min = <HTMLInputElement> document.getElementById("national_break_output_break_duration_min");
+      const national_break_output_break_duration_max = <HTMLInputElement> document.getElementById("national_break_output_break_duration_max");
       
-      
+      const national_break_output_break_auto_return = <HTMLInputElement> document.getElementById("national_break_output_break_auto_return");
+      const national_break_splice_command = <HTMLInputElement> document.getElementById("national_break_splice_command");
+      const national_segmentation_type_id_end = <HTMLInputElement> document.getElementById("national_segmentation_type_id_end");
+      const national_break_end_input_trigger = <HTMLInputElement> document.getElementById("national_break_end_input_trigger");
+      const national_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_input_splice_immediate_flag");
+      const national_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_input_splice_event_id");
+      const national_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_output_splice_immediate_flag");
+      const national_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_output_splice_event_id");
+      const national_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_devation_tolerance");
       
       if(this.networks.indexOf(networkName.value) == -1) {
         console.log('network name 12312312');
@@ -328,6 +315,13 @@ export class AddControlComponent implements OnInit {
             program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
           ,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
             providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
+          ,"nationalbreak": [national_expected_splices_hour.value,national_break_action.value,national_splice_command_start.value,national_segmentation_type_id_start.value,national_splice_immediate_flag.value,national_break_splice_event_id.value,
+            national_break_duration_flag.value, national_break_duration_min.value,national_break_duration_max.value,national_break_auto_return.value,national_break_output_splice_immediate_flag.value,
+            national_break_output_splice_event_id.value,national_break_output_duration_flag.value,national_break_output_break_duration_min.value, national_break_output_break_duration_max.value,
+            national_break_output_break_auto_return.value, national_break_splice_command.value, national_segmentation_type_id_end.value, national_break_end_input_trigger.value,
+            national_break_end_input_splice_immediate_flag.value,national_break_end_input_splice_event_id.value,national_break_end_output_splice_immediate_flag.value,
+            national_break_end_output_splice_event_id.value,national_break_end_devation_tolerance.value]
+            
         }
         let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
         this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
@@ -339,123 +333,6 @@ export class AddControlComponent implements OnInit {
         throw new Error('Something bad happened');
       }
     }
-
-
-  // addNewNetwork() {
-
-  //   const emails = <HTMLInputElement> document.getElementById("emails");
-  
-  //   const networkName = <HTMLInputElement> document.getElementById("networkName");
-  
-  //   const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
-
-  //   const local_expected_splices_hour = <HTMLInputElement> document.getElementById("local_expected_splices_hour");
-  //   const local_splice_command_start = <HTMLInputElement> document.getElementById("local_splice_command_start");
-  //   const local_break_action = <HTMLInputElement> document.getElementById("local_break_action");
-  //   const local_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_splice_immidiate_flag");
-  //   const local_break_splice_event_id = <HTMLInputElement> document.getElementById("local_break_splice_event_id");
-  //   const local_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_duration_flag");
-  //   const local_break_duration_min = <HTMLInputElement> document.getElementById("local_break_duration_min");
-  //   const local_break_duration_max = <HTMLInputElement> document.getElementById("local_break_duration_max");
-  //   const local_break_auto_return = <HTMLInputElement> document.getElementById("local_break_auto_return");
-  //   const local_break_output_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_break_output_splice_immidiate_flag");
-  //   const local_break_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_output_splice_event_id");
-  //   const local_break_output_duration_flag = <HTMLInputElement> document.getElementById("local_break_output_duration_flag");
-  //   const local_break_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_output_break_duration_min");
-  //   const local_break_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_output_break_duration_max");
-  
-  //   const local_break_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_output_break_auto_return");
-  //   const local_break_splice_command = <HTMLInputElement> document.getElementById("local_break_splice_command");
-  //   const local_break_end_input_trigger = <HTMLInputElement> document.getElementById("local_break_end_input_trigger");
-  //   const local_break_end_input_splice_immidiate_flag = <HTMLInputElement> document.getElementById("local_break_end_input_splice_immidiate_flag");
-  //   const local_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_input_splice_event_id");
-  //   const local_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_output_splice_immediate_flag");
-  //   const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
-  //   const local_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_devation_tolerance");
-    
-  //   const content_id_splice_command_type_start = <HTMLInputElement> document.getElementById("content_id_splice_command_type_start");
-  //   const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
-  
-  //   const placement_splice_comand_type_start = <HTMLInputElement> document.getElementById("placement_splice_comand_type_start");
-  //   const placement_segmentation_type_id = <HTMLInputElement> document.getElementById("placement_segmentation_type_id");
-  //   const placement_duration_flag = <HTMLInputElement> document.getElementById("placement_duration_flag");
-  //   const placement_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_segmentation_duration_min");
-  //   const placement_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_segmentation_duration_max");
-  //   const placement_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_min");
-  //   const placement_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_max");
-   
-  //   const program_splice_comand_type_start = <HTMLInputElement> document.getElementById("program_splice_comand_type_start");
-  //   const program_segmentation_type_id = <HTMLInputElement> document.getElementById("program_segmentation_type_id");
-  //   const program_duration_flag = <HTMLInputElement> document.getElementById("program_duration_flag");
-  //   const program_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_segmentation_duration_min");
-  //   const program_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_segmentation_duration_max");
-  //   const program_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_min");
-  //   const program_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_output_segmentation_duration_max");
-  
-  //   const providerad_splice_comand_type_start = <HTMLInputElement> document.getElementById("providerad_splice_comand_type_start");
-  //   const providerad_segmentation_type_id = <HTMLInputElement> document.getElementById("providerad_segmentation_type_id");
-  //   const providerad_duration_flag = <HTMLInputElement> document.getElementById("providerad_duration_flag");
-  //   const providerad_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_min");
-  //   const providerad_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_max");
-  //   const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
-  //   const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
-    
-    
-  //   if(this.networks.indexOf(networkName.value) == -1) {
-  //     console.log('network name 12312312');
-  //     let newConfig = {
-  //       "_id":this.counterID
-  //       ,"emails": emails.value
-  //       ,"validation_frequency": validation_frequency.value
-  //       ,"network_id": networkName.value
-  //       ,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
-  //         local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
-  //         local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
-  //         local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
-  //         local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
-  //         local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]
-  //       ,"contentid":[content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
-  //       ,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
-  //         placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
-  //       ,"pro":[program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
-  //         program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
-  //       ,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
-  //         providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
-  //     }
-  //     let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-  //     this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
-  //     .subscribe(Response => console.log(Response));
-  //     this.router.navigate(['/dashboard']);
-  //   }
-  //   else {
-  //     console.log('Error Add Network')
-  //     throw new Error('Something bad happened');
-  //   }
-  // }
-
-    // let newConfig = {
-    //   "_id":212
-    //   ,"emails": emails.value
-    //   ,"network_id": networkName.value
-    //   ,"localbreak": [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
-    //     local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
-    //     local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
-    //     local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
-    //     local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
-    //     local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]
-    //   ,"contentid":[content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
-    //   ,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
-    //     placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]
-    //   ,"pro":[program_splice_comand_type_start.value,program_segmentation_type_id.value,program_duration_flag.value,program_segmentation_duration_min.value,program_segmentation_duration_max.value,
-    //     program_output_segmentation_duration_min.value,program_output_segmentation_duration_max.value]	
-    //   ,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
-    //     providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]
-    // }
-    // let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-    //     this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
-    //   .subscribe(Response => console.log(Response));
-    //   this.router.navigate(['/dashboard']);
-    // }
 
   addNetwork( 
     id: number, recipient_emails: string, frequency: string, network_id: string, local_break: string, 
