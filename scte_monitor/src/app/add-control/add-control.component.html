@@ -1,0 +1,98 @@
+<!-- <form class="form-horizontal" [formGroup]="form">
+
+<th>&nbsp;&nbsp;Add New Network</th>
+<tbody>
+<hr>
+<tr><td>&nbsp;&nbsp; ID : </td><td><input #id type="number"></td></tr>
+<tr><td>&nbsp;&nbsp; Recipient Email: </td>
+    <td><input #recipient_emails name="recipient_emails" ng-model="recipient_emails" type="text" formControlName="recipient_emails">
+        <div *ngIf="isFieldRequired('recipient_emails')" class="text-danger" style="display: inline-block">Email Required</div>
+        <div *ngIf="isFieldInvalid('recipient_emails')" class="text-danger" style="display: inline-block">Email Invalid</div>
+    </td></tr>
+<tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Network ID: </td>
+    <td><input #network_id type="text" name="network" ng-model="network" formControlName="network_id">
+        <div *ngIf="isFieldRequired('network_id')" class="text-danger" style="display: inline-block">Network ID Required</div>
+        <div *ngIf="isFieldInvalid('network_id')" class="text-danger" style="display: inline-block">Network ID Invalid</div>
+    </td></tr>
+<hr>
+<tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Validate Splice Count : </td><td><input #validate_splice_count type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Local Break Start : </td><td><input #local_break_start type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Splice Coommand Type : </td><td><input #splice_command_type type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Action : </td><td><input #action type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Input Trigger : </td><td><input #input_trigger type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Splice Event ID : </td><td><input #splice_event_id type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Out of Network Indicator : </td><td><input #out_of_network_indicator type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Duration Flag : </td><td><input #duration_flag type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Splice Immediate Flag : </td><td><input #splice_immediate_flag type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Auto Return : </td><td><input #break_auto_return type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Min : </td><td><input #break_duration_min type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Max : </td><td><input #break_duration_max type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Output Trigger : </td><td><input #output_trigger type="text"> </td></tr>
+<tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text"></td></tr>
+<tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
+<hr>
+
+<tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
+(click)="addNetwork(id.value, recipient_emails.value, frequency.value, network_id.value, local_break.value, expected_splices_per_hour.value, 
+validate_splice_count.value, local_break_start.value, splice_command_type.value, action.value, input_trigger.value,
+splice_event_id.value, out_of_network_indicator.value, duration_flag.value, splice_immediate_flag.value, 
+break_auto_return.value, break_duration_min.value, break_duration_max.value, output_trigger.value,
+local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</button></div></td></tr></tbody>
+
+</form> -->
+
+
+<!-- Add New Network -->
+<!-- <form class="form-horizontal" [formGroup]="form"> -->
+
+<div>
+  <div>
+    <br>
+    <h4>Add New Network</h4>
+    <hr/>
+    <br>
+  </div>
+  <div>
+    <h6>Enter Network Name: </h6><input id="networkName" type="text" class="form-control" style="width:40%">
+    <!-- <h6>Enter Network Name: </h6><input id="networkName" type="text" class="form-control" style="width:40%" formControlName="network_id" > -->
+      <!-- <div *ngIf="isFieldRequired('network_id')" class="text-danger" style="display: inline-block">*Network ID Required</div>
+      <div *ngIf="isFieldInvalid('network_id')" class="text-danger" style="display: inline-block">*Network ID Invalid</div> -->
+  </div>
+  <div>
+    <h6>Enter Email: </h6><input id="emails" type="text" class="form-control" style="width:40%">
+      <!-- <div *ngIf="isFieldRequired('emails')" class="text-danger" style="display: inline-block">*Email Required</div>
+      <div *ngIf="isFieldInvalid('emails')" class="text-danger" style="display: inline-block">*Email Invalid</div> -->
+  </div>
+  <div>
+    <h6>Enter Validation Frequency: </h6><input id="validation_frequency" type=number step=any class="form-control" style="width:40%">
+      <!-- <div *ngIf="isFieldRequired('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Required</div>
+      <div *ngIf="isFieldInvalid('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Invalid</div> -->
+  </div>
+  <br>
+  <hr/>
+  <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Add New Segment</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button type="button" (click)="createLocalBreakComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Local Break</button> 
+            <button type="button" (click)="createContentIdComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Content Id</button> 
+            <button type="button" (click)="createPlacementOpportunityComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Placement Opportunity</button> 
+            <button type="button" (click)="createProgramComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Program</button> 
+            <button type="button" (click)="createProviderAdComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>Provider ad</button>
+            <button type="button" (click)="createNationalBreakComponent()" style="text-align: left; padding-left:12px" ngbDropdownItem>National Break</button>                  
+          </div>
+        </div>
+      </div>
+  </div>
+  <div>
+      <ng-template #viewContainerRef></ng-template>
+  </div>
+  <hr/>
+  <div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin-bottom:50px;float:right;" (click)="addNewNetwork()">Add Network</button></div>
+</div>
+
+<!-- </form> -->
