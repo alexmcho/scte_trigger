@@ -48,7 +48,10 @@
 }
 
 .sidebar .nav-link.active {
-    color: #007bff;
+    /* color: #007bff; */
+    color: #5ba3de;
+    /* color: #5bc0de; */
+    /* color: #292b2c; */
 }
 
 .sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {

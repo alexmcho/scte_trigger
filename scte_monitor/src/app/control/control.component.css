@@ -1,71 +1,60 @@
-.deleteEmail_svg {
-    fill: red;
-}
-.deleteEmail_svg:hover {
-    fill: darkred;
-    cursor: pointer;
-}
+    .deleteEmail_svg {
+        fill: red;
+    }
+    .deleteEmail_svg:hover {
+        fill: darkred;
+        cursor: pointer;
+    }
 
-/* Delete Button - Transparency*/
-.delete-button {     
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;        
+    /* Delete Button - Transparency*/
+    .delete-button {     
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;        
+    }
 
-}
-/* Trash Icon */
-.material-icons {
-    vertical-align:-2%;
-    font-size: 28px;
-    color:rgb(255, 0, 0);
-}
-/* Table Style - Edit Configuration Modal */
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 900px;
-    max-width: 9000px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
+    /* Edit Button - Transparency*/
+    .edit-button {
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;  
+    }
+    /* Email Button - Transparency*/
+    .email-button {     
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        margin-top: 2px;
+        margin-left: -2px;
+        outline-color: transparent;
+    }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-
-
-
-  .text-center {
-      text-align: center;
-
-  }
-
-
-
-/* .modal-header {
-    background-color: rgb(33, 41, 48);
-    color: white;
-} */
+    /* Edit Icon*/
+    .fa-edit {
+        vertical-align: 2px;
+        /* font-size: 20px; */
+        color: #5bc0de;
+    }
+    /* Trash Icon */
+    .fa-trash {
+        vertical-align: 2px;
+        /* font-size: 20px; */
+        color: #5bc0de;
+    }
+    /* Envelope Icon */
+    .fa-plus {
+        /* font-size: 20px; */
+        color: #5bc0de;
+        margin-left: -2px;
+        /* vertical-align: -2px; */
+    }
+    .text-center {
+        vertical-align: -40px;
+        text-align: center;
+    }

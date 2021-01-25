@@ -1,7 +1,7 @@
-<div style="margin:5px">
+<div style="margin:0px">
     <!-- Accordion start -->
     <ngb-accordion #acc="ngbAccordion" activeIds="" style="margin: 10px">
-        <ngb-panel id="idx" *ngFor="let item of config?.value | slice:3:4; let idx = index">
+        <ngb-panel id="idx" *ngFor="let item of config?.value[0].value[3]; let idx = index">
             <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                     <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">{{item.key}}</button></h3>
@@ -78,11 +78,10 @@
                     <option value=true>Exact Time (seconds)</option>
                     <option value=false>Time Range (seconds)</option>
                 </select></td>
-                <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min==localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
                 <td *ngIf="breakDurationExact">
                     <input [(ngModel)]="breakDurationExactAmount" (change)="setExactBreakDuration(true)" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_min}}>
                 </td>
-                <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min!=localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
+
                 <td *ngIf="!breakDurationExact">
                     <div class="form-group row">
                         <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
@@ -95,7 +94,7 @@
                         <div class="col-sm-4">
                             <input [(ngModel)]="localBreak?.value[0].local_break_start.input_trigger.break_duration_max" id="break_duration_max" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.input_trigger.break_duration_max}}>
                         </div>
-                    </div>                
+                    </div>
                 </td>
             </tr>
             <tr *ngIf="localBreak?.value[0].local_break_start.input_trigger.duration_flag==true">
@@ -122,7 +121,7 @@
                 </tr>
                 <tr>
                     <th>splice_event_id</th><td></td>
-                    <td><select [(ngModel)]="localBreak?.value[0].local_break_start.output_trigger.splice_event_id" class="form-control">
+                    <td><select [(ngModel)]="localBreak?.value[11].local_break_start.output_trigger.splice_event_id" class="form-control">
                         <option value="isnumeric">Must Be Numeric</option>
                     </select></td>
                 </tr>
@@ -140,11 +139,10 @@
                         <option value=true>Exact Time (seconds)</option>
                         <option value=false>Time Range (seconds)</option>
                     </select></td>
-                    <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min==localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
                     <td *ngIf="breakDurationExactOutput">
                         <input [(ngModel)]="breakDurationExactAmountOutput" (change)="setExactBreakDuration(false)" class="form-control" type="number" step=any placeholder = {{localBreak?.value[0].local_break_start.output_trigger.break_duration_min}}>
                     </td>
-                    <!-- <td *ngIf="localBreak?.value[0].local_break_start.input_trigger.break_duration_min!=localBreak?.value[0].local_break_start.input_trigger.break_duration_max"> -->
+                    
                     <td *ngIf="!breakDurationExactOutput">
                         <div class="form-group row">
                             <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
