@@ -48,6 +48,9 @@ export class ControlComponent implements OnInit {
   break_duration_deviation_tolerance: string;
   stringArr: [];
 
+  public startOutput: boolean;
+  public endOutput: boolean;
+
 form:FormGroup;
 public formSubmitAttempt: boolean;
 
@@ -128,6 +131,8 @@ public formSubmitAttempt: boolean;
 	removeContent() {
 		var T = document.getElementById("RemoveContent");
 		T.style.display = "none";  // <-- Set it to block
+		// var T = document.getElementById("contentId");
+		// (T as HTMLElement).remove();
 	}
 
 	removePlacement() {
@@ -406,42 +411,6 @@ public formSubmitAttempt: boolean;
 	const button = <HTMLInputElement> document.getElementById("check_local_break_component");
 	console.log(button.value)
   }
-  
-  saveChange( 
-	recipient_emails: string, frequency: string, network_id: string, local_break: string, 
-	expected_splices_hour: string, validate_splice_count: string, local_break_start: string, 
-	splice_command_type: string, action: string, input_trigger: string, splice_event_id: string, 
-	out_of_network_indicator: string, duration_flag: string, splice_immediate_flag: string, 
-	break_auto_return: string, break_duration_min: string, break_duration_max: string, 
-	output_trigger: string, local_break_end: string, break_duration_deviation_tolerance: string 
-	) {
-	console.log(recipient_emails);
-	let newConfig = {
-		"recipient_emails": recipient_emails
-		,"frequency": frequency 
-		,"network_id": network_id
-		,"local_break": local_break
-		,"expected_splices_hour": expected_splices_hour
-		,"validate_splice_count": validate_splice_count
-		,"local_break_start": local_break_start
-		,"splice_command_type": splice_command_type
-		,"action": action
-		,"input_trigger": input_trigger
-		,"splice_event_id": splice_event_id
-		,"out_of_network_indicator": out_of_network_indicator
-		,"duration_flag": duration_flag
-		,"splice_immediate_flag": splice_immediate_flag
-		,"break_auto_return": break_auto_return
-		,"break_duration_min": break_duration_min
-		,"break_duration_max": break_duration_max
-		,"output_trigger": output_trigger
-		,"local_break_end": local_break_end
-		,"break_duration_deviation_tolerance": break_duration_deviation_tolerance
-	}
-	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-	return this.HttpClient.put("http://127.0.0.1:8000/update/"+ this.NetworkNamesService.getName(), newConfig ,{headers: postHeaders}).
-	subscribe(Response => console.log(Response));
-  }
 
   saveNetwork() {
 	const network_id = <HTMLInputElement> document.getElementById("network_id");
@@ -458,40 +427,6 @@ public formSubmitAttempt: boolean;
 	  return this.existingTemplates.includes(template)
   }
 
-  public addNewTemplate(templateType: string) {
-	  if(templateType == "local_break" && !this.existingTemplates.includes("local_break")) {
-		let template = this.LoadJsonService.addLocalBreak({})
-		let templateObject = <KeyObject> {key: "local_break", path: "config.value[3]", type: "localBreak", value: [template]}
-		this.config.value.splice(3, 0, templateObject)
-		this.existingTemplates.push("local_break")
-	  }
-	  else if(templateType == "content_id" && !this.existingTemplates.includes("content_id")) {
-		let template = this.LoadJsonService.addContentId({})
-		let templateObject = <KeyObject> {key: "content_id", path: "config.value[4]", type: "contentId", value: [template]}
-		this.config.value.splice(4, 0, templateObject)
-		this.existingTemplates.push("content_id")
-	  }
-	  else if(templateType == "placement_opportunity" && !this.existingTemplates.includes("placement_opportunity")) {
-		let template = this.LoadJsonService.addContentId({})
-		let templateObject = <KeyObject> {key: "placement_opportunity", path: "config.value[5]", type: "placementOpportunity", value: [template]}
-		this.config.value.splice(5, 0, templateObject)
-		this.existingTemplates.push("placement_opportunity")
-	  }
-	  else if(templateType == "program" && !this.existingTemplates.includes("program")) {
-		let template = this.LoadJsonService.addContentId({})
-		let templateObject = <KeyObject> {key: "program", path: "config.value[6]", type: "Program", value: [template]}
-		this.config.value.splice(6, 0, templateObject)
-		this.existingTemplates.push("program")
-	  }
-	  else if(templateType == "provider_ad" && !this.existingTemplates.includes("provider_ad")) {
-		let template = this.LoadJsonService.addContentId({})
-		let templateObject = <KeyObject> {key: "provider_ad", path: "config.value[7]", type: "providerAd", value: [template]}
-		this.config.value.splice(7, 0, templateObject)
-		this.existingTemplates.push("provider_ad")
-	  }
-	  console.log(this.config)
-  }
-
   public addEmail(node: any[]) {
 			node.push("new.email@example.com")
 	}
@@ -499,5 +434,30 @@ public formSubmitAttempt: boolean;
   public deleteFromArray(node: any[], index: number) {
 		return node.splice(index, 1);
 	}
+
+
+	setStartOutput() {
+		try {
+			if(this.config.value[0].value[4].value[1] == 'REPLACE') {
+			this.startOutput = true;
+			} else {
+			this.startOutput = false;
+			}
+		} catch {
+			this.startOutput = false;
+		}
+	}
+
+	// 	setEndOutput() {
+	// 	try {
+	// 		if(this.localBreak.value[0].local_break_end.action == 'REPLACE') {
+	// 		this.endOutput = true;
+	// 		} else {
+	// 		this.endOutput = false;
+	// 		}
+	// 	} catch {
+	// 		this.endOutput = false;
+	// 	}
+	// 	}
 }
 export class AppModule {}
