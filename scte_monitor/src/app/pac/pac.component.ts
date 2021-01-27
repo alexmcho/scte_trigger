@@ -15,9 +15,12 @@ export class PacComponent implements OnInit {
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   removeProvider() {
 		var T = document.getElementById("RemoveProvider");
 		T.style.display = "none";  // <-- Set it to block
 	}
 
+=======
+>>>>>>> GerardoBranch
 }

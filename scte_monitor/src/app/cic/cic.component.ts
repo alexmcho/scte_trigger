@@ -15,10 +15,13 @@ export class CicComponent implements OnInit {
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   removeContent() {
 		var T = document.getElementById("RemoveContent");
 		T.style.display = "none";  // <-- Set it to block
 	}
 
 
+=======
+>>>>>>> GerardoBranch
 }

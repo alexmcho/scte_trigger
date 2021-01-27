@@ -15,9 +15,12 @@ export class PcComponent implements OnInit {
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   removeProgram() {
 		var T = document.getElementById("RemoveProgram");
 		T.style.display = "none";  // <-- Set it to block
 	}
 
+=======
+>>>>>>> GerardoBranch
 }

@@ -11,10 +11,13 @@ import { LocalBreak } from "../template_definitions";
 
 import { LoadJsonService } from '../load-json.service';
 import { __values } from 'tslib';
+<<<<<<< HEAD
 import { NetworkNamesService } from '../network-names.service';
 
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+=======
+>>>>>>> GerardoBranch
 
 @Component({
   selector: 'app-local-break',
@@ -37,6 +40,7 @@ export class LocalBreakComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
 
+<<<<<<< HEAD
   // public existingTemplates = []; 
 
   @Input() localBreak: any;
@@ -67,6 +71,22 @@ export class LocalBreakComponent implements OnInit {
   //   }
   // }
 
+=======
+  @Input() localBreak: any;
+
+  constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver) {
+    let url = "/assets/config.json"
+    // let url = "http://127.0.0.1:8000/get/COOKHD-6216.dfw.1080"
+    this.LoadJsonService.getConfig(url).subscribe(data => {
+		this.config = data;
+		console.log(this.config)
+		for(let i = 3; i < this.config.value.length; i++) {
+			this.existingTemplates.push(this.config.value[i].key)
+		}
+	})
+  }
+
+>>>>>>> GerardoBranch
   // remove() {
   //   console.log(this.index)
   //   this.parentRef.clear(this.index == 3)
@@ -102,7 +122,11 @@ export class LocalBreakComponent implements OnInit {
     let index = this.existingTemplates.findIndex(this.config = this.config.value[3]);
     this.existingTemplates.splice(index, 1); // Removes one element, starting from index
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> GerardoBranch
   ngOnInit(): void {
     // console.log(this.localBreak)
   }

@@ -37,6 +37,10 @@
     "@angular/compiler-cli": "~10.1.5",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+<<<<<<< HEAD
+=======
+    "@types/jquery": "^3.5.5",
+>>>>>>> GerardoBranch
     "@types/node": "^12.11.1",
     "angular-cli-ghpages": "^0.6.2",
     "codelyzer": "^6.0.0",

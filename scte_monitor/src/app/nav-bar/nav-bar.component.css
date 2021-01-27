@@ -48,10 +48,14 @@
 }
 
 .sidebar .nav-link.active {
+<<<<<<< HEAD
     /* color: #007bff; */
     color: #5ba3de;
     /* color: #5bc0de; */
     /* color: #292b2c; */
+=======
+    color: #007bff;
+>>>>>>> GerardoBranch
 }
 
 .sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {

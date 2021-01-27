@@ -123,9 +123,15 @@ export class ProgramComponent implements OnInit {
   }
   private rebuildJson(node: any): string {
 		let result = ''
+<<<<<<< HEAD
 		if(node.key == "program") {
 			console.log(node.value[0])
       		result += '"program":'
+=======
+		if(node.key == "national_break") {
+			console.log(node.value[0])
+      		result += '"national_break":'
+>>>>>>> GerardoBranch
 			result += JSON.stringify(node.value[0])
 		}
 		else {

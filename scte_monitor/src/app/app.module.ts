@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+=======
+import { FormsModule } from '@angular/forms'
+>>>>>>> GerardoBranch
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,6 +25,7 @@ import { ProgramComponent } from './program/program.component';
 import { ProviderAdComponent } from './provider-ad/provider-ad.component';
 import { NetworkNamesService } from './network-names.service';
 import { AddControlComponent } from './add-control/add-control.component';
+<<<<<<< HEAD
 
 import {LbcComponent } from './lbc/lbc.component';
 import {CicComponent } from './cic/cic.component';
@@ -28,6 +33,14 @@ import {PocComponent } from './poc/poc.component';
 import {PcComponent } from './pc/pc.component';
 import {PacComponent } from './pac/pac.component';
 import {NbcComponent } from './nbc/nbc.component';
+=======
+import { UpdateComponent } from './update/update.component';
+import { LbcComponent } from './lbc/lbc.component';
+import { CicComponent } from './cic/cic.component';
+import { PocComponent } from './poc/poc.component';
+import { PcComponent } from './pc/pc.component';
+import { PacComponent } from './pac/pac.component';
+>>>>>>> GerardoBranch
 
 const routes: Routes = [ 
 ];
@@ -46,22 +59,37 @@ const routes: Routes = [
     ProgramComponent,
     ProviderAdComponent,
     AddControlComponent,
+<<<<<<< HEAD
+=======
+    UpdateComponent,
+>>>>>>> GerardoBranch
     LbcComponent,
     CicComponent,
     PocComponent,
     PcComponent,
     PacComponent,
+<<<<<<< HEAD
     NbcComponent
+=======
+>>>>>>> GerardoBranch
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+<<<<<<< HEAD
     FormsModule, 
     ReactiveFormsModule,
     NgbModule,
     AppRoutingModule,
     RouterModule.forRoot(routes), 
     RouterModule.forRoot([{ path: '', component: DashboardComponent }]),
+=======
+    FormsModule,
+    NgbModule,
+    AppRoutingModule,
+    RouterModule.forRoot(routes), 
+    RouterModule.forRoot([{ path: '', component: ControlComponent }]),
+>>>>>>> GerardoBranch
     
     RouterModule.forRoot([{ path: 'control', component: ControlComponent, children: [ 
       { path: 'local-break', component: LocalBreakComponent },
