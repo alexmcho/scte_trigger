@@ -421,12 +421,12 @@ public formSubmitAttempt: boolean;
 	this.HttpClient.put("http://127.0.0.1:8000/update/"+ this.NetworkNamesService.getName(), newNetwork ,{headers: postHeaders}).
 	subscribe(Response => console.log(Response));
 	this.router.navigate(['/dashboard']);
-  } 
+  }
 
   public checkExistingTemplates(template: string): boolean{
 	  return this.existingTemplates.includes(template)
   }
-
+  
   public addEmail(node: any[]) {
 			node.push("new.email@example.com")
 	}
