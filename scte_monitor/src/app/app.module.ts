@@ -14,14 +14,8 @@ import { AppBodyComponent } from './app-body/app-body.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
-import { LocalBreakComponent } from './local-break/local-break.component';
-import { ContentIdComponent } from './content-id/content-id.component';
-import { PlacementOpportunityComponent } from './placement-opportunity/placement-opportunity.component';
-import { ProgramComponent } from './program/program.component';
-import { ProviderAdComponent } from './provider-ad/provider-ad.component';
 import { NetworkNamesService } from './network-names.service';
 import { AddControlComponent } from './add-control/add-control.component';
-
 import {LbcComponent } from './lbc/lbc.component';
 import {CicComponent } from './cic/cic.component';
 import {PocComponent } from './poc/poc.component';
@@ -40,11 +34,6 @@ const routes: Routes = [
     AppBodyComponent,
     TopBarComponent,
     NavBarComponent,
-    LocalBreakComponent,
-    ContentIdComponent,
-    PlacementOpportunityComponent,
-    ProgramComponent,
-    ProviderAdComponent,
     AddControlComponent,
     LbcComponent,
     CicComponent,
@@ -64,22 +53,12 @@ const routes: Routes = [
     RouterModule.forRoot([{ path: '', component: DashboardComponent }]),
     
     RouterModule.forRoot([{ path: 'control', component: ControlComponent, children: [ 
-      { path: 'local-break', component: LocalBreakComponent },
-      { path: 'content-id', component: ContentIdComponent },
-      { path: 'placement-opportunity', component: PlacementOpportunityComponent },
-      { path: 'program', component: ProgramComponent },
-      { path: 'provider-ad', component: ProviderAdComponent },
       { path: 'add-control', component: AddControlComponent }
      ]}
     ]),
     
   ],
   entryComponents: [
-    LocalBreakComponent,
-    ContentIdComponent,
-    PlacementOpportunityComponent,
-    ProgramComponent,
-    ProviderAdComponent,
     AddControlComponent
   ],
   providers: [NetworkNamesService],

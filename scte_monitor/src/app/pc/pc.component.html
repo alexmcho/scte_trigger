@@ -1,4 +1,4 @@
-    <ngb-accordion style="margin: 10px" id="RemoveProgram">
+    <ngb-accordion style="margin: 10px" id="RemoveProgram" [destroyOnHide]="false">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -15,7 +15,7 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="time_specified_flag">Time Specified Flag: </label>
-                            <select class="form-control" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:80px">
+                            <select class="form-control" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:200px">
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </select>

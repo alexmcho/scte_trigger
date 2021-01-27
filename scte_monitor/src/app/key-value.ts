@@ -38,7 +38,7 @@ export interface KeyBool {
 export interface KeyObject {
     key: string;
     value: any[];
-    type: "expandable"|"localBreak"|"contentId"|"placementOpportunity"|"Program"|"providerAd";
+    type: "expandable"|"localBreak"|"contentId"|"placementOpportunity"|"Program"|"providerAd"|"nationalBreak";
     path: string;
 }
 

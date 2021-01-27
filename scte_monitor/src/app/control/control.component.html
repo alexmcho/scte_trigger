@@ -183,10 +183,7 @@
                             <th>Action</th><td></td>
                             <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
-                                <option value="{{item.value[1]}}">{{item.value[1]}}</option>
-                                <option value="NOOP">NOOP</option>
-                                <option value="DELETE">DELETE</option>
-                                <option value="REPLACE">REPLACE</option>
+                                <option *ngFor='let options of action1' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -194,7 +191,7 @@
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <!-- <td><select id="local_break_start_input_splice_command" name="splice_command_type_start" class="form-control" > -->
-                            <td><select id="local_break_start_input_splice_command" [(ngModel)]="config?.value[0].value[4].value[2]" name="splice_command_type_start" class="form-control" >
+                            <td><select id="local_break_start_input_splice_command" [(ngModel)]="hello" name="splice_command_type_start" class="form-control" >
                                 <option value="{{item.value[2]}}">{{item.value[2]}}</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
@@ -251,9 +248,7 @@
                         <tr>
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
-                                <option value="{{item.value[7]}}">Current: {{item.value[7]}}</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -469,14 +464,14 @@
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
+                            <td><select id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_output_duration_flag">
                                 <option value="{{item.value[16]}}">{{item.value[16]}}</option>
                                 <option value="true" >true</option>
                                 <option value="false">false</option>
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="local_break_duration_flag=='true'">
+                        <tr *ngIf="local_break_output_duration_flag=='true' && config?.value[0].value[4].value[1]=='REPLACE'">
                             <th>Break Duration</th>
                             <td><select id= "local_break_start_output_break_duration" class="form-control">
                                 <option value="">Change Break Duration Type</option>
@@ -818,126 +813,6 @@
                         </tbody>
                     </table>
                 
-                </ng-template>
-          </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
-  </span>
-
-  <!-- PLACEMENT OPPORTUNITY SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='placement'">
-    <ngb-accordion id="RemovePlacement" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
-      <ngb-panel>
-          <ng-template ngbPanelHeader let-opened="opened">
-            <div class="d-flex align-items-center justify-content-between">
-            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Placement Opportunity</button></h3>
-            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removePlacement()" style="margin-left: auto; font-size:large;">Remove</button></h3>
-            </div>
-            <ng-template ngbPanelContent>
-                  <div >
-                    <!-- Placement Opportunity Start - Input Trigger -->
-                    <!-- Splice Command Type -->
-                    <br><h4>Placement Opportunity Start:</h4>
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="splice_command_type_start">Splice Command Type: </label>
-                            <select  class="form-control" id="placement_splice_comand_type_start" style="margin-left: 10px;">
-                                <option  value="{{item.value[0]}}" >{{item.value[0]}}</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </form>
-                    <!-- Segmentation Type Id  -->
-                    <label for="placement_opportunity_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
-                    <table id="placement_opportunity_start_table" class ="table table-striped">
-                        <tbody>
-                        <tr>
-                        <th>segmentation_type_id</th><td></td>
-                        <td><select id="placement_segmentation_type_id" class="form-control">
-                            <option  value="{{item.value[1]}}" >{{item.value[1]}}</option>
-                            <option value="52">52</option>
-                        </select></td>
-                        </tr>
-                    <!-- Duration Flag for Segmentation Duration -->
-                        <tr>
-                            <th>duration_flag</th><td></td>
-                            <td><select id="placement_duration_flag" class="form-control">
-                                <option  value="{{item.value[2]}}" >{{item.value[2]}}</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
-                            </select></td>
-                        </tr>
-                    <!-- Segmentation Duration - Input -->
-                        <tr >
-                            <th>segmentation_duration</th>
-                            <td ><select (change)="makeExactSegmentationDuration($event.target.value, true)" class="form-control">
-                                <option value="" >Change Segmentation Duration Type</option>
-                                <option value=true>Exact Time (seconds)</option>
-                                <option value=false>Time Range (seconds)</option>
-                            </select></td>
-                        <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min==placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
-                            <td *ngIf="segmentationDurationExact">
-                                <input [(ngModel)]="segmentationDurationExactAmount" (change)="setExactSegmentationDuration(true)" class="form-control" type="number" step=any >
-                            </td>
-                        <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min!=placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
-                            <td >
-                                <div class="form-group row">
-                                    <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                    <div class="col-sm-4">
-                                        <input  id="placement_segmentation_duration_min" class="form-control" type="number" step=any value ="{{item.value[3]}}" placeholder={{item.value[3]}} >
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                    <div class="col-sm-4">
-                                        <input  id="placement_segmentation_duration_max" class="form-control" type="number" step=any value ="{{item.value[4]}}" placeholder={{item.value[4]}}>
-                                    </div>
-                                </div> 
-                            </td>
-                        </tr>
-                    <!-- Properties End -->
-                        </tbody>
-                    </table>
-                <!-- Placement Opportunity Start - Output Trigger -->
-                    <div >
-                        <label for="placement_opportunity_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
-                        <table id="placement_opportunity_start_table" class ="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <th>segmentation_duration</th>
-                                    <td><select (change)="makeExactSegmentationDuration($event.target.value, false)" class="form-control">
-                                        <option value="" >Change Segmentation Duration Type</option>
-                                        <option value=true>Exact Time (seconds)</option>
-                                        <option value=false>Time Range (seconds)</option>
-                                    </select></td>
-                                    <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min==placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
-                                    <!-- <td > -->
-                                    <td *ngIf="segmentationDurationExactOutput">
-                                        <input id="placement_output" class="form-control" type="number" step=any >
-                                    </td>
-                                    <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min!=placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
-                                    <!-- <td *ngIf="!segmentationDurationExactOutput"> -->
-                                        <td>
-                                        <div class="form-group row">
-                                            <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                            <div class="col-sm-4">
-                                                <input  id="placement_output_segmentation_duration_min" class="form-control" type="number" step=any value ="{{item.value[5]}}" placeholder={{item.value[5]}}>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                            <div class="col-sm-4">
-                                                <input id="placement_output_segmentation_duration_max" class="form-control" type="number" step=any value ="{{item.value[6]}}" placeholder={{item.value[6]}}>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Properties End -->
-                    <!-- Properties VCR Hide -->
-                    </div>
                 </ng-template>
           </ng-template>
       </ngb-panel>
@@ -1358,125 +1233,6 @@
         </ng-template>
     </ngb-panel>
   </ngb-accordion>
-  </span>
-  
-  <!-- PROVIDER AD SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='providerad'">
-    <ngb-accordion id="RemoveProvider" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
-      <ngb-panel>
-          <ng-template ngbPanelHeader let-opened="opened">
-              <div class="d-flex align-items-center justify-content-between">
-            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Provider Ad</button></h3>
-            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeProvider()" style="margin-left: auto; font-size:large;">Remove</button></h3>
-        </div>
-            <ng-template ngbPanelContent>
-        <div> 
-          <!-- Provider Ad Start -->
-          <!-- Splice Command Type -->
-          <br><h4>Provider Ad Start:</h4>
-          <form class="form-inline">
-              <div class="form-group">
-                  <label for="splice_command_type_start">Splice Command Type: </label>
-                  <select  class="form-control" id="providerad_splice_comand_type_start" style="margin-left: 10px;">
-                    <option value="{{item.value[0]}}">  {{item.value[0]}}   </option>
-                    <option value="5">5</option>
-                  </select>
-              </div>
-          </form>
-          <!-- Segmentation Type Id  -->
-          <label for="provider_ad_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
-          <table id="provider_ad_start_table" class ="table table-striped">
-              <tbody>
-              <tr>
-              <th>segmentation_type_id</th><td></td>
-              <td><select id="providerad_segmentation_type_id" class="form-control">
-                  <option value="{{item.value[1]}}">  {{item.value[1]}}   </option>
-                  <option value="50">50</option>
-              </select></td>
-              </tr>
-          <!-- Duration Flag for Segmentation Duration -->
-              <tr>
-                  <th>duration_flag</th><td></td>
-                  <td><select id="providerad_duration_flag" class="form-control">
-                      <option value="{{item.value[2]}}">  {{item.value[2]}}   </option>
-                      <option value="true">true</option>
-                      <option value="false">false</option>
-                  </select></td>
-              </tr>
-          <!-- Segmentation Duration - Input -->
-              <tr >
-                  <th>segmentation_duration</th>
-                  <td ><select (change)="makeExactSegmentationDuration($event.target.value, true)" class="form-control">
-                      <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
-                      <option value=true>Exact Time (seconds)</option>
-                      <option value=false>Time Range (seconds)</option>
-                  </select></td>
-              <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min==providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
-                  <td *ngIf="segmentationDurationExact">
-                      <input [(ngModel)]="segmentationDurationExactAmount" (change)="setExactSegmentationDuration(true)" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min}}>
-                  </td>
-              <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min!=providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
-                  <td>
-                      <div class="form-group row">
-                          <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                          <div class="col-sm-4">
-                              <input  id="providerad_segmentation_duration_min" class="form-control" type="number" step=any value = "{{item.value[3]}}" placeholder = {{item.value[3]}}>
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                          <div class="col-sm-4">
-                              <input  id="providerad_segmentation_duration_max" class="form-control" type="number" step=any value = "{{item.value[4]}}" placeholder = {{item.value[4]}}>
-                          </div>
-                      </div> 
-                  </td>
-              </tr>
-      
-          <!-- Properties End -->
-              </tbody>
-          </table>
-      <!-- Provider Ad Start - Output Trigger -->
-          <div >
-              <label for="provider_ad_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
-              <table id="provider_ad_start_table" class ="table table-striped">
-                  <tbody>
-                      <tr >
-                          <th>segmentation_duration</th>
-                          <td ><select (change)="makeExactSegmentationDuration($event.target.value, false)" class="form-control">
-                              <option value=""  >Change Segmentation Duration Type</option>
-                              <option value=true>Exact Time (seconds)</option>
-                              <option value=false>Time Range (seconds)</option>
-                          </select></td>
-                          <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min==providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
-                          <td *ngIf="segmentationDurationExactOutput">
-                              <input [(ngModel)]="segmentationDurationExactAmountOutput" (change)="setExactSegmentationDuration(false)" class="form-control" type="number" step=any placeholder = {{providerAd?.value[0].provider_ad_start.output_trigger.segmentation_duration_min}}>
-                          </td>
-                          <!-- <td *ngIf="providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_min!=providerAd?.value[0].provider_ad_start.input_trigger.segmentation_duration_max"> -->
-                          <td >
-                              <div class="form-group row">
-                                  <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="providerad_output_segmentation_duration_min" class="form-control" type="number" step=any value = "{{item.value[5]}}" placeholder = {{item.value[5]}}>
-                                  </div>
-                              </div>
-                              <div class="form-group row">
-                                  <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="providerad_output_segmentation_duration_max" class="form-control" type="number" step=any value = "{{item.value[6]}}" placeholder = {{item.value[6]}}>
-                                  </div>
-                              </div>                
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-          <!-- Properties End -->
-          <!-- Properties VCR Hide -->
-          </div>
-                </ng-template>
-          </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
   </span>
 
   <!-- NATIONAL BREAK SEGMENT BEGINS HERE -->
