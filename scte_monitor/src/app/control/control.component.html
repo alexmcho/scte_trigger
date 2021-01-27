@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 <script>
   function validateForm() {
@@ -205,7 +207,7 @@
   <div *ngFor="let con of config?.value">
     <div *ngFor="let item of con?.value; let i = index">
       <span *ngIf="item.key=='localbreak'" >
-        <ngb-accordion style="margin: 10px" id="TestsDiv" style="display:block">
+        <ngb-accordion style="margin: 10px" id="TestsDiv" style="display:block" [destroyOnHide]="false">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
@@ -231,9 +233,10 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="splice_command_type_start">Splice Command Type: </label>
-                            <select  id = "local_splice_command_start" name="splice_command_type_start" class="form-control"  style="margin-left: 10px;">
-                                <option  value="{{item.value[1]}}" >Current: {{item.value[1]}}</option>
+                            <select  [(ngModel)]="hello" id = "local_splice_command_start" name="splice_command_type_start" class="form-control"  style="margin-left: 10px;">
+                                <option  value="{{item.value[1]}}" > {{item.value[1]}}</option>
                                 <option value="5">5</option>
+                                <option value="6">6</option>
                             </select>
                         </div>
                     </form>
@@ -245,28 +248,33 @@
                         </tr>
                             <tr>
                                 <th>Action</th><td></td>
-                                <td><select id="local_break_action"  class="form-control" >
-                                    <option  value="{{item.value[2]}}" >Current: {{item.value[2]}}</option>
+                                
+                                <td><select id="local_break_action"  class="select form-control" >
+                                    <option *ngFor='let options of action1' [value]="options">
+                                        {{options}}
+                                      </option>
+                                    <!-- <option  value="{{item.value[2]}}" >{{item.value[2]}}</option>
                                     <option  value="Noop" >NOOP</option>
-                                    <option value="Delete" >DELETE</option>
-                                    <option   value="replace">REPLACE</option>
+                                    <option value="Noop" >NOOP</option>
+                                    <option   value="replace">REPLACE</option> -->
                                 </select></td>
+                                
                                 
                             </tr>
                             <tr>
                                 <th>splice_immediate_flag</th><td></td>
 
                                 <td><select id="local_splice_immidiate_flag" class="form-control">
-                                    <option value="{{item.value[3]}}">Current : {{item.value[3]}}</option>
-                                    <option value = "true">true</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool1' [value]="options">
+                                        {{options}}
+                                      </option>
                                 </select></td>
                             
                             </tr>
                             <tr>
                                 <th>splice_event_id</th><td></td>
                                 <td><select id="local_break_splice_event_id" class="form-control">
-                                    <option value="{{item.value[4]}}">Current : {{item.value[4]}}</option>
+                                    <option value="{{item.value[4]}}">{{item.value[4]}}</option>
                                     <option value="isnumeric">Must Be Numeric</option>
                                 </select></td>
                            
@@ -274,9 +282,11 @@
                             <tr>
                                 <th>duration_flag</th><td></td>
                                 <td><select id="local_break_duration_flag" class="form-control">
-                                    <option value="{{item.value[5]}}">Current : {{item.value[5]}}</option>
-                                    <option value="true" >true</option>
-                                    <option value="false">false</option>
+
+                                    <option *ngFor='let options of bool2' [value]="options">
+                                        {{options}}
+                                      </option>
+
                                 </select></td>
                             </tr>
                             <tr>
@@ -309,9 +319,9 @@
                             <tr >
                                 <th>break_auto_return</th><td></td>
                                 <td><select id="local_break_auto_return" class ="form-control">
-                                    <option value="{{item.value[8]}}">Current : {{item.value[8]}}</option>
-                                    <option value="true">true</option>
-                                    <option value="false" >false</option>
+                                    <option *ngFor='let options of bool3' [value]="options">
+                                        {{options}}
+                                      </option>
                                 </select></td>
                             </tr>
                             <tr></tr>
@@ -324,25 +334,25 @@
                             <tbody>
                                 <tr>
                                     <th>splice_immediate_flag</th><td></td>
-                                    <td><select id="local_break_output_splice_immidiate_flag" class="form-control">
-                                        <option value="{{item.value[9]}}">Current : {{item.value[9]}}</option>
-                                        <option value="true">true</option>
-                                        <option value="false">false</option>
+                                    <td><select id="local_break_output_splice_immidiate_flag" class="form-control" >
+                                        <option *ngFor='let options of bool4' [value]="options">
+                                            {{options}}
+                                          </option>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <th>splice_event_id</th><td></td>
                                     <td><select id="local_break_output_splice_event_id" class="form-control">
-                                        <option value="{{item.value[10]}}">Current : {{item.value[10]}}</option>
+                                        <option value="{{item.value[10]}}">{{item.value[10]}}</option>
                                         <option value="isnumeric">Must Be Numeric</option>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <th>duration_flag</th><td></td>
                                     <td><select id="local_break_output_duration_flag" class="form-control">
-                                        <option value="{{item.value[11]}}">Current : {{item.value[11]}}</option>
-                                        <option value="true" >true</option>
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool5' [value]="options">
+                                            {{options}}
+                                          </option>
                                     </select></td>
                                 </tr>
                                 <tr >
@@ -375,9 +385,9 @@
                                 <tr >
                                     <th>break_auto_return</th><td></td>
                                     <td><select id="local_break_output_break_auto_return" class ="form-control">
-                                        <option value="{{item.value[14]}}">Current : {{item.value[14]}}</option>
-                                        <option value="true">true</option>
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool6' [value]="options">
+                                            {{options}}
+                                          </option>
                                     </select></td>
                                 </tr>
                                 <tr></tr>
@@ -385,7 +395,7 @@
                         </table>
                     </div>
                 <!-- Local Break End -->
-                    <div class="custom-control custom-switch">
+                    <div  class="custom-control custom-switch" *ngIf="hello == '5'" >
                         <input  type="checkbox" class="custom-control-input" >
                         <label class="custom-control-label" for="localBreakEndSwitch">Include Local Break End</label>
                     </div>
@@ -395,7 +405,7 @@
                             <div class="form-group">
                                 <label for="splice_command_type_end">Splice Command Type: </label>
                                 <select id="local_break_splice_command" name="splice_command_type_end" class="form-control"  style="margin-left: 10px;">
-                                    <option value="{{item.value[15]}}">Current : {{item.value[15]}}</option>
+                                    <option value="{{item.value[15]}}"> {{item.value[15]}}</option>
                                     <option value="5">5</option>
                                 </select>
                             </div>
@@ -407,24 +417,23 @@
                                 <tr>
                                     <th>Action</th><td></td>
                                     <td><select id="local_break_end_input_trigger" class="form-control"  aria-placeholder="">
-                                        <option value="{{item.value[16]}}">Current : {{item.value[16]}}</option>
-                                        <option value="NOOP">NOOP</option>
-                                        <option value="DELETE">DELETE</option>
-                                        <option value="REPLACE">REPLACE</option>
+                                        <option *ngFor='let options of action2' [value]="options">
+                                            {{options}}
+                                          </option>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <th>splice_immediate_flag</th><td></td>
                                     <td><select id="local_break_end_input_splice_immidiate_flag" class="form-control">
-                                        <option value="{{item.value[17]}}">Current : {{item.value[17]}}</option>
-                                        <option value="true">true</option>
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool7' [value]="options">
+                                            {{options}}
+                                          </option>
                                     </select></td>
                                 </tr>
                                 <tr>
                                     <th>splice_event_id</th><td></td>
                                     <td><select id="local_break_end_input_splice_event_id" class="form-control">
-                                        <option value="{{item.value[18]}}">Current : {{item.value[18]}}</option>
+                                        <option value="{{item.value[18]}}">{{item.value[18]}}</option>
                                         <option value="isnumeric">Must Be Numeric</option>
                                     </select></td>
                                 </tr>
@@ -438,15 +447,15 @@
                                     <tr>
                                         <th>splice_immediate_flag</th><td></td>
                                         <td><select id="local_break_end_output_splice_immediate_flag" class="form-control">
-                                            <option value="{{item.value[19]}}">Current : {{item.value[19]}}</option>
-                                            <option value="true">true</option>
-                                            <option value="false">false</option>
+                                            <option *ngFor='let options of bool8' [value]="options">
+                                                {{options}}
+                                              </option>
                                         </select></td>
                                     </tr>
                                     <tr>
                                         <th>splice_event_id</th><td></td>
                                         <td><select id="local_break_end_output_splice_event_id" class="form-control">
-                                            <option value="{{item.value[20]}}">Current : {{item.value[20]}}</option>
+                                            <option value="{{item.value[20]}}">{{item.value[20]}}</option>
                                             <option value="isnumeric">Must Be Numeric</option>
                                         </select></td>
                                     </tr>
@@ -468,7 +477,7 @@
 
 
       <span *ngIf="item.key=='contentid'">
-        <ngb-accordion style="margin: 10px">
+        <ngb-accordion style="margin: 10px"   [destroyOnHide]="false">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
@@ -486,7 +495,7 @@
                             <div class="form-group">
                                 <label for="splice_command_type_start">Splice Command Type: </label>
                                 <select id="content_id_splice_command_type_start"  class="form-control"  style="margin-left: 10px;">
-                                    <option  value="{{item.value[0]}}" >Current: {{item.value[0]}}</option>
+                                    <option  value="{{item.value[0]}}" >{{item.value[0]}}</option>
                                     <option value="5">5</option>
                                 </select>
                             </div>
@@ -499,7 +508,7 @@
                             <tr>
                             <th>segmentation_type_id</th><td></td>
                             <td><select id="content_id_segmentation_type_id" class="form-control">
-                                <option  value="{{item.value[1]}}" >Current: {{item.value[1]}}</option>
+                                <option  value="{{item.value[1]}}" >{{item.value[1]}}</option>
                                 <option value="1">1</option>
                             </select></td>
                             </tr>
@@ -515,7 +524,7 @@
      
 
       <span *ngIf="item.key=='placement'">
-        <ngb-accordion style="margin: 10px">
+        <ngb-accordion style="margin: 10px" [destroyOnHide]="false">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
@@ -533,7 +542,7 @@
                             <div class="form-group">
                                 <label for="splice_command_type_start">Splice Command Type: </label>
                                 <select  class="form-control" id="placement_splice_comand_type_start" style="margin-left: 10px;">
-                                    <option  value="{{item.value[0]}}" >Current: {{item.value[0]}}</option>
+                                    <option  value="{{item.value[0]}}" >{{item.value[0]}}</option>
                                     <option value="5">5</option>
                                 </select>
                             </div>
@@ -545,7 +554,7 @@
                             <tr>
                             <th>segmentation_type_id</th><td></td>
                             <td><select id="placement_segmentation_type_id" class="form-control">
-                                <option  value="{{item.value[1]}}" >Current: {{item.value[1]}}</option>
+                                <option  value="{{item.value[1]}}" >{{item.value[1]}}</option>
                                 <option value="52">52</option>
                             </select></td>
                             </tr>
@@ -553,9 +562,9 @@
                             <tr>
                                 <th>duration_flag</th><td></td>
                                 <td><select id="placement_duration_flag" class="form-control">
-                                    <option  value="{{item.value[2]}}" >Current: {{item.value[2]}}</option>
-                                    <option value="true">true</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool9' [value]="options">
+                                        {{options}}
+                                      </option>
                                 </select></td>
                             </tr>
                         <!-- Segmentation Duration - Input -->
@@ -642,7 +651,7 @@
 
 
       <span *ngIf="item.key=='pro'">
-        <ngb-accordion style="margin: 10px">
+        <ngb-accordion style="margin: 10px" [destroyOnHide]="false">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
@@ -661,7 +670,7 @@
                             <div class="form-group">
                                 <label for="splice_command_type_start">Splice Command Type: </label>
                                 <select id="program_splice_comand_type_start" name="splice_command_type_start" class="form-control"  style="margin-left: 10px;">
-                                    <option  value="{{item.value[0]}}" >Current: {{item.value[0]}}</option>
+                                    <option  value="{{item.value[0]}}" >{{item.value[0]}}</option>
                                     <option value="5">5</option>
                                 </select>
                             </div>
@@ -673,7 +682,7 @@
                             <tr>
                             <th>segmentation_type_id</th><td></td>
                             <td><select id="program_segmentation_type_id" class="form-control">
-                                <option  value="{{item.value[1]}}" >Current: {{item.value[1]}}</option>
+                                <option  value="{{item.value[1]}}" >{{item.value[1]}}</option>
                                 <option value="16">16</option>
                             </select></td>
                             </tr>
@@ -681,9 +690,9 @@
                             <tr>
                                 <th>duration_flag</th><td></td>
                                 <td><select id="program_duration_flag" class="form-control">
-                                    <option  value="{{item.value[2]}}" >Current: {{item.value[2]}}</option>
-                                    <option value="true">true</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool10' [value]="options">
+                                        {{options}}
+                                      </option>
                                 </select></td>
                             </tr>
                         <!-- Segmentation Duration - Input -->
@@ -770,7 +779,7 @@
 
 
       <span *ngIf="item.key=='providerad'">
-        <ngb-accordion style="margin: 10px">
+        <ngb-accordion style="margin: 10px" [destroyOnHide]="false">
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                   <div class="d-flex align-items-center justify-content-between">
@@ -789,7 +798,7 @@
                             <div class="form-group">
                                 <label for="splice_command_type_start">Splice Command Type: </label>
                                 <select  class="form-control" id="providerad_splice_comand_type_start" style="margin-left: 10px;">
-                                  <option value="{{item.value[0]}}">  current: {{item.value[0]}}   </option>
+                                  <option value="{{item.value[0]}}">  {{item.value[0]}}   </option>
                                  <option value="5">5</option>
                                 </select>
                             </div>
@@ -801,7 +810,7 @@
                             <tr>
                             <th>segmentation_type_id</th><td></td>
                             <td><select id="providerad_segmentation_type_id" class="form-control">
-                                <option value="{{item.value[1]}}">  current: {{item.value[1]}}   </option>
+                                <option value="{{item.value[1]}}">{{item.value[1]}}   </option>
                                 <option value="50">50</option>
                             </select></td>
                             </tr>
@@ -809,9 +818,9 @@
                             <tr>
                                 <th>duration_flag</th><td></td>
                                 <td><select id="providerad_duration_flag" class="form-control">
-                                    <option value="{{item.value[2]}}">  current: {{item.value[2]}}   </option>
-                                    <option value="true">true</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool11' [value]="options">
+                                        {{options}}
+                                      </option>
                                 </select></td>
                             </tr>
                         <!-- Segmentation Duration - Input -->

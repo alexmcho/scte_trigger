@@ -363,8 +363,12 @@ export class AddControlComponent implements OnInit {
   }
 
   
-
   addNewNetwork() {
+
+
+	// const buttonForValidateLbc = <HTMLInputElement> document.getElementById("buttonForValidateLbc");
+
+	// console.log(buttonForValidateLbc.value)
 
 	const emails = <HTMLInputElement> document.getElementById("emails");
 
@@ -393,20 +397,23 @@ export class AddControlComponent implements OnInit {
 	const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
 	const local_break_end_devation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_devation_tolerance");
 	
-	let localBreakArr= [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
-		local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
-		local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
-		local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
-		local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
-		local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]	
+
 
 	if(this.localIsON){
+		let localBreakArr= [local_expected_splices_hour.value,local_splice_command_start.value,local_break_action.value,local_splice_immidiate_flag.value,local_break_splice_event_id.value,
+			local_break_duration_flag.value, local_break_duration_min.value,local_break_duration_max.value,local_break_auto_return.value,local_break_output_splice_immidiate_flag.value,
+			local_break_output_splice_event_id.value,local_break_output_duration_flag.value,local_break_output_break_duration_min.value, local_break_output_break_duration_max.value,
+			local_break_output_break_auto_return.value, local_break_splice_command.value, local_break_end_input_trigger.value,
+			local_break_end_input_splice_immidiate_flag.value,local_break_end_input_splice_event_id.value,local_break_end_output_splice_immediate_flag.value,
+			local_break_end_output_splice_event_id.value,local_break_end_devation_tolerance.value]	
 	let localJson = JSON.stringify(localBreakArr)
 	var localBreak = JSON.parse(localJson)
 	}
 	else{
 		localBreak = []
 	}
+	
+
 
 	const content_id_splice_command_type_start = <HTMLInputElement> document.getElementById("content_id_splice_command_type_start");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
@@ -492,8 +499,6 @@ export class AddControlComponent implements OnInit {
 		,"providerad":provider
 	
 	}
-
-
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
       this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
 	  .subscribe(Response => console.log(Response));

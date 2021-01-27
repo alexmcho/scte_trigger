@@ -17,6 +17,7 @@ import { CicComponent } from '../cic/cic.component';
 import { PocComponent } from '../poc/poc.component';
 import { PcComponent } from '../pc/pc.component';
 import { PacComponent } from '../pac/pac.component';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 //import { networkInterfaces } from 'os';
 
 @Component({
@@ -31,7 +32,28 @@ export class ControlComponent implements OnInit {
   public config: KeyObject;
   public existingTemplates = <string[]>[];
 
+  listOfOptionsForActions = ["Noop","Delete","Replace"]
+  listOfOptionsForBoolean = ["false","true"]
+  //filtering list
+  action1:String []= []
+  action2:String [] = []
+  bool1:String [] = []
+  bool2:String [] = []
+  bool3:String [] = []
+  bool4:String [] = []
+  bool5:String [] = []
+  bool6:String [] = []
+  bool7:String [] = []
+  bool8:String [] = []
+  bool9:String [] = []
+  bool10:String [] = []
+  bool11:String [] = []
+  bool12:String [] = []
+
+
+
   test:string;
+  
   recipient_emails: string;
   frequency: string;
   network_id: string;
@@ -98,9 +120,61 @@ export class ControlComponent implements OnInit {
 	//let url = "/assets/config.json"
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
-		console.log(this.config)
-	})
+		var stringChecker:String;
+		
+		var list = [this.action1, this.action2]
+		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
+			this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12]
 
+			console.log(this.config.value[0].value[3].value[2])
+		this.action1.push(this.config.value[0].value[3].value[2])
+		this.action2.push(this.config.value[0].value[3].value[16])
+
+		this.bool1.push(this.config.value[0].value[3].value[3])
+		this.bool2.push(this.config.value[0].value[3].value[5])
+		this.bool3.push(this.config.value[0].value[3].value[8])
+		this.bool4.push(this.config.value[0].value[3].value[9])
+		this.bool5.push(this.config.value[0].value[3].value[11])
+		this.bool6.push(this.config.value[0].value[3].value[14])
+		this.bool7.push(this.config.value[0].value[3].value[17])
+		this.bool8.push(this.config.value[0].value[3].value[19])
+		this.bool9.push(this.config.value[0].value[5].value[2])
+		this.bool10.push(this.config.value[0].value[6].value[2])
+		this.bool11.push(this.config.value[0].value[7].value[2])
+		
+		for(let i = 0; i < list.length; i++){
+			for(let j = 0; j < 3; j++)
+			if(list[i].indexOf(this.listOfOptionsForActions[j]) == -1){
+				list[i].push(this.listOfOptionsForActions[j])
+			}
+		}
+
+		for(let i = 0; i < list2.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list2[i].indexOf(this.listOfOptionsForBoolean[j]) == -1){
+				list2[i].push(this.listOfOptionsForBoolean[j])
+			}
+		}
+
+		
+		
+
+        // for(let i = 0 ; i < this.listOfOptionsForActions.length; i++){
+		// 	if(this.listForLocalBreak.indexOf(this.listOfOptionsForActions[i]) == -1){
+		// 		this.listForLocalBreak.push(this.listOfOptionsForActions[i])
+		// 	}
+		// }
+			
+	
+		
+	})
+	
+
+  }
+  ngOnInit(): void {
+
+
+	
   }
   
 
@@ -210,10 +284,6 @@ export class ControlComponent implements OnInit {
 
     // add reference for newly created component
     // this.componentsReferences.push(childComponentRef);
-  }
-
-  ngOnInit(): void {
-	console.log(this.config)
   }
 
   getConfig() {
@@ -364,6 +434,8 @@ export class ControlComponent implements OnInit {
 	const local_break_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_output_break_duration_min");
 	const local_break_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_output_break_duration_max");
 
+	
+	
 	const local_break_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_output_break_auto_return");
 	const local_break_splice_command = <HTMLInputElement> document.getElementById("local_break_splice_command");
 	const local_break_end_input_trigger = <HTMLInputElement> document.getElementById("local_break_end_input_trigger");
