@@ -250,16 +250,16 @@
 
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_input_duration_flag" class="form-control">
-                                <option value="{{item.value[7]}}">{{item.value[7]}}</option>
+                            <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
+                                <option value="{{item.value[7]}}">Current: {{item.value[7]}}</option>
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[7]">
+                        <tr *ngIf="local_break_duration_flag=='true'">
                             <th>Break Duration</th>
-                            <td><select id= "local_break_start_input_break_duration" (change)="makeExactBreakDuration($event.target.value, true)" class="form-control">
+                            <td><select id= "local_break_start_input_break_duration" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
                                 <option>Exact Time (seconds)</option>
                                 <option>Time Range (seconds)</option>
@@ -469,14 +469,14 @@
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_ouput_duration_flag" class="form-control">
+                            <td><select id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
                                 <option value="{{item.value[16]}}">{{item.value[16]}}</option>
                                 <option value="true" >true</option>
                                 <option value="false">false</option>
                             </select></td>
                         </tr>
-  
-                        <tr>
+                        
+                        <tr *ngIf="local_break_duration_flag=='true'">
                             <th>Break Duration</th>
                             <td><select id= "local_break_start_output_break_duration" class="form-control">
                                 <option value="">Change Break Duration Type</option>
@@ -609,7 +609,7 @@
                                     <option value="false">false</option>
                                 </select></td>
                             </tr>
-  
+
                             <tr>
                                 <th>Duration Flag</th><td></td>
                                 <td><select id="local_break_end_input_break_duration_flag" class="form-control">
@@ -686,7 +686,7 @@
                                         <option value="false">false</option>
                                     </select></td>
                                 </tr>
-    
+
                                 <tr>
                                     <th>Duration Flag</th><td></td>
                                     <td><select id="local_break_end_output_break_duration_flag" class="form-control">
@@ -1590,14 +1590,14 @@
 
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="national_break_start_input_duration_flag" class="form-control">
+                            <td><select id="national_break_start_input_duration_flag" class="form-control" [(ngModel)]="national_break_duration_flag">
                                 <option value="{{item.value[7]}}">{{item.value[7]}}</option>
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[7]">
+                        <tr *ngIf="national_break_duration_flag=='true'">
                             <th>Break Duration</th>
                             <td><select id= "national_break_start_input_break_duration" (change)="makeExactBreakDuration($event.target.value, true)" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
@@ -1697,14 +1697,14 @@
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="national_break_start_ouput_duration_flag" class="form-control">
+                            <td><select id="national_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="national_break_duration_flag">
                                 <option value="{{item.value[16]}}">{{item.value[16]}}</option>
                                 <option value="true" >true</option>
                                 <option value="false">false</option>
                             </select></td>
                         </tr>
   
-                        <tr>
+                        <tr *ngIf="national_break_duration_flag=='true'">
                             <th>Break Duration</th>
                             <td><select id= "national_break_start_output_break_duration" class="form-control">
                                 <option value="">Change Break Duration Type</option>
