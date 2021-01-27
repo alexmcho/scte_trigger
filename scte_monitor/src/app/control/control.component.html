@@ -700,7 +700,7 @@
                     </div>
                 </div>
                 <br>
-                <div>
+                <div *ngIf="national_break_include_break_end">
                     <label for="break_duration_deviation_tolerance">Time Separation Deviation Tolerance (seconds):</label>
                     <input id="local_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[33]}}" style="width:auto; display:inline-block; margin-left: 10px;">
                 </div>
@@ -1753,12 +1753,12 @@
                         <tbody>
 
                         <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
-                        <tr>
+                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
                             <th>Splice Command Type</th><td></td>
                             <td><select id="national_break_start_output_splice_command" name="splice_command_type_start" class="form-control">
                                <option value="{{item.value[2]}}">{{item.value[2]}}</option>
-                                <option value="5" >5</option>
-                                <option value="6" >6</option>
+                                <!-- <option value="5" >5</option>
+                                <option value="6" >6</option> -->
                             </select></td>
                         </tr>
 
@@ -2040,7 +2040,7 @@
                     </div>
                 </div>
                 <br>
-                <div>
+                <div *ngIf="national_break_include_break_end">
                     <label for="break_duration_deviation_tolerance">Time Separation Deviation Tolerance (seconds):</label>
                     <input id="national_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[33]}}" style="width:auto; display:inline-block; margin-left: 10px;">
                 </div>
