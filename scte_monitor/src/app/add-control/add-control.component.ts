@@ -308,6 +308,7 @@ export class AddControlComponent implements OnInit {
         var content = JSON.parse(contentJson)
         }
         else{
+          
           content = []
         }
       

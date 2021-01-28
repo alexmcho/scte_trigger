@@ -140,7 +140,7 @@
   <div *ngFor="let item of con?.value; let i = index">
 
   <!-- LOCAL BREAK SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='localbreak'">
+  <span *ngIf="item.key=='localbreak' && item.value?.length > 0">
     <ngb-accordion style="margin: 10px" id="RemoveLocal" [destroyOnHide]="false">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
@@ -179,9 +179,9 @@
 
                         <!-- If Splice Command Type is [6], then remove Action -->
                         <!-- Hide output trigger if action is 'replace' -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                 <option *ngFor='let options of action1' [value]="options">{{options}}</option>
                             </select></td>
@@ -191,7 +191,7 @@
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <!-- <td><select id="local_break_start_input_splice_command" name="splice_command_type_start" class="form-control" > -->
-                            <td><select id="local_break_start_input_splice_command" [(ngModel)]="hello" name="splice_command_type_start" class="form-control" >
+                            <td><select id="local_break_start_input_splice_command" [(ngModel)]="local_break_start_input_splice_command" name="splice_command_type_start" class="form-control" >
                                 <option value="{{item.value[2]}}">{{item.value[2]}}</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
@@ -199,7 +199,7 @@
                         </tr>
 
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="local_break_start_input_splice_command=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[3]}}">{{item.value[3]}}</option>
@@ -217,17 +217,16 @@
                         
                         <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                         <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'"> 
+                        <tr *ngIf="local_break_start_input_splice_command=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="local_break_start_input_out_of_network_indicator" class="form-control">
-                                <option value="{{item.value[4]}}">{{item.value[4]}}</option>
-                                <option value="true">true</option>
+                                <option *ngFor='let options of bool1' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
                         <!-- If Splice Command Type is [5], then show Splice Event Id -->
                         <!-- If Splice Command Type is [6], then remove Out of Splice Event Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'" >
+                        <tr *ngIf="local_break_start_input_splice_command=='5'" >
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_input_splice_event_id" class="form-control">
                                 <option value="{{item.value[5]}}">{{item.value[5]}}</option>
@@ -239,16 +238,14 @@
                         <tr>
                             <th>Immediate Flag</th><td></td>
                             <td><select id="local_break_start_input_splice_immediate_flag" class="form-control">
-                                <option value="{{item.value[6]}}">{{item.value[6]}}</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
                         <tr>
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
-                                <option *ngFor='let options of bool2' [value]="options">{{options}}</option>
+                                <option *ngFor='let options of bool3' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -278,37 +275,36 @@
                         <tr>
                             <th>Break Auto Return</th><td></td>
                             <td><select id="local_break_start_input_break_auto_return" class ="form-control">
-                                <option value="{{item.value[10]}}" >{{item.value[10]}}</option>
-                                <option value="true">true</option>
-                                <option value="false" >false</option>
+                                <option *ngFor='let options of bool4' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
                     </tbody>
                 </table>
   
-            <!-- Local Break Start - Output Trigger -->
-                <div *ngIf="config?.value[0].value[4].value[1]=='REPLACE'">
-
+            <!-- Local Break Start - Output Trigger - Splice Command Type is 5 -->
+                <div *ngIf="local_break_start_input_action=='REPLACE'">
                     <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
 
-                        <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
+                        <!-- If Splice Command Type is [6], then remove Action -->
+                        <!-- Hide output trigger if action is 'replace' -->
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
+                            <th>Action</th><td></td>
+                            <td><select [(ngModel)]="local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
+                                <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                <option *ngFor='let options of action2' [value]="options">{{options}}</option>
+                            </select></td>
+                        </tr>
+                        
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <td><select id="local_break_start_output_splice_command" name="splice_command_type_start" class="form-control">
                                <option value="{{item.value[2]}}">{{item.value[2]}}</option>
-                               <!-- <option value="{{item.value[11}}">{{item.value[11]}}</option>
-                               <option value="5" >5</option>
-                               <option value="6" >6</option> -->
                             </select></td>
                         </tr>
-
-                        <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="local_break_start_input_splice_command=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
@@ -324,15 +320,14 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
-                                <option value="{{item.value[13]}}">{{item.value[13]}}</option>
-                                <option value="true">true</option>
+                                <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[14]}}">{{item.value[14]}}</option>
@@ -344,18 +339,14 @@
                         <tr>
                             <th>Immediate Flag</th><td></td>
                             <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
-                                <option value="{{item.value[15]}}">{{item.value[15]}}</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool6' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_ouput_duration_flag" class="form-control">
-                                <option value="{{item.value[16]}}">{{item.value[16]}}</option>
-                                <option value="true" >true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool7' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
@@ -390,9 +381,7 @@
                         <tr >
                             <th>Break Auto Return</th><td></td>
                             <td><select id="local_break_start_output_break_auto_return" class ="form-control">
-                                <option value="{{item.value[19]}}">{{item.value[19]}}</option>
-                                <option value="true">true</option>
-                                <option value="false" >false</option>
+                                <option *ngFor='let options of bool8' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
@@ -400,12 +389,22 @@
                     </table>
                 </div>
             
-            <!-- Local Break Start - Output Trigger - Splice Command Type 6 -->
+            <!-- Local Break Start - Output Trigger - Splice Command Type is 6 -->
                 <div *ngIf="config?.value[0].value[4].value[2]=='6'">
 
                     <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
+
+                        <!-- If Splice Command Type is [6], then remove Action -->
+                        <!-- Hide output trigger if action is 'replace' -->
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
+                            <th>Action</th><td></td>
+                            <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                <option *ngFor='let options of action2' [value]="options">{{options}}</option>
+                            </select></td>
+                        </tr>
 
                         <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                         <tr>
@@ -420,7 +419,7 @@
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="local_break_start_input_splice_command=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
@@ -436,15 +435,14 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
-                                <option value="{{item.value[13]}}">{{item.value[13]}}</option>
-                                <option value="true">true</option>
+                                <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[14]}}">{{item.value[14]}}</option>
@@ -456,22 +454,18 @@
                         <tr>
                             <th>Immediate Flag</th><td></td>
                             <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
-                                <option value="{{item.value[15]}}">{{item.value[15]}}</option>
-                                <option value="true">true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool6' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
-                        
+
                         <tr>
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_output_duration_flag">
-                                <option value="{{item.value[16]}}">{{item.value[16]}}</option>
-                                <option value="true" >true</option>
-                                <option value="false">false</option>
+                                <option *ngFor='let options of bool7' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="local_break_output_duration_flag=='true' && config?.value[0].value[4].value[1]=='REPLACE'">
+                        <tr *ngIf="local_break_output_duration_flag=='true' && local_break_start_input_splice_command=='REPLACE'">
                             <th>Break Duration</th>
                             <td><select id= "local_break_start_output_break_duration" class="form-control">
                                 <option value="">Change Break Duration Type</option>
@@ -502,9 +496,7 @@
                         <tr >
                             <th>Break Auto Return</th><td></td>
                             <td><select id="local_break_start_output_break_auto_return" class ="form-control">
-                                <option value="{{item.value[19]}}">{{item.value[19]}}</option>
-                                <option value="true">true</option>
-                                <option value="false" >false</option>
+                                <option *ngFor='let options of bool8' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
@@ -518,7 +510,7 @@
                     <input [(ngModel)]="local_break_include_break_end" type="checkbox" class="custom-control-input" id="localBreakEndSwitch">
                     <label class="custom-control-label" for="localBreakEndSwitch">Include Break End</label>
                 </div>
-  
+
             <!-- Local Break End -->
                 <!-- <div> -->
                 <div *ngIf="local_break_include_break_end">
@@ -532,9 +524,19 @@
                     <table id="local_break_end_table" class="table table-striped" >
                         <tbody>
 
+                        <!-- If Splice Command Type is [6], then remove Action -->
+                        <!-- Hide output trigger if action is 'replace' -->
+                            <tr *ngIf="local_break_start_input_splice_command=='5'">
+                                <th>Action</th><td></td>
+                                <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                    <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                    <option *ngFor='let options of action3' [value]="options">{{options}}</option>
+                                </select></td>
+                            </tr>
+
                             <!-- If Splice Command Type is [5], then show Segmentation Type Id -->
                             <!-- If Splice Command Type is [6], then remove Action -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Action</th><td></td>
                                 <td><select id="local_break_end_input_action" class="form-control" >
                                     <option value="{{item.value[20]}}">{{item.value[20]}}</option>
@@ -557,7 +559,7 @@
   
                             <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
                             <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                            <tr *ngIf="local_break_start_input_splice_command=='6'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[22]}}">{{item.value[22]}}</option>
@@ -572,20 +574,19 @@
                                     <option value="51">51&nbsp;  [ Network End ]</option>
                                 </select></td>
                             </tr>
-  
+
                             <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                             <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Out of Network Indicator</th><td></td>
                                 <td><select id="local_break_end_input_out_of_network_indicator" class="form-control">
-                                    <option value="{{item.value[23]}}">{{item.value[23]}}</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool9' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
   
                             <!-- If Splice Command Type is [5], then show Splice Event Id -->
                             <!-- If Splice Command Type is [6], then remove Splice Event Id -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Splice Event Id</th><td></td>
                                 <td><select id="local_break_end_input_splice_event_id" class="form-control">
                                     <option value="{{item.value[24]}}">{{item.value[24]}}</option>
@@ -596,20 +597,17 @@
                             
                             <!-- If Splice Command Type is [5], then show Splice Immediate Flag-->
                             <!-- If Splice Command Type is [6], then remove Splice Immediate Flag -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Immediate Flag</th><td></td>
                                 <td><select id="local_break_end_input_splice_immediate_flag" class="form-control">
-                                    <option value="{{item.value[25]}}">{{item.value[25]}}</option>
-                                    <option value="true">true</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool10' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
                             <tr>
                                 <th>Duration Flag</th><td></td>
                                 <td><select id="local_break_end_input_break_duration_flag" class="form-control">
-                                    <option value="{{item.value[26]}}">{{item.value[26]}}</option>
-                                    <option value="false">false</option>
+                                    <option *ngFor='let options of bool11' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
   
@@ -620,6 +618,16 @@
                         <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                         <table id="local_break_end_table" class="table table-striped" >
                             <tbody>
+
+                                <!-- If Splice Command Type is [6], then remove Action -->
+                                <!-- Hide output trigger if action is 'replace' -->
+                                <tr *ngIf="local_break_start_input_splice_command=='5'">
+                                    <th>Action</th><td></td>
+                                    <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                        <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                        <option *ngFor='let options of action4' [value]="options">{{options}}</option>
+                                    </select></td>
+                                </tr>
     
                                 <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                                 <tr>
@@ -631,10 +639,10 @@
                                         <option value="6">6</option> -->
                                     </select></td>
                                 </tr>
-  
+
                                 <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
                                 <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                                <tr *ngIf="local_break_start_input_splice_command=='6'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[28]}}">{{item.value[28]}}</option>
@@ -652,17 +660,16 @@
   
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="local_break_start_input_splice_command=='5'">
                                     <th>Out of Network Indicator</th><td></td>
                                     <td><select id="local_break_end_output_out_of_network_indicator" class="form-control">
-                                        <option value="{{item.value[29]}}">{{item.value[29]}}</option>
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool12' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
                                 
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="local_break_start_input_splice_command=='5'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="local_break_end_output_splice_event_id" class="form-control">
                                         <option value="{{item.value[31]}}">{{item.value[31]}}</option>
@@ -673,20 +680,17 @@
 
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="local_break_start_input_splice_command=='5'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select id="local_break_end_output_splice_immediate_flag" class="form-control">
-                                        <option value="{{item.value[30]}}">{{item.value[30]}}</option>
-                                        <option value="true">true</option>
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool13' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
                                 <tr>
                                     <th>Duration Flag</th><td></td>
                                     <td><select id="local_break_end_output_break_duration_flag" class="form-control">
-                                        <option value="{{item.value[32]}}">{{item.value[32]}}</option>   
-                                        <option value="false">false</option>
+                                        <option *ngFor='let options of bool14' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
   
@@ -706,8 +710,8 @@
   </span>
 
   <!-- CONTENT ID SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='contentid'" id="contentId">
-    <ngb-accordion id="RemoveContent" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
+  <span *ngIf="item.key=='contentid' && item.value?.length > 0" id="contentId" value="true">
+    <ngb-accordion value="true" id="RemoveContent" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="closed">
             <div class="d-flex align-items-center justify-content-between">
@@ -820,7 +824,7 @@
   </span>
 
   <!-- PROGRAM SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='pro'">
+  <span *ngIf="item.key=='pro' && item.value?.length > 0">
   <ngb-accordion style="margin: 10px" id="RemoveProgram" [destroyOnHide]="false">
     <ngb-panel>
         <ng-template ngbPanelHeader let-opened="opened">
@@ -1236,7 +1240,7 @@
   </span>
 
   <!-- NATIONAL BREAK SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='nationalbreak'">
+  <span *ngIf="item.key=='nationalbreak' && item.value?.length > 0">
     <ngb-accordion style="margin: 10px" id="RemoveNational" [destroyOnHide]="false">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
@@ -1275,9 +1279,9 @@
 
                         <!-- If Splice Command Type is [6], then remove Action -->
                         <!-- Hide output trigger if action is 'replace' -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="config?.value[0].value[7].value[1]" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="nationalBreak?.value[0].national_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                 <option value="{{item.value[1]}}">{{item.value[1]}}</option>
                                 <option value="NOOP">NOOP</option>
@@ -1290,7 +1294,7 @@
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <!-- <td><select id="national_break_start_input_splice_command" name="splice_command_type_start" class="form-control" > -->
-                            <td><select id="national_break_start_input_splice_command" [(ngModel)]="config?.value[0].value[4].value[2]" name="splice_command_type_start" class="form-control" >
+                            <td><select id="national_break_start_input_splice_command" [(ngModel)]="config?.value[0].value[7].value[2]" name="splice_command_type_start" class="form-control" >
                                 <option value="{{item.value[2]}}">{{item.value[2]}}</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
@@ -1316,7 +1320,7 @@
                         
                         <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                         <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'"> 
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="national_break_start_input_out_of_network_indicator" class="form-control">
                                 <option value="{{item.value[4]}}">{{item.value[4]}}</option>
@@ -1326,7 +1330,7 @@
 
                         <!-- If Splice Command Type is [5], then show Splice Event Id -->
                         <!-- If Splice Command Type is [6], then remove Out of Splice Event Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'" >
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'" >
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_input_splice_event_id" class="form-control">
                                 <option value="{{item.value[5]}}">{{item.value[5]}}</option>
@@ -1389,11 +1393,24 @@
                 </table>
   
             <!-- National Break Start - Output Trigger -->
-                <div *ngIf="config?.value[0].value[4].value[1]=='REPLACE'">
+                <div *ngIf="config?.value[0].value[7].value[1]=='REPLACE'">
 
                     <label for="national_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
+
+                        <!-- If Splice Command Type is [6], then remove Action -->
+                        <!-- Hide output trigger if action is 'replace' -->
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
+                            <th>Action</th><td></td>
+                            <td><select [(ngModel)]="config?.value[0].value[7].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                <!-- <td><select [(ngModel)]="nationalBreak?.value[0].national_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                <option value="{{item.value[1]}}">{{item.value[1]}}</option>
+                                <option value="NOOP">NOOP</option>
+                                <option value="DELETE">DELETE</option>
+                                <option value="REPLACE">REPLACE</option>
+                            </select></td>
+                        </tr>
 
                         <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                         <tr>
@@ -1409,7 +1426,7 @@
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
@@ -1425,7 +1442,7 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="national_break_start_output_out_of_network_indicator" class="form-control">
                                 <option value="{{item.value[13]}}">{{item.value[13]}}</option>
@@ -1433,7 +1450,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[14]}}">{{item.value[14]}}</option>
@@ -1502,14 +1519,27 @@
                 </div>
             
             <!-- National Break Start - Output Trigger - Splice Command Type 6 -->
-                <div *ngIf="config?.value[0].value[4].value[2]=='6'">
+                <div *ngIf="config?.value[0].value[7].value[2]=='6'">
 
                     <label for="national_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
 
+                        <!-- If Splice Command Type is [6], then remove Action -->
+                        <!-- Hide output trigger if action is 'replace' -->
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
+                            <th>Action</th><td></td>
+                            <td><select [(ngModel)]="config?.value[0].value[7].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                <!-- <td><select [(ngModel)]="nationalBreak?.value[0].national_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                <option value="{{item.value[1]}}">{{item.value[1]}}</option>
+                                <option value="NOOP">NOOP</option>
+                                <option value="DELETE">DELETE</option>
+                                <option value="REPLACE">REPLACE</option>
+                            </select></td>
+                        </tr>
+
                         <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='6'">
                             <th>Splice Command Type</th><td></td>
                             <td><select id="national_break_start_output_splice_command" name="splice_command_type_start" class="form-control">
                                <option value="{{item.value[2]}}">{{item.value[2]}}</option>
@@ -1521,7 +1551,7 @@
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                         <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
@@ -1537,7 +1567,7 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="national_break_start_output_out_of_network_indicator" class="form-control">
                                 <option value="{{item.value[13]}}">{{item.value[13]}}</option>
@@ -1545,7 +1575,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                        <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[14]}}">{{item.value[14]}}</option>
@@ -1635,7 +1665,7 @@
 
                             <!-- If Splice Command Type is [5], then show Segmentation Type Id -->
                             <!-- If Splice Command Type is [6], then remove Action -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                 <th>Action</th><td></td>
                                 <td><select id="national_break_end_input_action" class="form-control" >
                                     <option value="{{item.value[20]}}">{{item.value[20]}}</option>
@@ -1658,7 +1688,7 @@
   
                             <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
                             <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                            <tr *ngIf="config?.value[0].value[7].value[2]=='6'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[22]}}">{{item.value[22]}}</option>
@@ -1676,7 +1706,7 @@
   
                             <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                             <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                 <th>Out of Network Indicator</th><td></td>
                                 <td><select id="national_break_end_input_out_of_network_indicator" class="form-control">
                                     <option value="{{item.value[23]}}">{{item.value[23]}}</option>
@@ -1686,7 +1716,7 @@
   
                             <!-- If Splice Command Type is [5], then show Splice Event Id -->
                             <!-- If Splice Command Type is [6], then remove Splice Event Id -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                 <th>Splice Event Id</th><td></td>
                                 <td><select id="national_break_end_input_splice_event_id" class="form-control">
                                     <option value="{{item.value[24]}}">{{item.value[24]}}</option>
@@ -1697,7 +1727,7 @@
                             
                             <!-- If Splice Command Type is [5], then show Splice Immediate Flag-->
                             <!-- If Splice Command Type is [6], then remove Splice Immediate Flag -->
-                            <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                            <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                 <th>Immediate Flag</th><td></td>
                                 <td><select id="national_break_end_input_splice_immediate_flag" class="form-control">
                                     <option value="{{item.value[25]}}">{{item.value[25]}}</option>
@@ -1721,6 +1751,19 @@
                         <label for="national_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                         <table id="national_break_end_table" class="table table-striped" >
                             <tbody>
+
+                                <!-- If Splice Command Type is [6], then remove Action -->
+                                <!-- Hide output trigger if action is 'replace' -->
+                                <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
+                                    <th>Action</th><td></td>
+                                    <td><select [(ngModel)]="config?.value[0].value[7].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                                        <!-- <td><select [(ngModel)]="nationalBreak?.value[0].national_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                        <option value="{{item.value[1]}}">{{item.value[1]}}</option>
+                                        <option value="NOOP">NOOP</option>
+                                        <option value="DELETE">DELETE</option>
+                                        <option value="REPLACE">REPLACE</option>
+                                    </select></td>
+                                </tr>
     
                                 <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                                 <tr>
@@ -1735,7 +1778,7 @@
   
                                 <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
                                 <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='6'">
+                                <tr *ngIf="config?.value[0].value[7].value[2]=='6'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[28]}}">{{item.value[28]}}</option>
@@ -1753,7 +1796,7 @@
   
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                     <th>Out of Network Indicator</th><td></td>
                                     <td><select id="national_break_end_output_out_of_network_indicator" class="form-control">
                                         <option value="{{item.value[29]}}">{{item.value[29]}}</option>
@@ -1763,7 +1806,7 @@
                                 
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="national_break_end_output_splice_event_id" class="form-control">
                                         <option value="{{item.value[31]}}">{{item.value[31]}}</option>
@@ -1774,7 +1817,7 @@
 
                                 <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
                                 <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="config?.value[0].value[4].value[2]=='5'">
+                                <tr *ngIf="config?.value[0].value[7].value[2]=='5'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select id="national_break_end_output_splice_immediate_flag" class="form-control">
                                         <option value="{{item.value[30]}}">{{item.value[30]}}</option>

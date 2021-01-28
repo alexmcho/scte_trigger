@@ -27,7 +27,7 @@ export class ControlComponent implements OnInit {
 
   test:string;
 
-  listOfOptionsForActions = ["Noop","Delete","Replace"]
+  listOfOptionsForActions = ["NOOP","DELETE","REPLACE"]
   listOfOptionsForBoolean = ["false","true"]
   //filtering list
   action1:String [] = []
@@ -91,6 +91,11 @@ export class ControlComponent implements OnInit {
   break_duration_deviation_tolerance: string;
   stringArr: [];
 
+  localIsON:boolean = false;
+  contentIsOn:boolean = false;
+  providerIsOn:boolean = false;
+  placementIsOn:boolean = false;
+
   public startOutput: boolean;
   public endOutput: boolean;
 
@@ -122,27 +127,39 @@ public formSubmitAttempt: boolean;
 		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
 		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12]
 
+
+
 		console.log(this.config.value[0].value[3].value[2])
 
 
 		//Local Break - 
 		this.action1.push(this.config.value[0].value[3].value[1])
 		this.action2.push(this.config.value[0].value[3].value[20])
+		this.action3.push(this.config.value[0].value[3].value[1])
+		this.action4.push(this.config.value[0].value[3].value[20])
 		
 		this.bool1.push(this.config.value[0].value[3].value[4])
 		this.bool2.push(this.config.value[0].value[3].value[6])
 		this.bool3.push(this.config.value[0].value[3].value[7])
+
 		this.bool4.push(this.config.value[0].value[3].value[10])
 		this.bool5.push(this.config.value[0].value[3].value[13])
 		this.bool6.push(this.config.value[0].value[3].value[15])
 		this.bool7.push(this.config.value[0].value[3].value[16])
+
 		this.bool8.push(this.config.value[0].value[3].value[19])
-		this.bool1.push(this.config.value[0].value[3].value[23])
-		this.bool2.push(this.config.value[0].value[3].value[25])
-		this.bool3.push(this.config.value[0].value[3].value[26])
-		this.bool4.push(this.config.value[0].value[3].value[29])
-		this.bool5.push(this.config.value[0].value[3].value[30])
-		this.bool6.push(this.config.value[0].value[3].value[32])
+		this.bool9.push(this.config.value[0].value[3].value[23])
+		this.bool10.push(this.config.value[0].value[3].value[25])
+		this.bool11.push(this.config.value[0].value[3].value[26])
+
+		this.bool12.push(this.config.value[0].value[3].value[29])
+		this.bool13.push(this.config.value[0].value[3].value[30])
+		this.bool14.push(this.config.value[0].value[3].value[32])
+
+		this.bool15.push(this.config.value[0].value[3].value[26])
+		this.bool16.push(this.config.value[0].value[3].value[29])
+		this.bool17.push(this.config.value[0].value[3].value[30])
+		this.bool18.push(this.config.value[0].value[3].value[32])
 
 		//ContentId - 
 		this.bool7.push(this.config.value[0].value[5].value[2])
@@ -180,7 +197,36 @@ public formSubmitAttempt: boolean;
 		this.bool33.push(this.config.value[0].value[7].value[30])
 		this.bool34.push(this.config.value[0].value[7].value[32])
 
+		// Splice Command Type - 5 or 6
+		// {{item.value[2]}}
+		// {{item.value[11]}} - unused 
+		// {{item.value[21]}}
+		// {{item.value[27]}} - unused 
+
+		// Splice Event Id - Must Be Numeric - Not Numeric 
+		// {{item.value[5]}}
+		// {{item.value[14]}}
+		// {{item.value[24]}}
+		// {{item.value[31]}}
+
+		// Regular Numbers:
+		// {{item.value[0]}} Validate Splice Count
+		// {{item.value[33]}} Deviation Tolerance
 		
+		// Segmentation Type id: 
+		// {{item.value[3]}}
+		// {{item.value[12]}}
+		// {{item.value[22]}}
+		// {{item.value[28]}}
+
+		// Break Duration 
+		// {{item.value[8]}}
+		// {{item.value[9]}} 
+		// {{item.value[17]}}
+		// {{item.value[18]}}
+
+
+
 		
 		for(let i = 0; i < list.length; i++){
 			for(let j = 0; j < 3; j++)
@@ -254,6 +300,7 @@ public formSubmitAttempt: boolean;
 		// T.style.display = "none";  // <-- Set it to block
 		var T = document.getElementById("contentId");
 		(T as HTMLElement).remove();
+		this.contentIsOn = false; 
 	}
 
 	removePlacement() {
@@ -286,12 +333,18 @@ public formSubmitAttempt: boolean;
   }
   
   createContentIdComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
-    let childComponentRef = this.VCR.createComponent(componentFactory);
-	let childComponent = childComponentRef.instance;
-	
-    childComponent.index = ++this.contentid_index;
-    childComponent.parentRef = this;
+	if(!this.contentIsOn){
+		this.contentIsOn = true;
+		let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
+		  let childComponentRef = this.VCR.createComponent(componentFactory);
+		let childComponent = childComponentRef.instance;
+		
+		  childComponent.index = ++this.contentid_index;
+		  // childComponent.parentRef = this;
+	  
+		  // add reference for newly created component
+		// this.componentsReferences.push(childComponentRef);
+		}
   }
 
   createPlacementOpportunityComponent() {
@@ -396,6 +449,7 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
+	const contentid = <HTMLInputElement> document.getElementById("contentid");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
 	const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
 	const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
@@ -406,6 +460,19 @@ public formSubmitAttempt: boolean;
 	const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
 	const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
 
+	if (this.contentIsOn || contentid) {
+        let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
+            content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
+            content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
+        
+        let contentJson = JSON.stringify(contentIdArry)
+        var content = JSON.parse(contentJson)
+        }
+        else{
+          
+          content = []
+        }
+	
 	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
 	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
 	const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
@@ -482,40 +549,39 @@ public formSubmitAttempt: boolean;
 	let newConfig = {
 		"network_id": this.NetworkNamesService.getName()
 		,"emails": emails.value
-		,"validation_frequency": validation_frequency.value
-		,"localbreak":[local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
-			local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
-			local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
-			local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
-			local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
-			local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
-			local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-			local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-			local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-			local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-			local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-			local_break_end_deviation_tolerance.value]
-		,"contentid":[content_id_segmentation_type_id.value, content_id_splice_command_type.value, content_id_segmentation_event_cancel_indicator.value, 
-            content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
-            content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
-		,"pro":[program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-			program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-			program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-			program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
-			program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
-			program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value]
-		,"nationalbreak":[national_break_expected_splices_hour.value,national_break_start_input_action.value,national_break_start_input_splice_command.value,
-            national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
-            national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
-            national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
-            national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
-            national_break_start_output_splice_immediate_flag.value,national_break_start_ouput_duration_flag.value,national_break_start_output_break_duration_min.value,
-            national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
-            national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
-            national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
-            national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
-            national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
-			national_break_end_deviation_tolerance.value]
+		
+		// ,"localbreak":[local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
+		// 	local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
+		// 	local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
+		// 	local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
+		// 	local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
+		// 	local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
+		// 	local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
+		// 	local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
+		// 	local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
+		// 	local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
+		// 	local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
+		// 	local_break_end_deviation_tolerance.value]
+		,"contentid": content 
+		// ,"pro":[program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+		// 	program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+		// 	program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+		// 	program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
+		// 	program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
+		// 	program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value]
+		// ,"nationalbreak":[national_break_expected_splices_hour.value,national_break_start_input_action.value,national_break_start_input_splice_command.value,
+        //     national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
+        //     national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
+        //     national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
+        //     national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
+        //     national_break_start_output_splice_immediate_flag.value,national_break_start_ouput_duration_flag.value,national_break_start_output_break_duration_min.value,
+        //     national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
+        //     national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
+        //     national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
+        //     national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
+        //     national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
+		// 	national_break_end_deviation_tolerance.value]
+		
         //   ,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
         //     placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]			
         //   ,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
