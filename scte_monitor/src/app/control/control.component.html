@@ -140,8 +140,13 @@
   <div *ngFor="let item of con?.value; let i = index">
 
   <!-- LOCAL BREAK SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='localbreak' && item.value?.length > 0">
-    <ngb-accordion style="margin: 10px" id="RemoveLocal" [destroyOnHide]="false">
+  <span *ngIf="item.key=='localbreak' && item.value?.length == 0" >
+    <input type="hidden" id="localBreakTrue"  value="false">
+  </span>
+
+  <span *ngIf="item.key=='localbreak' && item.value?.length > 0" id="localBreak" >
+    <input type="hidden" id="localBreakTrue"  value="true">
+    <ngb-accordion value="true" id="RemoveLocal" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
@@ -710,7 +715,12 @@
   </span>
 
   <!-- CONTENT ID SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='contentid' && item.value?.length > 0" id="contentId" value="true">
+  <span *ngIf="item.key=='contentid' && item.value?.length == 0" >
+    <input type="hidden" id="contentIdTrue"  value="false">
+  </span>
+
+  <span *ngIf="item.key=='contentid' && item.value?.length > 0" id="contentId" >
+    <input type="hidden" id="contentIdTrue"  value="true">
     <ngb-accordion value="true" id="RemoveContent" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="closed">
@@ -824,8 +834,13 @@
   </span>
 
   <!-- PROGRAM SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='pro' && item.value?.length > 0">
-  <ngb-accordion style="margin: 10px" id="RemoveProgram" [destroyOnHide]="false">
+  <span *ngIf="item.key=='pro' && item.value?.length == 0" >
+    <input type="hidden" id="programTrue"  value="false">
+  </span>
+
+  <span *ngIf="item.key=='pro' && item.value?.length > 0" id="pro" >
+    <input type="hidden" id="programTrue"  value="true">
+    <ngb-accordion value="true" id="RemoveProgram" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
     <ngb-panel>
         <ng-template ngbPanelHeader let-opened="opened">
           <div class="d-flex align-items-center justify-content-between">
@@ -1240,9 +1255,14 @@
   </span>
 
   <!-- NATIONAL BREAK SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='nationalbreak' && item.value?.length > 0">
-    <ngb-accordion style="margin: 10px" id="RemoveNational" [destroyOnHide]="false">
-      <ngb-panel>
+  <span *ngIf="item.key=='nationalbreak' && item.value?.length == 0" >
+    <input type="hidden" id="nationalBreakTrue"  value="false">
+  </span>
+
+  <span *ngIf="item.key=='nationalbreak' && item.value?.length > 0" id="nationalBreak" >
+    <input type="hidden" id="nationalBreakTrue"  value="true">
+    <ngb-accordion value="true" id="RemoveNational" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
+    <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">National Break</button></h3>

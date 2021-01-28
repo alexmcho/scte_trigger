@@ -109,10 +109,12 @@ export class ControlComponent implements OnInit {
   break_duration_deviation_tolerance: string;
   stringArr: [];
 
-  localIsON:boolean = false;
+  localIsOn:boolean = false;
   contentIsOn:boolean = false;
   providerIsOn:boolean = false;
   placementIsOn:boolean = false;
+  programIsOn:boolean = false;
+  nationalIsOn:boolean = false;
 
   public startOutput: boolean;
   public endOutput: boolean;
@@ -130,7 +132,12 @@ public formSubmitAttempt: boolean;
   placementopportunity_index: number = 5;
   program_index: number = 6;
   providerad_index: number = 7;
+  nationalbreak_index: number = 8;
   networklink: String;
+  contentIdViewCheck:boolean;
+  localBreakViewCheck:boolean;
+  programViewCheck:boolean;
+  nationalBreakViewCheck:boolean;
 
   constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private modalService: NgbModal, private NetworkNamesService:NetworkNamesService, private HttpClient: HttpClient, private router:Router, private formBuilder: FormBuilder) {
 	let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
@@ -338,8 +345,12 @@ public formSubmitAttempt: boolean;
 	}
   
 	removeLocal() {
-		var T = document.getElementById("RemoveLocal");
-		T.style.display = "none";  // <-- Set it to block
+		// var T = document.getElementById("RemoveLocal");
+		// T.style.display = "none";  // <-- Set it to block
+		var T = document.getElementById("localBreak");
+		(T as HTMLElement).remove();
+		this.localIsOn = false; 
+		this.localBreakViewCheck = false;
 	}
 
 	removeContent() {
@@ -348,6 +359,7 @@ public formSubmitAttempt: boolean;
 		var T = document.getElementById("contentId");
 		(T as HTMLElement).remove();
 		this.contentIsOn = false; 
+		this.contentIdViewCheck = false;
 	}
 
 	removePlacement() {
@@ -356,8 +368,12 @@ public formSubmitAttempt: boolean;
 	}
 
 	removeProgram() {
-		var T = document.getElementById("RemoveProgram");
-		T.style.display = "none";  // <-- Set it to block
+		// var T = document.getElementById("RemoveProgram");
+		// T.style.display = "none";  // <-- Set it to block
+		var T = document.getElementById("pro");
+		(T as HTMLElement).remove();
+		this.programIsOn = false; 
+		this.programViewCheck = false;
 	}
 
 	removeProvider() {
@@ -366,27 +382,64 @@ public formSubmitAttempt: boolean;
 	}
 
 	removeNational() {
-		var T = document.getElementById("RemoveNational");
-		T.style.display = "none";  // <-- Set it to block
+		// var T = document.getElementById("RemoveNational");
+		// T.style.display = "none";  // <-- Set it to block
+		var T = document.getElementById("nationalBreak");
+		(T as HTMLElement).remove();
+		this.nationalIsOn = false; 
+		this.nationalBreakViewCheck = false;
 	}
   
   createLocalBreakComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
-    let childComponentRef = this.VCR.createComponent(componentFactory);
-	let childComponent = childComponentRef.instance;
+	// let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
+    // let childComponentRef = this.VCR.createComponent(componentFactory);
+	// let childComponent = childComponentRef.instance;
 	
-    childComponent.index = ++this.localbreak_index;
-    childComponent.parentRef = this;
+    // childComponent.index = ++this.localbreak_index;
+	// childComponent.parentRef = this;
+	let localAlreadyThere:Boolean = false;
+	  
+	const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
+	if(localBreakTrue.value  == "true"){
+		localAlreadyThere = true;
+	}
+	
+	if(!this.localIsOn && !localAlreadyThere){
+		this.localIsOn = true;
+		this.contentIdViewCheck = true;
+		let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
+		let childComponentRef = this.VCR.createComponent(componentFactory);
+		let childComponent = childComponentRef.instance;
+		
+		childComponent.index = ++this.localbreak_index;
+
+		// childComponent.parentRef = this;
+	
+		// add reference for newly created component
+		// this.componentsReferences.push(childComponentRef);
+		}
+	
   }
   
   createContentIdComponent() {
-	if(!this.contentIsOn){
+	  //checking if view already has contentid
+	  //if not allow a new content id
+	 let contentAlreadyThere:Boolean = false;
+	  
+	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
+	if(contentIdTrue.value  == "true"){
+		contentAlreadyThere = true;
+	}
+
+	if(!this.contentIsOn && !contentAlreadyThere){
 		this.contentIsOn = true;
+		this.contentIdViewCheck = true;
 		let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
 		  let childComponentRef = this.VCR.createComponent(componentFactory);
 		let childComponent = childComponentRef.instance;
 		
 		  childComponent.index = ++this.contentid_index;
+
 		  // childComponent.parentRef = this;
 	  
 		  // add reference for newly created component
@@ -404,12 +457,33 @@ public formSubmitAttempt: boolean;
   }
 
   createProgramComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
-    let childComponentRef = this.VCR.createComponent(componentFactory);
-	let childComponent = childComponentRef.instance;
+	// let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
+    // let childComponentRef = this.VCR.createComponent(componentFactory);
+	// let childComponent = childComponentRef.instance;
 	
-    childComponent.index = ++this.program_index;
-    childComponent.parentRef = this;
+    // childComponent.index = ++this.program_index;
+	// childComponent.parentRef = this;
+	let programAlreadyThere:Boolean = false;
+	  
+	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
+	if(programTrue.value  == "true"){
+		programAlreadyThere = true;
+	}
+
+	if(!this.programIsOn && !programAlreadyThere){
+		this.programIsOn = true;
+		this.programViewCheck = true;
+		let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
+		let childComponentRef = this.VCR.createComponent(componentFactory);
+		let childComponent = childComponentRef.instance;
+		
+		childComponent.index = ++this.program_index;
+
+		// childComponent.parentRef = this;
+	
+		// add reference for newly created component
+		// this.componentsReferences.push(childComponentRef);
+		}
   }
 
   createProviderAdComponent() {
@@ -422,12 +496,33 @@ public formSubmitAttempt: boolean;
   }
 
   createNationalBreakComponent() {
-	let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
-    let childComponentRef = this.VCR.createComponent(componentFactory);
-	let childComponent = childComponentRef.instance;
+	// let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
+    // let childComponentRef = this.VCR.createComponent(componentFactory);
+	// let childComponent = childComponentRef.instance;
 	
-    childComponent.index = ++this.providerad_index;
-    childComponent.parentRef = this;
+    // childComponent.index = ++this.providerad_index;
+	// childComponent.parentRef = this;
+	let nationalAlreadyThere:Boolean = false;
+	  
+	const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
+	if(nationalBreakTrue.value  == "true"){
+		nationalAlreadyThere = true;
+	}
+
+	if(!this.nationalIsOn && !nationalAlreadyThere){
+		this.nationalIsOn = true;
+		this.contentIdViewCheck = true;
+		let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
+		let childComponentRef = this.VCR.createComponent(componentFactory);
+		let childComponent = childComponentRef.instance;
+		
+		childComponent.index = ++this.nationalbreak_index;
+
+		// childComponent.parentRef = this;
+	
+		// add reference for newly created component
+		// this.componentsReferences.push(childComponentRef);
+		}
   }
 
   ngOnInit(): void {
@@ -460,6 +555,7 @@ public formSubmitAttempt: boolean;
 	const emails = <HTMLInputElement> document.getElementById("emails");
 	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
 
+	const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
 	const local_break_expected_splices_hour = <HTMLInputElement> document.getElementById("local_break_expected_splices_hour");
 	const local_break_start_input_action = <HTMLInputElement> document.getElementById("local_break_start_input_action");
 	const local_break_start_input_splice_command = <HTMLInputElement> document.getElementById("local_break_start_input_splice_command");
@@ -496,7 +592,42 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
-	const contentid = <HTMLInputElement> document.getElementById("contentid");
+	try{
+		if(localBreakTrue.value  == "true"){
+			this.localBreakViewCheck = true
+		}
+	}catch{}
+
+	if(this.localBreakViewCheck){
+		if (this.localIsOn || localBreakTrue.value) {
+			let localBreakArray= [
+				local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
+				local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
+				local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
+				local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
+				local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
+				local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
+				local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
+				local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
+				local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
+				local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
+				local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
+				local_break_end_deviation_tolerance.value
+			]
+			
+			let localbreakJson = JSON.stringify(localBreakArray)
+			var localbreak = JSON.parse(localbreakJson)
+			}
+			else{
+			  localbreak = []
+			}
+		}
+		else{
+			localbreak = []
+		}
+	
+
+	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
 	const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
 	const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
@@ -507,19 +638,31 @@ public formSubmitAttempt: boolean;
 	const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
 	const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
 
-	if (this.contentIsOn || contentid) {
-        let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
+try{
+	if(contentIdTrue.value  == "true"){
+		this.contentIdViewCheck = true
+	}
+}catch{}
+
+if(this.contentIdViewCheck){
+	if (this.contentIsOn || contentIdTrue.value) {
+        let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
             content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
             content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
         
-        let contentJson = JSON.stringify(contentIdArry)
+        let contentJson = JSON.stringify(contentIdArray)
         var content = JSON.parse(contentJson)
         }
         else{
-          
           content = []
-        }
+		}
+	}
+	else{
+		content = []
+	}
 	
+
+	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
 	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
 	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
 	const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
@@ -541,6 +684,35 @@ public formSubmitAttempt: boolean;
 	const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
 	const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
 
+	try{
+		if(programTrue.value  == "true"){
+			this.programViewCheck = true
+		}
+	}catch{}
+
+	if(this.programViewCheck){
+		if (this.programIsOn || programTrue.value) {
+			let programArray= [
+				program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+				program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+				program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+				program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
+				program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
+				program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
+			]
+			
+			let programJson = JSON.stringify(programArray)
+			var program = JSON.parse(programJson)
+			}
+			else{
+			  program = []
+			}
+		}
+		else{
+			program = []
+		}
+		
+	const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
 	const national_break_expected_splices_hour = <HTMLInputElement> document.getElementById("national_break_expected_splices_hour");
 	const national_break_start_input_action = <HTMLInputElement> document.getElementById("national_break_start_input_action");
 	const national_break_start_input_splice_command = <HTMLInputElement> document.getElementById("national_break_start_input_splice_command");
@@ -576,6 +748,41 @@ public formSubmitAttempt: boolean;
 	const national_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_output_splice_event_id");
 	const national_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_output_break_duration_flag");
 	const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
+
+	try{
+		if(nationalBreakTrue.value  == "true"){
+			this.nationalBreakViewCheck = true
+		}
+	}catch{}
+
+	if(this.nationalBreakViewCheck){
+		if (this.nationalIsOn || nationalBreakTrue.value) {
+			let nationalBreakArray= [
+				national_break_expected_splices_hour.value,national_break_start_input_action.value,national_break_start_input_splice_command.value,
+				national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
+				national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
+				national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
+				national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
+				national_break_start_output_splice_immediate_flag.value,national_break_start_ouput_duration_flag.value,national_break_start_output_break_duration_min.value,
+				national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
+				national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
+				national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
+				national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
+				national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
+				national_break_end_deviation_tolerance.value
+			]
+			
+			let nationalbreakJson = JSON.stringify(nationalBreakArray)
+			var nationalbreak = JSON.parse(nationalbreakJson)
+			}
+			else{
+			  nationalbreak = []
+			}
+		}
+		else{
+			nationalbreak = []
+		}
+		
   
 	const placement_splice_comand_type_start = <HTMLInputElement> document.getElementById("placement_splice_comand_type_start");
 	const placement_segmentation_type_id = <HTMLInputElement> document.getElementById("placement_segmentation_type_id");
@@ -610,6 +817,9 @@ public formSubmitAttempt: boolean;
 		// 	local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
 		// 	local_break_end_deviation_tolerance.value]
 		,"contentid": content 
+		,"localbreak": localbreak
+		,"nationalbreak": nationalbreak
+		,"pro": program 
 		// ,"pro":[program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
 		// 	program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
 		// 	program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,

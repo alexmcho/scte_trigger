@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "scte-template"
+  "defaultProject": "scte-template",
+  "cli": {
+    "analytics": "cab3ac8e-ce61-40eb-af6f-95d63aa6cce9"
+  }
 }
