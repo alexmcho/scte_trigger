@@ -287,11 +287,22 @@ export class AddControlComponent implements OnInit {
         }
         
       
-        const content_id_splice_command_type_start = <HTMLInputElement> document.getElementById("content_id_splice_command_type_start");
+        const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
         const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+        const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
+        const content_id_program_segmentation_flag = <HTMLInputElement> document.getElementById("content_id_program_segmentation_flag");
+        const content_id_segmentation_duration_flag = <HTMLInputElement> document.getElementById("content_id_segmentation_duration_flag");
+        const content_id_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("content_id_delivery_not_restricted_flag");
+        const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
+        const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
+        const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
+
       
         if (this.contentIsOn) {
-        let contentIdArry= [content_id_splice_command_type_start.value, content_id_segmentation_type_id.value]
+        let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
+            content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
+            content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
+
         
         let contentJson = JSON.stringify(contentIdArry)
         var content = JSON.parse(contentJson)
