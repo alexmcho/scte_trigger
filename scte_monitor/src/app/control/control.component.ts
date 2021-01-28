@@ -32,6 +32,8 @@ export class ControlComponent implements OnInit {
   //filtering list
   action1:String [] = []
   action2:String [] = []
+  action3:String [] = []
+  action4:String [] = []
   bool1:String [] = []
   bool2:String [] = []
   bool3:String [] = []
@@ -44,9 +46,29 @@ export class ControlComponent implements OnInit {
   bool10:String [] = []
   bool11:String [] = []
   bool12:String [] = []
+  bool13:String [] = []
+  bool14:String [] = []
+  bool15:String [] = []
+  bool16:String [] = []
+  bool17:String [] = []
+  bool18:String [] = []
+  bool19:String [] = []
+  bool20:String [] = []
+  bool21:String [] = []
+  bool22:String [] = []
+  bool23:String [] = []
+  bool24:String [] = []
+  bool25:String [] = []
+  bool26:String [] = []
+  bool27:String [] = []
+  bool28:String [] = []
+  bool29:String [] = []
+  bool30:String [] = []
+  bool31:String [] = []
+  bool32:String [] = []
+  bool33:String [] = []
+  bool34:String [] = []
   
-
-
   recipient_emails: string;
   frequency: string;
   network_id: string;
@@ -121,17 +143,43 @@ public formSubmitAttempt: boolean;
 		this.bool4.push(this.config.value[0].value[3].value[29])
 		this.bool5.push(this.config.value[0].value[3].value[30])
 		this.bool6.push(this.config.value[0].value[3].value[32])
-		this.bool7.push(this.config.value[0].value[3].value[17])
-		this.bool8.push(this.config.value[0].value[3].value[19])
 
 		//ContentId - 
-		this.bool9.push(this.config.value[0].value[5].value[2])
+		this.bool7.push(this.config.value[0].value[5].value[2])
+		this.bool8.push(this.config.value[0].value[5].value[3])
+		this.bool9.push(this.config.value[0].value[5].value[4])
+		this.bool10.push(this.config.value[0].value[5].value[5])
+		this.bool11.push(this.config.value[0].value[5].value[8])
 
 		//Program - 
-		this.bool10.push(this.config.value[0].value[6].value[2])
-		
+		this.bool12.push(this.config.value[0].value[6].value[0])
+		this.bool13.push(this.config.value[0].value[6].value[3])
+		this.bool14.push(this.config.value[0].value[6].value[6])
+		this.bool15.push(this.config.value[0].value[6].value[7])
+		this.bool16.push(this.config.value[0].value[6].value[8])
+		this.bool17.push(this.config.value[0].value[6].value[13])
+		this.bool18.push(this.config.value[0].value[6].value[14])
+		this.bool19.push(this.config.value[0].value[6].value[15])
+		this.bool20.push(this.config.value[0].value[6].value[16])
+
 		//National Break - 
-		this.bool11.push(this.config.value[0].value[7].value[2])
+		this.action3.push(this.config.value[0].value[7].value[1])
+		this.action4.push(this.config.value[0].value[7].value[20])
+		this.bool21.push(this.config.value[0].value[7].value[4])
+		this.bool22.push(this.config.value[0].value[7].value[6])
+		this.bool23.push(this.config.value[0].value[7].value[7])
+		this.bool24.push(this.config.value[0].value[7].value[10])
+		this.bool25.push(this.config.value[0].value[7].value[13])
+		this.bool26.push(this.config.value[0].value[7].value[15])
+		this.bool27.push(this.config.value[0].value[7].value[16])
+		this.bool28.push(this.config.value[0].value[7].value[19])
+		this.bool29.push(this.config.value[0].value[7].value[23])
+		this.bool30.push(this.config.value[0].value[7].value[25])
+		this.bool31.push(this.config.value[0].value[7].value[26])
+		this.bool32.push(this.config.value[0].value[7].value[29])
+		this.bool33.push(this.config.value[0].value[7].value[30])
+		this.bool34.push(this.config.value[0].value[7].value[32])
+
 		
 		
 		for(let i = 0; i < list.length; i++){
