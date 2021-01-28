@@ -710,7 +710,9 @@
   </span>
 
   <!-- CONTENT ID SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='contentid' && item.value?.length > 0" id="contentId" value="true">
+  <span *ngIf="item.key=='contentid' && item.value?.length > 0" >
+    <input type="hidden" id="contentid"  value="true">
+
     <ngb-accordion value="true" id="RemoveContent" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="closed">

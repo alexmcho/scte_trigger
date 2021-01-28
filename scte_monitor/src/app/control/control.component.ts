@@ -507,7 +507,9 @@ public formSubmitAttempt: boolean;
 	const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
 	const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
 
-	if (this.contentIsOn || contentid) {
+
+	console.log(contentid.value)
+	if (this.contentIsOn || contentid.value) {
         let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
             content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
             content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
