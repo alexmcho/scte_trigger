@@ -34,6 +34,10 @@ export class ControlComponent implements OnInit {
   action2:String [] = []
   action3:String [] = []
   action4:String [] = []
+  action5:String [] = []
+  action6:String [] = []
+  action7:String [] = []
+  action8:String [] = []
   bool1:String [] = []
   bool2:String [] = []
   bool3:String [] = []
@@ -68,6 +72,20 @@ export class ControlComponent implements OnInit {
   bool32:String [] = []
   bool33:String [] = []
   bool34:String [] = []
+  bool35:String [] = []
+  bool36:String [] = []
+  bool37:String [] = []
+  bool38:String [] = []
+  bool39:String [] = []
+  bool40:String [] = []
+  bool41:String [] = []
+  bool42:String [] = []
+  bool43:String [] = []
+  bool44:String [] = []
+  bool45:String [] = []
+  bool46:String [] = []
+  bool47:String [] = []
+  bool48:String [] = []
   
   recipient_emails: string;
   frequency: string;
@@ -128,9 +146,8 @@ public formSubmitAttempt: boolean;
 		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12]
 
 
-
+		
 		console.log(this.config.value[0].value[3].value[2])
-
 
 		//Local Break - 
 		this.action1.push(this.config.value[0].value[3].value[1])
@@ -141,92 +158,122 @@ public formSubmitAttempt: boolean;
 		this.bool1.push(this.config.value[0].value[3].value[4])
 		this.bool2.push(this.config.value[0].value[3].value[6])
 		this.bool3.push(this.config.value[0].value[3].value[7])
-
 		this.bool4.push(this.config.value[0].value[3].value[10])
 		this.bool5.push(this.config.value[0].value[3].value[13])
 		this.bool6.push(this.config.value[0].value[3].value[15])
 		this.bool7.push(this.config.value[0].value[3].value[16])
-
 		this.bool8.push(this.config.value[0].value[3].value[19])
 		this.bool9.push(this.config.value[0].value[3].value[23])
 		this.bool10.push(this.config.value[0].value[3].value[25])
 		this.bool11.push(this.config.value[0].value[3].value[26])
-
 		this.bool12.push(this.config.value[0].value[3].value[29])
 		this.bool13.push(this.config.value[0].value[3].value[30])
 		this.bool14.push(this.config.value[0].value[3].value[32])
-
 		this.bool15.push(this.config.value[0].value[3].value[26])
 		this.bool16.push(this.config.value[0].value[3].value[29])
 		this.bool17.push(this.config.value[0].value[3].value[30])
 		this.bool18.push(this.config.value[0].value[3].value[32])
 
 		//ContentId - 
-		this.bool7.push(this.config.value[0].value[5].value[2])
-		this.bool8.push(this.config.value[0].value[5].value[3])
-		this.bool9.push(this.config.value[0].value[5].value[4])
-		this.bool10.push(this.config.value[0].value[5].value[5])
-		this.bool11.push(this.config.value[0].value[5].value[8])
-
+		this.bool19.push(this.config.value[0].value[5].value[2])
+		this.bool20.push(this.config.value[0].value[5].value[3])
+		this.bool21.push(this.config.value[0].value[5].value[4])
+		this.bool21.push(this.config.value[0].value[5].value[5])
+		this.bool22.push(this.config.value[0].value[5].value[8])
+		
 		//Program - 
-		this.bool12.push(this.config.value[0].value[6].value[0])
-		this.bool13.push(this.config.value[0].value[6].value[3])
-		this.bool14.push(this.config.value[0].value[6].value[6])
-		this.bool15.push(this.config.value[0].value[6].value[7])
-		this.bool16.push(this.config.value[0].value[6].value[8])
-		this.bool17.push(this.config.value[0].value[6].value[13])
-		this.bool18.push(this.config.value[0].value[6].value[14])
-		this.bool19.push(this.config.value[0].value[6].value[15])
-		this.bool20.push(this.config.value[0].value[6].value[16])
+		this.bool23.push(this.config.value[0].value[6].value[0])
+		this.bool24.push(this.config.value[0].value[6].value[3])
+		this.bool24.push(this.config.value[0].value[6].value[6])
+		this.bool25.push(this.config.value[0].value[6].value[7])
+		this.bool26.push(this.config.value[0].value[6].value[8])
+		this.bool27.push(this.config.value[0].value[6].value[13])
+		this.bool28.push(this.config.value[0].value[6].value[14])
+		this.bool29.push(this.config.value[0].value[6].value[15])
+		this.bool30.push(this.config.value[0].value[6].value[16])
 
 		//National Break - 
-		this.action3.push(this.config.value[0].value[7].value[1])
-		this.action4.push(this.config.value[0].value[7].value[20])
-		this.bool21.push(this.config.value[0].value[7].value[4])
-		this.bool22.push(this.config.value[0].value[7].value[6])
-		this.bool23.push(this.config.value[0].value[7].value[7])
-		this.bool24.push(this.config.value[0].value[7].value[10])
-		this.bool25.push(this.config.value[0].value[7].value[13])
-		this.bool26.push(this.config.value[0].value[7].value[15])
-		this.bool27.push(this.config.value[0].value[7].value[16])
-		this.bool28.push(this.config.value[0].value[7].value[19])
-		this.bool29.push(this.config.value[0].value[7].value[23])
-		this.bool30.push(this.config.value[0].value[7].value[25])
-		this.bool31.push(this.config.value[0].value[7].value[26])
-		this.bool32.push(this.config.value[0].value[7].value[29])
-		this.bool33.push(this.config.value[0].value[7].value[30])
-		this.bool34.push(this.config.value[0].value[7].value[32])
+		this.action5.push(this.config.value[0].value[7].value[1])
+		this.action6.push(this.config.value[0].value[7].value[20])
+		this.action7.push(this.config.value[0].value[7].value[1])
+		this.action8.push(this.config.value[0].value[7].value[20])
+		
+		this.bool31.push(this.config.value[0].value[7].value[4])
+		this.bool32.push(this.config.value[0].value[7].value[6])
+		this.bool33.push(this.config.value[0].value[7].value[7])
+		this.bool34.push(this.config.value[0].value[7].value[10])
+		this.bool35.push(this.config.value[0].value[7].value[13])
+		this.bool36.push(this.config.value[0].value[7].value[15])
+		this.bool37.push(this.config.value[0].value[7].value[16])
+		this.bool38.push(this.config.value[0].value[7].value[19])
+		this.bool39.push(this.config.value[0].value[7].value[23])
+		this.bool40.push(this.config.value[0].value[7].value[25])
+		this.bool41.push(this.config.value[0].value[7].value[26])
+		this.bool42.push(this.config.value[0].value[7].value[29])
+		this.bool43.push(this.config.value[0].value[7].value[30])
+		this.bool44.push(this.config.value[0].value[7].value[32])
+		this.bool45.push(this.config.value[0].value[7].value[26])
+		this.bool46.push(this.config.value[0].value[7].value[29])
+		this.bool47.push(this.config.value[0].value[7].value[30])
+		this.bool48.push(this.config.value[0].value[7].value[32])
+		
 
-		// Splice Command Type - 5 or 6
+		//Local Break and National Break
+
+		// Splice Command Type - (5 or 6) - Changes Available Parameters: 
 		// {{item.value[2]}}
-		// {{item.value[11]}} - unused 
-		// {{item.value[21]}}
-		// {{item.value[27]}} - unused 
-
-		// Splice Event Id - Must Be Numeric - Not Numeric 
-		// {{item.value[5]}}
-		// {{item.value[14]}}
-		// {{item.value[24]}}
-		// {{item.value[31]}}
-
-		// Regular Numbers:
-		// {{item.value[0]}} Validate Splice Count
-		// {{item.value[33]}} Deviation Tolerance
+		// {{item.value[11]}} - unused - refers to value [2]
+		// {{item.value[21]}} - unused - refers to value [2]
+		// {{item.value[27]}} - unused - refers to value[2]
 		
 		// Segmentation Type id: 
-		// {{item.value[3]}}
-		// {{item.value[12]}}
-		// {{item.value[22]}}
-		// {{item.value[28]}}
+		// {{item.value[3]}} - Placement Opportunity Start 
+		// {{item.value[12]}} - Placement Opportunity Start 
+		// {{item.value[22]}} - Placement Opportunity End 
+		// {{item.value[28]}} - Placement Opportunity End 
 
-		// Break Duration 
-		// {{item.value[8]}}
-		// {{item.value[9]}} 
-		// {{item.value[17]}}
-		// {{item.value[18]}}
+		// Splice Event Id - (Must Be Numeric or Not Numeric): 
+		// {{item.value[5]}} - 'isnumeric'
+		// {{item.value[14]}} - 'isnumeric'
+		// {{item.value[24]}} - 'isnumeric'
+		// {{item.value[31]}}  - 'isnumeric'
 
+		// Regular Number Values:
+		// {{item.value[0]}} - validate splice count
+		// {{item.value[33]}} - Deviation Tolerance
+		
+		// Break Duration - (Also Regular Number Values): 
+		// {{item.value[8]}} - start input Break duration min 
+		// {{item.value[9]}} - start input Break duration max
+		// {{item.value[17]}} - start output Break duration min 
+		// {{item.value[18]}} - start output Break duration max 
 
+		//ContentId
+		// {{item.value[0]}} - Segmentation Type Id
+		// {{item.value[1]}} - Splice Command Type - Will always be 5 
+		// {{item.value[6]}} - Segmentation UPID Type 
+		// {{item.value[7]}} - Segmentation UPID Length 
 
+		//Program
+		// Splice Command Type - (Will always be 6)
+		// {{item.value[2]}} - Input Trigger
+		// {{item.value[12]}} - Output Trigger
+
+		// Segmentation Type id: 
+		// {{item.value[1]}} - Input Trigger
+		// {{item.value[11]}} - Output Trigger
+
+		// Segmentation Duration: 
+		// {{item.value[4]}} - Segmentation Duration min 
+		// {{item.value[5]}} - Segmentation Duration max 
+
+		// Segmentation UPID Type: 
+		// {{item.value[9]}} - Input Trigger
+		// {{item.value[17]}} - Output Trigger
+
+		// Segmentation UPID Length:
+		// {{item.value[10]}} - Input Trigger
+		// {{item.value[18]}} - Output Trigger
 		
 		for(let i = 0; i < list.length; i++){
 			for(let j = 0; j < 3; j++)
