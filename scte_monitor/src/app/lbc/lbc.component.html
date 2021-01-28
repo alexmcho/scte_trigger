@@ -1,13 +1,12 @@
-<<<<<<< HEAD
         <ngb-accordion style="margin: 10px" id="RemoveLocal">
-=======
+
         <ngb-accordion style="margin: 10px">
->>>>>>> GerardoBranch
+
           <ngb-panel>
               <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex align-items-center justify-content-between">
                 <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Local Break</button></h3>
-<<<<<<< HEAD
+
                 <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeLocal()" style="margin-left: auto; font-size:large;">Remove</button></h3>
                 </div>
                     <ng-template ngbPanelContent>
@@ -20,7 +19,7 @@
                     </div>
                     <form class=form-inline>
                         <div class="form-group">
-=======
+
                 <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
                 </div>
                     <ng-template ngbPanelContent>
@@ -31,7 +30,7 @@
                     </div>
                     <form class=form-inline>
                         <div class="form-group" >
->>>>>>> GerardoBranch
+
                             <label for="expected_splices_hour">Expected Splices Per Hour: </label>
                             <input  id ="local_expected_splices_hour" class="form-control" name="expected_splices_hour"  type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
                         </div>
@@ -55,11 +54,11 @@
                             <tr>
                                 <th>Action</th><td></td>
                                 <td><select id="local_break_action"  class="form-control" >
-<<<<<<< HEAD
+
                                     <option  value="NOOP" >NOOP</option>
-=======
+
                                     <option  value="Noop" >NOOP</option>
->>>>>>> GerardoBranch
+
                                     <option value="Delete" >DELETE</option>
                                     <option   value="replace">REPLACE</option>
                                 </select></td>
@@ -69,11 +68,11 @@
                                 <th>splice_immediate_flag</th><td></td>
 
                                 <td><select id="local_splice_immidiate_flag" class="form-control">
-<<<<<<< HEAD
+
                                     <option value = "true">true</option>
-=======
+
                                     <option value="true">true</option>
->>>>>>> GerardoBranch
+
                                     <option value="false">false</option>
                                 </select></td>
                             
@@ -130,11 +129,11 @@
                         </tbody>
                     </table>
                 <!-- local break start - Output Trigger -->
-<<<<<<< HEAD
+
                     <div >
-=======
+
                     <div *ngIf ="">
->>>>>>> GerardoBranch
+
                         <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                         <table  class ="table table-striped">
                             <tbody>
@@ -265,7 +264,7 @@
                         <label for="break_duration_deviation_tolerance">Break Duration Deviation Tolerance (ms):</label>
                         <input id="local_break_end_devation_tolerance" type=number step=any class="form-control"   style="width:auto; display:inline-block; margin-left: 10px;">
                     </div>
-                    </ng-template>
+                   
               </ng-template>
           </ngb-panel>
         </ngb-accordion>

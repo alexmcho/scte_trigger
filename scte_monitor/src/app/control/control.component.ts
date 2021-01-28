@@ -343,10 +343,10 @@ userNameOnRequired:boolean = false;
 
   ngOnInit(): void {
   console.log(this.config)
-  this.form = this.formBuilder.group({
-		"recipient_emails":  [null, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]],
-		"network_id":  [null, [Validators.required, Validators.pattern("")]]
-	})
+//   this.form = this.formBuilder.group({
+// 		"recipient_emails":  [null, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]],
+// 		"network_id":  [null, [Validators.required, Validators.pattern("")]]
+// 	})
   }
 
   isFieldRequired(field: string) {

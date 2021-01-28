@@ -24,27 +24,26 @@ export class ContentIdComponent implements OnInit {
   public startOutput: boolean;
   public endOutput: boolean;
 
-<<<<<<< HEAD
-=======
+
   // public segmentationDurationExact: boolean;
   // public segmentationDurationExactAmount: number;
   // public segmentationDurationExactOutput: boolean;
   // public segmentationDurationExactAmountOutput: number;
 
->>>>>>> GerardoBranch
+
   public config: KeyObject;
   public existingTemplates = <string[]>[];
 
   @Input() contentId: any;
 
   constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private NetworkNamesService:NetworkNamesService) {
-<<<<<<< HEAD
+
     // let url = "/assets/config.json"
     let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
-=======
-    let url = "/assets/config.json"
+
+    // let url = "/assets/config.json"
     // let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
->>>>>>> GerardoBranch
+
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		console.log(this.config)
@@ -54,14 +53,13 @@ export class ContentIdComponent implements OnInit {
 	})
   }
 
-<<<<<<< HEAD
-=======
+
   // remove() {
   //   console.log(this.index)
   //   this.parentRef.clear(this.index == 4)
   // }
 
->>>>>>> GerardoBranch
+
   remove() {
     const index = this.existingTemplates.findIndex(this.config = this.config.value[4]);
     this.existingTemplates.splice(index, -1); // Removes one element, starting from index
@@ -99,8 +97,7 @@ export class ContentIdComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
-=======
+
   // public setExactSegmentationDuration(input_trigger: boolean) {
   //   if(input_trigger) {
   //     this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_max = this.contentId.value[0].content_id_start.input_trigger.segmentation_duration_min = this.segmentationDurationExactAmount;
@@ -132,7 +129,7 @@ export class ContentIdComponent implements OnInit {
   //   console.log(this.segmentationDurationExact)
   // }
 
->>>>>>> GerardoBranch
+
   public logContentId() {
     console.log(this.contentId)
   }

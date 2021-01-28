@@ -15,13 +15,10 @@ export class LbcComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
   removeLocal() {
 		var T = document.getElementById("RemoveLocal");
 		T.style.display = "none";  // <-- Set it to block
 	}
 
-=======
- 
->>>>>>> GerardoBranch
+
 }

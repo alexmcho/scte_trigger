@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<!-- <form class="form-horizontal" [formGroup]="form">
+
+ <form class="form-horizontal" [formGroup]="form">
 
 <th>&nbsp;&nbsp;Add New Network</th>
 <tbody>
@@ -16,15 +16,15 @@
         <div *ngIf="isFieldRequired('network_id')" class="text-danger" style="display: inline-block">Network ID Required</div>
         <div *ngIf="isFieldInvalid('network_id')" class="text-danger" style="display: inline-block">Network ID Invalid</div>
     </td></tr>
-=======
-<!-- <th>&nbsp;&nbsp;Add New Network</th>
+
+<th>&nbsp;&nbsp;Add New Network</th>
 <tbody>
 <hr>
 <tr><td>&nbsp;&nbsp; ID : </td><td><input #id type="number"></td></tr>
 <tr><td>&nbsp;&nbsp; Recipient Emails : </td><td><input #recipient_emails type="text"></td></tr>
 <tr><td>&nbsp;&nbsp; Frequency : </td><td><input #frequency type="text"></td></tr>
 <tr><td>&nbsp;&nbsp; Network ID : </td><td><input #network_id type="text" name="network" ng-model="network"></td></tr>
->>>>>>> GerardoBranch
+
 <hr>
 <tr><td>&nbsp;&nbsp; Local Break : </td><td><input #local_break type="text"></td></tr>
 <tr><td>&nbsp;&nbsp; Expected Splices Per Hour : </td><td><input #expected_splices_per_hour type="text"></td></tr>
@@ -44,7 +44,7 @@
 <tr><td>&nbsp;&nbsp; Local Break End : </td><td><input #local_break_end type="text"></td></tr>
 <tr><td>&nbsp;&nbsp; Break Duration Deviation : </td><td><input #break_duration_deviation_tolerance type="text"></td></tr>
 <hr>
-<<<<<<< HEAD
+
 
 <tr><td><div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
 (click)="addNetwork(id.value, recipient_emails.value, frequency.value, network_id.value, local_break.value, expected_splices_per_hour.value, 
@@ -107,7 +107,7 @@ local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</butto
 </div>
 
 <!-- </form> -->
-=======
+
 <!-- <div ng-hide="!network"> -->
 
     <div class="row">
@@ -133,4 +133,4 @@ Enter Email:<input id="emails" type="text">
 Enter Network Name: <input id="networkName" type="text">
 <div class="text-center"><button  type="submit" class="btn btn-sm btn-outline-primary mr-2" style="margin: 0px" 
 (click)="addNewNetwork()">Add Network</button></div> 
->>>>>>> GerardoBranch
+

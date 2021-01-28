@@ -1,18 +1,18 @@
 
-<<<<<<< HEAD
+
     <ngb-accordion style="margin: 10px" id="RemovePlacement">
-=======
+
     <ngb-accordion style="margin: 10px">
->>>>>>> GerardoBranch
+
       <ngb-panel>
           <ng-template ngbPanelHeader let-opened="opened">
             <div class="d-flex align-items-center justify-content-between">
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Placement Opportunity</button></h3>
-<<<<<<< HEAD
+
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removePlacement()" style="margin-left: auto; font-size:large;">Remove</button></h3>
-=======
+
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="remove()" style="margin-left: auto; font-size:large;">Remove</button></h3>
->>>>>>> GerardoBranch
+
             </div>
             <ng-template ngbPanelContent>
                   
@@ -85,11 +85,11 @@
                         <label for="placement_opportunity_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                         <table id="placement_opportunity_start_table" class ="table table-striped">
                             <tbody>
-<<<<<<< HEAD
+
                                 <tr>
-=======
+
                                 <tr >
->>>>>>> GerardoBranch
+
                                     <th>segmentation_duration</th>
                                     <td ><select (change)="makeExactSegmentationDuration($event.target.value, false)" class="form-control">
                                         <option value="" >Change Segmentation Duration Type</option>
@@ -97,15 +97,15 @@
                                         <option value=false>Time Range (seconds)</option>
                                     </select></td>
                                     <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min==placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
-<<<<<<< HEAD
+
                                     <!-- <td >
                                         <input id="placement_output" class="form-control" type="number" step=any >
                                     </td> -->
-=======
+
                                     <td >
                                         <input id="placement_output" class="form-control" type="number" step=any >
                                     </td>
->>>>>>> GerardoBranch
+
                                     <!-- <td *ngIf="placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_min!=placementOpportunity?.value[0].placement_opportunity_start.input_trigger.segmentation_duration_max"> -->
                                     <td *ngIf="!segmentationDurationExactOutput">
                                         <div class="form-group row">

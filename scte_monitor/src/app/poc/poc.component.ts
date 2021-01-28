@@ -15,12 +15,11 @@ export class PocComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
+
   removePlacement() {
 		var T = document.getElementById("RemovePlacement");
 		T.style.display = "none";  // <-- Set it to block
 	}
 
-=======
->>>>>>> GerardoBranch
+
 }
