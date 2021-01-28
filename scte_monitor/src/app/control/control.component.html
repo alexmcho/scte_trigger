@@ -708,10 +708,13 @@
       </ngb-panel>
     </ngb-accordion>
   </span>
-
+  <span *ngIf="item.key=='contentid' && item.value?.length == 0" >
+    <input type="hidden" id="contentIdTrue"  value="false">
+  </span>
+  
   <!-- CONTENT ID SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='contentid' && item.value?.length > 0" >
-    <input type="hidden" id="contentid"  value="true">
+  <span *ngIf="item.key=='contentid' && item.value?.length > 0" id="contentId" >
+    <input type="hidden" id="contentIdTrue"  value="true">
 
     <ngb-accordion value="true" id="RemoveContent" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
@@ -824,6 +827,7 @@
       </ngb-panel>
     </ngb-accordion>
   </span>
+
 
   <!-- PROGRAM SEGMENT BEGINS HERE -->
   <span *ngIf="item.key=='pro' && item.value?.length > 0">

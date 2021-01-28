@@ -131,6 +131,7 @@ public formSubmitAttempt: boolean;
   program_index: number = 6;
   providerad_index: number = 7;
   networklink: String;
+  contentIdViewCheck:boolean;
 
   constructor(private LoadJsonService: LoadJsonService, private CFR: ComponentFactoryResolver, private modalService: NgbModal, private NetworkNamesService:NetworkNamesService, private HttpClient: HttpClient, private router:Router, private formBuilder: FormBuilder) {
 	let url = "http://127.0.0.1:8000/get/"+ this.NetworkNamesService.getName();
@@ -343,11 +344,13 @@ public formSubmitAttempt: boolean;
 	}
 
 	removeContent() {
+
 		// var T = document.getElementById("RemoveContent");
 		// T.style.display = "none";  // <-- Set it to block
 		var T = document.getElementById("contentId");
 		(T as HTMLElement).remove();
 		this.contentIsOn = false; 
+		this.contentIdViewCheck = false;
 	}
 
 	removePlacement() {
@@ -376,17 +379,30 @@ public formSubmitAttempt: boolean;
 	let childComponent = childComponentRef.instance;
 	
     childComponent.index = ++this.localbreak_index;
-    childComponent.parentRef = this;
+	childComponent.parentRef = this;
+	
   }
   
   createContentIdComponent() {
-	if(!this.contentIsOn){
+	  //checking if view already has contentid
+	  //if not allow a new content id
+	 let contentAlreadyThere:Boolean = false;
+	  
+		const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
+		if(contentIdTrue.value  == "true"){
+			contentAlreadyThere = true;
+		}
+
+	 
+	if(!this.contentIsOn && !contentAlreadyThere){
 		this.contentIsOn = true;
+		this.contentIdViewCheck = true;
 		let componentFactory = this.CFR.resolveComponentFactory(CicComponent);
 		  let childComponentRef = this.VCR.createComponent(componentFactory);
 		let childComponent = childComponentRef.instance;
 		
 		  childComponent.index = ++this.contentid_index;
+
 		  // childComponent.parentRef = this;
 	  
 		  // add reference for newly created component
@@ -496,7 +512,7 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
-	const contentid = <HTMLInputElement> document.getElementById("contentid");
+	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
 	const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
 	const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
@@ -507,9 +523,8 @@ public formSubmitAttempt: boolean;
 	const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
 	const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
 
-
-	console.log(contentid.value)
-	if (this.contentIsOn || contentid.value) {
+if(this.contentIdViewCheck){
+	if (this.contentIsOn || contentIdTrue.value) {
         let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
             content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
             content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
@@ -518,9 +533,14 @@ public formSubmitAttempt: boolean;
         var content = JSON.parse(contentJson)
         }
         else{
-          
           content = []
-        }
+		}
+	}
+	else{
+		content = []
+	}
+	
+
 	
 	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
 	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
