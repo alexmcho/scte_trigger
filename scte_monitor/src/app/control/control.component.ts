@@ -604,6 +604,24 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
+	//5
+	const end_splice_command = <HTMLInputElement> document.getElementById("end_splice_command");
+	const end_out_of_network = <HTMLInputElement> document.getElementById("end_out_of_network");
+	const end_splice_event_id = <HTMLInputElement> document.getElementById("end_splice_event_id");
+	const end_immidiate_flag = <HTMLInputElement> document.getElementById("end_immidiate_flag");
+	const end_duration_flag = <HTMLInputElement> document.getElementById("end_duration_flag");
+	const end_output_splice_command = <HTMLInputElement> document.getElementById("end_output_splice_command");
+	const end_output_out_of_network = <HTMLInputElement> document.getElementById("end_output_out_of_network");
+	const end_output_splice_event_id = <HTMLInputElement> document.getElementById("end_output_splice_event_id");
+	const end_output_immediate_flag = <HTMLInputElement> document.getElementById("end_output_immediate_flag");
+	const end_output_duration_flag = <HTMLInputElement> document.getElementById("end_output_duration_flag");
+	const end_deviation_tolerance = <HTMLInputElement> document.getElementById("end_deviation_tolerance");
+	
+	
+	//6
+	const end_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
+	const end_output_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
+
 	try{
 		if(localBreakTrue.value  == "true"){
 			this.localBreakViewCheck = true
@@ -623,7 +641,7 @@ public formSubmitAttempt: boolean;
 							local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value]
 					}		
 				}
-				else if (local_break_start_input_splice_command.value == "5" && local_break_start_input_action.value == "REPLACE" ) {
+				if (local_break_start_input_splice_command.value == "5" && local_break_start_input_action.value == "REPLACE" ) {
 					localBreakArray= [
 						local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
 						local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
@@ -633,7 +651,7 @@ public formSubmitAttempt: boolean;
 						local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
 						local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value]
 				}
-				else if (local_break_start_input_splice_command.value == "5" && local_break_start_input_action.value == "REPLACE" && localBreakEndSwitch.checked == true) {
+				if (local_break_start_input_splice_command.value == "5" && local_break_start_input_action.value == "REPLACE" && localBreakEndSwitch.checked) {
 					localBreakArray= [
 						local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
 						local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
@@ -642,31 +660,38 @@ public formSubmitAttempt: boolean;
 						local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
 						local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
 						local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-						local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-						local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-						local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-						local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-						local_break_end_deviation_tolerance.value]
+						end_splice_command.value,end_out_of_network.value,end_splice_event_id.value,end_immidiate_flag.value,
+						end_duration_flag.value,end_output_splice_command.value,end_output_out_of_network.value,end_output_splice_event_id.value,end_output_immediate_flag.value
+					,end_output_duration_flag.value,end_deviation_tolerance.value]
+					
 				}
+				
+				
+				//6 "local break end"
+				// local_break_end_input_segmentation_type_id
+				//local_break_end_output_segmentation_type_id
+				//local_break_start_input_segmentation_type_id
+				//5 "local break end"
 
-
+				// local_break_end_input_out_of_network_indicator
+				//local_break_end_input_splice_event_id
 
 			}
-			else{
-				localBreakArray= [
-					local_break_start_input_action.value,local_break_start_input_splice_command.value,
-					local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
-					local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
-					local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
-					local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
-					local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
-					local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-					local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-					local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-					local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-					local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-					local_break_end_deviation_tolerance.value]
-			}
+			// else{
+			// 	localBreakArray= [
+			// 		local_break_start_input_action.value,local_break_start_input_splice_command.value,
+			// 		local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
+			// 		local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
+			// 		local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
+			// 		local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
+			// 		local_break_start_output_splice_immediate_flag.value,local_break_start_ouput_duration_flag.value,local_break_start_output_break_duration_min.value,
+			// 		local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
+			// 		local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
+			// 		local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
+			// 		local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
+			// 		local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
+			// 		local_break_end_deviation_tolerance.value]
+			// }
 
 			
 			
