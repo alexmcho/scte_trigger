@@ -45,13 +45,13 @@
 
                         <tr>
                         <th>duration_flag</th><td></td>
-                        <td><select id="program_start_input_duration_flag" class="form-control">
+                        <td><select id="program_start_input_duration_flag" [(ngModel)]="program_start_input_duration_flag" class="form-control">
                             <option value="true">true</option>
                             <option value="false">false</option>
                         </select></td>
                         </tr>
 
-                        <tr >
+                        <tr *ngIf="program_start_input_duration_flag=='true'">
                             <th>segmentation_duration</th>
                             <td ><select class="form-control">
                                 <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
@@ -220,12 +220,12 @@
 
                 <!-- Include Program End Trigger  -->
                 <div class="custom-control custom-switch">
-                    <input  type="checkbox" class="custom-control-input">
+                    <input [(ngModel)]="program_include_break_end" type="checkbox" id="ProgramEndSwitch" class="custom-control-input">
                     <label class="custom-control-label" for="ProgramEndSwitch">Include Program End</label>
                 </div>
 
                 <!-- Program End -->
-                <div> 
+                <div *ngIf="program_include_break_end"> 
                     <!-- <br><h4>Program</h4> -->
                     <br><label style="font-size: larger;color:#00A8E0">End Trigger</label>
                     <!-- <br><h4>End Trigger</h4> -->
