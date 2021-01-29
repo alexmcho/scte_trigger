@@ -154,9 +154,7 @@
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeLocal()" style="margin-left: auto; font-size:large;">Remove</button></h3>
             </div>
                 <ng-template ngbPanelContent>
-                  <span *ngFor="let items of item?.value; let i = index">
-                    
-                  </span>
+                 
                   <div class="custom-control custom-switch">
                     <!-- <input type="checkbox" class="custom-control-input"> -->
                     <input [(ngModel)]="validate_splice_count" type="checkbox" class="custom-control-input" id="validate_splice_count">
@@ -170,7 +168,9 @@
                         <!-- <input [(ngModel)]="localBreak?.value[0].expected_splices_hour" class="form-control" name="expected_splices_hour" id="expected_splices_hour" type="number" step=any placeholder={{localBreak?.value[0].expected_splices_hour}} style="display:inline-block;margin-left:10px;width:60px"> -->
                     </div>
                 </form>
+
                 <!-- Local Break Start -->
+
                 <br><h4>Local Break</h4>
                 <br><h5>Start Trigger</h5>
                 <form class="form-inline">
@@ -186,7 +186,7 @@
                         <!-- Hide output trigger if action is 'replace' -->
                         <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="local_break_start_input_action" id= "local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                 <option *ngFor='let options of action1' [value]="options">{{options}}</option>
                             </select></td>
