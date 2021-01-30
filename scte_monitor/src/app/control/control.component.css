@@ -1,0 +1,60 @@
+    .deleteEmail_svg {
+        fill: red;
+    }
+    .deleteEmail_svg:hover {
+        fill: darkred;
+        cursor: pointer;
+    }
+
+    /* Delete Button - Transparency*/
+    .delete-button {     
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;        
+    }
+
+    /* Edit Button - Transparency*/
+    .edit-button {
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;  
+    }
+    /* Email Button - Transparency*/
+    .email-button {     
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        margin-top: 2px;
+        margin-left: -2px;
+        outline-color: transparent;
+    }
+
+    /* Edit Icon*/
+    .fa-edit {
+        vertical-align: 2px;
+        /* font-size: 20px; */
+        color: #5bc0de;
+    }
+    /* Trash Icon */
+    .fa-trash {
+        vertical-align: 2px;
+        /* font-size: 20px; */
+        color: #5bc0de;
+    }
+    /* Envelope Icon */
+    .fa-plus {
+        /* font-size: 20px; */
+        color: #5bc0de;
+        margin-left: -2px;
+        /* vertical-align: -2px; */
+    }
+    .text-center {
+        vertical-align: -40px;
+        text-align: center;
+    }
