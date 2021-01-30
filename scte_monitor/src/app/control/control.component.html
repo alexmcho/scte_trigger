@@ -184,11 +184,13 @@
 
                         <!-- If Splice Command Type is [6], then remove  Action -->
                         <!-- Hide output trigger if action is 'replace' -->
-                        <tr *ngIf="local_break_start_input_splice_command=='5'">
+                       <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="local_break_start_input_action" id= "local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="htmlAction1" id="local_break_start_input_action"  class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
-                                <option *ngFor='let options of action1' [value]="options">{{options}}</option>
+                                    
+                                    <option *ngFor='let options of action1' [value] ="options" >{{options}}</option>
+                                  
                             </select></td>
                         </tr>
 
@@ -224,7 +226,7 @@
                         <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
                         <tr *ngIf="local_break_start_input_splice_command=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
-                            <td><select id="local_break_start_input_out_of_network_indicator" class="form-control">
+                            <td><select [(ngModel)]="htmlBool1" id="local_break_start_input_out_of_network_indicator" class="form-control">
                                 <option *ngFor='let options of bool1' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -242,14 +244,14 @@
 
                         <tr>
                             <th>Immediate Flag</th><td></td>
-                            <td><select id="local_break_start_input_splice_immediate_flag" class="form-control">
+                            <td><select [(ngModel)]="htmlBool2" id="local_break_start_input_splice_immediate_flag" class="form-control">
                                 <option *ngFor='let options of bool2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
+                            <td><select [(ngModel)]="htmlBool3" id="local_break_start_input_duration_flag" class="form-control" >
                                 <option *ngFor='let options of bool3' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -279,7 +281,7 @@
 
                         <tr>
                             <th>Break Auto Return</th><td></td>
-                            <td><select id="local_break_start_input_break_auto_return" class ="form-control">
+                            <td><select [(ngModel)]="htmlBool4" id="local_break_start_input_break_auto_return" class ="form-control">
                                 <option *ngFor='let options of bool4' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -288,16 +290,16 @@
                 </table>
   
             <!-- Local Break Start - Output Trigger - Splice Command Type is 5 -->
-                <div *ngIf="local_break_start_input_action=='REPLACE'">
+                <div *ngIf="htmlAction1=='REPLACE'">
                     <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
 
                         <!-- If Splice Command Type is [6], then remove Action -->
                         <!-- Hide output trigger if action is 'replace' -->
-                        <tr *ngIf="local_break_start_input_splice_command=='5'">
+                        <tr *ngIf="htmlAction1 =='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="local_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="htmlAction2" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                 <option *ngFor='let options of action2' [value]="options">{{options}}</option>
                             </select></td>
@@ -327,7 +329,7 @@
                         
                         <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Out of Network Indicator</th><td></td>
-                            <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
+                            <td><select [(ngModel)]="htmlBool5" id="local_break_start_output_out_of_network_indicator" class="form-control">
                                 <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -343,14 +345,14 @@
 
                         <tr>
                             <th>Immediate Flag</th><td></td>
-                            <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
+                            <td><select [(ngModel)]="htmlBool6" id="local_break_start_output_splice_immediate_flag" class="form-control">
                                 <option *ngFor='let options of bool6' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_ouput_duration_flag" class="form-control">
+                            <td><select [(ngModel)]="htmlBool7" id="local_break_start_ouput_duration_flag" class="form-control">
                                 <option *ngFor='let options of bool7' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -385,7 +387,7 @@
 
                         <tr >
                             <th>Break Auto Return</th><td></td>
-                            <td><select id="local_break_start_output_break_auto_return" class ="form-control">
+                            <td><select [(ngModel)]="htmlBool8" id="local_break_start_output_break_auto_return" class ="form-control">
                                 <option *ngFor='let options of bool8' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
@@ -405,7 +407,7 @@
                         <!-- Hide output trigger if action is 'replace' -->
                         <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="config?.value[0].value[4].value[1]" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="htmlAction2" (change)="this.setStartOutput()" class="form-control" >
                                 <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                 <option *ngFor='let options of action2' [value]="options">{{options}}</option>
                             </select></td>
@@ -442,8 +444,8 @@
                         
                         <tr *ngIf="local_break_start_input_splice_command=='5'">
                             <th>Out of Network Indicator</th><td></td>
-                            <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool9" id="local_break_start_output_out_of_network_indicator" class="form-control">
+                                <option *ngFor='let options of bool9' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -458,15 +460,15 @@
 
                         <tr>
                             <th>Immediate Flag</th><td></td>
-                            <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
-                                <option *ngFor='let options of bool6' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool10" id="local_break_start_output_splice_immediate_flag" class="form-control">
+                                <option *ngFor='let options of bool10' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_output_duration_flag">
-                                <option *ngFor='let options of bool7' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool11" id="local_break_start_ouput_duration_flag" class="form-control" [(ngModel)]="local_break_output_duration_flag">
+                                <option *ngFor='let options of bool11' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
@@ -500,8 +502,8 @@
 
                         <tr >
                             <th>Break Auto Return</th><td></td>
-                            <td><select id="local_break_start_output_break_auto_return" class ="form-control">
-                                <option *ngFor='let options of bool8' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool12" id="local_break_start_output_break_auto_return" class ="form-control">
+                                <option *ngFor='let options of bool12' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
@@ -575,7 +577,7 @@
                             <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
                             <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Out of Network Indicator</th><td></td>
-                                <td><select id="end_out_of_network" class="form-control">
+                                <td><select  [(ngModel)]="htmlBool13" id="end_out_of_network" class="form-control">
                                     <option *ngFor='let options of bool9' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
@@ -595,7 +597,7 @@
                             <!-- If Splice Command Type is [6], then remove Splice Immediate Flag -->
                             <tr *ngIf="local_break_start_input_splice_command=='5'">
                                 <th>Immediate Flag</th><td></td>
-                                <td><select id="end_immidiate_flag" class="form-control">
+                                <td><select [(ngModel)]="htmlBool14" id="end_immidiate_flag" class="form-control">
                                     <option *ngFor='let options of bool10' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>

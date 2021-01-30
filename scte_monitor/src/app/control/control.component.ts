@@ -29,6 +29,8 @@ export class ControlComponent implements OnInit {
 
   listOfOptionsForActions = ["NOOP","DELETE","REPLACE"]
   listOfOptionsForBoolean = ["false","true"]
+  listOfSpliceCommandType = ["5","6"]
+  
   //filtering list
   action1:String [] = []
   action2:String [] = []
@@ -38,6 +40,12 @@ export class ControlComponent implements OnInit {
   action6:String [] = []
   action7:String [] = []
   action8:String [] = []
+
+  spliceCommand1:String [] = []
+  spliceCommand2:String [] = []
+
+
+
   bool1:String [] = []
   bool2:String [] = []
   bool3:String [] = []
@@ -86,7 +94,34 @@ export class ControlComponent implements OnInit {
   bool46:String [] = []
   bool47:String [] = []
   bool48:String [] = []
+ 
+  htmlAction1;
+  htmlAction2;
+  htmlAction3;
+  htmlAction4;
   
+  htmlBool1;
+  htmlBool2;
+  htmlBool3;
+  htmlBool4;
+  htmlBool5;
+  htmlBool6;
+  htmlBool7;
+  htmlBool8;
+  htmlBool9;
+  htmlBool10;
+  htmlBool11;
+  htmlBool12;
+  htmlBool13;
+  htmlBool14;
+  
+htmlSplice1;
+htmlSplice2;
+
+
+
+
+
   recipient_emails: string;
   frequency: string;
   network_id: string;
@@ -108,6 +143,7 @@ export class ControlComponent implements OnInit {
   local_break_end: string;
   break_duration_deviation_tolerance: string;
   stringArr: [];
+ 
 
   localIsOn:boolean = false;
   contentIsOn:boolean = false;
@@ -144,42 +180,77 @@ public formSubmitAttempt: boolean;
 	console.log(this.NetworkNamesService.getName())
 	console.log(this.networklink)
 
+	
     this.LoadJsonService.getConfig(url).subscribe(data => {
 		this.config = data;
 		var stringChecker:String;
-		
-		var list = [this.action1, this.action2]
-		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
-		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12]
+
 
 
 		
-		console.log(this.config.value[0].value[3].value[2])
 
 		//Local Break - 
-		this.action1.push(this.config.value[0].value[3].value[1])
-		this.action2.push(this.config.value[0].value[3].value[20])
-		this.action3.push(this.config.value[0].value[3].value[1])
-		this.action4.push(this.config.value[0].value[3].value[20])
+		this.action1.push(this.config.value[0].value[4].value[1])
+		this.action2.push(this.config.value[0].value[4].value[20])
+		this.action3.push(this.config.value[0].value[4].value[1])
+		this.action4.push(this.config.value[0].value[4].value[20])
+
+		this.htmlAction1 = this.config.value[0].value[4].value[1]
+		this.htmlAction2 = this.config.value[0].value[4].value[20]
+		this.htmlAction3 = this.config.value[0].value[4].value[1]
+		this.htmlAction4 = this.config.value[0].value[4].value[20]
+
 		
-		this.bool1.push(this.config.value[0].value[3].value[4])
-		this.bool2.push(this.config.value[0].value[3].value[6])
-		this.bool3.push(this.config.value[0].value[3].value[7])
-		this.bool4.push(this.config.value[0].value[3].value[10])
-		this.bool5.push(this.config.value[0].value[3].value[13])
-		this.bool6.push(this.config.value[0].value[3].value[15])
-		this.bool7.push(this.config.value[0].value[3].value[16])
-		this.bool8.push(this.config.value[0].value[3].value[19])
-		this.bool9.push(this.config.value[0].value[3].value[23])
-		this.bool10.push(this.config.value[0].value[3].value[25])
-		this.bool11.push(this.config.value[0].value[3].value[26])
-		this.bool12.push(this.config.value[0].value[3].value[29])
-		this.bool13.push(this.config.value[0].value[3].value[30])
-		this.bool14.push(this.config.value[0].value[3].value[32])
-		this.bool15.push(this.config.value[0].value[3].value[26])
-		this.bool16.push(this.config.value[0].value[3].value[29])
-		this.bool17.push(this.config.value[0].value[3].value[30])
-		this.bool18.push(this.config.value[0].value[3].value[32])
+		
+
+
+
+
+
+
+		this.bool1.push(this.config.value[0].value[4].value[4])
+		this.bool2.push(this.config.value[0].value[4].value[6])
+		this.bool3.push(this.config.value[0].value[4].value[7])
+		this.bool4.push(this.config.value[0].value[4].value[10])
+		this.bool5.push(this.config.value[0].value[4].value[13])
+		this.bool6.push(this.config.value[0].value[4].value[15])
+		this.bool7.push(this.config.value[0].value[4].value[16])
+		this.bool8.push(this.config.value[0].value[4].value[19])
+		this.bool9.push(this.config.value[0].value[4].value[23])
+		this.bool10.push(this.config.value[0].value[4].value[25])
+		this.bool11.push(this.config.value[0].value[4].value[26])
+		this.bool12.push(this.config.value[0].value[4].value[29])
+		this.bool13.push(this.config.value[0].value[4].value[30])
+		this.bool14.push(this.config.value[0].value[4].value[32])
+		this.bool15.push(this.config.value[0].value[4].value[26])
+		this.bool16.push(this.config.value[0].value[4].value[29])
+		this.bool17.push(this.config.value[0].value[4].value[30])
+		this.bool18.push(this.config.value[0].value[4].value[32])
+
+
+
+	
+		
+		this.htmlBool1 = this.config.value[0].value[4].value[4]
+		this.htmlBool2 = this.config.value[0].value[4].value[6]
+		this.htmlBool3 = this.config.value[0].value[4].value[7]
+		this.htmlBool4 = this.config.value[0].value[4].value[10]
+		this.htmlBool5 = this.config.value[0].value[4].value[13]
+		this.htmlBool6 = this.config.value[0].value[4].value[15]
+		this.htmlBool7 = this.config.value[0].value[4].value[16]
+		this.htmlBool8 = this.config.value[0].value[4].value[19]
+		this.htmlBool9 = this.config.value[0].value[4].value[23]
+		this.htmlBool10 = this.config.value[0].value[4].value[25]
+		this.htmlBool11 = this.config.value[0].value[4].value[26]
+		this.htmlBool12 = this.config.value[0].value[4].value[29]
+		this.htmlBool13 = this.config.value[0].value[4].value[30]
+		this.htmlBool14 = this.config.value[0].value[4].value[32]
+
+
+
+		this.spliceCommand1.push(this.config.value[0].value[4].value[2])
+		this.htmlSplice1 = this.config.value[0].value[4].value[2]
+
 
 		//ContentId - 
 		this.bool19.push(this.config.value[0].value[5].value[2])
@@ -223,8 +294,13 @@ public formSubmitAttempt: boolean;
 		this.bool46.push(this.config.value[0].value[7].value[29])
 		this.bool47.push(this.config.value[0].value[7].value[30])
 		this.bool48.push(this.config.value[0].value[7].value[32])
+
 		
 
+		var list = [this.action1, this.action2, this.action3, this.action4]
+		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
+		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12, this.bool13,this.bool14]
+		var list3 =[this.spliceCommand1]
 		//Local Break and National Break
 
 		// Splice Command Type - (5 or 6) - Changes Available Parameters: 
@@ -295,8 +371,16 @@ public formSubmitAttempt: boolean;
 				list2[i].push(this.listOfOptionsForBoolean[j])
 			}
 		}
+		
+		for(let i = 0; i < list3.length; i++){
+			for(let j = 0; j < 3; j++)
+			if(list2[i].indexOf(this.listOfSpliceCommandType[j]) == -1){
+				list2[i].push(this.listOfSpliceCommandType[j])
+			}
+		}
 	})
   }
+  
   
   remove() {
 	let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
@@ -406,7 +490,7 @@ public formSubmitAttempt: boolean;
 	
 	if(!this.localIsOn && !localAlreadyThere){
 		this.localIsOn = true;
-		this.contentIdViewCheck = true;
+		this.localBreakViewCheck = true;
 		let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
 		let childComponentRef = this.VCR.createComponent(componentFactory);
 		let childComponent = childComponentRef.instance;
@@ -562,7 +646,6 @@ public formSubmitAttempt: boolean;
 
 
 	const emails = <HTMLInputElement> document.getElementById("emails");
-	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
 
 	const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
 	const local_break_expected_splices_hour = <HTMLInputElement> document.getElementById("local_break_expected_splices_hour");
@@ -629,7 +712,7 @@ public formSubmitAttempt: boolean;
 	}catch{}
 
 	if(this.localBreakViewCheck){
-		if (this.localIsOn || localBreakTrue.value) {
+		if (this.localIsOn || localBreakTrue.value == "true") {
 			let localBreakArray = []
 			if(validate_splice_count.checked == true){
 				if(local_break_start_input_splice_command.value == "5" && local_break_start_input_action.value == "NOOP" || local_break_start_input_action.value == "DELETE"){
@@ -724,7 +807,9 @@ try{
 	if(contentIdTrue.value  == "true"){
 		this.contentIdViewCheck = true
 	}
-}catch{}
+}catch{
+	this.contentIdViewCheck = false
+}
 
 if(this.contentIdViewCheck){
 	if (this.contentIsOn || contentIdTrue.value) {
