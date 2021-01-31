@@ -133,8 +133,8 @@
 </div>
 <br>
 
-<!-- Segment Components Starting Div -->
-<div *ngFor="let con of config?.value">
+  <!-- Segment Components Starting Div -->
+  <div *ngFor="let con of config?.value">
   <div *ngFor="let item of con?.value; let i = index">
 
   <!-- LOCAL BREAK SEGMENT BEGINS HERE -->
@@ -182,7 +182,6 @@
                             </select></td>
                         </tr>
                         
-
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <td><select id="local_break_start_input_splice_command" [(ngModel)]="htmlSplice1" name="splice_command_type_start" class="form-control" >
@@ -193,7 +192,6 @@
                         <tr *ngIf="htmlSplice1=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
-                                <!-- <option value="{{item.value[3]}}">{{item.value[3]}}</option> -->
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -213,8 +211,6 @@
                             </select></td>
                         </tr>
 
-                        <!-- If Splice Command Type is [5], then show Splice Event Id -->
-                        <!-- If Splice Command Type is [6], then remove Out of Splice Event Id -->
                         <tr *ngIf="htmlSplice1=='5'" >
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_input_splice_event_id" class="form-control">
@@ -273,7 +269,6 @@
 
                 <!-- Local Break Start - Output Trigger -->
                 <div *ngIf="htmlAction1=='REPLACE' || local_break_start_input_splice_command=='6'">
-                    <!-- <div> -->
                     <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
@@ -288,10 +283,8 @@
                         </tr>
 
                         <tr *ngIf="htmlSplice1=='6'">
-                        <!-- <tr> -->
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
-                                <!-- <option value="{{item.value[12]}}">{{item.value[12]}}</option> -->
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -305,7 +298,6 @@
                         </tr>
                         
                         <tr *ngIf="htmlSplice1=='5'">
-                            <!-- <tr> -->
                             <th>Out of Network Indicator</th><td></td>
                             <td><select [(ngModel)]="htmlBool5" id="local_break_start_output_out_of_network_indicator" class="form-control">
                                 <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
@@ -313,7 +305,6 @@
                         </tr>
 
                         <tr *ngIf="htmlSplice1=='5'">
-                            <!-- <tr> -->
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
@@ -337,7 +328,6 @@
                         </tr>
 
                         <tr *ngIf="htmlBool7=='true'">
-                            <!-- <tr> -->
                             <th>Break Duration</th>
                             <td><select id= "local_break_start_output_break_duration" class="form-control">
                                 <option>Change Break Duration Type</option>
@@ -371,52 +361,39 @@
 
                 <!-- Break End Trigger -->
                 <div class="custom-control custom-switch">
-                    <!-- <input  type="checkbox" class="custom-control-input"> -->
                     <input [(ngModel)]="local_break_include_break_end" type="checkbox" class="custom-control-input" id="localBreakEndSwitch">
                     <label class="custom-control-label" for="localBreakEndSwitch">Include Break End</label>
                 </div>
 
                 <!-- Local Break End -->
-                <!-- <div> -->
                 <div *ngIf="local_break_include_break_end">
                     <br><h5>End Trigger</h5>
                     <form class="form-inline">
                         <div class="form-group">
                         </div>
                     </form>
-            <!-- Local Break End - Input Trigger -->
+                <!-- Local Break End - Input Trigger -->
                     <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Input Trigger</label>
                     <table id="local_break_end_table" class="table table-striped" >
                         <tbody>
 
-                        <!-- If Splice Command Type is [6], then remove Action -->
-                        <!-- Hide output trigger if action is 'replace' -->
                             <tr *ngIf="htmlSplice1=='5'">
                                 <th>Action</th><td></td>
                                 <td><select [(ngModel)]="htmlAction2" (change)="this.setStartOutput()" class="form-control" id="local_break_end_input_action">
-                                    <!-- <td><select [(ngModel)]="localBreak?.value[0].local_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
                                     <option *ngFor='let options of action2' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
-                            <!-- If Splice Command Type is [5], then show Segmentation Type Id -->
-                            <!-- If Splice Command Type is [6], then remove Action -->
-
-                            <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                             <tr>
                                 <th>Splice Command Type</th><td></td>
                                 <td><select id="local_break_end_input_splice_command" name="splice_command_type_end" class="form-control">
                                     <option value="{{item.value[21]}}">{{item.value[2]}}</option>
-                                    <!-- <option value="{{item.value[21]}}">{{item.value[21]}}</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option> -->
                                 </select></td>
                             </tr>
 
                             <tr *ngIf="htmlSplice1=='6'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
-                                    <!-- <option value="{{item.value[22]}}">{{item.value[22]}}</option> -->
                                     <option value="11">11&nbsp;  [ Program End ]</option>
                                     <option value="21">21&nbsp;  [ Chapter End ]</option>
                                     <option value="23">23&nbsp;  [ Break End ]</option>
@@ -461,29 +438,23 @@
 
                         </tbody>
                     </table>
-            <!-- Local Break End - Output Trigger -->
+                    
+                <!-- Local Break End - Output Trigger -->
                 <div *ngIf="htmlAction2=='REPLACE' || local_break_start_input_splice_command=='6'">
                         <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                         <table id="local_break_end_table" class="table table-striped" >
                             <tbody>
     
-                                <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                                 <tr>
                                     <th>Splice Command Type</th><td></td>
                                     <td><select id="local_break_end_output_splice_command" name="splice_command_type_start" class="form-control" >
                                         <option value="{{item.value[27]}}">{{item.value[2]}}</option>
-                                        <!-- <option value="{{item.value[27]}}">{{item.value[27]}}</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option> -->
                                     </select></td>
                                 </tr>
 
-                                <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
-                                <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
                                 <tr *ngIf="htmlSplice1=='6'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                        <!-- <option value="{{item.value[28]}}">{{item.value[28]}}</option> -->
                                         <option value="11">11&nbsp;  [ Program End ]</option>
                                         <option value="21">21&nbsp;  [ Chapter End ]</option>
                                         <option value="23">23&nbsp;  [ Break End ]</option>
@@ -495,18 +466,14 @@
                                         <option value="51">51&nbsp;  [ Network End ]</option>
                                     </select></td>
                                 </tr>
-  
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
+
                                 <tr *ngIf="htmlSplice1=='5'">
                                     <th>Out of Network Indicator</th><td></td>
                                     <td><select [(ngModel)]="htmlBool12" id="local_break_end_output_out_of_network_indicator" class="form-control">
                                         <option *ngFor='let options of bool12' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
-                                
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
+
                                 <tr *ngIf="htmlSplice1=='5'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="local_break_end_output_splice_event_id" class="form-control">
@@ -516,8 +483,6 @@
                                     </select></td>
                                 </tr>
 
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
                                 <tr *ngIf="htmlSplice1=='5'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool3" id="local_break_end_output_splice_immediate_flag" class="form-control">
@@ -721,41 +686,43 @@
                       </select></td>
                       </tr>
 
-                      <tr>
+                      <!-- <tr>
                       <th>duration_flag</th><td></td>
                       <td><select id="program_start_input_duration_flag" class="form-control">
                           <option value="{{item.value[3]}}">{{item.value[3]}}</option>
                           <option value="true">true</option>
                           <option value="false">false</option>
                       </select></td>
+                      </tr> -->
+
+                      <tr>
+                        <th>Segmentation Duration Flag</th><td></td>
+                        <td><select [(ngModel)]="htmlBool60" id="program_start_input_duration_flag" class="form-control">    
+                            <option *ngFor='let options of bool60' [value]="options">{{options}}</option>
+                        </select></td>
                       </tr>
 
-                      <tr >
-                          <th>segmentation_duration</th>
-                          <td ><select class="form-control">
-                              <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
-                              <option value=true>Exact Time (seconds)</option>
-                              <option value=false>Time Range (seconds)</option>
-                          </select></td>
-                      <!-- <td *ngIf="Program?.value[0].program_start.input_trigger.segmentation_duration_min==Program?.value[0].program_start.input_trigger.segmentation_duration_max"> -->
-                          <td *ngIf="segmentationDurationExact">
-                              <input [(ngModel)]="segmentationDurationExactAmount" (change)="setExactSegmentationDuration(true)" class="form-control" type="number" step=any placeholder = {{Program?.value[0].program_start.input_trigger.segmentation_duration_min}}>
-                          </td>
-                      <!-- <td *ngIf="Program?.value[0].program_start.input_trigger.segmentation_duration_min!=Program?.value[0].program_start.input_trigger.segmentation_duration_max"> -->
-                          <td >
-                              <div class="form-group row">
-                                  <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="program_start_input_segmentation_duration_min" class="form-control" type="number" step=any value="{{item.value[4]}}">
-                                  </div>
-                              </div>
-                              <div class="form-group row">
-                                  <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                  <div class="col-sm-4">
-                                      <input  id="program_start_input_segmentation_duration_max" class="form-control" type="number" step=any value="{{item.value[5]}}">
-                                  </div>
-                              </div> 
-                          </td>
+                      <tr *ngIf="htmlBool60=='true'">
+                        <th>Segmentation Duration</th>
+                        <td><select id= "changeThisName" class="form-control">
+                            <option value="" disabled selected hidden>Change Break Duration Type</option>
+                            <option>Exact Time (seconds)</option>
+                            <option>Time Range (seconds)</option>
+                        </select></td>
+                        <td>
+                            <div class="form-group row">
+                                <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                                <div class="col-sm-4">
+                                    <input id="program_start_input_segmentation_duration_min" class="form-control" type="number" step=any value="{{item.value[4]}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                                <div class="col-sm-4">
+                                    <input id="program_start_input_segmentation_duration_max" class="form-control" type="number" step=any value="{{item.value[5]}}">
+                                </div>
+                            </div>                
+                        </td>
                       </tr>
 
                       <tr>
@@ -803,131 +770,24 @@
               
                       </tbody>
                   </table>
-              
-              <!-- Program Start - Output Trigger -->
-                  <!-- <div >
-                      <label for="program_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
-                      <table id="program_start_table" class ="table table-striped">
-                          <tbody>
-
-                              <tr>
-                              <th>segmentation_type_id</th><td></td>
-                              <td><select id="program_start_output_segmentation_type_id" class="form-control">
-                                  <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                  <option value="10">10</option>
-                              </select></td>
-                              </tr>
-      
-                              <tr>
-                              <th>Splice Command Type</th><td></td>
-                              <td><select id="program_start_output_splice_command_type" class="form-control">
-                                  <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                  <option value="6">6</option>
-                              </select></td>
-                              </tr>
-      
-                              <tr>
-                                  <th>duration_flag</th><td></td>
-                                  <td><select id="program_start_output_duration_flag" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="true">true</option>
-                                      <option value="false">false</option>
-                                  </select></td>
-                              </tr>
-      
-                              <tr>
-                                  <th>segmentation_duration</th>
-                                  <td ><select class="form-control">
-                                      <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value=true>Exact Time (seconds)</option>
-                                      <option value=false>Time Range (seconds)</option>
-                                  </select></td>
-                                  <td *ngIf="segmentationDurationExact">
-                                      <input [(ngModel)]="segmentationDurationExactAmount" (change)="setExactSegmentationDuration(true)" class="form-control" type="number" step=any placeholder = {{Program?.value[0].program_start.input_trigger.segmentation_duration_min}}>
-                                  </td>
-                                  <td >
-                                      <div class="form-group row">
-                                          <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                          <div class="col-sm-4">
-                                              <input  id="program_start_output_segmentation_duration_min" class="form-control" type="number" step=any value="{{item.value[10]}}">
-                                          </div>
-                                      </div>
-                                      <div class="form-group row">
-                                          <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                          <div class="col-sm-4">
-                                              <input  id="program_start_output_segmentation_duration_max" class="form-control" type="number" step=any value="{{item.value[10]}}">
-                                          </div>
-                                      </div> 
-                                  </td>
-                              </tr>
-      
-                              <tr>
-                                  <th>Segmentation Event Cancel Indicator</th><td></td>
-                                  <td><select id="program_start_output_event_cancel_indicator" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="true">true</option>
-                                      <option value="false">false</option>
-                                  </select></td>
-                              </tr>
-      
-                              <tr>
-                                  <th>Program Segmentation Flag</th><td></td>
-                                  <td><select id="program_start_output_segmentation_flag" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="true">true</option>
-                                      <option value="false">false</option>
-                                  </select></td>
-                              </tr>
-                              
-                              <tr>
-                                  <th>Delivery Not Restricted Flag</th><td></td>
-                                  <td><select id="program_start_output_delivery_not_restricted_flag" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="true">true</option>
-                                      <option value="false">false</option>
-                                  </select></td>
-                              </tr>
-      
-                              <tr>
-                                  <th>Segmentation UPID Type</th><td></td>
-                                  <td><select id="program_start_output_upid_type" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="8">8</option>
-                                  </select></td>
-                              </tr>
-      
-                              <tr>
-                                  <th>Segmentation UPID Length</th><td></td>
-                                  <td><select id="program_start_output_upid_length" class="form-control">
-                                      <option value="{{item.value[10]}}">{{item.value[10]}}</option>
-                                      <option value="8">8</option>
-                                  </select></td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div> -->
                   <!-- Properties End -->
                   <!-- Properties VCR Hide -->
               </div>
 
               <!-- Include Program End Trigger  -->
               <div class="custom-control custom-switch">
-                  <input  type="checkbox" class="custom-control-input">
-                  <label class="custom-control-label" for="ProgramEndSwitch">Include Program End</label>
+                <input [(ngModel)]="program_include_break_end" type="checkbox" class="custom-control-input" id="programEndSwitch">
+                <label class="custom-control-label" for="programEndSwitch">Include Program End</label>
               </div>
 
               <!-- Program End -->
-              <div> 
-                  <!-- <br><h4>Program</h4> -->
+                <div *ngIf="program_include_break_end">
                   <br><label style="font-size: larger;color:#00A8E0">End Trigger</label>
-                  <!-- <br><h4>End Trigger</h4> -->
                   <form class="form-inline">
                       <div class="form-group">
                       </div>
                   </form>
                   <br>
-                  <!-- <label for="program_end_table" style="font-size: larger;color:#00A8E0">Input Trigger</label> -->
                   <table id="program_end_table" class ="table table-striped">
                       <tbody>
                       
@@ -941,7 +801,7 @@
 
                       <tr>
                       <th>Splice Command Type</th><td></td>
-                      <td><select id="program_end_input_splice_comand_type" class="form-control">
+                      <td><select id="program_end_input_splice_command_type" class="form-control">
                           <option value="{{item.value[12]}}">{{item.value[12]}}</option>
                           <option value="6">6</option>
                       </select></td>
@@ -1001,86 +861,9 @@
                   <!-- Properties End -->
                       </tbody>
                   </table>
-              
-                  <!-- <div >
-                      <label for="program_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
-                      <table id="program_start_table" class ="table table-striped">
-                          <tbody>
-
-                              <tr>
-                                  <th>segmentation_type_id</th><td></td>
-                                  <td><select id="program_end_output_segmentation_type_id" class="form-control">
-                                      <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                      <option value="11">11</option>
-                                  </select></td>
-                                  </tr>
-          
-                                  <tr>
-                                  <th>Splice Command Type</th><td></td>
-                                  <td><select id="program_end_output_splice_command_type" class="form-control">
-                                      <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                      <option value="6">6</option>
-                                  </select></td>
-                                  </tr>
-          
-                                  <tr>
-                                      <th>duration_flag</th><td></td>
-                                      <td><select id="program_end_output_duration_flag" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="false">false</option>
-                                      </select></td>
-                                  </tr>
-
-                                  <tr>
-                                      <th>Segmentation Event Cancel Indicator</th><td></td>
-                                      <td><select id="program_end_output_event_cancel_indicator" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="true">true</option>
-                                          <option value="false">false</option>
-                                      </select></td>
-                                  </tr>
-          
-                                  <tr>
-                                      <th>Program Segmentation Flag</th><td></td>
-                                      <td><select id="program_end_output_segmentation_flag" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="true">true</option>
-                                          <option value="false">false</option>
-                                      </select></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                      <th>Delivery Not Restricted Flag</th><td></td>
-                                      <td><select id="program_end_output_delivery_not_restricted_flag" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="true">true</option>
-                                          <option value="false">false</option>
-                                      </select></td>
-                                  </tr>
-          
-                                  <tr>
-                                      <th>Segmentation UPID Type</th><td></td>
-                                      <td><select id="program_end_output_upid_type" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="8">8</option>
-                                      </select></td>
-                                  </tr>
-          
-                                  <tr>
-                                      <th>Segmentation UPID Length</th><td></td>
-                                      <td><select id="program_end_output_upid_length" class="form-control">
-                                          <option value="{{item.value[18]}}">{{item.value[18]}}</option>
-                                          <option value="8">8</option>
-                                      </select></td>
-                                  </tr>
-
-                          </tbody>
-                      </table>
-                  </div> -->
                   <!-- Properties End -->
                   <!-- Properties VCR Hide -->
               </div>
-              
               </ng-template>
         </ng-template>
     </ngb-panel>
@@ -1088,11 +871,11 @@
   </span>
 
   <!-- NATIONAL BREAK SEGMENT BEGINS HERE -->
-  <span *ngIf="item.key=='nationalbreak' && item.value?.length == 0" >
+  <span *ngIf="item.key=='nationalbreak' && item.value?.length == 0">
     <input type="hidden" id="nationalBreakTrue"  value="false">
   </span>
 
-  <span *ngIf="item.key=='nationalbreak' && item.value?.length > 0" id="nationalBreak" >
+  <span *ngIf="item.key=='nationalbreak' && item.value?.length > 0" id="nationalBreak">
     <input type="hidden" id="nationalBreakTrue"  value="true">
     <ngb-accordion value="true" id="RemoveNational" [destroyOnHide]="false" style="margin-bottom: 10px; display:block">
       <ngb-panel>
@@ -1102,7 +885,6 @@
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeNational()" style="margin-left: auto; font-size:large;">Remove</button></h3>
             </div>
                 <ng-template ngbPanelContent>
-                 
                   <div class="custom-control custom-switch">
                     <input [(ngModel)]="validate_splice_count2" type="checkbox" class="custom-control-input" id="validate_splice_count2">
                     <label class="custom-control-label" for="validate_splice_count2">Validate Splice Count</label>
@@ -1126,26 +908,23 @@
                 <table  class ="table table-striped">
                     <tbody>
 
-                        <tr *ngIf="national_break_start_input_splice_command=='5'">
+                        <tr *ngIf="htmlSplice2=='5'">
                             <th>Action</th><td></td>
-                            <td><select [(ngModel)]="national_break_start_input_action" id= "national_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
+                            <td><select [(ngModel)]="htmlAction3" name="national_break_start_input_action" id="national_break_start_input_action" (change)="this.setStartOutput()" class="form-control" >
                                 <option *ngFor='let options of action3' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
-
+                        
                         <tr>
                             <th>Splice Command Type</th><td></td>
-                            <td><select id="national_break_start_input_splice_command" [(ngModel)]="national_break_start_input_splice_command" name="splice_command_type_start" class="form-control" >
-                                <option value="{{item.value[2]}}">{{item.value[2]}}</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
+                            <td><select id="national_break_start_input_splice_command" [(ngModel)]="htmlSplice2" name="splice_command_type_start" class="form-control" >
+                                <option *ngFor='let options of spliceCommand2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="national_break_start_input_splice_command=='6'">
+                        <tr *ngIf="htmlSplice2=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
-                                <option value="{{item.value[3]}}">{{item.value[3]}}</option>
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -1158,19 +937,17 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="national_break_start_input_splice_command=='5'"> 
+                        <tr *ngIf="htmlSplice2=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
-                            <td><select id="national_break_start_input_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool31' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool41" id="national_break_start_input_out_of_network_indicator" class="form-control">
+                                <option *ngFor='let options of bool41' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <!-- If Splice Command Type is [5], then show Splice Event Id -->
-                        <!-- If Splice Command Type is [6], then remove Out of Splice Event Id -->
-                        <tr *ngIf="national_break_start_input_splice_command=='5'" >
+                        <tr *ngIf="htmlSplice2=='5'" >
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_input_splice_event_id" class="form-control">
-                                <option value="{{item.value[5]}}">{{item.value[5]}}</option>
+                                <option value="{{item.value[4]}}">{{item.value[4]}}</option>
                                 <option value="isnumeric">Must Be Numeric</option>
                                 <option value="notnumeric">Not Numeric</option>
                             </select></td>
@@ -1178,19 +955,19 @@
 
                         <tr>
                             <th>Immediate Flag</th><td></td>
-                            <td><select id="national_break_start_input_splice_immediate_flag" class="form-control">
-                                <option *ngFor='let options of bool32' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool42" id="national_break_start_input_splice_immediate_flag" class="form-control">
+                                <option *ngFor='let options of bool42' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="national_break_start_input_duration_flag" class="form-control" [(ngModel)]="national_break_duration_flag">
-                                <option *ngFor='let options of bool33' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool43" id="national_break_start_input_duration_flag" class="form-control">
+                                <option *ngFor='let options of bool43' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="national_break_duration_flag=='true'">
+                        <tr *ngIf="htmlBool43=='true'">
                             <th>Break Duration</th>
                             <td><select id= "changeThisName" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
@@ -1201,13 +978,13 @@
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
-                                        <input id="national_break_start_input_break_duration_min" class="form-control" type="number" step=any value="{{item.value[8]}}">
+                                        <input id="national_break_start_input_break_duration_min" class="form-control" type="number" step=any value="{{item.value[7]}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
                                     <div class="col-sm-4">
-                                        <input id="national_break_start_input_break_duration_max" class="form-control" type="number" step=any value="{{item.value[9]}}">
+                                        <input id="national_break_start_input_break_duration_max" class="form-control" type="number" step=any value="{{item.value[8]}}">
                                     </div>
                                 </div>                
                             </td>
@@ -1215,8 +992,8 @@
 
                         <tr>
                             <th>Break Auto Return</th><td></td>
-                            <td><select id="national_break_start_input_break_auto_return" class ="form-control">
-                                <option *ngFor='let options of bool34' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool44" id="national_break_start_input_break_auto_return" class ="form-control">
+                                <option *ngFor='let options of bool44' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
   
@@ -1224,8 +1001,7 @@
                 </table>
 
                 <!-- National Break Start - Output Trigger -->
-                <div *ngIf="national_break_start_input_action=='REPLACE' || national_break_start_input_splice_command=='6'">
-                    <!-- <div> -->
+                <div *ngIf="htmlAction3=='REPLACE' || national_break_start_input_splice_command=='6'">
                     <label for="national_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
@@ -1239,11 +1015,9 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="national_break_start_input_splice_command=='6'">
-                        <!-- <tr> -->
+                        <tr *ngIf="htmlSplice2=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
-                                <option value="{{item.value[12]}}">{{item.value[12]}}</option>
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -1256,19 +1030,17 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="national_break_start_input_splice_command=='5'">
-                            <!-- <tr> -->
+                        <tr *ngIf="htmlSplice2=='5'">
                             <th>Out of Network Indicator</th><td></td>
-                            <td><select id="national_break_start_output_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool35' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool45" id="national_break_start_output_out_of_network_indicator" class="form-control">
+                                <option *ngFor='let options of bool45' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="national_break_start_input_splice_command=='5'">
-                            <!-- <tr> -->
+                        <tr *ngIf="htmlSplice2=='5'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_output_splice_event_id" class="form-control">
-                                <option value="{{item.value[14]}}">{{item.value[14]}}</option>
+                                <option value="{{item.value[12]}}">{{item.value[12]}}</option>
                                 <option value="Must Be Numeric">Must Be Numeric</option>
                                 <option value="Not Numeric">Not Numeric</option>
                             </select></td>
@@ -1276,20 +1048,19 @@
 
                         <tr>
                             <th>Immediate Flag</th><td></td>
-                            <td><select id="national_break_start_output_splice_immediate_flag" class="form-control">
-                                <option *ngFor='let options of bool36' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool46" id="national_break_start_output_splice_immediate_flag" class="form-control">
+                                <option *ngFor='let options of bool46' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
                         <tr>
                             <th>Duration Flag</th><td></td>
-                            <td><select id="national_break_start_output_duration_flag" class="form-control">
-                                <option *ngFor='let options of bool37' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool47" id="national_break_start_output_duration_flag" class="form-control">
+                                <option *ngFor='let options of bool47' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="national_break_duration_flag=='true'">
-                            <!-- <tr> -->
+                        <tr *ngIf="htmlBool47=='true'">
                             <th>Break Duration</th>
                             <td><select id= "national_break_start_output_break_duration" class="form-control">
                                 <option>Change Break Duration Type</option>
@@ -1299,21 +1070,21 @@
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
-                                        <input id="national_break_start_output_break_duration_min" class="form-control" type="number" step=any value="{{item.value[17]}}">
+                                        <input id="national_break_start_output_break_duration_min" class="form-control" type="number" step=any value="{{item.value[15]}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
                                     <div class="col-sm-4">
-                                        <input id="national_break_start_output_break_duration_max" class="form-control" type="number" step=any value="{{item.value[18]}}">
+                                        <input id="national_break_start_output_break_duration_max" class="form-control" type="number" step=any value="{{item.value[16]}}">
                                     </div>
                                 </div>                
                         </tr>
 
                         <tr>
                             <th>Break Auto Return</th><td></td>
-                            <td><select id="national_break_start_output_break_auto_return" class ="form-control">
-                                <option *ngFor='let options of bool38' [value]="options">{{options}}</option>
+                            <td><select [(ngModel)]="htmlBool48" id="national_break_start_output_break_auto_return" class ="form-control">
+                                <option *ngFor='let options of bool48' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -1323,54 +1094,39 @@
 
                 <!-- Break End Trigger -->
                 <div class="custom-control custom-switch">
-                    <!-- <input  type="checkbox" class="custom-control-input"> -->
                     <input [(ngModel)]="national_break_include_break_end" type="checkbox" class="custom-control-input" id="nationalBreakEndSwitch">
                     <label class="custom-control-label" for="nationalBreakEndSwitch">Include Break End</label>
                 </div>
 
                 <!-- National Break End -->
-                <!-- <div> -->
                 <div *ngIf="national_break_include_break_end">
                     <br><h5>End Trigger</h5>
                     <form class="form-inline">
                         <div class="form-group">
                         </div>
                     </form>
-            <!-- National Break End - Input Trigger -->
+                <!-- National Break End - Input Trigger -->
                     <label for="national_break_end_table" style="font-size: larger; color:#00A8E0">Input Trigger</label>
                     <table id="national_break_end_table" class="table table-striped" >
                         <tbody>
 
-                        <!-- If Splice Command Type is [6], then remove Action -->
-                        <!-- Hide output trigger if action is 'replace' -->
-                            <tr *ngIf="national_break_start_input_splice_command=='5'">
+                            <tr *ngIf="htmlSplice2=='5'">
                                 <th>Action</th><td></td>
-                                <td><select [(ngModel)]="national_break_end_input_action" (change)="this.setStartOutput()" class="form-control" id="national_break_end_input_action">
-                                    <!-- <td><select [(ngModel)]="nationalBreak?.value[0].national_break_start.action" (change)="this.setStartOutput()" class="form-control" id="action"> -->
+                                <td><select [(ngModel)]="htmlAction4" (change)="this.setStartOutput()" class="form-control" id="national_break_end_input_action">
                                     <option *ngFor='let options of action4' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
-                            <!-- If Splice Command Type is [5], then show Segmentation Type Id -->
-                            <!-- If Splice Command Type is [6], then remove Action -->
-
-                            <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                             <tr>
                                 <th>Splice Command Type</th><td></td>
                                 <td><select id="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control">
                                     <option value="{{item.value[21]}}">{{item.value[2]}}</option>
-                                    <!-- <option value="{{item.value[21]}}">{{item.value[21]}}</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option> -->
                                 </select></td>
                             </tr>
-  
-                            <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
-                            <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                            <tr *ngIf="national_break_start_input_splice_command=='6'">
+
+                            <tr *ngIf="htmlSplice2=='6'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
-                                    <option value="{{item.value[22]}}">{{item.value[22]}}</option>
                                     <option value="11">11&nbsp;  [ Program End ]</option>
                                     <option value="21">21&nbsp;  [ Chapter End ]</option>
                                     <option value="23">23&nbsp;  [ Break End ]</option>
@@ -1383,18 +1139,14 @@
                                 </select></td>
                             </tr>
 
-                            <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                            <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                            <tr *ngIf="national_break_start_input_splice_command=='5'">
+                            <tr *ngIf="htmlSplice2=='5'">
                                 <th>Out of Network Indicator</th><td></td>
-                                <td><select id="national_break_end_input_out_of_network_indicator" class="form-control">
-                                    <option *ngFor='let options of bool39' [value]="options">{{options}}</option>
+                                <td><select [(ngModel)]="htmlBool49" id="national_break_end_input_out_of_network_indicator" class="form-control">
+                                    <option *ngFor='let options of bool49' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
-  
-                            <!-- If Splice Command Type is [5], then show Splice Event Id -->
-                            <!-- If Splice Command Type is [6], then remove Splice Event Id -->
-                            <tr *ngIf="national_break_start_input_splice_command=='5'">
+
+                            <tr *ngIf="htmlSplice2=='5'">
                                 <th>Splice Event Id</th><td></td>
                                 <td><select id="national_break_end_input_splice_event_id" class="form-control">
                                     <option value="{{item.value[24]}}">{{item.value[24]}}</option>
@@ -1403,47 +1155,39 @@
                                 </select></td>
                             </tr>
                             
-                            <!-- If Splice Command Type is [5], then show Splice Immediate Flag-->
-                            <!-- If Splice Command Type is [6], then remove Splice Immediate Flag -->
-                            <tr *ngIf="national_break_start_input_splice_command=='5'">
+                            <tr *ngIf="htmlSplice2=='5'">
                                 <th>Immediate Flag</th><td></td>
-                                <td><select id="national_break_end_input_splice_immediate_flag" class="form-control">
-                                    <option *ngFor='let options of bool40' [value]="options">{{options}}</option>
+                                <td><select [(ngModel)]="htmlBool50" id="national_break_end_input_splice_immediate_flag" class="form-control">
+                                    <option *ngFor='let options of bool50' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
                             <tr>
                                 <th>Duration Flag</th><td></td>
-                                <td><select id="national_break_end_input_break_duration_flag" class="form-control">
-                                    <option *ngFor='let options of bool41' [value]="options">{{options}}</option>
+                                <td><select [(ngModel)]="htmlBool51" id="national_break_end_input_break_duration_flag" class="form-control">
+                                    <option *ngFor='let options of bool51' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
                         </tbody>
                     </table>
-            <!-- National Break End - Output Trigger -->
-                <div *ngIf="national_break_end_input_action=='REPLACE' || national_break_start_input_splice_command=='6'">
+                    
+                <!-- National Break End - Output Trigger -->
+                <div *ngIf="htmlAction4=='REPLACE' || national_break_start_input_splice_command=='6'">
                         <label for="national_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                         <table id="national_break_end_table" class="table table-striped" >
                             <tbody>
     
-                                <!-- If Splice Command Type is [6], then the value for splice command should be [6] for both input and output trigger -->
                                 <tr>
                                     <th>Splice Command Type</th><td></td>
                                     <td><select id="national_break_end_output_splice_command" name="splice_command_type_start" class="form-control" >
                                         <option value="{{item.value[27]}}">{{item.value[2]}}</option>
-                                        <!-- <option value="{{item.value[27]}}">{{item.value[27]}}</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option> -->
                                     </select></td>
                                 </tr>
 
-                                <!-- If Splice Command Type is [5], then remove Segmentation Type Id -->
-                                <!-- If Splice Command Type is [6], then show Segmentation Type Id -->
-                                <tr *ngIf="national_break_start_input_splice_command=='6'">
+                                <tr *ngIf="htmlSplice2=='6'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                        <option value="{{item.value[28]}}">{{item.value[28]}}</option>
                                         <option value="11">11&nbsp;  [ Program End ]</option>
                                         <option value="21">21&nbsp;  [ Chapter End ]</option>
                                         <option value="23">23&nbsp;  [ Break End ]</option>
@@ -1455,40 +1199,34 @@
                                         <option value="51">51&nbsp;  [ Network End ]</option>
                                     </select></td>
                                 </tr>
-  
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="national_break_start_input_splice_command=='5'">
+
+                                <tr *ngIf="htmlSplice2=='5'">
                                     <th>Out of Network Indicator</th><td></td>
-                                    <td><select id="national_break_end_output_out_of_network_indicator" class="form-control">
-                                        <option *ngFor='let options of bool42' [value]="options">{{options}}</option>
+                                    <td><select [(ngModel)]="htmlBool52" id="national_break_end_output_out_of_network_indicator" class="form-control">
+                                        <option *ngFor='let options of bool52' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
-                                
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="national_break_start_input_splice_command=='5'">
+
+                                <tr *ngIf="htmlSplice2=='5'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="national_break_end_output_splice_event_id" class="form-control">
-                                        <option value="{{item.value[30]}}">{{item.value[31]}}</option>
+                                        <option value="{{item.value[27]}}">{{item.value[27]}}</option>
                                         <option value="isnumeric">Must Be Numeric</option>
                                         <option value="notnumeric">Not Numeric</option>
                                     </select></td>
                                 </tr>
 
-                                <!-- If Splice Command Type is [5], then show Out of Network Indicator -->
-                                <!-- If Splice Command Type is [6], then remove Out of Network Indicator -->
-                                <tr *ngIf="national_break_start_input_splice_command=='5'">
+                                <tr *ngIf="htmlSplice2=='5'">
                                     <th>Immediate Flag</th><td></td>
-                                    <td><select id="national_break_end_output_splice_immediate_flag" class="form-control">
-                                        <option *ngFor='let options of bool43' [value]="options">{{options}}</option>
+                                    <td><select [(ngModel)]="htmlBool53" id="national_break_end_output_splice_immediate_flag" class="form-control">
+                                        <option *ngFor='let options of bool53' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
                                 <tr>
                                     <th>Duration Flag</th><td></td>
-                                    <td><select id="national_break_end_output_break_duration_flag" class="form-control">
-                                        <option *ngFor='let options of bool44' [value]="options">{{options}}</option>
+                                    <td><select [(ngModel)]="htmlBool54" id="national_break_end_output_break_duration_flag" class="form-control">
+                                        <option *ngFor='let options of bool54' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
   
@@ -1499,7 +1237,7 @@
                 <br>
                 <div *ngIf="national_break_include_break_end">
                     <label for="break_duration_deviation_tolerance">Time Separation Deviation Tolerance (seconds):</label>
-                    <input id="national_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[33]}}" style="width:auto; display:inline-block; margin-left: 10px;">
+                    <input id="national_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[28]}}" style="width:auto; display:inline-block; margin-left: 10px;">
                 </div>
                 </ng-template>
           </ng-template>

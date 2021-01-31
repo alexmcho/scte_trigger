@@ -84,25 +84,14 @@ export class ControlComponent implements OnInit {
   bool46:String [] = []
   bool47:String [] = []
   bool48:String [] = []
+  bool49:String [] = []
+  bool50:String [] = []
+  bool51:String [] = []
+  bool52:String [] = []
+  bool53:String [] = []
+  bool54:String [] = []
 
-  validatesplice1:String [] = []
-  command1:String [] = []
-  command2:String [] = []
-  command3:String [] = []
-  command4:String [] = []
-  segmentationtype1:String [] = []
-  segmentationtype2:String [] = []
-  segmentationtype3:String [] = []
-  segmentationtype4:String [] = []
-  event1:String [] = []
-  event2:String [] = []
-  event3:String [] = []
-  event4:String [] = []
-  breakduration1:String [] = []
-  breakduration2:String [] = []
-  breakduration3:String [] = []
-  breakduration4:String [] = []
-  deviation1:String [] = []
+  bool60:String [] = []
 
   spliceCommand1:String [] = []
   spliceCommand2:String [] = []
@@ -131,6 +120,8 @@ export class ControlComponent implements OnInit {
 
   htmlAction1;
   htmlAction2;
+  htmlAction3;
+  htmlAction4;
   
   htmlBool1;
   htmlBool2;
@@ -147,8 +138,29 @@ export class ControlComponent implements OnInit {
   htmlBool13;
   htmlBool14;
 
+  htmlBool20;
+
   htmlSplice1;
   htmlSplice2;
+  htmlSplice3;
+  htmlSplice4;
+
+  htmlBool41;
+  htmlBool42;
+  htmlBool43;
+  htmlBool44;
+  htmlBool45;
+  htmlBool46;
+  htmlBool47;
+  htmlBool48;
+  htmlBool49;
+  htmlBool50;
+  htmlBool51;
+  htmlBool52;
+  htmlBool53;
+  htmlBool54;
+
+  htmlBool60;
   
   localIsOn:boolean = false;
   contentIsOn:boolean = false;
@@ -170,9 +182,7 @@ public formSubmitAttempt: boolean;
   componentsReferences = Array<ComponentRef<any>>();
   localbreak_index: number = 3;
   contentid_index: number = 4;
-  placementopportunity_index: number = 5;
   program_index: number = 6;
-  providerad_index: number = 7;
   nationalbreak_index: number = 8;
   networklink: String;
   contentIdViewCheck:boolean;
@@ -193,30 +203,13 @@ public formSubmitAttempt: boolean;
 		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
 		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12, this.bool13, this.bool14]
 
-		// var list3 = [
-			// this.validatesplice1, <option *ngFor='let options of validatesplice1' [value]="options">{{options}}</option>
-			// this.command1, 
-			// this.command2, 
-			// this.command3, 
-			// this.command4, 
-			// this.segmentationtype1, <option *ngFor='let options of segmentationtype1' [value]="options">{{options}}</option>
-			// this.segmentationtype2, <option *ngFor='let options of segmentationtype2' [value]="options">{{options}}</option>
-			// this.segmentationtype3, <option *ngFor='let options of segmentationtype3' [value]="options">{{options}}</option>
-			// this.segmentationtype4, <option *ngFor='let options of segmentationtype4' [value]="options">{{options}}</option>
-			// this.event1, 
-			// this.event2, 
-			// this.event3, 
-			// this.event4, 
-			// this.breakduration1, <option *ngFor='let options of breakduration1' [value]="options">{{options}}</option>
-			// this.breakduration2, <option *ngFor='let options of breakduration2' [value]="options">{{options}}</option>
-			// this.breakduration3, <option *ngFor='let options of breakduration3' [value]="options">{{options}}</option>
-			// this.breakduration4, <option *ngFor='let options of breakduration4' [value]="options">{{options}}</option>
-			// this.deviation1 <option *ngFor='let options of deviation1' [value]="options">{{options}}</option>
-		// ]
 		var list3 =[this.spliceCommand1] 
 		this.spliceCommand1.push(this.config.value[0].value[4].value[2])
-
 		this.htmlSplice1 = this.config.value[0].value[4].value[2]
+
+		var list4 =[this.spliceCommand2] 
+		this.spliceCommand2.push(this.config.value[0].value[7].value[2])
+		this.htmlSplice2 = this.config.value[0].value[7].value[2]
 
 		//Local Break - 
 		this.action1.push(this.config.value[0].value[4].value[1])
@@ -254,33 +247,6 @@ public formSubmitAttempt: boolean;
 		this.htmlBool12 = this.config.value[0].value[4].value[23]
 		this.htmlBool13 = this.config.value[0].value[4].value[25]
 		this.htmlBool14 = this.config.value[0].value[4].value[26]
-
-
-		// //validate splice count
-		// this.validatesplice1.push(this.config.value[0].value[4].value[0])
-		// //command type 
-		// this.command1.push(this.config.value[0].value[4].value[2])
-		// this.command2.push(this.config.value[0].value[4].value[11])
-		// this.command3.push(this.config.value[0].value[4].value[21])
-		// this.command4.push(this.config.value[0].value[4].value[27])
-		// //segmentation type id 
-		// this.segmentationtype1.push(this.config.value[0].value[4].value[3])
-		// this.segmentationtype2.push(this.config.value[0].value[4].value[12])
-		// this.segmentationtype3.push(this.config.value[0].value[4].value[22])
-		// this.segmentationtype4.push(this.config.value[0].value[4].value[28])
-		// //splice event id 
-		// this.event1.push(this.config.value[0].value[4].value[5])
-		// this.event2.push(this.config.value[0].value[4].value[14])
-		// this.event3.push(this.config.value[0].value[4].value[24])
-		// this.event4.push(this.config.value[0].value[4].value[31])
-		// //Break Duration
-		// this.breakduration1.push(this.config.value[0].value[4].value[8])
-		// this.breakduration2.push(this.config.value[0].value[4].value[9])
-		// this.breakduration3.push(this.config.value[0].value[4].value[17])
-		// this.breakduration4.push(this.config.value[0].value[4].value[18])
-		// //break end deviation 
-		// this.deviation1.push(this.config.value[0].value[4].value[33])
-
 		
 		//ContentId - 
 		this.bool19.push(this.config.value[0].value[5].value[2])
@@ -290,91 +256,55 @@ public formSubmitAttempt: boolean;
 		this.bool22.push(this.config.value[0].value[5].value[8])
 		
 		//Program - 
-		this.bool23.push(this.config.value[0].value[6].value[0])
-		this.bool24.push(this.config.value[0].value[6].value[3])
-		this.bool24.push(this.config.value[0].value[6].value[6])
-		this.bool25.push(this.config.value[0].value[6].value[7])
-		this.bool26.push(this.config.value[0].value[6].value[8])
-		this.bool27.push(this.config.value[0].value[6].value[13])
-		this.bool28.push(this.config.value[0].value[6].value[14])
-		this.bool29.push(this.config.value[0].value[6].value[15])
-		this.bool30.push(this.config.value[0].value[6].value[16])
+		this.htmlBool60 = this.config.value[0].value[6].value[3]
+		this.bool60.push(this.config.value[0].value[6].value[3])
+
+		// this.bool23.push(this.config.value[0].value[6].value[0])
+		// this.bool24.push(this.config.value[0].value[6].value[3])
+		// this.bool25.push(this.config.value[0].value[6].value[6])
+		// this.bool26.push(this.config.value[0].value[6].value[7])
+		// this.bool27.push(this.config.value[0].value[6].value[8])
+		// this.bool28.push(this.config.value[0].value[6].value[13])
+		// this.bool29.push(this.config.value[0].value[6].value[14])
+		// this.bool30.push(this.config.value[0].value[6].value[15])
+		// this.bool31.push(this.config.value[0].value[6].value[16])
 		
 		//National Break - 
 		this.action3.push(this.config.value[0].value[7].value[1])
-		this.action4.push(this.config.value[0].value[7].value[20])
-		this.bool31.push(this.config.value[0].value[7].value[4])
-		this.bool32.push(this.config.value[0].value[7].value[6])
-		this.bool33.push(this.config.value[0].value[7].value[7])
-		this.bool34.push(this.config.value[0].value[7].value[10])
-		this.bool35.push(this.config.value[0].value[7].value[13])
-		this.bool36.push(this.config.value[0].value[7].value[15])
-		this.bool37.push(this.config.value[0].value[7].value[16])
-		this.bool38.push(this.config.value[0].value[7].value[19])
-		this.bool39.push(this.config.value[0].value[7].value[23])
-		this.bool40.push(this.config.value[0].value[7].value[25])
-		this.bool41.push(this.config.value[0].value[7].value[26])
-		this.bool42.push(this.config.value[0].value[7].value[29])
-		this.bool43.push(this.config.value[0].value[7].value[30])
-		this.bool44.push(this.config.value[0].value[7].value[32])
-		
+		this.action4.push(this.config.value[0].value[7].value[18])
 
-		//Local Break and National Break
+		this.htmlAction3 = this.config.value[0].value[7].value[1]
+		this.htmlAction4 = this.config.value[0].value[7].value[18]
 
-		// Splice Command Type - (5 or 6) - Changes Available Parameters: 
-		// {{item.value[2]}}
-		// {{item.value[11]}} - unused - refers to value [2]
-		// {{item.value[21]}} - unused - refers to value [2]
-		// {{item.value[27]}} - unused - refers to value[2]
-		
-		// Segmentation Type id: 
-		// {{item.value[3]}} - Placement Opportunity Start 
-		// {{item.value[12]}} - Placement Opportunity Start 
-		// {{item.value[22]}} - Placement Opportunity End 
-		// {{item.value[28]}} - Placement Opportunity End 
+		this.bool41.push(this.config.value[0].value[7].value[3])
+		this.bool42.push(this.config.value[0].value[7].value[5])
+		this.bool43.push(this.config.value[0].value[7].value[6])
+		this.bool44.push(this.config.value[0].value[7].value[9])
+		this.bool45.push(this.config.value[0].value[7].value[10])
+		this.bool46.push(this.config.value[0].value[7].value[11])
+		this.bool47.push(this.config.value[0].value[7].value[13])
+		this.bool48.push(this.config.value[0].value[7].value[14])
+		this.bool49.push(this.config.value[0].value[7].value[17])
+		this.bool50.push(this.config.value[0].value[7].value[20])
+		this.bool51.push(this.config.value[0].value[7].value[22])
+		this.bool52.push(this.config.value[0].value[7].value[23])
+		this.bool53.push(this.config.value[0].value[7].value[25])
+		this.bool54.push(this.config.value[0].value[7].value[26])
 
-		// Splice Event Id - (Must Be Numeric or Not Numeric): 
-		// {{item.value[5]}} - 'isnumeric'
-		// {{item.value[14]}} - 'isnumeric'
-		// {{item.value[24]}} - 'isnumeric'
-		// {{item.value[31]}}  - 'isnumeric'
-
-		// Regular Number Values:
-		// {{item.value[0]}} - validate splice count
-		// {{item.value[33]}} - Deviation Tolerance
-		
-		// Break Duration - (Also Regular Number Values): 
-		// {{item.value[8]}} - start input Break duration min 
-		// {{item.value[9]}} - start input Break duration max
-		// {{item.value[17]}} - start output Break duration min 
-		// {{item.value[18]}} - start output Break duration max 
-
-		//ContentId
-		// {{item.value[0]}} - Segmentation Type Id
-		// {{item.value[1]}} - Splice Command Type - Will always be 5 
-		// {{item.value[6]}} - Segmentation UPID Type 
-		// {{item.value[7]}} - Segmentation UPID Length 
-
-		//Program
-		// Splice Command Type - (Will always be 6)
-		// {{item.value[2]}} - Input Trigger
-		// {{item.value[12]}} - Output Trigger
-
-		// Segmentation Type id: 
-		// {{item.value[1]}} - Input Trigger
-		// {{item.value[11]}} - Output Trigger
-
-		// Segmentation Duration: 
-		// {{item.value[4]}} - Segmentation Duration min 
-		// {{item.value[5]}} - Segmentation Duration max 
-
-		// Segmentation UPID Type: 
-		// {{item.value[9]}} - Input Trigger
-		// {{item.value[17]}} - Output Trigger
-
-		// Segmentation UPID Length:
-		// {{item.value[10]}} - Input Trigger
-		// {{item.value[18]}} - Output Trigger
+		this.htmlBool41 = this.config.value[0].value[7].value[3]
+		this.htmlBool42 = this.config.value[0].value[7].value[5]
+		this.htmlBool43 = this.config.value[0].value[7].value[6]
+		this.htmlBool44 = this.config.value[0].value[7].value[9]
+		this.htmlBool45 = this.config.value[0].value[7].value[10]
+		this.htmlBool46 = this.config.value[0].value[7].value[11]
+		this.htmlBool47 = this.config.value[0].value[7].value[13]
+		this.htmlBool48 = this.config.value[0].value[7].value[14]
+		this.htmlBool49 = this.config.value[0].value[7].value[17]
+		this.htmlBool50 = this.config.value[0].value[7].value[20]
+		this.htmlBool51 = this.config.value[0].value[7].value[22]
+		this.htmlBool52 = this.config.value[0].value[7].value[23]
+		this.htmlBool53 = this.config.value[0].value[7].value[25]
+		this.htmlBool54 = this.config.value[0].value[7].value[26]
 		
 		for(let i = 0; i < list.length; i++){
 			for(let j = 0; j < 3; j++)
@@ -393,6 +323,12 @@ public formSubmitAttempt: boolean;
 			for(let j = 0; j < 2; j++)
 			if(list3[i].indexOf(this.listOfSpliceCommandType[j]) == -1){
 				list3[i].push(this.listOfSpliceCommandType[j])
+			}
+		}
+		for(let i = 0; i < list4.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list4[i].indexOf(this.listOfSpliceCommandType[j]) == -1){
+				list4[i].push(this.listOfSpliceCommandType[j])
 			}
 		}
 	})
@@ -462,11 +398,6 @@ public formSubmitAttempt: boolean;
 		this.contentIdViewCheck = false;
 	}
 
-	removePlacement() {
-		var T = document.getElementById("RemovePlacement");
-		T.style.display = "none";  // <-- Set it to block
-	}
-
 	removeProgram() {
 		// var T = document.getElementById("RemoveProgram");
 		// T.style.display = "none";  // <-- Set it to block
@@ -474,11 +405,6 @@ public formSubmitAttempt: boolean;
 		(T as HTMLElement).remove();
 		this.programIsOn = false; 
 		this.programViewCheck = false;
-	}
-
-	removeProvider() {
-		var T = document.getElementById("RemoveProvider");
-		T.style.display = "none";  // <-- Set it to block
 	}
 
 	removeNational() {
@@ -491,12 +417,8 @@ public formSubmitAttempt: boolean;
 	}
   
   createLocalBreakComponent() {
-	// let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
-    // let childComponentRef = this.VCR.createComponent(componentFactory);
-	// let childComponent = childComponentRef.instance;
-	
-    // childComponent.index = ++this.localbreak_index;
-	// childComponent.parentRef = this;
+  //Checking if view already has contentid
+  //If not allow a new Local Break
 	let localAlreadyThere:Boolean = false;
 	  
 	const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
@@ -512,18 +434,14 @@ public formSubmitAttempt: boolean;
 		let childComponent = childComponentRef.instance;
 		
 		childComponent.index = ++this.localbreak_index;
-
-		// childComponent.parentRef = this;
-	
-		// add reference for newly created component
-		// this.componentsReferences.push(childComponentRef);
 		}
 	
   }
   
   createContentIdComponent() {
-	  //checking if view already has contentid
-	  //if not allow a new content id
+  //Checking if view already has contentid
+  //If not allow a new Content Id
+
 	 let contentAlreadyThere:Boolean = false;
 	  
 	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
@@ -539,22 +457,10 @@ public formSubmitAttempt: boolean;
 		let childComponent = childComponentRef.instance;
 		
 		  childComponent.index = ++this.contentid_index;
-
-		  // childComponent.parentRef = this;
-	  
-		  // add reference for newly created component
-		// this.componentsReferences.push(childComponentRef);
 		}
   }
   
-  
   createProgramComponent() {
-	// let componentFactory = this.CFR.resolveComponentFactory(PcComponent);
-    // let childComponentRef = this.VCR.createComponent(componentFactory);
-	// let childComponent = childComponentRef.instance;
-	
-    // childComponent.index = ++this.program_index;
-	// childComponent.parentRef = this;
 	let programAlreadyThere:Boolean = false;
 	  
 	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
@@ -570,22 +476,10 @@ public formSubmitAttempt: boolean;
 		let childComponent = childComponentRef.instance;
 		
 		childComponent.index = ++this.program_index;
-
-		// childComponent.parentRef = this;
-	
-		// add reference for newly created component
-		// this.componentsReferences.push(childComponentRef);
 		}
   }
 
-
   createNationalBreakComponent() {
-	// let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
-    // let childComponentRef = this.VCR.createComponent(componentFactory);
-	// let childComponent = childComponentRef.instance;
-	
-    // childComponent.index = ++this.providerad_index;
-	// childComponent.parentRef = this;
 	let nationalAlreadyThere:Boolean = false;
 	  
 	const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
@@ -601,11 +495,6 @@ public formSubmitAttempt: boolean;
 		let childComponent = childComponentRef.instance;
 		
 		childComponent.index = ++this.nationalbreak_index;
-
-		// childComponent.parentRef = this;
-	
-		// add reference for newly created component
-		// this.componentsReferences.push(childComponentRef);
 		}
   }
 
@@ -686,34 +575,12 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
-	//5
-	const end_splice_command = <HTMLInputElement> document.getElementById("end_splice_command");
-	const end_out_of_network = <HTMLInputElement> document.getElementById("end_out_of_network");
-	const end_splice_event_id = <HTMLInputElement> document.getElementById("end_splice_event_id");
-	const end_immidiate_flag = <HTMLInputElement> document.getElementById("end_immidiate_flag");
-	const end_duration_flag = <HTMLInputElement> document.getElementById("end_duration_flag");
-
-	const end_output_splice_command = <HTMLInputElement> document.getElementById("end_output_splice_command");
-	const end_output_out_of_network = <HTMLInputElement> document.getElementById("end_output_out_of_network");
-	const end_output_splice_event_id = <HTMLInputElement> document.getElementById("end_output_splice_event_id");
-	const end_output_immediate_flag = <HTMLInputElement> document.getElementById("end_output_immediate_flag");
-	const end_output_duration_flag = <HTMLInputElement> document.getElementById("end_output_duration_flag");
-
-	const end_deviation_tolerance = <HTMLInputElement> document.getElementById("end_deviation_tolerance");
-	
-	
-	//6
-	const end_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
-	const end_output_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
-
 	try{
 		if(localBreakTrue.value  == "true"){
 			this.localBreakViewCheck = true
 		}
 	}catch{}
 	
-
-	// console.log(this.localBreakViewCheck)
 	if(this.localBreakViewCheck){
 		if (this.localIsOn || localBreakTrue.value) {
 			let localBreakArray = []
@@ -799,18 +666,6 @@ public formSubmitAttempt: boolean;
 						local_break_end_output_break_duration_flag.value,
 
 						local_break_end_deviation_tolerance.value
-
-						// end_splice_command.value,
-						// end_out_of_network.value,
-						// end_splice_event_id.value,
-						// end_immidiate_flag.value,
-						// end_duration_flag.value,
-						// end_output_splice_command.value,
-						// end_output_out_of_network.value,
-						// end_output_splice_event_id.value,
-						// end_output_immediate_flag.value
-						// ,end_output_duration_flag.value,
-						// end_deviation_tolerance.value
 					]
 				}
 			}
@@ -905,37 +760,6 @@ public formSubmitAttempt: boolean;
 						]
 					}		
 				}
-				
-			
-				
-				//6 "local break end"
-				// local_break_end_input_segmentation_type_id
-				//local_break_end_output_segmentation_type_id
-				//local_break_start_input_segmentation_type_id
-				//5 "local break end"
-
-				// local_break_end_input_out_of_network_indicator
-				//local_break_end_input_splice_event_id
-
-			
-			// else{
-			// 	localBreakArray= [
-			// 		local_break_start_input_action.value,local_break_start_input_splice_command.value,
-			// 		local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
-			// 		local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
-			// 		local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
-			// 		local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
-			// 		local_break_start_output_splice_immediate_flag.value,local_break_start_output_duration_flag.value,local_break_start_output_break_duration_min.value,
-			// 		local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-			// 		local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-			// 		local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-			// 		local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-			// 		local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-			// 		local_break_end_deviation_tolerance.value]
-			// }
-
-			
-			
 			
 			let localbreakJson = JSON.stringify(localBreakArray)
 			var localbreak = JSON.parse(localbreakJson)
@@ -948,7 +772,6 @@ public formSubmitAttempt: boolean;
 		else{
 			localbreak = []
 		}
-	
 
 	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
@@ -984,8 +807,59 @@ if(this.contentIdViewCheck){
 		content = []
 	}
 	
+	// const programTrue = <HTMLInputElement> document.getElementById("programTrue");
+	// const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
+	// const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
+	// const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
+	// const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
+	// const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
+	// const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
+	// const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
+	// const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
+	// const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
+	// const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
+	// const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
 
+	// const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
+	// const program_end_input_splice_comand_type = <HTMLInputElement> document.getElementById("program_end_input_splice_comand_type");
+	// const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
+	// const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
+	// const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
+	// const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
+	// const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
+	// const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
+
+	// try{
+	// 	if(programTrue.value  == "true"){
+	// 		this.programViewCheck = true
+	// 	}
+	// }catch{}
+
+	// if(this.programViewCheck){
+	// 	if (this.programIsOn || programTrue.value) {
+	// 		let programArray= [
+	// 			program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+	// 			program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+	// 			program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+	// 			program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
+	// 			program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
+	// 			program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
+	// 		]
+			
+	// 		let programJson = JSON.stringify(programArray)
+	// 		var program = JSON.parse(programJson)
+	// 		}
+	// 		else{
+	// 		  program = []
+	// 		}
+	// 	}
+	// 	else{
+	// 		program = []
+	// 	}
+
+	const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
 	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
+
 	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
 	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
 	const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
@@ -999,7 +873,7 @@ if(this.contentIdViewCheck){
 	const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
 
 	const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
-	const program_end_input_splice_comand_type = <HTMLInputElement> document.getElementById("program_end_input_splice_comand_type");
+	const program_end_input_splice_command_type = <HTMLInputElement> document.getElementById("program_end_input_splice_command_type");
 	const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
 	const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
 	const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
@@ -1012,23 +886,41 @@ if(this.contentIdViewCheck){
 			this.programViewCheck = true
 		}
 	}catch{}
+	
+		if(this.programViewCheck){
+			if (this.programIsOn || programTrue.value) {
+			var programArray = []
 
-	if(this.programViewCheck){
-		if (this.programIsOn || programTrue.value) {
-			let programArray= [
-				program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-				program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-				program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-				program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
-				program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
-				program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
-			]
-			
+			if(program_start_input_duration_flag.value == "true"){
+				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+					program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+					program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+					program_start_input_upid_type.value,program_start_input_upid_length.value]
+			}
+			if(program_start_input_duration_flag.value == "false"){
+				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+					program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
+					program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value]
+			}    
+			if (programEndSwitch.checked && program_start_input_duration_flag.value == "true") {
+				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+					program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+					program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+					program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,
+					program_end_input_splice_command_type.value,program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,
+					program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,
+					program_end_input_upid_length.value]
+			}
+			if (programEndSwitch.checked && program_start_input_duration_flag.value == "false") {
+				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+					program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
+					program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value,
+					program_end_input_segmentation_type_id.value,program_end_input_splice_command_type.value,program_end_input_duration_flag.value,
+					program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,
+					program_end_input_upid_type.value,program_end_input_upid_length.value]
+			}
 			let programJson = JSON.stringify(programArray)
 			var program = JSON.parse(programJson)
-			}
-			else{
-			  program = []
 			}
 		}
 		else{
@@ -1078,32 +970,12 @@ if(this.contentIdViewCheck){
 	const national_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_output_break_duration_flag");
 	const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
 
-	// //5
-	// const end_splice_command = <HTMLInputElement> document.getElementById("end_splice_command");
-	// const end_out_of_network = <HTMLInputElement> document.getElementById("end_out_of_network");
-	// const end_splice_event_id = <HTMLInputElement> document.getElementById("end_splice_event_id");
-	// const end_immidiate_flag = <HTMLInputElement> document.getElementById("end_immidiate_flag");
-	// const end_duration_flag = <HTMLInputElement> document.getElementById("end_duration_flag");
-	// const end_output_splice_command = <HTMLInputElement> document.getElementById("end_output_splice_command");
-	// const end_output_out_of_network = <HTMLInputElement> document.getElementById("end_output_out_of_network");
-	// const end_output_splice_event_id = <HTMLInputElement> document.getElementById("end_output_splice_event_id");
-	// const end_output_immediate_flag = <HTMLInputElement> document.getElementById("end_output_immediate_flag");
-	// const end_output_duration_flag = <HTMLInputElement> document.getElementById("end_output_duration_flag");
-	// const end_deviation_tolerance = <HTMLInputElement> document.getElementById("end_deviation_tolerance");
-	
-	
-	// //6
-	// const end_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
-	// const end_output_segmentation_id = <HTMLInputElement> document.getElementById("end_segmentation_id");
-
 	try{
 		if(nationalBreakTrue.value  == "true"){
 			this.nationalBreakViewCheck = true
 		}
 	}catch{}
 	
-	
-	// console.log(this.nationalBreakViewCheck)
 	if(this.nationalBreakViewCheck){
 		if (this.nationalIsOn || nationalBreakTrue.value) {
 			let nationalBreakArray = []
@@ -1172,18 +1044,6 @@ if(this.contentIdViewCheck){
 						national_break_end_output_splice_immediate_flag.value,
 						national_break_end_output_splice_event_id.value,
 						national_break_end_deviation_tolerance.value
-
-						// end_splice_command.value,
-						// end_out_of_network.value,
-						// end_splice_event_id.value,
-						// end_immidiate_flag.value,
-						// end_duration_flag.value,
-						// end_output_splice_command.value,
-						// end_output_out_of_network.value,
-						// end_output_splice_event_id.value,
-						// end_output_immediate_flag.value
-						// ,end_output_duration_flag.value,
-						// end_deviation_tolerance.value
 					]
 				}
 			}
@@ -1278,41 +1138,9 @@ if(this.contentIdViewCheck){
 						]
 					}		
 				}
-				
-			
-				
-				//6 "national break end"
-				// national_break_end_input_segmentation_type_id
-				//national_break_end_output_segmentation_type_id
-				//national_break_start_input_segmentation_type_id
-				//5 "national break end"
 
-				// national_break_end_input_out_of_network_indicator
-				//national_break_end_input_splice_event_id
-
-			
-			// else{
-			// 	nationalBreakArray= [
-			// 		national_break_start_input_action.value,national_break_start_input_splice_command.value,
-			// 		national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
-			// 		national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
-			// 		national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
-			// 		national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
-			// 		national_break_start_output_splice_immediate_flag.value,national_break_start_output_duration_flag.value,national_break_start_output_break_duration_min.value,
-			// 		national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
-			// 		national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
-			// 		national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
-			// 		national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
-			// 		national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
-			// 		national_break_end_deviation_tolerance.value]
-			// }
-
-			
-			
-			
 			let nationalbreakJson = JSON.stringify(nationalBreakArray)
 			var nationalbreak = JSON.parse(nationalbreakJson)
-			
 			}
 			else{
 			  nationalbreak = []
@@ -1321,66 +1149,15 @@ if(this.contentIdViewCheck){
 		else{
 			nationalbreak = []
 		}
-		
-	const placement_splice_comand_type_start = <HTMLInputElement> document.getElementById("placement_splice_comand_type_start");
-	const placement_segmentation_type_id = <HTMLInputElement> document.getElementById("placement_segmentation_type_id");
-	const placement_duration_flag = <HTMLInputElement> document.getElementById("placement_duration_flag");
-	const placement_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_segmentation_duration_min");
-	const placement_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_segmentation_duration_max");
-	const placement_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_min");
-	const placement_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("placement_output_segmentation_duration_max");
-
-	const providerad_splice_comand_type_start = <HTMLInputElement> document.getElementById("providerad_splice_comand_type_start");
-	const providerad_segmentation_type_id = <HTMLInputElement> document.getElementById("providerad_segmentation_type_id");
-	const providerad_duration_flag = <HTMLInputElement> document.getElementById("providerad_duration_flag");
-	const providerad_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_min");
-	const providerad_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_segmentation_duration_max");
-	const providerad_output_segmentation_duration_max = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_max");
-	const providerad_output_segmentation_duration_min = <HTMLInputElement> document.getElementById("providerad_output_segmentation_duration_min");
 
 	let newConfig = {
 		"network_id": this.NetworkNamesService.getName()
 		,"emails": emails.value
 		,"validation_frequency": validation_frequency.value
-		// ,"localbreak":[local_break_expected_splices_hour.value,local_break_start_input_action.value,local_break_start_input_splice_command.value,
-		// 	local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
-		// 	local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
-		// 	local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
-		// 	local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
-		// 	local_break_start_output_splice_immediate_flag.value,local_break_start_output_duration_flag.value,local_break_start_output_break_duration_min.value,
-		// 	local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-		// 	local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-		// 	local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-		// 	local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-		// 	local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-		// 	local_break_end_deviation_tolerance.value]
 		,"contentid": content
 		,"localbreak": localbreak
 		,"nationalbreak": nationalbreak
 		,"pro": program
-		// ,"pro":[program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-		// 	program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-		// 	program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-		// 	program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
-		// 	program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
-		// 	program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value]
-		// ,"nationalbreak":[national_break_expected_splices_hour.value,national_break_start_input_action.value,national_break_start_input_splice_command.value,
-        //     national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
-        //     national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
-        //     national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
-        //     national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
-        //     national_break_start_output_splice_immediate_flag.value,national_break_start_output_duration_flag.value,national_break_start_output_break_duration_min.value,
-        //     national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
-        //     national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
-        //     national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
-        //     national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
-        //     national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
-		// 	national_break_end_deviation_tolerance.value]
-		
-        //   ,"placement":[placement_splice_comand_type_start.value,placement_segmentation_type_id.value,placement_duration_flag.value,placement_segmentation_duration_min.value,
-        //     placement_segmentation_duration_max.value,placement_output_segmentation_duration_min.value,placement_output_segmentation_duration_max.value]			
-        //   ,"providerad":[providerad_splice_comand_type_start.value, providerad_segmentation_type_id.value,providerad_duration_flag.value,providerad_segmentation_duration_min.value,providerad_segmentation_duration_max.value,
-        //     providerad_output_segmentation_duration_min.value,providerad_output_segmentation_duration_max.value]			
 	}
 
 	console.log('Test Save ');
@@ -1417,7 +1194,6 @@ if(this.contentIdViewCheck){
   public deleteFromArray(node: any[], index: number) {
 		return node.splice(index, 1);
 	}
-
 
 	setStartOutput() {
 		try {

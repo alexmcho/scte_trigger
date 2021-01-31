@@ -172,12 +172,8 @@ export class AddControlComponent implements OnInit {
     let childComponent = childComponentRef.instance;
     
       childComponent.index = ++this.contentid_index;
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-    // this.componentsReferences.push(childComponentRef);
     }
-    }
+  }
   
     createProgramComponent() {
     if(!this.programIsOn){
@@ -188,11 +184,7 @@ export class AddControlComponent implements OnInit {
     
     childComponent.index = ++this.program_index;
     }
-      // childComponent.parentRef = this;
-  
-      // add reference for newly created component
-      // this.componentsReferences.push(childComponentRef);
-    }
+  }
 
   createLocalBreakComponent() {
     if(!this.localIsOn){
@@ -204,55 +196,9 @@ export class AddControlComponent implements OnInit {
     
       childComponent.index = ++this.localbreak_index;
     }
-
-    // let localAlreadyThere:Boolean = false;
-	  
-    // const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
-    // if(localBreakTrue.value  == "true"){
-    //   localAlreadyThere = true;
-    // }
-    
-    // if(!this.localIsOn && !localAlreadyThere){
-    //   this.localIsOn = true;
-    //   this.contentIdViewCheck = true;
-    //   let componentFactory = this.CFR.resolveComponentFactory(LbcComponent);
-    //   let childComponentRef = this.VCR.createComponent(componentFactory);
-    //   let childComponent = childComponentRef.instance;
-      
-    //   childComponent.index = ++this.localbreak_index;
-  
-    //   // childComponent.parentRef = this;
-    
-    //   // add reference for newly created component
-    //   // this.componentsReferences.push(childComponentRef);
-    //   }
   }
 
-    // createNationalBreakComponent() {
-    //   if(!this.nationalIsOn){
-    //     this.nationalIsOn = true;
-    //   let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
-    //     let childComponentRef = this.VCR.createComponent(componentFactory);
-    //   let childComponent = childComponentRef.instance;
-      
-    //     childComponent.index = ++this.providerad_index;
-    //   }
-    // }
-
     createNationalBreakComponent() {
-      // let componentFactory = this.CFR.resolveComponentFactory(NbcComponent);
-        // let childComponentRef = this.VCR.createComponent(componentFactory);
-      // let childComponent = childComponentRef.instance;
-      
-        // childComponent.index = ++this.providerad_index;
-      // childComponent.parentRef = this;
-      // let nationalAlreadyThere:Boolean = false;
-        
-      // const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
-      // if(nationalBreakTrue.value  == "true"){
-      //   nationalAlreadyThere = true;
-      // }
-    
       if(!this.nationalIsOn){
         this.nationalIsOn = true;
         this.nationalBreakViewCheck = true;
@@ -261,20 +207,12 @@ export class AddControlComponent implements OnInit {
         let childComponent = childComponentRef.instance;
         
         childComponent.index = ++this.nationalbreak_index;
-    
-        // childComponent.parentRef = this;
-      
-        // add reference for newly created component
-        // this.componentsReferences.push(childComponentRef);
+
         }
       }
 
     
       addNewNetwork() {
-
-        // const buttonForValidateLbc = <HTMLInputElement> document.getElementById("buttonForValidateLbc");
-      
-        // console.log(buttonForValidateLbc.value)
       
         const emails = <HTMLInputElement> document.getElementById("emails");
         const networkName = <HTMLInputElement> document.getElementById("networkName");
@@ -323,53 +261,6 @@ export class AddControlComponent implements OnInit {
         const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
         const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
         const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
-        
-        // if(this.localIsOn){
-        //   let localBreakArr= [
-        //     local_break_expected_splices_hour.value,
-        //     local_break_start_input_action.value,
-        //     local_break_start_input_splice_command.value,
-        //     local_break_start_input_segmentation_type_id.value,
-        //     local_break_start_input_out_of_network_indicator.value,
-        //     local_break_start_input_splice_event_id.value,
-        //     local_break_start_input_splice_immediate_flag.value,
-        //     local_break_start_input_duration_flag.value,
-        //     local_break_start_input_break_duration_min.value,
-        //     local_break_start_input_break_duration_max.value,
-        //     local_break_start_input_break_auto_return.value,
-
-        //     local_break_start_output_splice_command.value,
-        //     local_break_start_output_segmentation_type_id.value,
-        //     local_break_start_output_out_of_network_indicator.value,
-        //     local_break_start_output_splice_event_id.value,
-        //     local_break_start_output_splice_immediate_flag.value,
-        //     local_break_start_output_duration_flag.value,
-        //     local_break_start_output_break_duration_min.value,
-        //     local_break_start_output_break_duration_max.value,
-        //     local_break_start_output_break_auto_return.value,
-
-        //     local_break_end_input_action.value,
-        //     local_break_end_input_splice_command.value,
-        //     local_break_end_input_segmentation_type_id.value,
-        //     local_break_end_input_out_of_network_indicator.value,
-        //     local_break_end_input_splice_event_id.value,
-        //     local_break_end_input_splice_immediate_flag.value,
-        //     local_break_end_input_break_duration_flag.value,
-
-        //     local_break_end_output_splice_command.value,
-        //     local_break_end_output_segmentation_type_id.value,
-        //     local_break_end_output_out_of_network_indicator.value,
-        //     local_break_end_output_splice_immediate_flag.value,
-        //     local_break_end_output_splice_event_id.value,
-        //     local_break_end_output_break_duration_flag.value,
-        //     local_break_end_deviation_tolerance.value
-        //   ]	
-        // let localJson = JSON.stringify(localBreakArr)
-        // var localbreak = JSON.parse(localJson)
-        // }
-        // else{
-        //   localbreak = []
-        // }
 
         if(this.localBreakViewCheck){
           if (this.localIsOn || localBreakTrue.value) {
@@ -439,18 +330,6 @@ export class AddControlComponent implements OnInit {
                   local_break_end_output_splice_immediate_flag.value,
                   local_break_end_output_splice_event_id.value,
                   local_break_end_deviation_tolerance.value
-      
-                  // end_splice_command.value,
-                  // end_out_of_network.value,
-                  // end_splice_event_id.value,
-                  // end_immidiate_flag.value,
-                  // end_duration_flag.value,
-                  // end_output_splice_command.value,
-                  // end_output_out_of_network.value,
-                  // end_output_splice_event_id.value,
-                  // end_output_immediate_flag.value
-                  // ,end_output_duration_flag.value,
-                  // end_deviation_tolerance.value
                 ]
               }
             }
@@ -545,38 +424,7 @@ export class AddControlComponent implements OnInit {
                   ]
                 }		
               }
-              
-            
-              
-              //6 "local break end"
-              // local_break_end_input_segmentation_type_id
-              //local_break_end_output_segmentation_type_id
-              //local_break_start_input_segmentation_type_id
-              //5 "local break end"
-      
-              // local_break_end_input_out_of_network_indicator
-              //local_break_end_input_splice_event_id
-      
-            
-            // else{
-            // 	localBreakArray= [
-            // 		local_break_start_input_action.value,local_break_start_input_splice_command.value,
-            // 		local_break_start_input_segmentation_type_id.value,local_break_start_input_out_of_network_indicator.value,local_break_start_input_splice_event_id.value,
-            // 		local_break_start_input_splice_immediate_flag.value,local_break_start_input_duration_flag.value,local_break_start_input_break_duration_min.value,
-            // 		local_break_start_input_break_duration_max.value,local_break_start_input_break_auto_return.value,local_break_start_output_splice_command.value,
-            // 		local_break_start_output_segmentation_type_id.value,local_break_start_output_out_of_network_indicator.value,local_break_start_output_splice_event_id.value,
-            // 		local_break_start_output_splice_immediate_flag.value,local_break_start_output_duration_flag.value,local_break_start_output_break_duration_min.value,
-            // 		local_break_start_output_break_duration_max.value,local_break_start_output_break_auto_return.value,local_break_end_input_action.value,
-            // 		local_break_end_input_splice_command.value,local_break_end_input_segmentation_type_id.value,local_break_end_input_out_of_network_indicator.value,
-            // 		local_break_end_input_splice_event_id.value,local_break_end_input_splice_immediate_flag.value,local_break_end_input_break_duration_flag.value,
-            // 		local_break_end_output_splice_command.value,local_break_end_output_segmentation_type_id.value,local_break_end_output_out_of_network_indicator.value,
-            // 		local_break_end_output_splice_immediate_flag.value,local_break_end_output_splice_event_id.value,local_break_end_output_break_duration_flag.value,
-            // 		local_break_end_deviation_tolerance.value]
-            // }
-      
-            
-            
-            
+
             let localbreakJson = JSON.stringify(localBreakArray)
             var localbreak = JSON.parse(localbreakJson)
             
@@ -589,10 +437,6 @@ export class AddControlComponent implements OnInit {
             localbreak = []
           }
         
-        
-      
-
-        
         const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
         const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
         const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
@@ -602,7 +446,6 @@ export class AddControlComponent implements OnInit {
         const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
         const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
         const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
-
       
         if (this.contentIsOn) {
         let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
@@ -618,6 +461,49 @@ export class AddControlComponent implements OnInit {
           content = []
         }
         
+        // const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
+        // const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
+        // const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
+        // const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
+        // const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
+        // const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
+        // const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
+        // const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
+        // const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
+        // const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
+        // const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
+      
+        // const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
+        // const program_end_input_splice_comand_type = <HTMLInputElement> document.getElementById("program_end_input_splice_comand_type");
+        // const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
+        // const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
+        // const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
+        // const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
+        // const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
+        // const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
+      
+        // if(this.programIsOn){
+        // let programArr= [
+        //   program_time_specified_flag.value,
+        //   program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+        //   program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+        //   program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+        //   program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
+        //   program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
+        //   program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
+        // ]
+
+        // let programJson = JSON.stringify(programArr)
+        // var program = JSON.parse(programJson)
+        // }
+        // else{
+        //   program = []
+        // }
+
+        
+        const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
+        const programTrue = <HTMLInputElement> document.getElementById("programTrue");
+
         const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
         const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
         const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
@@ -629,33 +515,69 @@ export class AddControlComponent implements OnInit {
         const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
         const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
         const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
-      
+
         const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
-        const program_end_input_splice_comand_type = <HTMLInputElement> document.getElementById("program_end_input_splice_comand_type");
+        const program_end_input_splice_command_type = <HTMLInputElement> document.getElementById("program_end_input_splice_command_type");
         const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
         const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
         const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
         const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
         const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
         const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
-      
-        if(this.programIsOn){
-        let programArr= [
-          program_time_specified_flag.value,
-          program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-          program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-          program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-          program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
-          program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
-          program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
-        ]
 
-        let programJson = JSON.stringify(programArr)
-        var program = JSON.parse(programJson)
-        }
-        else{
-          program = []
-        }
+            if(this.programViewCheck){
+                if (this.programIsOn || programTrue.value) {
+                var programArray = []
+
+                if(program_start_input_duration_flag.value == "true"){
+                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+                        program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
+                        program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
+                        program_start_input_upid_type.value,program_start_input_upid_length.value]
+                }
+                if(program_start_input_duration_flag.value == "false"){
+                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+                        program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
+                        program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value]
+                }    
+                if (programEndSwitch.checked && program_start_input_duration_flag.value == "true") {
+                    programArray = [
+                      program_time_specified_flag.value,
+                      program_start_input_segmentation_type_id.value,
+                      program_start_input_splice_command_type.value,
+                        program_start_input_duration_flag.value,
+                        program_start_input_segmentation_duration_min.value,
+                        program_start_input_segmentation_duration_max.value,
+                        program_start_input_event_cancel_indicator.value,
+                        program_start_input_segmentation_flag.value,
+                        program_start_input_delivery_not_restricted_flag.value,
+                        program_start_input_upid_type.value,
+                        program_start_input_upid_length.value,
+
+                        program_end_input_segmentation_type_id.value,
+                        program_end_input_splice_command_type.value,
+                        program_end_input_duration_flag.value,
+                        program_end_input_event_cancel_indicator.value,
+                        program_end_input_segmentation_flag.value,
+                        program_end_input_delivery_not_restricted_flag.value,
+                        program_end_input_upid_type.value,
+                        program_end_input_upid_length.value]
+                }
+                if (programEndSwitch.checked && program_start_input_duration_flag.value == "false") {
+                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
+                        program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
+                        program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value,
+                        program_end_input_segmentation_type_id.value,program_end_input_splice_command_type.value,program_end_input_duration_flag.value,
+                        program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,
+                        program_end_input_upid_type.value,program_end_input_upid_length.value]
+                }
+                let programJson = JSON.stringify(programArray)
+                var program = JSON.parse(programJson)
+                }
+            }
+            else{
+                program = []
+            }
 
         const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
         const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
@@ -696,33 +618,6 @@ export class AddControlComponent implements OnInit {
         const national_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_output_break_duration_flag");
         const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
 
-        // if(this.nationalIsOn){
-        //   let nationalArr = [
-        //     national_break_expected_splices_hour.value,national_break_start_input_action.value,national_break_start_input_splice_command.value,
-        //     national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
-        //     national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
-        //     national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
-        //     national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
-        //     national_break_start_output_splice_immediate_flag.value,national_break_start_output_duration_flag.value,national_break_start_output_break_duration_min.value,
-        //     national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
-        //     national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
-        //     national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
-        //     national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
-        //     national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
-        //     national_break_end_deviation_tolerance.value
-        //   ]
-
-
-
-        //   let nationalJson = JSON.stringify(nationalArr)
-        //   var nationalbreak = JSON.parse(nationalJson)
-        //   }
-        //   else{
-        //     nationalbreak = []
-        //   }
-      
-
-	// console.log(this.nationalBreakViewCheck)
 	if(this.nationalBreakViewCheck){
 		if (this.nationalIsOn || nationalBreakTrue.value) {
 			var nationalBreakArray = []
@@ -792,17 +687,6 @@ export class AddControlComponent implements OnInit {
 						national_break_end_output_splice_event_id.value,
 						national_break_end_deviation_tolerance.value
 
-						// end_splice_command.value,
-						// end_out_of_network.value,
-						// end_splice_event_id.value,
-						// end_immidiate_flag.value,
-						// end_duration_flag.value,
-						// end_output_splice_command.value,
-						// end_output_out_of_network.value,
-						// end_output_splice_event_id.value,
-						// end_output_immediate_flag.value
-						// ,end_output_duration_flag.value,
-						// end_deviation_tolerance.value
 					]
 				}
 			}
@@ -897,37 +781,6 @@ export class AddControlComponent implements OnInit {
 						]
 					}		
 				}
-				
-			
-				
-				//6 "national break end"
-				// national_break_end_input_segmentation_type_id
-				//national_break_end_output_segmentation_type_id
-				//national_break_start_input_segmentation_type_id
-				//5 "national break end"
-
-				// national_break_end_input_out_of_network_indicator
-				//national_break_end_input_splice_event_id
-
-			
-			// else{
-			// 	nationalBreakArray= [
-			// 		national_break_start_input_action.value,national_break_start_input_splice_command.value,
-			// 		national_break_start_input_segmentation_type_id.value,national_break_start_input_out_of_network_indicator.value,national_break_start_input_splice_event_id.value,
-			// 		national_break_start_input_splice_immediate_flag.value,national_break_start_input_duration_flag.value,national_break_start_input_break_duration_min.value,
-			// 		national_break_start_input_break_duration_max.value,national_break_start_input_break_auto_return.value,national_break_start_output_splice_command.value,
-			// 		national_break_start_output_segmentation_type_id.value,national_break_start_output_out_of_network_indicator.value,national_break_start_output_splice_event_id.value,
-			// 		national_break_start_output_splice_immediate_flag.value,national_break_start_output_duration_flag.value,national_break_start_output_break_duration_min.value,
-			// 		national_break_start_output_break_duration_max.value,national_break_start_output_break_auto_return.value,national_break_end_input_action.value,
-			// 		national_break_end_input_splice_command.value,national_break_end_input_segmentation_type_id.value,national_break_end_input_out_of_network_indicator.value,
-			// 		national_break_end_input_splice_event_id.value,national_break_end_input_splice_immediate_flag.value,national_break_end_input_break_duration_flag.value,
-			// 		national_break_end_output_splice_command.value,national_break_end_output_segmentation_type_id.value,national_break_end_output_out_of_network_indicator.value,
-			// 		national_break_end_output_splice_immediate_flag.value,national_break_end_output_splice_event_id.value,national_break_end_output_break_duration_flag.value,
-			// 		national_break_end_deviation_tolerance.value]
-			// }
-
-			
-			
 			
 			let nationalbreakJson = JSON.stringify(nationalBreakArray)
 			var nationalbreak = JSON.parse(nationalbreakJson)
