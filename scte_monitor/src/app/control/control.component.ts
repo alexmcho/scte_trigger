@@ -26,7 +26,7 @@ export class ControlComponent implements OnInit {
   test:string;
 
   listOfOptionsForActions = ["NOOP","DELETE","REPLACE"]
-  listOfOptionsForBoolean = ["false","true"]
+  listOfOptionsForBoolean = ["true","false"]
 
   listOfSpliceCommandType = ["5","6"]
   
@@ -92,6 +92,15 @@ export class ControlComponent implements OnInit {
   bool54:String [] = []
 
   bool60:String [] = []
+  bool61:String [] = []
+  bool62:String [] = []
+  bool63:String [] = []
+  bool64:String [] = []
+  bool65:String [] = []
+  bool66:String [] = []
+  bool67:String [] = []
+  bool68:String [] = []
+
 
   spliceCommand1:String [] = []
   spliceCommand2:String [] = []
@@ -161,11 +170,17 @@ export class ControlComponent implements OnInit {
   htmlBool54;
 
   htmlBool60;
+  htmlBool61;
+  htmlBool62;
+  htmlBool63;
+  htmlBool64;
+  htmlBool65;
+  htmlBool66;
+  htmlBool67;
+  htmlBool68;
   
   localIsOn:boolean = false;
   contentIsOn:boolean = false;
-  providerIsOn:boolean = false;
-  placementIsOn:boolean = false;
   programIsOn:boolean = false;
   nationalIsOn:boolean = false;
 
@@ -200,16 +215,22 @@ public formSubmitAttempt: boolean;
 		var stringChecker:String;
 		
 		var list = [this.action1, this.action2]
+
 		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5,
 		this.bool6, this.bool7, this.bool8, this.bool9, this.bool10, this.bool11,this.bool12, this.bool13, this.bool14]
 
-		var list3 =[this.spliceCommand1] 
+		var list3 = [this.spliceCommand1] 
 		this.spliceCommand1.push(this.config.value[0].value[4].value[2])
 		this.htmlSplice1 = this.config.value[0].value[4].value[2]
 
-		var list4 =[this.spliceCommand2] 
+		var list4 = [this.spliceCommand2] 
 		this.spliceCommand2.push(this.config.value[0].value[7].value[2])
 		this.htmlSplice2 = this.config.value[0].value[7].value[2]
+
+		var list5 = [this.bool41,this.bool42,this.bool43,this.bool44,this.bool45,this.bool46,this.bool47, 
+		this.bool48,this.bool49, this.bool50,this.bool51,this.bool52,this.bool53,this.bool54]
+
+		var list6 = [this.bool68,this.bool61,this.bool62,this.bool63,this.bool64,this.bool65,this.bool66,this.bool67]
 
 		//Local Break - 
 		this.action1.push(this.config.value[0].value[4].value[1])
@@ -256,18 +277,23 @@ public formSubmitAttempt: boolean;
 		this.bool22.push(this.config.value[0].value[5].value[8])
 		
 		//Program - 
-		this.htmlBool60 = this.config.value[0].value[6].value[3]
-		this.bool60.push(this.config.value[0].value[6].value[3])
+		this.htmlBool68 = this.config.value[0].value[6].value[0]
+		this.htmlBool61 = this.config.value[0].value[6].value[3]
+		this.htmlBool62 = this.config.value[0].value[6].value[6]
+		this.htmlBool63 = this.config.value[0].value[6].value[7]
+		this.htmlBool64 = this.config.value[0].value[6].value[8]
+		this.htmlBool65 = this.config.value[0].value[6].value[14]
+		this.htmlBool66 = this.config.value[0].value[6].value[15]
+		this.htmlBool67 = this.config.value[0].value[6].value[16]
 
-		// this.bool23.push(this.config.value[0].value[6].value[0])
-		// this.bool24.push(this.config.value[0].value[6].value[3])
-		// this.bool25.push(this.config.value[0].value[6].value[6])
-		// this.bool26.push(this.config.value[0].value[6].value[7])
-		// this.bool27.push(this.config.value[0].value[6].value[8])
-		// this.bool28.push(this.config.value[0].value[6].value[13])
-		// this.bool29.push(this.config.value[0].value[6].value[14])
-		// this.bool30.push(this.config.value[0].value[6].value[15])
-		// this.bool31.push(this.config.value[0].value[6].value[16])
+		this.bool68.push(this.config.value[0].value[6].value[0])
+		this.bool61.push(this.config.value[0].value[6].value[3])
+		this.bool62.push(this.config.value[0].value[6].value[6])
+		this.bool63.push(this.config.value[0].value[6].value[7])
+		this.bool64.push(this.config.value[0].value[6].value[8])
+		this.bool65.push(this.config.value[0].value[6].value[14])
+		this.bool66.push(this.config.value[0].value[6].value[15])
+		this.bool67.push(this.config.value[0].value[6].value[16])
 		
 		//National Break - 
 		this.action3.push(this.config.value[0].value[7].value[1])
@@ -329,6 +355,18 @@ public formSubmitAttempt: boolean;
 			for(let j = 0; j < 2; j++)
 			if(list4[i].indexOf(this.listOfSpliceCommandType[j]) == -1){
 				list4[i].push(this.listOfSpliceCommandType[j])
+			}
+		}
+		for(let i = 0; i < list5.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list5[i].indexOf(this.listOfOptionsForBoolean[j]) == -1){
+				list5[i].push(this.listOfOptionsForBoolean[j])
+			}
+		}
+		for(let i = 0; i < list6.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list6[i].indexOf(this.listOfOptionsForBoolean[j]) == -1){
+				list6[i].push(this.listOfOptionsForBoolean[j])
 			}
 		}
 	})
@@ -806,56 +844,6 @@ if(this.contentIdViewCheck){
 	else{
 		content = []
 	}
-	
-	// const programTrue = <HTMLInputElement> document.getElementById("programTrue");
-	// const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
-	// const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
-	// const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
-	// const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
-	// const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
-	// const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
-	// const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
-	// const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
-	// const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
-	// const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
-	// const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
-
-	// const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
-	// const program_end_input_splice_comand_type = <HTMLInputElement> document.getElementById("program_end_input_splice_comand_type");
-	// const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
-	// const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
-	// const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
-	// const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
-	// const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
-	// const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
-
-	// try{
-	// 	if(programTrue.value  == "true"){
-	// 		this.programViewCheck = true
-	// 	}
-	// }catch{}
-
-	// if(this.programViewCheck){
-	// 	if (this.programIsOn || programTrue.value) {
-	// 		let programArray= [
-	// 			program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-	// 			program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-	// 			program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-	// 			program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,program_end_input_splice_comand_type.value,
-	// 			program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,
-	// 			program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,program_end_input_upid_length.value
-	// 		]
-			
-	// 		let programJson = JSON.stringify(programArray)
-	// 		var program = JSON.parse(programJson)
-	// 		}
-	// 		else{
-	// 		  program = []
-	// 		}
-	// 	}
-	// 	else{
-	// 		program = []
-	// 	}
 
 	const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
 	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
@@ -926,7 +914,7 @@ if(this.contentIdViewCheck){
 		else{
 			program = []
 		}
-		
+	
 	const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
 	const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
 	const national_break_expected_splices_hour = <HTMLInputElement> document.getElementById("national_break_expected_splices_hour");

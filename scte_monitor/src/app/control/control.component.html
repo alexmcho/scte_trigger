@@ -654,11 +654,9 @@
 
                   <form class="form-inline">
                       <div class="form-group">
-                          <label for="time_specified_flag">Time Specified Flag: </label>
-                          <select class="form-control" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:200px">
-                            <option value="{{item.value[0]}}">{{item.value[0]}}</option>
-                            <option value="true">true</option>
-                            <option value="false">false</option>
+                          <label for="program_time_specified_flag">Time Specified Flag: </label>
+                          <select [(ngModel)]="htmlBool68" class="form-control" name="program_time_specified_flag" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:200px">
+                            <option *ngFor='let options of bool68' [value]="options">{{options}}</option>
                           </select>
                       </div>
                   </form>
@@ -697,12 +695,12 @@
 
                       <tr>
                         <th>Segmentation Duration Flag</th><td></td>
-                        <td><select [(ngModel)]="htmlBool60" id="program_start_input_duration_flag" class="form-control">    
-                            <option *ngFor='let options of bool60' [value]="options">{{options}}</option>
+                        <td><select [(ngModel)]="htmlBool61" id="program_start_input_duration_flag" class="form-control">    
+                            <option *ngFor='let options of bool61' [value]="options">{{options}}</option>
                         </select></td>
                       </tr>
 
-                      <tr *ngIf="htmlBool60=='true'">
+                      <tr *ngIf="htmlBool61=='true'">
                         <th>Segmentation Duration</th>
                         <td><select id= "changeThisName" class="form-control">
                             <option value="" disabled selected hidden>Change Break Duration Type</option>
@@ -727,28 +725,22 @@
 
                       <tr>
                           <th>Segmentation Event Cancel Indicator</th><td></td>
-                          <td><select id="program_start_input_event_cancel_indicator" class="form-control">
-                              <option value="{{item.value[6]}}">{{item.value[6]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool62" id="program_start_input_event_cancel_indicator" class="form-control">
+                            <option *ngFor='let options of bool62' [value]="options">{{options}}</option>
                           </select></td>
                       </tr>
 
                       <tr>
                           <th>Program Segmentation Flag</th><td></td>
-                          <td><select id="program_start_input_segmentation_flag" class="form-control">
-                              <option value="{{item.value[7]}}">{{item.value[7]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool63" id="program_start_input_segmentation_flag" class="form-control">
+                            <option *ngFor='let options of bool63' [value]="options">{{options}}</option>
                           </select></td>
                       </tr>
                       
                       <tr>
                           <th>Delivery Not Restricted Flag</th><td></td>
-                          <td><select id="program_start_input_delivery_not_restricted_flag" class="form-control">
-                              <option value="{{item.value[8]}}">{{item.value[8]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool64" id="program_start_input_delivery_not_restricted_flag" class="form-control">
+                            <option *ngFor='let options of bool64' [value]="options">{{options}}</option>
                           </select></td>
                       </tr>
 
@@ -817,28 +809,23 @@
 
                       <tr>
                           <th>Segmentation Event Cancel Indicator</th><td></td>
-                          <td><select id="program_end_input_event_cancel_indicator" class="form-control">
-                              <option value="{{item.value[14]}}">{{item.value[14]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool65" id="program_end_input_event_cancel_indicator" class="form-control">
+                            <option *ngFor='let options of bool65' [value]="options">{{options}}</option>
+
                           </select></td>
                       </tr>
 
                       <tr>
                           <th>Program Segmentation Flag</th><td></td>
-                          <td><select id="program_end_input_segmentation_flag" class="form-control">
-                              <option value="{{item.value[15]}}">{{item.value[15]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool66" id="program_end_input_segmentation_flag" class="form-control">
+                            <option *ngFor='let options of bool66' [value]="options">{{options}}</option>
                           </select></td>
                       </tr>
                       
                       <tr>
                           <th>Delivery Not Restricted Flag</th><td></td>
-                          <td><select id="program_end_input_delivery_not_restricted_flag" class="form-control">
-                              <option value="{{item.value[16]}}">{{item.value[16]}}</option>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
+                          <td><select [(ngModel)]="htmlBool67" id="program_end_input_delivery_not_restricted_flag" class="form-control">
+                            <option *ngFor='let options of bool67' [value]="options">{{options}}</option>
                           </select></td>
                       </tr>
 
