@@ -827,6 +827,28 @@ if(this.contentIdViewCheck){
 	const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
 	const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
 
+	let var_program_time_specified_flag;
+	let var_program_start_input_segmentation_type_id;
+	let var_program_start_input_splice_command_type;
+	let var_program_start_input_duration_flag;
+	let var_program_start_input_segmentation_duration_min;
+	let var_program_start_input_segmentation_duration_max;
+	let var_program_start_input_event_cancel_indicator;
+	let var_program_start_input_segmentation_flag;
+	let var_program_start_input_delivery_not_restricted_flag;
+	let var_program_start_input_upid_type;
+	let var_program_start_input_upid_length
+
+	let var_program_end_input_segmentation_type_id;
+	let var_program_end_input_splice_command_type;
+	let var_program_end_input_duration_flag;
+	let var_program_end_input_event_cancel_indicator;
+	let var_program_end_input_segmentation_flag;
+	let var_program_end_input_delivery_not_restricted_flag;
+	let var_program_end_input_upid_type;
+	let var_program_end_input_upid_length;
+
+
 	try{
 		if(programTrue.value  == "true"){
 			this.programViewCheck = true
@@ -834,44 +856,75 @@ if(this.contentIdViewCheck){
 	}catch{}
 	
 		if(this.programViewCheck){
-			if (this.programIsOn || programTrue.value == "true") {
-			var programArray = []
+			try{var_program_time_specified_flag = program_time_specified_flag.value}catch{ var_program_time_specified_flag = "None"}
+			
+			try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
 
-			if(program_start_input_duration_flag.value == "true"){
-				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-					program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-					program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-					program_start_input_upid_type.value,program_start_input_upid_length.value]
-			}
-			if(program_start_input_duration_flag.value == "false"){
-				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-					program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
-					program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value]
-			}    
-			if (programEndSwitch.checked && program_start_input_duration_flag.value == "true") {
-				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-					program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-					program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-					program_start_input_upid_type.value,program_start_input_upid_length.value,program_end_input_segmentation_type_id.value,
-					program_end_input_splice_command_type.value,program_end_input_duration_flag.value,program_end_input_event_cancel_indicator.value,
-					program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,program_end_input_upid_type.value,
-					program_end_input_upid_length.value]
-			}
-			if (programEndSwitch.checked && program_start_input_duration_flag.value == "false") {
-				programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-					program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
-					program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value,
-					program_end_input_segmentation_type_id.value,program_end_input_splice_command_type.value,program_end_input_duration_flag.value,
-					program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,
-					program_end_input_upid_type.value,program_end_input_upid_length.value]
-			}
-			let programJson = JSON.stringify(programArray)
-			var program = JSON.parse(programJson)
-			}
+			try{var_program_start_input_splice_command_type = program_start_input_splice_command_type.value}catch{ var_program_start_input_splice_command_type = "None"}
+			
+			try{var_program_start_input_duration_flag = program_start_input_duration_flag.value}catch{ var_program_start_input_duration_flag = "None"}
+
+			try{var_program_start_input_segmentation_duration_min = program_start_input_segmentation_duration_min.value}catch{ var_program_start_input_segmentation_duration_min = "None"}
+			
+			try{var_program_start_input_segmentation_duration_max = program_start_input_segmentation_duration_max.value}catch{ var_program_start_input_segmentation_duration_max = "None"}
+
+			try{var_program_start_input_event_cancel_indicator = program_start_input_event_cancel_indicator.value}catch{ var_program_start_input_event_cancel_indicator = "None"}
+			
+			try{var_program_start_input_delivery_not_restricted_flag = program_start_input_delivery_not_restricted_flag.value}catch{ var_program_start_input_delivery_not_restricted_flag = "None"}
+
+
+			try{var_program_start_input_segmentation_flag = program_start_input_segmentation_flag.value}catch{ var_program_start_input_segmentation_flag = "None"}
+
+			try{var_program_start_input_upid_type = program_start_input_upid_type.value}catch{ var_program_start_input_upid_type = "None"}
+			
+			try{var_program_start_input_upid_length = program_start_input_upid_length.value}catch{ var_program_start_input_upid_length = "None"}
+
+			try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
+			
+			try{var_program_end_input_splice_command_type = program_end_input_splice_command_type.value}catch{ var_program_end_input_splice_command_type = "None"}
+
+			
+			
+			try{var_program_end_input_duration_flag = program_end_input_duration_flag.value}catch{ var_program_end_input_duration_flag = "None"}
+
+			try{var_program_end_input_event_cancel_indicator = program_end_input_event_cancel_indicator.value}catch{ var_program_end_input_event_cancel_indicator = "None"}
+			
+			try{var_program_end_input_segmentation_flag = program_end_input_segmentation_flag.value}catch{ var_program_end_input_segmentation_flag = "None"}
+
+			try{var_program_end_input_delivery_not_restricted_flag = program_end_input_delivery_not_restricted_flag.value}catch{ var_program_end_input_delivery_not_restricted_flag = "None"}
+			
+			try{var_program_end_input_upid_type = program_end_input_upid_type.value}catch{ var_program_end_input_upid_type = "None"}
+
+			try{var_program_end_input_upid_length = program_end_input_upid_length.value}catch{ var_program_end_input_upid_length = "None"}
+
+
+
+			let programArray = [
+				var_program_time_specified_flag,
+				var_program_start_input_segmentation_type_id,
+				var_program_start_input_splice_command_type,
+				  var_program_start_input_duration_flag,
+				  var_program_start_input_segmentation_duration_min,
+				  var_program_start_input_segmentation_duration_max,
+				  var_program_start_input_event_cancel_indicator,
+				  var_program_start_input_segmentation_flag,
+				  var_program_start_input_delivery_not_restricted_flag,
+				  var_program_start_input_upid_type,
+				  var_program_start_input_upid_length,
+
+				  var_program_end_input_segmentation_type_id,
+				  var_program_end_input_splice_command_type,
+				  var_program_end_input_duration_flag,
+				  var_program_end_input_event_cancel_indicator,
+				  var_program_end_input_segmentation_flag,
+				  var_program_end_input_delivery_not_restricted_flag,
+				  var_program_end_input_upid_type,
+				  var_program_end_input_upid_length]
+
+				  let programJson = JSON.stringify(programArray)
+				  var program = JSON.parse(programJson)
 		}
-		else{
-			program = []
-		}
+		
 	
 		const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
 
@@ -1103,6 +1156,34 @@ if(this.contentIdViewCheck){
 			}
 		}catch{}
 
+
+		if(this.nationalBreakViewCheck == false){
+			nationalbreak = []
+		}
+
+		if(this.localBreakViewCheck == false){
+			localbreak = []
+		}
+
+
+
+
+		try{
+			if(programTrue.value  == "true" ){
+				this.programViewCheck = true
+			}
+			else if(this.programViewCheck){
+				this.programViewCheck = true
+
+			}
+			else{
+				this.programViewCheck = false
+			}
+		}catch{}
+
+		if(this.programViewCheck == false){
+			program = []
+		}
 
 		if(this.nationalBreakViewCheck == false){
 			nationalbreak = []
