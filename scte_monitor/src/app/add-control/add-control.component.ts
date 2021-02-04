@@ -213,320 +213,353 @@ export class AddControlComponent implements OnInit {
 
     
       addNewNetwork() {
-      
-        const emails = <HTMLInputElement> document.getElementById("emails");
-        const networkName = <HTMLInputElement> document.getElementById("networkName");
-        const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
+         const networkName = <HTMLInputElement> document.getElementById("networkName");
+	
+          const validate_splice_count = <HTMLInputElement> document.getElementById("validate_splice_count");
+          const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
         
-        const validate_splice_count = <HTMLInputElement> document.getElementById("validate_splice_count");
-        const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
-
-        const localBreakEndSwitch = <HTMLInputElement> document.getElementById("localBreakEndSwitch");
-
-        const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
-        const local_break_expected_splices_hour = <HTMLInputElement> document.getElementById("local_break_expected_splices_hour");
-      
-        const local_break_start_input_action = <HTMLInputElement> document.getElementById("local_break_start_input_action");
-        const local_break_start_input_splice_command = <HTMLInputElement> document.getElementById("local_break_start_input_splice_command");
-        const local_break_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_start_input_segmentation_type_id");
-        const local_break_start_input_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_start_input_out_of_network_indicator");
+          const emails = <HTMLInputElement> document.getElementById("emails");
+          const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
         
-        const local_break_start_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_start_input_splice_event_id");
-        const local_break_start_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_start_input_splice_immediate_flag");
-        const local_break_start_input_duration_flag = <HTMLInputElement> document.getElementById("local_break_start_input_duration_flag");
-        const local_break_start_input_break_duration_min = <HTMLInputElement> document.getElementById("local_break_start_input_break_duration_min");
-        const local_break_start_input_break_duration_max = <HTMLInputElement> document.getElementById("local_break_start_input_break_duration_max");
-        const local_break_start_input_break_auto_return = <HTMLInputElement> document.getElementById("local_break_start_input_break_auto_return");
-      
-        const local_break_start_output_splice_command = <HTMLInputElement> document.getElementById("local_break_start_output_splice_command");
-        const local_break_start_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_start_output_segmentation_type_id");
-        const local_break_start_output_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_start_output_out_of_network_indicator");
-        const local_break_start_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_start_output_splice_event_id");
-        const local_break_start_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_start_output_splice_immediate_flag");
-        const local_break_start_output_duration_flag = <HTMLInputElement> document.getElementById("local_break_start_output_duration_flag");
-        const local_break_start_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration_min");
-        const local_break_start_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration_max");
-        const local_break_start_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_start_output_break_auto_return");
-      
-        const local_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_duration_flag");
-      
-        const local_break_end_input_action = <HTMLInputElement> document.getElementById("local_break_end_input_action");
-        const local_break_end_input_splice_command = <HTMLInputElement> document.getElementById("local_break_end_input_splice_command");
-        const local_break_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_input_segmentation_type_id");
-        const local_break_end_input_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_end_input_out_of_network_indicator");
-        const local_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_input_splice_event_id");
-        const local_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_input_splice_immediate_flag");
-        const local_break_end_input_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_input_break_duration_flag");
+          const localBreakEndSwitch = <HTMLInputElement> document.getElementById("localBreakEndSwitch");
         
-        const local_break_end_output_splice_command = <HTMLInputElement> document.getElementById("local_break_end_output_splice_command");
-        const local_break_end_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_output_segmentation_type_id");
-        const local_break_end_output_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_end_output_out_of_network_indicator");
-        const local_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_output_splice_immediate_flag");
-        const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
-        const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
-        const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
-      
-        let var_local_break_expected_splices_hour
-      
-        let var_local_break_start_input_action;
-         let var_local_break_start_input_splice_command; 
-         let var_local_break_start_input_segmentation_type_id;
-         let var_local_break_start_input_out_of_network_indicator;
-         let var_local_break_start_input_splice_event_id;
-         let var_local_break_start_input_splice_immediate_flag;
-         let var_local_break_start_input_duration_flag;
-         let var_local_break_start_input_break_duration_min;
-         let var_local_break_start_input_break_duration_max;
-         let var_local_break_start_input_break_auto_return;
-      
-         let var_local_break_start_output_splice_command; 
-         let var_local_break_start_output_segmentation_type_id; 
-         let var_local_break_start_output_out_of_network_indicator;
-         let var_local_break_start_output_splice_event_id;
-         let var_local_break_start_output_splice_immediate_flag;
-         let var_local_break_start_output_duration_flag;
-         let var_local_break_start_output_break_duration_min;
-         let var_local_break_start_output_break_duration_max;
-         let var_local_break_start_output_break_auto_return; 
-      
-         let var_local_break_duration_flag; 
-         let var_local_break_end_input_action;
-         let var_local_break_end_input_splice_command;
-         let var_local_break_end_input_segmentation_type_id;
-         let var_local_break_end_input_out_of_network_indicator;
-         let var_local_break_end_input_splice_event_id;
-         let var_local_break_end_input_splice_immediate_flag ;
-         let var_local_break_end_input_break_duration_flag; 
+          const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
+          const local_break_expected_splices_hour = <HTMLInputElement> document.getElementById("local_break_expected_splices_hour");
         
-         let var_local_break_end_output_splice_command; 
-         let var_local_break_end_output_segmentation_type_id; 
-         let var_local_break_end_output_out_of_network_indicator ;
-         let var_local_break_end_output_splice_immediate_flag;
-         let var_local_break_end_output_splice_event_id;
-         let var_local_break_end_output_break_duration_flag;
-         let var_local_break_end_deviation_tolerance;
-      
-         try{var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = "None"}
-      
+          const local_break_start_input_action = <HTMLInputElement> document.getElementById("local_break_start_input_action");
+          const local_break_start_input_splice_command = <HTMLInputElement> document.getElementById("local_break_start_input_splice_command");
+          const local_break_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_start_input_segmentation_type_id");
+          const local_break_start_input_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_start_input_out_of_network_indicator");
+          const local_break_start_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_start_input_splice_event_id");
+          const local_break_start_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_start_input_splice_immediate_flag");
+          const local_break_start_input_duration_flag = <HTMLInputElement> document.getElementById("local_break_start_input_duration_flag");
+          const local_break_start_input_break_duration_min = <HTMLInputElement> document.getElementById("local_break_start_input_break_duration_min");
+          const local_break_start_input_break_duration_max = <HTMLInputElement> document.getElementById("local_break_start_input_break_duration_max");
+          const local_break_start_input_break_auto_return = <HTMLInputElement> document.getElementById("local_break_start_input_break_auto_return");
         
-        try{var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = "None"}
+          const local_break_start_output_splice_command = <HTMLInputElement> document.getElementById("local_break_start_output_splice_command");
+          const local_break_start_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_start_output_segmentation_type_id");
+          const local_break_start_output_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_start_output_out_of_network_indicator");
+          const local_break_start_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_start_output_splice_event_id");
+          const local_break_start_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_start_output_splice_immediate_flag");
+          const local_break_start_output_duration_flag = <HTMLInputElement> document.getElementById("local_break_start_output_duration_flag");
+          const local_break_start_output_break_duration_min = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration_min");
+          const local_break_start_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration_max");
+          const local_break_start_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_start_output_break_auto_return");
         
-        try{ var_local_break_start_input_splice_command = local_break_start_input_splice_command.value}catch{var_local_break_start_input_splice_command = "None"}
+          const local_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_duration_flag");
         
-        try{var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = "None"}
-        
-        try{ var_local_break_start_input_out_of_network_indicator = local_break_start_input_out_of_network_indicator.value}catch{var_local_break_start_input_out_of_network_indicator = "None"}
-        
-        try{var_local_break_start_input_splice_event_id = local_break_start_input_splice_event_id.value}catch{ var_local_break_start_input_splice_event_id = "None"}
-        
-        try{ var_local_break_start_input_splice_immediate_flag = local_break_start_input_splice_immediate_flag.value}catch{var_local_break_start_input_splice_immediate_flag = "None"}
-        
-        try{var_local_break_start_input_duration_flag = local_break_start_input_duration_flag.value}catch{ var_local_break_start_input_duration_flag = "None"}
-        
-        try{ var_local_break_start_input_break_duration_min = local_break_start_input_break_duration_min.value}catch{var_local_break_start_input_break_duration_min = "None"}
-        
-        try{var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = "None"}
-        
-        try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = "None"}
-        
-        try{var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = "None"}
-        
-        try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = "None"}
-        
-        try{var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = "None"}
-        
-        try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = "None"}
-        
-        try{var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = "None"}
-        
-        try{ var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = "None"}
-      
-        try{ var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = "None"}
-      
-        try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "None"}
-      
-        try{ var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return = "None"}
-      
-        try{ var_local_break_duration_flag = local_break_duration_flag.value}catch{var_local_break_duration_flag = "None"}
-      
-        try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = "None"}
-      
-        try{ var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = "None"}
-      
-        try{ var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = "None"}
-      
-        try{ var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = "None"}
-      
-        try{ var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = "None"}
-      
-        try{ var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = "None"}
-      
-        try{ var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = "None"}
-      
-        try{ var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = "None"}
-      
-        try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = "None"}
-      
-        try{ var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = "None"}
-      
-        try{var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = "None"}
-        
-        try{ var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag = "None"}
-        
-        try{var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = "None"}
-        
-        try{var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = "None"}
-      
-      
-      
-      
-      
-        let localBreakArray= [
-          var_local_break_expected_splices_hour,
-      
-          var_local_break_start_input_action,
+          const local_break_end_input_action = <HTMLInputElement> document.getElementById("local_break_end_input_action");
+          const local_break_end_input_splice_command = <HTMLInputElement> document.getElementById("local_break_end_input_splice_command");
+          const local_break_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_input_segmentation_type_id");
+          const local_break_end_input_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_end_input_out_of_network_indicator");
+          const local_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_input_splice_event_id");
+          const local_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_input_splice_immediate_flag");
+          const local_break_end_input_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_input_break_duration_flag");
           
-          var_local_break_start_input_splice_command,
-          var_local_break_start_input_out_of_network_indicator,
-          var_local_break_start_input_splice_event_id,
-          var_local_break_start_input_splice_immediate_flag,
-          var_local_break_start_input_duration_flag,
-          var_local_break_start_input_break_duration_min,
-          var_local_break_start_input_break_duration_max,
-          var_local_break_start_input_break_auto_return,
-      
-          var_local_break_start_output_splice_command,
-          var_local_break_start_output_out_of_network_indicator,
-          var_local_break_start_output_splice_event_id,
-          var_local_break_start_output_splice_immediate_flag,
-          var_local_break_start_output_duration_flag,
-          var_local_break_start_output_break_duration_min,
-          var_local_break_start_output_break_duration_max,
-          var_local_break_start_output_break_auto_return,
+          const local_break_end_output_splice_command = <HTMLInputElement> document.getElementById("local_break_end_output_splice_command");
+          const local_break_end_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_output_segmentation_type_id");
+          const local_break_end_output_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_end_output_out_of_network_indicator");
+          const local_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_output_splice_immediate_flag");
+          const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
+          const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
+          const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
+        
+          let var_local_break_expected_splices_hour
+        
+          let var_local_break_start_input_action;
+           let var_local_break_start_input_splice_command; 
+           let var_local_break_start_input_segmentation_type_id;
+           let var_local_break_start_input_out_of_network_indicator;
+           let var_local_break_start_input_splice_event_id;
+           let var_local_break_start_input_splice_immediate_flag;
+           let var_local_break_start_input_duration_flag;
+           let var_local_break_start_input_break_duration_min;
+           let var_local_break_start_input_break_duration_max;
+           let var_local_break_start_input_break_auto_return;
+        
+           let var_local_break_start_output_splice_command; 
+           let var_local_break_start_output_segmentation_type_id; 
+           let var_local_break_start_output_out_of_network_indicator;
+           let var_local_break_start_output_splice_event_id;
+           let var_local_break_start_output_splice_immediate_flag;
+           let var_local_break_start_output_duration_flag;
+           let var_local_break_start_output_break_duration_min;
+           let var_local_break_start_output_break_duration_max;
+           let var_local_break_start_output_break_auto_return; 
+        
+           let var_local_break_duration_flag; 
+           let var_local_break_end_input_action;
+           let var_local_break_end_input_splice_command;
+           let var_local_break_end_input_segmentation_type_id;
+           let var_local_break_end_input_out_of_network_indicator;
+           let var_local_break_end_input_splice_event_id;
+           let var_local_break_end_input_splice_immediate_flag ;
+           let var_local_break_end_input_break_duration_flag; 
           
-          var_local_break_end_input_action,
-      
-          var_local_break_end_input_splice_command,
-          var_local_break_end_input_out_of_network_indicator,
-          var_local_break_end_input_splice_event_id,
-          var_local_break_end_input_splice_immediate_flag,
-          var_local_break_end_input_break_duration_flag,
-      
-          var_local_break_end_output_splice_command,
-          var_local_break_end_output_out_of_network_indicator,
-          var_local_break_end_output_splice_immediate_flag,
-          var_local_break_end_output_splice_event_id,
-          var_local_break_end_output_break_duration_flag,
-      
-          var_local_break_end_deviation_tolerance
-        ]
-        let localbreakJson = JSON.stringify(localBreakArray)
-        var localbreak = JSON.parse(localbreakJson)
+           let var_local_break_end_output_splice_command; 
+           let var_local_break_end_output_segmentation_type_id; 
+           let var_local_break_end_output_out_of_network_indicator ;
+           let var_local_break_end_output_splice_immediate_flag;
+           let var_local_break_end_output_splice_event_id;
+           let var_local_break_end_output_break_duration_flag;
+           let var_local_break_end_deviation_tolerance;
         
-        const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
-        const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
-        const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
-        const content_id_program_segmentation_flag = <HTMLInputElement> document.getElementById("content_id_program_segmentation_flag");
-        const content_id_segmentation_duration_flag = <HTMLInputElement> document.getElementById("content_id_segmentation_duration_flag");
-        const content_id_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("content_id_delivery_not_restricted_flag");
-        const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
-        const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
-        const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
-      
-        if (this.contentIsOn) {
-        let contentIdArry= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
-            content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
-            content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
-
+           try{var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = "none"}
         
-        let contentJson = JSON.stringify(contentIdArry)
-        var content = JSON.parse(contentJson)
-        }
-        else{
           
-          content = []
-        }
+          try{var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = "none"}
+          
+          try{ var_local_break_start_input_splice_command = local_break_start_input_splice_command.value}catch{var_local_break_start_input_splice_command ="none"}
+          
+          try{var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = "none"}
+          
+          try{ var_local_break_start_input_out_of_network_indicator = local_break_start_input_out_of_network_indicator.value}catch{var_local_break_start_input_out_of_network_indicator = "none"}
+          
+          try{var_local_break_start_input_splice_event_id = local_break_start_input_splice_event_id.value}catch{ var_local_break_start_input_splice_event_id = "none"}
+          
+          try{ var_local_break_start_input_splice_immediate_flag = local_break_start_input_splice_immediate_flag.value}catch{var_local_break_start_input_splice_immediate_flag = "none"}
+          
+          try{var_local_break_start_input_duration_flag = local_break_start_input_duration_flag.value}catch{ var_local_break_start_input_duration_flag = "none"}
+          
+          try{ var_local_break_start_input_break_duration_min = local_break_start_input_break_duration_min.value}catch{var_local_break_start_input_break_duration_min = "none"}
+          
+          try{var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = "none"}
+          
+          try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = "none"}
+          
+          try{var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = "none"}
+          
+          try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = "none"}
+          
+          try{var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = "none"}
+          
+          try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = "none"}
+          
+          try{var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = "none"}
+          
+          try{ var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = "none"}
         
-        const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
-        const programTrue = <HTMLInputElement> document.getElementById("programTrue");
-
-        const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
-        const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
-        const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
-        const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
-        const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
-        const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
-        const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
-        const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
-        const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
-        const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
-        const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
-
-        const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
-        const program_end_input_splice_command_type = <HTMLInputElement> document.getElementById("program_end_input_splice_command_type");
-        const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
-        const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
-        const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
-        const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
-        const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
-        const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
-
-            if(this.programViewCheck){
-                if (this.programIsOn || programTrue.value) {
-                var programArray = []
-
-                if(program_start_input_duration_flag.value == "true"){
-                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-                        program_start_input_duration_flag.value,program_start_input_segmentation_duration_min.value,program_start_input_segmentation_duration_max.value,
-                        program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,program_start_input_delivery_not_restricted_flag.value,
-                        program_start_input_upid_type.value,program_start_input_upid_length.value]
-                }
-                if(program_start_input_duration_flag.value == "false"){
-                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-                        program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
-                        program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value]
-                }    
-                if (programEndSwitch.checked && program_start_input_duration_flag.value == "true") {
-                    programArray = [
-                      program_time_specified_flag.value,
-                      program_start_input_segmentation_type_id.value,
-                      program_start_input_splice_command_type.value,
-                        program_start_input_duration_flag.value,
-                        program_start_input_segmentation_duration_min.value,
-                        program_start_input_segmentation_duration_max.value,
-                        program_start_input_event_cancel_indicator.value,
-                        program_start_input_segmentation_flag.value,
-                        program_start_input_delivery_not_restricted_flag.value,
-                        program_start_input_upid_type.value,
-                        program_start_input_upid_length.value,
-
-                        program_end_input_segmentation_type_id.value,
-                        program_end_input_splice_command_type.value,
-                        program_end_input_duration_flag.value,
-                        program_end_input_event_cancel_indicator.value,
-                        program_end_input_segmentation_flag.value,
-                        program_end_input_delivery_not_restricted_flag.value,
-                        program_end_input_upid_type.value,
-                        program_end_input_upid_length.value]
-                }
-                if (programEndSwitch.checked && program_start_input_duration_flag.value == "false") {
-                    programArray = [program_time_specified_flag.value,program_start_input_segmentation_type_id.value,program_start_input_splice_command_type.value,
-                        program_start_input_duration_flag.value,program_start_input_event_cancel_indicator.value,program_start_input_segmentation_flag.value,
-                        program_start_input_delivery_not_restricted_flag.value,program_start_input_upid_type.value,program_start_input_upid_length.value,
-                        program_end_input_segmentation_type_id.value,program_end_input_splice_command_type.value,program_end_input_duration_flag.value,
-                        program_end_input_event_cancel_indicator.value,program_end_input_segmentation_flag.value,program_end_input_delivery_not_restricted_flag.value,
-                        program_end_input_upid_type.value,program_end_input_upid_length.value]
-                }
-                let programJson = JSON.stringify(programArray)
-                var program = JSON.parse(programJson)
-                }
-            }
-            else{
-                program = []
-            }
-
+          try{ var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = "none"}
+        
+          try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "none"}
+        
+          try{ var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return ="none"}
+        
+          try{ var_local_break_duration_flag = local_break_duration_flag.value}catch{var_local_break_duration_flag = "none"}
+        
+          try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = "none"}
+        
+          try{ var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = "none"}
+        
+          try{ var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = "none"}
+        
+          try{ var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = "none"}
+        
+          try{ var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = "none"}
+        
+          try{ var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = "none"}
+        
+          try{ var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = "none"}
+        
+          try{ var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = "none"}
+        
+          try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = "none"}
+        
+          try{ var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = "none"}
+        
+          try{var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = "None"}
+          
+          try{ var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag = "None"}
+          
+          try{var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = "None"}
+          
+          try{var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance ="none"}
+        
+          let localBreakArray= [
+            var_local_break_expected_splices_hour,
+        
+            var_local_break_start_input_action,
+            
+            var_local_break_start_input_splice_command,
+            var_local_break_start_input_out_of_network_indicator,
+            var_local_break_start_input_splice_event_id,
+            var_local_break_start_input_splice_immediate_flag,
+            var_local_break_start_input_duration_flag,
+            var_local_break_start_input_break_duration_min,
+            var_local_break_start_input_break_duration_max,
+            var_local_break_start_input_break_auto_return,
+        
+            var_local_break_start_output_splice_command,
+            var_local_break_start_output_out_of_network_indicator,
+            var_local_break_start_output_splice_event_id,
+            var_local_break_start_output_splice_immediate_flag,
+            var_local_break_start_output_duration_flag,
+            var_local_break_start_output_break_duration_min,
+            var_local_break_start_output_break_duration_max,
+            var_local_break_start_output_break_auto_return,
+            
+            var_local_break_end_input_action,
+        
+            var_local_break_end_input_splice_command,
+            var_local_break_end_input_out_of_network_indicator,
+            var_local_break_end_input_splice_event_id,
+            var_local_break_end_input_splice_immediate_flag,
+            var_local_break_end_input_break_duration_flag,
+        
+            var_local_break_end_output_splice_command,
+            var_local_break_end_output_out_of_network_indicator,
+            var_local_break_end_output_splice_immediate_flag,
+            var_local_break_end_output_splice_event_id,
+            var_local_break_end_output_break_duration_flag,
+        
+            var_local_break_end_deviation_tolerance
+          ]
+        
+          let localbreakJson = JSON.stringify(localBreakArray)
+          var localbreak = JSON.parse(localbreakJson)
+        
+          
+          const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
+          const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+          const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
+          const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
+          const content_id_program_segmentation_flag = <HTMLInputElement> document.getElementById("content_id_program_segmentation_flag");
+          const content_id_segmentation_duration_flag = <HTMLInputElement> document.getElementById("content_id_segmentation_duration_flag");
+          const content_id_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("content_id_delivery_not_restricted_flag");
+          const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
+          const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
+          const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
+        
+    
+       
+                let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
+                    content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
+                    content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
+                
+                let contentJson = JSON.stringify(contentIdArray)
+                var content = JSON.parse(contentJson)
+            
+        
+          const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
+          const programTrue = <HTMLInputElement> document.getElementById("programTrue");
+        
+          const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
+          const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
+          const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
+          const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
+          const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
+          const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
+          const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
+          const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
+          const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
+          const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
+          const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
+        
+          const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
+          const program_end_input_splice_command_type = <HTMLInputElement> document.getElementById("program_end_input_splice_command_type");
+          const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
+          const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
+          const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
+          const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
+          const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
+          const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
+        
+          let var_program_time_specified_flag;
+          let var_program_start_input_segmentation_type_id;
+          let var_program_start_input_splice_command_type;
+          let var_program_start_input_duration_flag;
+          let var_program_start_input_segmentation_duration_min;
+          let var_program_start_input_segmentation_duration_max;
+          let var_program_start_input_event_cancel_indicator;
+          let var_program_start_input_segmentation_flag;
+          let var_program_start_input_delivery_not_restricted_flag;
+          let var_program_start_input_upid_type;
+          let var_program_start_input_upid_length
+        
+          let var_program_end_input_segmentation_type_id;
+          let var_program_end_input_splice_command_type;
+          let var_program_end_input_duration_flag;
+          let var_program_end_input_event_cancel_indicator;
+          let var_program_end_input_segmentation_flag;
+          let var_program_end_input_delivery_not_restricted_flag;
+          let var_program_end_input_upid_type;
+          let var_program_end_input_upid_length;
+        
+      
+          
+              try{var_program_time_specified_flag = program_time_specified_flag.value}catch{ var_program_time_specified_flag = "None"}
+              
+              try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
+        
+              try{var_program_start_input_splice_command_type = program_start_input_splice_command_type.value}catch{ var_program_start_input_splice_command_type = "None"}
+              
+              try{var_program_start_input_duration_flag = program_start_input_duration_flag.value}catch{ var_program_start_input_duration_flag = "None"}
+        
+              try{var_program_start_input_segmentation_duration_min = program_start_input_segmentation_duration_min.value}catch{ var_program_start_input_segmentation_duration_min = "None"}
+              
+              try{var_program_start_input_segmentation_duration_max = program_start_input_segmentation_duration_max.value}catch{ var_program_start_input_segmentation_duration_max = "None"}
+        
+              try{var_program_start_input_event_cancel_indicator = program_start_input_event_cancel_indicator.value}catch{ var_program_start_input_event_cancel_indicator = "None"}
+              
+              try{var_program_start_input_delivery_not_restricted_flag = program_start_input_delivery_not_restricted_flag.value}catch{ var_program_start_input_delivery_not_restricted_flag = "None"}
+        
+        
+              try{var_program_start_input_segmentation_flag = program_start_input_segmentation_flag.value}catch{ var_program_start_input_segmentation_flag = "None"}
+        
+              try{var_program_start_input_upid_type = program_start_input_upid_type.value}catch{ var_program_start_input_upid_type = "None"}
+              
+              try{var_program_start_input_upid_length = program_start_input_upid_length.value}catch{ var_program_start_input_upid_length = "None"}
+        
+              try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
+              
+              try{var_program_end_input_splice_command_type = program_end_input_splice_command_type.value}catch{ var_program_end_input_splice_command_type = "None"}
+        
+              
+              
+              try{var_program_end_input_duration_flag = program_end_input_duration_flag.value}catch{ var_program_end_input_duration_flag = "None"}
+        
+              try{var_program_end_input_event_cancel_indicator = program_end_input_event_cancel_indicator.value}catch{ var_program_end_input_event_cancel_indicator = "None"}
+              
+              try{var_program_end_input_segmentation_flag = program_end_input_segmentation_flag.value}catch{ var_program_end_input_segmentation_flag = "None"}
+        
+              try{var_program_end_input_delivery_not_restricted_flag = program_end_input_delivery_not_restricted_flag.value}catch{ var_program_end_input_delivery_not_restricted_flag = "None"}
+              
+              try{var_program_end_input_upid_type = program_end_input_upid_type.value}catch{ var_program_end_input_upid_type = "None"}
+        
+              try{var_program_end_input_upid_length = program_end_input_upid_length.value}catch{ var_program_end_input_upid_length = "None"}
+        
+        
+        
+              let programArray = [
+                var_program_time_specified_flag,
+                var_program_start_input_segmentation_type_id,
+                var_program_start_input_splice_command_type,
+                  var_program_start_input_duration_flag,
+                  var_program_start_input_segmentation_duration_min,
+                  var_program_start_input_segmentation_duration_max,
+                  var_program_start_input_event_cancel_indicator,
+                  var_program_start_input_segmentation_flag,
+                  var_program_start_input_delivery_not_restricted_flag,
+                  var_program_start_input_upid_type,
+                  var_program_start_input_upid_length,
+        
+                  var_program_end_input_segmentation_type_id,
+                  var_program_end_input_splice_command_type,
+                  var_program_end_input_duration_flag,
+                  var_program_end_input_event_cancel_indicator,
+                  var_program_end_input_segmentation_flag,
+                  var_program_end_input_delivery_not_restricted_flag,
+                  var_program_end_input_upid_type,
+                  var_program_end_input_upid_length]
+        
+                  let programJson = JSON.stringify(programArray)
+                  var program = JSON.parse(programJson)
+          
+            
+          
             const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
-
+        
             const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
             const national_break_expected_splices_hour = <HTMLInputElement> document.getElementById("national_break_expected_splices_hour");
             
@@ -610,12 +643,12 @@ export class AddControlComponent implements OnInit {
              let var_national_break_end_output_break_duration_flag;
              let var_national_break_end_deviation_tolerance;
             
-             try{var_national_break_expected_splices_hour = national_break_expected_splices_hour.value}catch{ var_national_break_expected_splices_hour = "None"}
+            try{var_national_break_expected_splices_hour = national_break_expected_splices_hour.value}catch{ var_national_break_expected_splices_hour = "None"}
             
             
-            try{var_national_break_start_input_action = national_break_start_input_action.value}catch{ var_national_break_start_input_action = "None"}
+            try{var_national_break_start_input_action = national_break_start_input_action.value}catch{var_national_break_start_input_action = "None"}
             
-            try{ var_national_break_start_input_splice_command = national_break_start_input_splice_command.value}catch{var_national_break_start_input_splice_command = "None"}
+            try{var_national_break_start_input_splice_command = national_break_start_input_splice_command.value}catch{var_national_break_start_input_splice_command = "None"}
             
             try{var_national_break_start_input_segmentation_type_id = national_break_start_input_segmentation_type_id.value}catch{ var_national_break_start_input_segmentation_type_id = "None"}
             
@@ -643,49 +676,45 @@ export class AddControlComponent implements OnInit {
             
             try{var_national_break_start_output_splice_immediate_flag = national_break_start_output_splice_immediate_flag.value}catch{ var_national_break_start_output_splice_immediate_flag = "None"}
             
-            try{ var_national_break_start_output_duration_flag = national_break_start_output_duration_flag.value}catch{var_national_break_start_output_duration_flag = "None"}
+            try{var_national_break_start_output_duration_flag = national_break_start_output_duration_flag.value}catch{var_national_break_start_output_duration_flag = "None"}
             
-            try{ var_national_break_start_output_break_duration_min = national_break_start_output_break_duration_min.value}catch{var_national_break_start_output_break_duration_min = "None"}
+            try{var_national_break_start_output_break_duration_min = national_break_start_output_break_duration_min.value}catch{var_national_break_start_output_break_duration_min = "None"}
             
-            try{ var_national_break_start_output_break_duration_max = national_break_start_output_break_duration_max.value}catch{var_national_break_start_output_break_duration_max = "None"}
+            try{var_national_break_start_output_break_duration_max = national_break_start_output_break_duration_max.value}catch{var_national_break_start_output_break_duration_max = "None"}
             
-            try{ var_national_break_start_output_break_auto_return = national_break_start_output_break_auto_return.value}catch{var_national_break_start_output_break_auto_return = "None"}
+            try{var_national_break_start_output_break_auto_return = national_break_start_output_break_auto_return.value}catch{var_national_break_start_output_break_auto_return = "None"}
             
-            try{ var_national_break_duration_flag = national_break_duration_flag.value}catch{var_national_break_duration_flag = "None"}
+            try{var_national_break_duration_flag = national_break_duration_flag.value}catch{var_national_break_duration_flag = "None"}
             
-            try{ var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = "None"}
+            try{var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = "None"}
             
-            try{ var_national_break_end_input_splice_command = national_break_end_input_splice_command.value}catch{var_national_break_end_input_splice_command = "None"}
+            try{var_national_break_end_input_splice_command = national_break_end_input_splice_command.value}catch{var_national_break_end_input_splice_command = "None"}
             
-            try{ var_national_break_end_input_out_of_network_indicator = national_break_end_input_out_of_network_indicator.value}catch{var_national_break_end_input_out_of_network_indicator = "None"}
+            try{var_national_break_end_input_out_of_network_indicator = national_break_end_input_out_of_network_indicator.value}catch{var_national_break_end_input_out_of_network_indicator = "None"}
             
-            try{ var_national_break_end_input_splice_event_id = national_break_end_input_splice_event_id.value}catch{var_national_break_end_input_splice_event_id = "None"}
+            try{var_national_break_end_input_splice_event_id = national_break_end_input_splice_event_id.value}catch{var_national_break_end_input_splice_event_id = "None"}
             
-            try{ var_national_break_end_input_action = national_break_end_input_action.value}catch{var_national_break_end_input_action = "None"}
+            try{var_national_break_end_input_action = national_break_end_input_action.value}catch{var_national_break_end_input_action = "None"}
             
-            try{ var_national_break_end_input_splice_immediate_flag = national_break_end_input_splice_immediate_flag.value}catch{var_national_break_end_input_splice_immediate_flag = "None"}
+            try{var_national_break_end_input_splice_immediate_flag = national_break_end_input_splice_immediate_flag.value}catch{var_national_break_end_input_splice_immediate_flag = "None"}
             
-            try{ var_national_break_end_input_break_duration_flag = national_break_end_input_break_duration_flag.value}catch{var_national_break_end_input_break_duration_flag = "None"}
+            try{var_national_break_end_input_break_duration_flag = national_break_end_input_break_duration_flag.value}catch{var_national_break_end_input_break_duration_flag = "None"}
             
-            try{ var_national_break_end_output_out_of_network_indicator = national_break_end_output_out_of_network_indicator.value}catch{var_national_break_end_output_out_of_network_indicator = "None"}
+            try{var_national_break_end_output_out_of_network_indicator = national_break_end_output_out_of_network_indicator.value}catch{var_national_break_end_output_out_of_network_indicator = "None"}
             
-            try{ var_national_break_end_output_segmentation_type_id = national_break_end_output_segmentation_type_id.value}catch{var_national_break_end_output_segmentation_type_id = "None"}
+            try{var_national_break_end_output_segmentation_type_id = national_break_end_output_segmentation_type_id.value}catch{var_national_break_end_output_segmentation_type_id = "None"}
             
-            try{ var_national_break_end_output_splice_command = national_break_end_output_splice_command.value}catch{var_national_break_end_output_splice_command = "None"}
+            try{var_national_break_end_output_splice_command = national_break_end_output_splice_command.value}catch{var_national_break_end_output_splice_command = "None"}
             
             try{var_national_break_end_output_splice_immediate_flag = national_break_end_output_splice_immediate_flag.value}catch{ var_national_break_end_output_splice_immediate_flag = "None"}
             
-            try{ var_national_break_end_output_break_duration_flag = national_break_end_output_break_duration_flag.value}catch{var_national_break_end_output_break_duration_flag = "None"}
+            try{var_national_break_end_output_break_duration_flag = national_break_end_output_break_duration_flag.value}catch{var_national_break_end_output_break_duration_flag = "None"}
             
             try{var_national_break_end_output_splice_event_id = national_break_end_output_splice_event_id.value}catch{ var_national_break_end_output_splice_event_id = "None"}
             
             try{var_national_break_end_deviation_tolerance = national_break_end_deviation_tolerance.value}catch{ var_national_break_end_deviation_tolerance = "None"}
             
-            
-            
-            
-            
-            let nationalBreakArray= [
+          let nationalBreakArray= [
               var_national_break_expected_splices_hour,
             
               var_national_break_start_input_action,
@@ -724,21 +753,108 @@ export class AddControlComponent implements OnInit {
             
               var_national_break_end_deviation_tolerance
             ]
+        
             let nationalbreakJson = JSON.stringify(nationalBreakArray)
             var nationalbreak = JSON.parse(nationalbreakJson)
         
-      
-        let newConfig = {
-          "_id":this.counterID
-          ,"emails": emails.value
-          ,"validation_frequency": validation_frequency.value
-          ,"network_id": networkName.value
-          ,"localbreak": localbreak
-          ,"contentid": content
-          ,"pro":program
-          ,"nationalbreak": nationalbreak 
         
-        }
+        
+        
+        
+            try{
+              if(nationalBreakTrue.value  == "true"){
+                this.nationalBreakViewCheck = true
+              }
+              else if(this.nationalBreakViewCheck){
+                this.nationalBreakViewCheck = true
+        
+              }
+              else{
+                this.nationalBreakViewCheck = false
+              }
+            }catch{}
+        
+        
+            try{
+              if(localBreakTrue.value  == "true" ){
+                this.localBreakViewCheck = true
+              }
+              else if(this.localBreakViewCheck){
+                this.localBreakViewCheck = true
+        
+              }
+              else{
+                this.localBreakViewCheck = false
+              }
+            }catch{}
+        
+        
+            if(this.nationalBreakViewCheck == false){
+              nationalbreak = []
+            }
+        
+            if(this.localBreakViewCheck == false){
+              localbreak = []
+            }
+        
+        
+        
+        
+            try{
+              if(programTrue.value  == "true" ){
+                this.programViewCheck = true
+              }
+              else if(this.programViewCheck){
+                this.programViewCheck = true
+        
+              }
+              else{
+                this.programViewCheck = false
+              }
+            }catch{}
+        
+            if(this.programViewCheck == false){
+              program = []
+            }
+        
+            if(this.nationalBreakViewCheck == false){
+              nationalbreak = []
+            }
+        
+            if(this.localBreakViewCheck == false){
+              localbreak = []
+            }
+
+
+
+            try{
+              if(contentIdTrue.value  == "true" ){
+                this.contentIdViewCheck = true
+              }
+              else if(this.contentIdViewCheck){
+                this.contentIdViewCheck = true
+        
+              }
+              else{
+                this.contentIdViewCheck = false
+              }
+            }catch{}
+
+
+            if(this.contentIdViewCheck == false){
+              content = []
+            }
+          
+          let newConfig = {
+            "_id": this.counterID
+            ,"network_id": networkName.value
+            ,"emails": emails.value
+            ,"validation_frequency": validation_frequency.value
+            ,"contentid": content
+            ,"localbreak": localbreak
+            ,"nationalbreak": nationalbreak
+            ,"pro": program
+          }
         let postHeaders = new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
             this.HttpClient.post("http://127.0.0.1:8000/addConfig", newConfig, {headers: postHeaders})
           .subscribe(Response => console.log(Response));

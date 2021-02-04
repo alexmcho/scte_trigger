@@ -194,6 +194,7 @@
                         <tr *ngIf="htmlSplice1=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -238,12 +239,12 @@
 
                         <tr *ngIf="htmlBool3=='true'">
                             <th>Break Duration</th>
-                            <td><select id= "changeThisName" class="form-control">
+                            <td><select [(ngModel)]="timing1" id= "changeThisName" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
-                                <option>Exact Time (seconds)</option>
-                                <option>Time Range (seconds)</option>
+                                <option value="exact">Exact Time (seconds)</option>
+                                <option value="range">Time Range (seconds)</option>
                             </select></td>
-                            <td>
+                            <td *ngIf = "timing1 == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -256,6 +257,14 @@
                                         <input id="local_break_start_input_break_duration_max" class="form-control" type="number" step=any value="{{item.value[8]}}">
                                     </div>
                                 </div>                
+                            </td>
+                            <td *ngIf = "timing1 == 'exact'">
+                                <div class="form-group row">
+                                    <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                                    <div class="col-sm-4">
+                                        <input id="local_break_start_input_break_duration_min" class="form-control" type="number" step=any value="{{item.value[7]}}">
+                                    </div>
+                                </div>
                             </td>
                         </tr>
 
@@ -287,6 +296,7 @@
                         <tr *ngIf="htmlSplice1=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
+                                <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -331,11 +341,12 @@
 
                         <tr *ngIf="htmlBool7=='true'">
                             <th>Break Duration</th>
-                            <td><select id= "local_break_start_output_break_duration" class="form-control">
-                                <option>Change Break Duration Type</option>
-                                <option>Exact Time (seconds)</option>
-                                <option>Time Range (seconds)</option>
+                            <td><select [(ngModel)]="timing2" id= "changeThisName" class="form-control">
+                                <option value="" disabled selected hidden>Change Break Duration Type</option>
+                                <option value="exact">Exact Time (seconds)</option>
+                                <option value="range">Time Range (seconds)</option>
                             </select></td>
+                            <td *ngIf = "timing2 == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -348,6 +359,15 @@
                                         <input id="local_break_start_output_break_duration_max" class="form-control" type="number" step=any value="{{item.value[16]}}">
                                     </div>
                                 </div>                
+                            </td>
+                            <td *ngIf = "timing2 == 'exact'">
+                                <div class="form-group row">
+                                    <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                                    <div class="col-sm-4">
+                                        <input id="local_break_start_output_break_duration_min" class="form-control" type="number" step=any value="{{item.value[15]}}">
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
@@ -389,13 +409,14 @@
                             <tr>
                                 <th>Splice Command Type</th><td></td>
                                 <td><select id="local_break_end_input_splice_command" name="splice_command_type_end" class="form-control">
-                                    <option value="{{item.value[21]}}">{{item.value[2]}}</option>
+                                    <option value="{{item.value[20]}}">{{item.value[20]}}</option>
                                 </select></td>
                             </tr>
 
                             <tr *ngIf="htmlSplice1=='6'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
+                                    <option value="{{item.value[34]}}"> {{item.value[34]}}</option>
                                     <option value="11">11&nbsp;  [ Program End ]</option>
                                     <option value="21">21&nbsp;  [ Chapter End ]</option>
                                     <option value="23">23&nbsp;  [ Break End ]</option>
@@ -437,6 +458,37 @@
                                     <option *ngFor='let options of bool11' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
+                            
+                            <tr *ngIf="htmlBool11=='true'">
+                                <th>Break Duration</th>
+                                <td><select [(ngModel)]="timing3" id= "changeThisName" class="form-control">
+                                    <option value="" disabled selected hidden>Change Break Duration Type</option>
+                                    <option value="exact">Exact Time (seconds)</option>
+                                    <option value="range">Time Range (seconds)</option>
+                                </select></td>
+                                <td *ngIf = "timing3 == 'range'">
+                                    <div class="form-group row">
+                                        <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                                        <div class="col-sm-4">
+                                            <input id="local_break_end_input_min" class="form-control" type="number" step=any value="{{item.value[24]}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                                        <div class="col-sm-4">
+                                            <input id="local_break_end_input_max" class="form-control" type="number" step=any value="{{item.value[25]}}">
+                                        </div>
+                                    </div>                
+                                </td>
+                                <td *ngIf = "timing3 == 'exact'">
+                                    <div class="form-group row">
+                                        <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                                        <div class="col-sm-4">
+                                            <input id="local_break_end_input_min" class="form-control" type="number" step=any value="{{item.value[24]}}">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -457,6 +509,7 @@
                                 <tr *ngIf="htmlSplice1=='6'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
+                                        <option value="{{item.value[35]}}"> {{item.value[35]}}</option>
                                         <option value="11">11&nbsp;  [ Program End ]</option>
                                         <option value="21">21&nbsp;  [ Chapter End ]</option>
                                         <option value="23">23&nbsp;  [ Break End ]</option>
@@ -498,6 +551,37 @@
                                         <option *ngFor='let options of bool14' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
+
+                                <tr *ngIf="htmlBool14=='true'">
+                                    <th>Break Duration</th>
+                                    <td><select [(ngModel)]="timing4" id= "changeThisName" class="form-control">
+                                        <option value="" disabled selected hidden>Change Break Duration Type</option>
+                                        <option value="exact">Exact Time (seconds)</option>
+                                        <option value="range">Time Range (seconds)</option>
+                                    </select></td>
+                                    <td *ngIf = "timing4 == 'range'">
+                                        <div class="form-group row">
+                                            <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                                            <div class="col-sm-4">
+                                                <input id="local_break_end_output_min" class="form-control" type="number" step=any value="{{item.value[36]}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                                            <div class="col-sm-4">
+                                                <input id="local_break_end_output_max" class="form-control" type="number" step=any value="{{item.value[37]}}">
+                                            </div>
+                                        </div>                
+                                    </td>
+                                    <td *ngIf = "timing4 == 'exact'">
+                                        <div class="form-group row">
+                                            <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                                            <div class="col-sm-4">
+                                                <input id="local_break_end_output_min" class="form-control" type="number" step=any value="{{item.value[36]}}">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
   
                             </tbody>
                         </table>
@@ -506,7 +590,7 @@
                 <br>
                 <div *ngIf="local_break_include_break_end">
                     <label for="break_duration_deviation_tolerance">Time Separation Deviation Tolerance (seconds):</label>
-                    <input id="local_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[29]}}" style="width:auto; display:inline-block; margin-left: 10px;">
+                    <input id="local_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[31]}}" style="width:auto; display:inline-block; margin-left: 10px;">
                 </div>
                 </ng-template>
           </ng-template>
