@@ -224,8 +224,8 @@ public formSubmitAttempt: boolean;
 		this.htmlSplice1 = this.config.value[0].value[5].value[2]
 
 		var list4 = [this.spliceCommand2] 
-		this.spliceCommand2.push(this.config.value[0].value[7].value[2])
-		this.htmlSplice2 = this.config.value[0].value[7].value[2]
+		this.spliceCommand2.push(this.config.value[0].value[6].value[2])
+		this.htmlSplice2 = this.config.value[0].value[6].value[2]
 
 		var list5 = [this.bool41,this.bool42,this.bool43,this.bool44,this.bool45,this.bool46,this.bool47, 
 		this.bool48,this.bool49, this.bool50,this.bool51,this.bool52,this.bool53,this.bool54]
@@ -270,67 +270,67 @@ public formSubmitAttempt: boolean;
 		this.htmlBool14 = this.config.value[0].value[5].value[30]
 		
 		//ContentId - 
-		this.bool19.push(this.config.value[0].value[5].value[2])
-		this.bool20.push(this.config.value[0].value[5].value[3])
-		this.bool21.push(this.config.value[0].value[5].value[4])
-		this.bool21.push(this.config.value[0].value[5].value[5])
-		this.bool22.push(this.config.value[0].value[5].value[8])
+		this.bool19.push(this.config.value[0].value[6].value[2])
+		this.bool20.push(this.config.value[0].value[6].value[3])
+		this.bool21.push(this.config.value[0].value[6].value[4])
+		this.bool21.push(this.config.value[0].value[6].value[5])
+		this.bool22.push(this.config.value[0].value[6].value[8])
 		
 		//Program - 
-		this.htmlBool68 = this.config.value[0].value[6].value[0]
-		this.htmlBool61 = this.config.value[0].value[6].value[3]
-		this.htmlBool62 = this.config.value[0].value[6].value[6]
-		this.htmlBool63 = this.config.value[0].value[6].value[7]
-		this.htmlBool64 = this.config.value[0].value[6].value[8]
-		this.htmlBool65 = this.config.value[0].value[6].value[14]
-		this.htmlBool66 = this.config.value[0].value[6].value[15]
-		this.htmlBool67 = this.config.value[0].value[6].value[16]
+		this.htmlBool68 = this.config.value[0].value[7].value[0]
+		this.htmlBool61 = this.config.value[0].value[7].value[3]
+		this.htmlBool62 = this.config.value[0].value[7].value[6]
+		this.htmlBool63 = this.config.value[0].value[7].value[7]
+		this.htmlBool64 = this.config.value[0].value[7].value[8]
+		this.htmlBool65 = this.config.value[0].value[7].value[14]
+		this.htmlBool66 = this.config.value[0].value[7].value[15]
+		this.htmlBool67 = this.config.value[0].value[7].value[16]
 
-		this.bool68.push(this.config.value[0].value[6].value[0])
-		this.bool61.push(this.config.value[0].value[6].value[3])
-		this.bool62.push(this.config.value[0].value[6].value[6])
-		this.bool63.push(this.config.value[0].value[6].value[7])
-		this.bool64.push(this.config.value[0].value[6].value[8])
-		this.bool65.push(this.config.value[0].value[6].value[14])
-		this.bool66.push(this.config.value[0].value[6].value[15])
-		this.bool67.push(this.config.value[0].value[6].value[16])
+		this.bool68.push(this.config.value[0].value[7].value[0])
+		this.bool61.push(this.config.value[0].value[7].value[3])
+		this.bool62.push(this.config.value[0].value[7].value[6])
+		this.bool63.push(this.config.value[0].value[7].value[7])
+		this.bool64.push(this.config.value[0].value[7].value[8])
+		this.bool65.push(this.config.value[0].value[7].value[14])
+		this.bool66.push(this.config.value[0].value[7].value[15])
+		this.bool67.push(this.config.value[0].value[7].value[16])
 		
 		//National Break - 
-		this.action3.push(this.config.value[0].value[7].value[1])
-		this.action4.push(this.config.value[0].value[7].value[18])
+		this.action3.push(this.config.value[0].value[6].value[1])
+		this.action4.push(this.config.value[0].value[6].value[18])
 
-		this.htmlAction3 = this.config.value[0].value[7].value[1]
-		this.htmlAction4 = this.config.value[0].value[7].value[18]
+		this.htmlAction3 = this.config.value[0].value[6].value[1]
+		this.htmlAction4 = this.config.value[0].value[6].value[18]
 
-		this.bool41.push(this.config.value[0].value[7].value[3])
-		this.bool42.push(this.config.value[0].value[7].value[5])
-		this.bool43.push(this.config.value[0].value[7].value[6])
-		this.bool44.push(this.config.value[0].value[7].value[9])
-		this.bool45.push(this.config.value[0].value[7].value[10])
-		this.bool46.push(this.config.value[0].value[7].value[11])
-		this.bool47.push(this.config.value[0].value[7].value[13])
-		this.bool48.push(this.config.value[0].value[7].value[14])
-		this.bool49.push(this.config.value[0].value[7].value[17])
-		this.bool50.push(this.config.value[0].value[7].value[20])
-		this.bool51.push(this.config.value[0].value[7].value[22])
-		this.bool52.push(this.config.value[0].value[7].value[23])
-		this.bool53.push(this.config.value[0].value[7].value[25])
-		this.bool54.push(this.config.value[0].value[7].value[26])
+		this.bool41.push(this.config.value[0].value[6].value[3])
+		this.bool42.push(this.config.value[0].value[6].value[5])
+		this.bool43.push(this.config.value[0].value[6].value[6])
+		this.bool44.push(this.config.value[0].value[6].value[9])
+		this.bool45.push(this.config.value[0].value[6].value[11])
+		this.bool46.push(this.config.value[0].value[6].value[12])
+		this.bool47.push(this.config.value[0].value[6].value[14])
+		this.bool48.push(this.config.value[0].value[6].value[17])
+		this.bool49.push(this.config.value[0].value[6].value[20])
+		this.bool50.push(this.config.value[0].value[6].value[22])
+		this.bool51.push(this.config.value[0].value[6].value[23])
+		this.bool52.push(this.config.value[0].value[6].value[25])
+		this.bool53.push(this.config.value[0].value[6].value[27])
+		this.bool54.push(this.config.value[0].value[6].value[28])
 
-		this.htmlBool41 = this.config.value[0].value[7].value[3]
-		this.htmlBool42 = this.config.value[0].value[7].value[5]
-		this.htmlBool43 = this.config.value[0].value[7].value[6]
-		this.htmlBool44 = this.config.value[0].value[7].value[9]
-		this.htmlBool45 = this.config.value[0].value[7].value[10]
-		this.htmlBool46 = this.config.value[0].value[7].value[11]
-		this.htmlBool47 = this.config.value[0].value[7].value[13]
-		this.htmlBool48 = this.config.value[0].value[7].value[14]
-		this.htmlBool49 = this.config.value[0].value[7].value[17]
-		this.htmlBool50 = this.config.value[0].value[7].value[20]
-		this.htmlBool51 = this.config.value[0].value[7].value[22]
-		this.htmlBool52 = this.config.value[0].value[7].value[23]
-		this.htmlBool53 = this.config.value[0].value[7].value[25]
-		this.htmlBool54 = this.config.value[0].value[7].value[26]
+		this.htmlBool41 = this.config.value[0].value[6].value[3]
+		this.htmlBool42 = this.config.value[0].value[6].value[5]
+		this.htmlBool43 = this.config.value[0].value[6].value[6]
+		this.htmlBool44 = this.config.value[0].value[6].value[9]
+		this.htmlBool45 = this.config.value[0].value[6].value[11]
+		this.htmlBool46 = this.config.value[0].value[6].value[12]
+		this.htmlBool47 = this.config.value[0].value[6].value[14]
+		this.htmlBool48 = this.config.value[0].value[6].value[17]
+		this.htmlBool49 = this.config.value[0].value[6].value[20]
+		this.htmlBool50 = this.config.value[0].value[6].value[22]
+		this.htmlBool51 = this.config.value[0].value[6].value[23]
+		this.htmlBool52 = this.config.value[0].value[6].value[25]
+		this.htmlBool53 = this.config.value[0].value[6].value[27]
+		this.htmlBool54 = this.config.value[0].value[6].value[28]
 		
 		for(let i = 0; i < list.length; i++){
 			for(let j = 0; j < 3; j++)

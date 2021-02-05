@@ -998,6 +998,7 @@
                         <tr *ngIf="htmlSplice2=='6'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
                                 <option value="10">10&nbsp;  [ Program Start ]</option>
                                 <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
@@ -1283,7 +1284,7 @@
                                 <tr *ngIf="htmlSplice2=='5'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="national_break_end_output_splice_event_id" class="form-control">
-                                        <option value="{{item.value[27]}}">{{item.value[27]}}</option>
+                                        <option value="{{item.value[26]}}">{{item.value[26]}}</option>
                                         <option value="isnumeric">Must Be Numeric</option>
                                         <option value="notnumeric">Not Numeric</option>
                                     </select></td>
@@ -1310,7 +1311,7 @@
                 <br>
                 <div *ngIf="national_break_include_break_end">
                     <label for="break_duration_deviation_tolerance">Time Separation Deviation Tolerance (seconds):</label>
-                    <input id="national_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[28]}}" style="width:auto; display:inline-block; margin-left: 10px;">
+                    <input id="national_break_end_deviation_tolerance" type=number step=any class="form-control" value="{{item.value[29]}}" style="width:auto; display:inline-block; margin-left: 10px;">
                 </div>
                 </ng-template>
           </ng-template>
