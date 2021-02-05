@@ -419,7 +419,7 @@ export class AddControlComponent implements OnInit {
           let localbreakJson = JSON.stringify(localBreakArray)
           var localbreak = JSON.parse(localbreakJson)
         
-          
+          if(this.contentIsOn){
           const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
           const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
           const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
@@ -430,7 +430,7 @@ export class AddControlComponent implements OnInit {
           const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
           const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
           const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
-        
+      
     
        
                 let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
@@ -439,7 +439,7 @@ export class AddControlComponent implements OnInit {
                 
                 let contentJson = JSON.stringify(contentIdArray)
                 var content = JSON.parse(contentJson)
-            
+                }
         
           const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
           const programTrue = <HTMLInputElement> document.getElementById("programTrue");
@@ -761,89 +761,18 @@ export class AddControlComponent implements OnInit {
         
         
         
-            try{
-              if(nationalBreakTrue.value  == "true"){
-                this.nationalBreakViewCheck = true
-              }
-              else if(this.nationalBreakViewCheck){
-                this.nationalBreakViewCheck = true
-        
-              }
-              else{
-                this.nationalBreakViewCheck = false
-              }
-            }catch{}
-        
-        
-            try{
-              if(localBreakTrue.value  == "true" ){
-                this.localBreakViewCheck = true
-              }
-              else if(this.localBreakViewCheck){
-                this.localBreakViewCheck = true
-        
-              }
-              else{
-                this.localBreakViewCheck = false
-              }
-            }catch{}
-        
-        
-            if(this.nationalBreakViewCheck == false){
-              nationalbreak = []
-            }
-        
-            if(this.localBreakViewCheck == false){
-              localbreak = []
-            }
-        
-        
-        
-        
-            try{
-              if(programTrue.value  == "true" ){
-                this.programViewCheck = true
-              }
-              else if(this.programViewCheck){
-                this.programViewCheck = true
-        
-              }
-              else{
-                this.programViewCheck = false
-              }
-            }catch{}
-        
-            if(this.programViewCheck == false){
-              program = []
-            }
-        
-            if(this.nationalBreakViewCheck == false){
-              nationalbreak = []
-            }
-        
-            if(this.localBreakViewCheck == false){
-              localbreak = []
-            }
-
-
-
-            try{
-              if(contentIdTrue.value  == "true" ){
-                this.contentIdViewCheck = true
-              }
-              else if(this.contentIdViewCheck){
-                this.contentIdViewCheck = true
-        
-              }
-              else{
-                this.contentIdViewCheck = false
-              }
-            }catch{}
-
-
-            if(this.contentIdViewCheck == false){
-              content = []
-            }
+           if(!this.nationalIsOn){
+            nationalbreak = []
+           }
+           if(!this.contentIsOn){
+            content = []
+           }
+           if(!this.localIsOn){
+            localbreak = []
+           }
+           if(!this.programIsOn){
+            program = []
+           }
           
           let newConfig = {
             "_id": this.counterID
