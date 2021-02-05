@@ -1,0 +1,35 @@
+{
+  "recipient_emails": [
+    "test.zachary.thomas@gmail.com"
+  ],
+  "frequency": 45,
+  "network_id": "COOKHD-6216.dfw.1080",
+  "local_break": {
+    "expected_splices_hour": 10,
+    "validate_splice_count": false,
+    "local_break_start": {
+      "action": "NOOP",
+      "splice_command_type": 5,
+      "input_trigger": {
+        "splice_event_id": "isnumeric",
+        "out_of_network_indicator": true,
+        "duration_flag": true,
+        "splice_immediate_flag": false,
+        "break_auto_return": false,
+        "break_duration_min": 58,
+        "break_duration_max": 62
+      }
+    },
+    "local_break_end": {
+      "action": "DELETE",
+      "splice_command_type": 5,
+      "input_trigger": {
+        "splice_event_id": "isnumeric",
+        "out_of_network_indicator": false,
+        "duration_flag": false,
+        "splice_immediate_flag": false
+      }
+    },
+    "break_duration_deviation_tolerance": 0.1
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "program": {
+        "splice_command_type": 6,
+        "time_specified_flag": true,
+        "program_end": {
+            "identifier": "CUEI",
+            "segmentation_event_id": "0x8c9b8016",
+            "segmentation_event_cancel_indicator": false,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": false,
+            "delivery_not_restricted_flag": true,
+            "segmentation_upid_type": 8,
+            "segmentation_upid_length": 8,
+            "segmentation_upid": "AiringID:0x504398c9b8016",
+            "segmentation_type_id": 17,
+            "segment_num": 1,
+            "segments_expected": 1
+        },
+        "program_start": {
+            "tag": 2,
+            "identifier": "CUEI",
+            "name": "Segmentation Descriptor",
+            "segmentation_event_id": "0x8c9b8162",
+            "segmentation_event_cancel_indicator": false,
+            "program_segmentation_flag": true,
+            "segmentation_duration_flag": true,
+            "delivery_not_restricted_flag": true,
+            "segmentation_duration_min": 9183.0,
+            "segmentation_duration_max": 9187.0,
+            "segmentation_upid_type": 8,
+            "segmentation_upid_length": 8,
+            "segmentation_upid": "AiringID:0x504398c9b8162",
+            "segmentation_type_id": 16,
+            "segment_num": 1,
+            "segments_expected": 1
+        }
+    }
+}
