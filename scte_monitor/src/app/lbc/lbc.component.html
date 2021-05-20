@@ -53,15 +53,11 @@
                           <!-- <tr> -->
                           <th>Segmentation Type Id</th><td></td>
                           <td><select id="local_break_start_input_segmentation_type_id" class="form-control" >
-                              <option value="10">10&nbsp;  [ Program Start ]</option>
-                              <option value="20">20&nbsp;  [ Chapter Start ]</option>
-                              <option value="22">22&nbsp;  [ Break Start ]</option>
-                              <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
-                              <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
-                              <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                              <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                              <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                              <option value="50">50&nbsp;  [ Network Start ]</option>
+                            <option value="22">22&nbsp;  [ Break Start ]</option>
+                            <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                            <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                            <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                            <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                           </select></td>
                       </tr>
                       
@@ -186,15 +182,11 @@
                         <!-- <tr> -->
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
-                                <option value="10">10&nbsp;  [ Program Start ]</option>
-                                <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
                                 <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                                <option value="50">50&nbsp;  [ Network Start ]</option>
                             </select></td>
                         </tr>
                         
@@ -203,7 +195,7 @@
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
                                 <option value="true">true</option>
-                                <option value="false">false</option>
+                                <!-- <option value="false">false</option> -->
                             </select></td>
                         </tr>
 
@@ -280,7 +272,7 @@
                             </td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_input_splice_command=='5' && local_break_duration_flag_start_output=='true'">
+                        <tr *ngIf="local_break_start_output_splice_command=='5' && local_break_duration_flag_start_output=='true'">
                             <th>Break Auto Return</th><td></td>
                             <td><select id="local_break_start_output_break_auto_return" class ="form-control">
                                 <option value="true">true</option>
@@ -341,15 +333,11 @@
                           <!-- <tr> -->
                               <th>Segmentation Type Id</th><td></td>
                               <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                  <option value="11">11&nbsp;  [ Program End ]</option>
-                                  <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                  <option value="23">23&nbsp;  [ Break End ]</option>
-                                  <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                  <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                  <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                  <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                  <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                  <option value="51">51&nbsp;  [ Network End ]</option>
+                                <option value="22">22&nbsp;  [ Break Start ]</option>
+                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                               </select></td>
                           </tr>
 
@@ -415,15 +403,11 @@
                                 <!-- <tr> -->
                                   <th>Segmentation Type Id</th><td></td>
                                   <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                      <option value="11">11&nbsp;  [ Program End ]</option>
-                                      <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                      <option value="23">23&nbsp;  [ Break End ]</option>
-                                      <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                      <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                      <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                      <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                      <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                      <option value="51">51&nbsp;  [ Network End ]</option>
+                                    <option value="22">22&nbsp;  [ Break Start ]</option>
+                                    <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                    <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                    <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                    <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                                   </select></td>
                               </tr>
 

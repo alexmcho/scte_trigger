@@ -7,13 +7,13 @@
           </div>
               <ng-template ngbPanelContent>
                 <div class="custom-control custom-switch">
-                  <input [(ngModel)]="validate_splice_count2" type="checkbox" class="custom-control-input" id="validate_splice_count2">
-                  <label class="custom-control-label" for="validate_splice_count2">Validate Number of Breaks</label>
+                  <input [(ngModel)]="validate_splice_count_national" type="checkbox" class="custom-control-input" id="validate_splice_count_national">
+                  <label class="custom-control-label" for="validate_splice_count_national">Validate Number of Breaks</label>
               </div>
               <br>
               <form class=form-inline>
 
-                  <div *ngIf="validate_splice_count2" class="form-group">
+                  <div *ngIf="validate_splice_count_national" class="form-group">
                       <!-- <div> -->
                       <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
                       <input id="national_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
@@ -26,7 +26,6 @@
                   <div class="form-group">
                   </div>
               </form>
-
               <!-- National Break Start - Input Trigger -->
               <label for="national_break_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label>
               <table  class ="table table-striped">
@@ -50,36 +49,17 @@
                           </select></td>
                       </tr>
                   
-                      <!-- <tr *ngIf="national_break_start_input_splice_command=='6'">
+                      <tr *ngIf="national_break_start_input_splice_command=='6'">
+                          <!-- <tr> -->
                           <th>Segmentation Type Id</th><td></td>
                           <td><select id="national_break_start_input_segmentation_type_id" class="form-control" >
-                              <option value="10">10&nbsp;  [ Program Start ]</option>
-                              <option value="20">20&nbsp;  [ Chapter Start ]</option>
-                              <option value="22">22&nbsp;  [ Break Start ]</option>
-                              <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
-                              <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
-                              <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                              <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                              <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                              <option value="50">50&nbsp;  [ Network Start ]</option>
-                          </select></td>
-                      </tr> -->
-
-                      <tr *ngIf="national_break_start_input_splice_command=='6'">
-                        <th>Segmentation Type Id</th><td></td>
-                        <td><select id="national_break_start_input_segmentation_type_id" class="form-control" >
                             <option value="22">22&nbsp;  [ Break Start ]</option>
-                            <option value="23">23&nbsp;  [ Break End ]</option>
-                            <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                            <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                            <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                            <option value="33">10&nbsp;  [ Distributor End ]</option>
-                            <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                            <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                            <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                            <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                        </select></td>
-                    </tr>
+                            <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                            <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                            <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                            <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
+                          </select></td>
+                      </tr>
                       
                       <tr *ngIf="national_break_start_input_splice_command=='5'"> 
                         <!-- <tr> -->
@@ -89,7 +69,7 @@
                           </select></td>
                       </tr>
 
-                      <tr *ngIf="national_break_start_input_splice_command=='5'" >
+                      <tr *ngIf="national_break_start_input_splice_command=='5'">
                         <!-- <tr> -->
                           <th>Splice Event Id</th><td></td>
                           <td><select id="national_break_start_input_splice_event_id" class="form-control">
@@ -139,7 +119,7 @@
                               <option value="range">Time Range (seconds)</option>
                           </select></td>
 
-                          <td *ngIf = "timing5 == 'range'">
+                          <td *ngIf= "timing5 == 'range'">
                               <div class="form-group row">
                                   <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                   <div class="col-sm-4">
@@ -161,16 +141,16 @@
                                 </div>
                             </div>
                         </td>
-
                       </tr>
 
-                      <!-- <tr *ngIf="national_break_start_input_splice_command=='5'">
+                      <!-- <tr *ngIf="national_break_start_input_splice_command=='5' && national_break_duration_flag=='true'"> -->
+                      <tr *ngIf="national_break_start_input_splice_command=='5' && national_break_duration_flag=='true'">
                           <th>Break Auto Return</th><td></td>
                           <td><select id="national_break_start_input_break_auto_return" class ="form-control">
                               <option value="true">true</option>
                               <option value="false">false</option>
                           </select></td>
-                      </tr> -->
+                      </tr>
 
                   </tbody>
               </table>
@@ -182,6 +162,7 @@
                     <table  class ="table table-striped">
                         <tbody>
 
+                        <!-- <tr *ngIf="national_break_start_input_splice_command=='5'"> -->
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <td><select id="national_break_start_output_splice_command" [(ngModel)]="national_break_start_output_splice_command" class="form-control">
@@ -191,33 +172,21 @@
                         </tr>
 
                         <!-- <tr *ngIf="national_break_start_input_splice_command=='6'">
+                            <th>Splice Command Type</th><td></td>
+                            <td><select id="national_break_start_output_splice_command" class="form-control">
+                                <option value="6">[6] time_signal</option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="national_break_start_output_splice_command=='6'">
+                        <!-- <tr> -->
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
-                                <option value="10">10&nbsp;  [ Program Start ]</option>
-                                <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
                                 <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                                <option value="50">50&nbsp;  [ Network Start ]</option>
-                            </select></td>
-                        </tr> -->
-
-                        <tr *ngIf="national_break_start_output_splice_command=='6'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="national_break_start_output_segmentation_type_id" class="form-control" >
-                                <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="23">23&nbsp;  [ Break End ]</option>
-                                <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
                             </select></td>
                         </tr>
                         
@@ -226,7 +195,7 @@
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="national_break_start_output_out_of_network_indicator" class="form-control">
                                 <option value="true">true</option>
-                                <option value="false">false</option>
+                                <!-- <option value="false">false</option> -->
                             </select></td>
                         </tr>
 
@@ -279,7 +248,7 @@
                                 <option value="exact">Exact Time (seconds)</option>
                                 <option value="range">Time Range (seconds)</option>
                             </select></td>
-                            <td *ngIf = "timing6 == 'range'">
+                            <td *ngIf="timing6 == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -291,8 +260,8 @@
                                     <div class="col-sm-4">
                                         <input id="national_break_start_output_break_duration_max" class="form-control" type="number" step=any>
                                     </div>
-                                </div> 
-                            </td>      
+                                </div>
+                            </td>
                             <td *ngIf = "timing6 == 'exact'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
@@ -300,22 +269,22 @@
                                         <input id="national_break_start_output_break_duration_min" class="form-control" type="number" step=any>
                                     </div>
                                 </div>
-                            </td>         
+                            </td>
                         </tr>
 
-                        <!-- <tr *ngIf="national_break_start_input_splice_command=='5'"> 
+                        <tr *ngIf="national_break_start_output_splice_command=='5' && national_break_duration_flag_start_output=='true'">
                             <th>Break Auto Return</th><td></td>
                             <td><select id="national_break_start_output_break_auto_return" class ="form-control">
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </select></td>
-                        </tr> -->
+                        </tr>
 
                         </tbody>
                     </table>
                 </div>
 
-          <!-- Break End Trigger     -->
+          <!-- Break End Trigger -->
               <div class="custom-control custom-switch">
                   <input  [(ngModel)]="national_break_include_break_end" type="checkbox" class="custom-control-input" id="nationalBreakEndSwitch">
                   <label class="custom-control-label" for="nationalBreakEndSwitch">Include Break End</label>
@@ -337,51 +306,40 @@
                           <tr *ngIf="national_break_end_input_splice_command=='5'">
                             <!-- <tr> -->
                               <th>Action</th><td></td>
-                              <td><select id="national_break_end_input_action" [(ngModel)]="national_break_end_input_action" class="form-control" id="national_break_end_input_action"class="form-control" >
+                              <td><select id="national_break_end_input_action" [(ngModel)]="national_break_end_input_action" class="form-control">
                                   <option value="NOOP">NOOP</option>
                                   <option value="DELETE">DELETE</option>
                                   <option value="REPLACE">REPLACE</option>
                               </select></td>
                           </tr>
 
+                          <!-- <tr *ngIf="national_break_start_input_splice_command=='5'"> -->
                           <tr>
-                              <th>Splice Command Type</th><td></td>
-                              <td><select id="national_break_end_input_splice_command" [(ngModel)]="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
-                                  <option value="5">[5] splice_insert</option>
-                                  <option value="6">[6] time_signal</option>
-                              </select></td>
+                            <th>Splice Command Type</th><td></td>
+                            <td><select id="national_break_end_input_splice_command" [(ngModel)]="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
+                                <option value="5">[5] splice_insert</option>
+                                <option value="6">[6] time_signal</option>
+                            </select></td>
                           </tr>
 
                           <!-- <tr *ngIf="national_break_start_input_splice_command=='6'">
-                              <th>Segmentation Type Id</th><td></td>
-                              <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                  <option value="11">11&nbsp;  [ Program End ]</option>
-                                  <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                  <option value="23">23&nbsp;  [ Break End ]</option>
-                                  <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                  <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                  <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                  <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                  <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                  <option value="51">51&nbsp;  [ Network End ]</option>
+                              <th>Splice Command Type</th><td></td>
+                              <td><select id="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
+                                  <option value="6">[6] time_signal</option>
                               </select></td>
                           </tr> -->
 
                           <tr *ngIf="national_break_end_input_splice_command=='6'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="national_break_end_input_segmentation_type_id" class="form-control" >
+                          <!-- <tr> -->
+                              <th>Segmentation Type Id</th><td></td>
+                              <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="23">23&nbsp;  [ Break End ]</option>
-                                <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                            </select></td>
-                        </tr>
+                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
+                              </select></td>
+                          </tr>
 
                           <tr *ngIf="national_break_end_input_splice_command=='5'">
                             <!-- <tr> -->
@@ -409,19 +367,13 @@
                               </select></td>
                           </tr>
 
-                          <tr *ngIf="national_break_end_input_splice_command=='5'">
+                          <!-- <tr> -->
+                          <tr *ngIf="national_break_end_input_splice_command=='5' || national_break_end_input_splice_command=='6'">
                               <th>Duration Flag</th><td></td>
                               <td><select id="national_break_end_input_break_duration_flag" class="form-control">
                                   <option value="false">false</option>
                               </select></td>
                           </tr>
-
-                          <tr *ngIf="national_break_end_input_splice_command=='6'">
-                            <th>Duration Flag</th><td></td>
-                            <td><select id="national_break_end_input_break_duration_flag" class="form-control">
-                                <option value="false">false</option>
-                            </select></td>
-                        </tr>
 
                       </tbody>
                   </table>
@@ -431,44 +383,33 @@
                       <table id="national_break_end_table" class="table table-striped" >
                           <tbody>
   
+                              <!-- <tr *ngIf="national_break_end_input_splice_command=='5'"> -->
                               <tr>
-                                  <th>Splice Command Type</th><td></td>
-                                  <td><select id="national_break_end_output_splice_command" [(ngModel)]="national_break_end_output_splice_command" name="splice_command_type_start" class="form-control" >
-                                      <option value="5">[5] splice_insert</option>
-                                      <option value="6">[6] time_signal</option>
-                                  </select></td>
+                                <th>Splice Command Type</th><td></td>
+                                <td><select id="national_break_end_output_splice_command" [(ngModel)]="national_break_end_output_splice_command" name="splice_command_type_end" class="form-control" >
+                                    <option value="5">[5] splice_insert</option>
+                                    <option value="6">[6] time_signal</option>
+                                </select></td>
                               </tr>
 
-                              <!-- <tr *ngIf="national_break_start_input_splice_command=='6'">
-                                  <th>Segmentation Type Id</th><td></td>
-                                  <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                      <option value="11">11&nbsp;  [ Program End ]</option>
-                                      <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                      <option value="23">23&nbsp;  [ Break End ]</option>
-                                      <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                      <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                      <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                      <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                      <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                      <option value="51">51&nbsp;  [ Network End ]</option>
+                              <!-- <tr *ngIf="national_break_end_input_splice_command=='6'">
+                                  <th>Splice Command Type</th><td></td>
+                                  <td><select id="national_break_end_output_splice_command" name="splice_command_type_start" class="form-control" >
+                                      <option value="6">[6] time_signal</option>
                                   </select></td>
                               </tr> -->
 
                               <tr *ngIf="national_break_end_output_splice_command=='6'">
-                                <th>Segmentation Type Id</th><td></td>
-                                <td><select id="national_break_end_output_segmentation_type_id" class="form-control" >
+                                <!-- <tr> -->
+                                  <th>Segmentation Type Id</th><td></td>
+                                  <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                     <option value="22">22&nbsp;  [ Break Start ]</option>
-                                    <option value="23">23&nbsp;  [ Break End ]</option>
-                                    <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                    <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                    <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                    <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                    <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                    <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                    <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                    <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                </select></td>
-                            </tr>
+                                    <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                    <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                    <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                    <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
+                                  </select></td>
+                              </tr>
 
                               <tr *ngIf="national_break_end_output_splice_command=='5'">
                                 <!-- <tr> -->
@@ -496,19 +437,12 @@
                                   </select></td>
                               </tr>
                               
-                              <tr *ngIf="national_break_end_output_splice_command=='5'">
+                              <tr *ngIf="national_break_end_output_splice_command=='5' || national_break_end_output_splice_command=='6'">
                                   <th>Duration Flag</th><td></td>
                                   <td><select id="national_break_end_output_break_duration_flag" class="form-control">
                                       <option value="false">false</option>
                                   </select></td>
                               </tr>
-
-                              <tr *ngIf="national_break_end_output_splice_command=='6'">
-                                <th>Duration Flag</th><td></td>
-                                <td><select id="national_break_end_output_break_duration_flag" class="form-control">
-                                    <option value="false">false</option>
-                                </select></td>
-                            </tr>
 
                           </tbody>
                       </table>

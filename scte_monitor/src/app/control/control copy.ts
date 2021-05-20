@@ -295,6 +295,21 @@ public formSubmitAttempt: boolean;
 		this.bool13.push(this.config.value[0].value[5].value[29])
 		this.bool14.push(this.config.value[0].value[5].value[30])
 
+		// this.htmlBool1 = this.config.value[0].value[5].value[3]
+		// this.htmlBool2 = this.config.value[0].value[5].value[5]
+		// this.htmlBool3 = this.config.value[0].value[5].value[6]
+		// this.htmlBool4 = this.config.value[0].value[5].value[9]
+		// this.htmlBool5 = this.config.value[0].value[5].value[11]
+		// this.htmlBool6 = this.config.value[0].value[5].value[13]
+		// this.htmlBool7 = this.config.value[0].value[5].value[14]
+		// this.htmlBool8 = this.config.value[0].value[5].value[17]
+		// this.htmlBool9 = this.config.value[0].value[5].value[20]
+		// this.htmlBool10 = this.config.value[0].value[5].value[22]
+		// this.htmlBool11 = this.config.value[0].value[5].value[23]
+		// this.htmlBool12 = this.config.value[0].value[5].value[25]
+		// this.htmlBool13 = this.config.value[0].value[5].value[29]
+		// this.htmlBool14 = this.config.value[0].value[5].value[30]
+
 		this.htmlBool1 = this.config.value[0].value[5].value[3]
 		this.htmlBool2 = this.config.value[0].value[5].value[5]
 		this.htmlBool3 = this.config.value[0].value[5].value[6]
@@ -647,6 +662,7 @@ public formSubmitAttempt: boolean;
   saveLocalBreak() {
 	
 	const validate_splice_count = <HTMLInputElement> document.getElementById("validate_splice_count");
+	const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
 
 	const emails = <HTMLInputElement> document.getElementById("emails");
 	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
@@ -689,6 +705,7 @@ public formSubmitAttempt: boolean;
 	const local_break_end_input_min = <HTMLInputElement> document.getElementById("local_break_end_input_min");
 	const local_break_end_input_max = <HTMLInputElement> document.getElementById("local_break_end_input_max");
 
+	
 	const local_break_end_output_splice_command = <HTMLInputElement> document.getElementById("local_break_end_output_splice_command");
 	const local_break_end_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_output_segmentation_type_id");
 	const local_break_end_output_out_of_network_indicator = <HTMLInputElement> document.getElementById("local_break_end_output_out_of_network_indicator");
@@ -697,6 +714,7 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
 	const local_break_end_output_min= <HTMLInputElement> document.getElementById("local_break_end_output_min");
 	const local_break_end_output_max= <HTMLInputElement> document.getElementById("local_break_end_output_max");
+
 
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
@@ -745,54 +763,208 @@ public formSubmitAttempt: boolean;
 
 	 let var_local_break_end_deviation_tolerance;
 
-	try{ var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = this.config.value[0].value[4].value[0]}
+	 try{var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = this.config.value[0].value[4].value[0]}
 
-	try{ var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = this.config.value[0].value[4].value[1]}
+	
+	try{var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = this.config.value[0].value[4].value[1]}
+	
 	try{ var_local_break_start_input_splice_command = local_break_start_input_splice_command.value}catch{var_local_break_start_input_splice_command =this.config.value[0].value[4].value[2]}
+	
+	
 	try{ var_local_break_start_input_out_of_network_indicator = local_break_start_input_out_of_network_indicator.value}catch{var_local_break_start_input_out_of_network_indicator = this.config.value[0].value[4].value[3]}
-	try{ var_local_break_start_input_splice_event_id = local_break_start_input_splice_event_id.value}catch{ var_local_break_start_input_splice_event_id = this.config.value[0].value[4].value[4]}
+	
+	try{var_local_break_start_input_splice_event_id = local_break_start_input_splice_event_id.value}catch{ var_local_break_start_input_splice_event_id = this.config.value[0].value[4].value[4]}
+	
 	try{ var_local_break_start_input_splice_immediate_flag = local_break_start_input_splice_immediate_flag.value}catch{var_local_break_start_input_splice_immediate_flag = this.config.value[0].value[4].value[5]}
-	try{ var_local_break_start_input_duration_flag = local_break_start_input_duration_flag.value}catch{ var_local_break_start_input_duration_flag = this.config.value[0].value[4].value[6]}
+	
+	try{var_local_break_start_input_duration_flag = local_break_start_input_duration_flag.value}catch{ var_local_break_start_input_duration_flag = this.config.value[0].value[4].value[6]}
+	
 	try{ var_local_break_start_input_break_duration_min = local_break_start_input_break_duration_min.value}catch{var_local_break_start_input_break_duration_min = this.config.value[0].value[4].value[7]}
-	try{ var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = "none"}
-	try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = this.config.value[0].value[4].value[9]}
+	
+	// try{var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = this.config.value[0].value[4].value[8]}
+		try{var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = "none"}
 
-	try{ var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = this.config.value[0].value[4].value[10]}
-	try{ var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = this.config.value[0].value[4].value[12]}
+	
+	try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = this.config.value[0].value[4].value[9]}
+	
+	try{var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = this.config.value[0].value[4].value[10]}
+	
+	
+	try{var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = this.config.value[0].value[4].value[12]}
+	
 	try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = this.config.value[0].value[4].value[13]}
-	try{ var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = this.config.value[0].value[4].value[14]}
+	
+	try{var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = this.config.value[0].value[4].value[14]}
+	
 	try{ var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = this.config.value[0].value[4].value[15]}
+
 	try{ var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = this.config.value[0].value[4].value[16]}
-	try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "none"}
+
+	// try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = this.config.value[0].value[4].value[17]}
+
+		try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "none"}
+
 	try{ var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return =this.config.value[0].value[4].value[18]}
 
+	// try{ var_local_break_duration_flag = local_break_duration_flag.value}catch{var_local_break_duration_flag = this.config.value[0].value[4].value[20]}
 	try{ var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = this.config.value[0].value[4].value[19]}
+
+
 	try{ var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = this.config.value[0].value[4].value[20]}
+
 	try{ var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = this.config.value[0].value[4].value[21]}
+
 	try{ var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = this.config.value[0].value[4].value[22]}
+
 	try{ var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = this.config.value[0].value[4].value[23]}
+
 	try{ var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = this.config.value[0].value[4].value[24]}
 	try{ var_local_break_end_input_min = local_break_end_input_min.value}catch{var_local_break_end_input_min= this.config.value[0].value[4].value[25]}
-	try{ var_local_break_end_input_max = local_break_end_input_max.value}catch{var_local_break_end_input_max = "none"}
+	// try{ var_local_break_end_input_max = local_break_end_input_max.value}catch{var_local_break_end_input_max = this.config.value[0].value[4].value[26]}
+		try{ var_local_break_end_input_max = local_break_end_input_max.value}catch{var_local_break_end_input_max = "none"}
+
+	
 
 	try{ var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = this.config.value[0].value[4].value[27]}
+	
 	try{ var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = this.config.value[0].value[4].value[28]}
-	try{ var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = this.config.value[0].value[4].value[29]}
-	try{ var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = this.config.value[0].value[4].value[30]}
+
+	try{var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = this.config.value[0].value[4].value[29]}
+
+	try{var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = this.config.value[0].value[4].value[30]}
+	
 	try{ var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag =this.config.value[0].value[4].value[31]}
+	
 	try{ var_local_break_end_output_min = local_break_end_output_min.value}catch{var_local_break_end_output_min = this.config.value[0].value[4].value[36]}
+
 	try{ var_local_break_end_output_max = local_break_end_output_max.value}catch{var_local_break_end_output_min = "none"}
 
-	try{ var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = this.config.value[0].value[4].value[32]}
+	try{var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = this.config.value[0].value[4].value[32]}
 
-	try{ var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = this.config.value[0].value[4].value[32]}
+
+
+	try{var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = this.config.value[0].value[4].value[32]}
+
 	try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = this.config.value[0].value[4].value[33]}
+
 	try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = this.config.value[0].value[4].value[34]}
+
 	try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = this.config.value[0].value[4].value[35]}
 	
+
+	// try{var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = "None"}
+				
+	// try{var_local_break_start_input_action = local_break_start_input_action.value}catch{var_local_break_start_input_action = "None"}
+	
+	// try{var_local_break_start_input_splice_command = local_break_start_input_splice_command.value}catch{var_local_break_start_input_splice_command = "None"}
+	
+	// try{var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = "None"}
+	
+	// try{ var_local_break_start_input_out_of_network_indicator = local_break_start_input_out_of_network_indicator.value}catch{var_local_break_start_input_out_of_network_indicator = "None"}
+	
+	// try{var_local_break_start_input_splice_event_id = local_break_start_input_splice_event_id.value}catch{ var_local_break_start_input_splice_event_id = "None"}
+	
+	// try{ var_local_break_start_input_splice_immediate_flag = local_break_start_input_splice_immediate_flag.value}catch{var_local_break_start_input_splice_immediate_flag = "None"}
+	
+	// try{var_local_break_start_input_duration_flag = local_break_start_input_duration_flag.value}catch{ var_local_break_start_input_duration_flag = "None"}
+	
+	// try{ var_local_break_start_input_break_duration_min = local_break_start_input_break_duration_min.value}catch{var_local_break_start_input_break_duration_min = "None"}
+	
+	// try{var_local_break_start_input_break_duration_max = local_break_start_input_break_duration_max.value}catch{ var_local_break_start_input_break_duration_max = "None"}
+	
+	// try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = "None"}
+	
+	// try{var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = "None"}
+	
+	// try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = "None"}
+	
+	// try{var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = "None"}
+	
+	// try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = "None"}
+	
+	// try{var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = "None"}
+	
+	// try{var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = "None"}
+	
+	// try{var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = "None"}
+	
+	// try{var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "None"}
+	
+	// try{var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return = "None"}
+	
+	// try{var_local_break_duration_flag = local_break_duration_flag.value}catch{var_local_break_duration_flag = "None"}
+	
+	// try{var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = "None"}
+	
+	// try{var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = "None"}
+	
+	// try{var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = "None"}
+	
+	// try{var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = "None"}
+	
+	// try{var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = "None"}
+	
+	// try{var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = "None"}
+	
+	// try{var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = "None"}
+	
+	// try{var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = "None"}
+	
+	// try{var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = "None"}
+	
+	// try{var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = "None"}
+	
+	// try{var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = "None"}
+	
+	// try{var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag = "None"}
+	
+	// try{var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = "None"}
+	
+	// try{var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = "None"}
+
+
 	let localBreakArray= [
+		// var_local_break_expected_splices_hour,
+
+		// var_local_break_start_input_action,
+		
+		// var_local_break_start_input_splice_command,
+		// var_local_break_start_input_out_of_network_indicator,
+		// var_local_break_start_input_splice_event_id,
+		// var_local_break_start_input_splice_immediate_flag,
+		// var_local_break_start_input_duration_flag,
+		// var_local_break_start_input_break_duration_min,
+		// var_local_break_start_input_break_duration_max,
+		// var_local_break_start_input_break_auto_return,
+
+		// var_local_break_start_output_splice_command,
+		// var_local_break_start_output_out_of_network_indicator,
+		// var_local_break_start_output_splice_event_id,
+		// var_local_break_start_output_splice_immediate_flag,
+		// var_local_break_start_output_duration_flag,
+		// var_local_break_start_output_break_duration_min,
+		// var_local_break_start_output_break_duration_max,
+		// var_local_break_start_output_break_auto_return,
+		
+		// var_local_break_end_input_action,
+
+		// var_local_break_end_input_splice_command,
+		// var_local_break_end_input_out_of_network_indicator,
+		// var_local_break_end_input_splice_event_id,
+		// var_local_break_end_input_splice_immediate_flag,
+		// var_local_break_end_input_break_duration_flag,
+
+		// var_local_break_end_output_splice_command,
+		// var_local_break_end_output_out_of_network_indicator,
+		// var_local_break_end_output_splice_immediate_flag,
+		// var_local_break_end_output_splice_event_id,
+		// var_local_break_end_output_break_duration_flag,
+
+		// var_local_break_end_deviation_tolerance
 		var_local_break_expected_splices_hour
+
 		,var_local_break_start_input_action
+
 		,var_local_break_start_input_splice_command
 		,var_local_break_start_input_out_of_network_indicator
 		,var_local_break_start_input_splice_event_id
@@ -812,11 +984,14 @@ public formSubmitAttempt: boolean;
 		,var_local_break_start_output_break_auto_return
 
 		,var_local_break_end_input_action
+		
 		,var_local_break_end_input_splice_command
 		,var_local_break_end_input_out_of_network_indicator
 		,var_local_break_end_input_splice_event_id
 		,var_local_break_end_input_splice_immediate_flag
 		,var_local_break_end_input_break_duration_flag
+		// ,var_local_break_end_input_min
+		// ,var_local_break_end_input_max
 
 		,var_local_break_end_output_splice_command
 		,var_local_break_end_output_out_of_network_indicator
@@ -828,11 +1003,15 @@ public formSubmitAttempt: boolean;
 		,var_local_break_start_output_segmentation_type_id
 		,var_local_break_end_input_segmentation_type_id
 		,var_local_break_end_output_segmentation_type_id
+		// ,var_local_break_end_output_min
+		// ,var_local_break_end_output_max
+
 	]
 
 	let localbreakJson = JSON.stringify(localBreakArray)
 	var localbreak = JSON.parse(localbreakJson)
 
+	
 	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
 	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
 	const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
@@ -911,6 +1090,7 @@ if(this.contentIdViewCheck){
 	let var_program_end_input_delivery_not_restricted_flag;
 	let var_program_end_input_upid_type;
 	let var_program_end_input_upid_length;
+
 
 	try{
 		if(programTrue.value  == "true"){
@@ -995,8 +1175,7 @@ if(this.contentIdViewCheck){
 	
 		// const emails = <HTMLInputElement> document.getElementById("emails");
 		// const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
-
-		const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
+	
 		const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
 	
 		const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");

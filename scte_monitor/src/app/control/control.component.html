@@ -152,12 +152,14 @@
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeLocal()" style="margin-left: auto; font-size:large;">Remove</button></h3>
             </div>
                 <ng-template ngbPanelContent>
+                <body ng-controller="validate_splice_count_local">
                   <div class="custom-control custom-switch">
-                    <input [(ngModel)]="validate_splice_count" type="checkbox" class="custom-control-input" id="validate_splice_count">
-                    <label class="custom-control-label" for="validate_splice_count">Validate Number of Breaks</label>
-                </div>
+                    <input [(ngModel)]="validate_splice_count_local" type="checkbox" class="custom-control-input" id="validate_splice_count_local" ng-true-value="true" ng-false-value="false" ng-checked="validate_splice_count_local">
+                    <label class="custom-control-label" for="validate_splice_count_local">Validate Number of Breaks</label>
+                </div>      
+                </body>
                 <form class=form-inline>
-                    <div *ngIf="validate_splice_count" class="form-group">
+                    <div *ngIf="validate_splice_count_local" class="form-group">
                         <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
                         <input value="{{item.value[0]}}" id ="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour"  type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
                     </div>
@@ -193,22 +195,19 @@
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
-                                <option value="10">10&nbsp;  [ Program Start ]</option>
-                                <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
                                 <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                                <option value="50">50&nbsp;  [ Network Start ]</option>
                             </select></td>
                         </tr>
                         
                         <tr *ngIf="htmlSplice1=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
                             <td><select [(ngModel)]="htmlBool1" id="local_break_start_input_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool1' [value]="options">{{options}}</option>
+                                <!-- <option *ngFor='let options of bool1' [value]="options">{{options}}</option> -->
+                                <option value="true">true</option>
                             </select></td>
                         </tr>
 
@@ -302,22 +301,19 @@
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
-                                <option value="10">10&nbsp;  [ Program Start ]</option>
-                                <option value="20">20&nbsp;  [ Chapter Start ]</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
                                 <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="40">40&nbsp;  [ Unscheduled Event Start ]</option>
-                                <option value="50">50&nbsp;  [ Network Start ]</option>
                             </select></td>
                         </tr>
                         
                         <tr *ngIf="htmlSplice2=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select [(ngModel)]="htmlBool5" id="local_break_start_output_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool5' [value]="options">{{options}}</option>
+                                <!-- <option *ngFor='let options of bool5' [value]="options">{{options}}</option> -->
+                                <option value="true">true</option>
                             </select></td>
                         </tr>
 
@@ -375,8 +371,8 @@
                             </td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice2=='5' && htmlBool7=='true'"> -->
-                        <tr *ngIf="htmlBool7=='true'">
+                        <tr *ngIf="htmlSplice2=='5' && htmlBool7=='true'">
+                        <!-- <tr *ngIf="htmlBool7=='true'"> -->
                             <th>Break Auto Return</th><td></td>
                             <td><select [(ngModel)]="htmlBool8" id="local_break_start_output_break_auto_return" class ="form-control">
                                 <option *ngFor='let options of bool8' [value]="options">{{options}}</option>
@@ -430,22 +426,19 @@
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[34]}}"> {{item.value[34]}}</option>
-                                    <option value="11">11&nbsp;  [ Program End ]</option>
-                                    <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                    <option value="23">23&nbsp;  [ Break End ]</option>
-                                    <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                    <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                    <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                    <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                    <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                    <option value="51">51&nbsp;  [ Network End ]</option>
+                                    <option value="23">22&nbsp;  [ Break End ]</option>
+                                    <option value="31">30&nbsp;  [ Provider Advertisement End ]</option>
+                                    <option value="33">32&nbsp;  [ Distributor Advertisement End ]</option>
+                                    <option value="35">34&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                    <option value="37">36&nbsp;  [ Distributor Placement Opportunity End ]</option>
                                 </select></td>
                             </tr>
 
                             <tr *ngIf="htmlSplice3=='5'">
                                 <th>Out of Network Indicator</th><td></td>
                                 <td><select [(ngModel)]="htmlBool9" id="local_break_end_input_out_of_network_indicator" class="form-control">
-                                    <option *ngFor='let options of bool9' [value]="options">{{options}}</option>
+                                    <!-- <option *ngFor='let options of bool9' [value]="options">{{options}}</option> -->
+                                    <option value="false">false</option>
                                 </select></td>
                             </tr>
 
@@ -472,37 +465,6 @@
                                     <option value="false">false</option>
                                 </select></td>
                             </tr>
-                            
-                            <!-- <tr *ngIf="htmlBool11=='true'">
-                                <th>Break Duration</th>
-                                <td><select [(ngModel)]="timing3" id= "changeThisName" class="form-control">
-                                    <option value="" disabled selected hidden>Change Break Duration Type</option>
-                                    <option value="exact">Exact Time (seconds)</option>
-                                    <option value="range">Time Range (seconds)</option>
-                                </select></td>
-                                <td *ngIf = "timing3 == 'range'">
-                                    <div class="form-group row">
-                                        <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                        <div class="col-sm-4">
-                                            <input id="local_break_end_input_min" class="form-control" type="number" step=any value="{{item.value[24]}}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                        <div class="col-sm-4">
-                                            <input id="local_break_end_input_max" class="form-control" type="number" step=any value="{{item.value[25]}}">
-                                        </div>
-                                    </div>                
-                                </td>
-                                <td *ngIf = "timing3 == 'exact'">
-                                    <div class="form-group row">
-                                        <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
-                                        <div class="col-sm-4">
-                                            <input id="local_break_end_input_min" class="form-control" type="number" step=any value="{{item.value[24]}}">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr> -->
 
                         </tbody>
                     </table>
@@ -524,22 +486,19 @@
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
-                                        <option value="11">11&nbsp;  [ Program End ]</option>
-                                        <option value="21">21&nbsp;  [ Chapter End ]</option>
-                                        <option value="23">23&nbsp;  [ Break End ]</option>
-                                        <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
-                                        <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
-                                        <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                        <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                        <option value="41">41&nbsp;  [ Unscheduled Event End ]</option>
-                                        <option value="51">51&nbsp;  [ Network End ]</option>
+                                        <option value="23">22&nbsp;  [ Break End ]</option>
+                                        <option value="31">30&nbsp;  [ Provider Advertisement End ]</option>
+                                        <option value="33">32&nbsp;  [ Distributor Advertisement End ]</option>
+                                        <option value="35">34&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                        <option value="37">36&nbsp;  [ Distributor Placement Opportunity End ]</option>
                                     </select></td>
                                 </tr>
 
                                 <tr *ngIf="htmlSplice4=='5'">
                                     <th>Out of Network Indicator</th><td></td>
                                     <td><select [(ngModel)]="htmlBool12" id="local_break_end_output_out_of_network_indicator" class="form-control">
-                                        <option *ngFor='let options of bool12' [value]="options">{{options}}</option>
+                                        <!-- <option *ngFor='let options of bool12' [value]="options">{{options}}</option> -->
+                                        <option value="false">false</option>
                                     </select></td>
                                 </tr>
 
@@ -555,7 +514,7 @@
                                 <tr *ngIf="htmlSplice4=='5'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool3" id="local_break_end_output_splice_immediate_flag" class="form-control">
-                                        <option *ngFor='let options of bool13' [value]="options">{{options}}</option>
+                                        <option *ngFor='let options of bool3' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
@@ -566,37 +525,6 @@
                                         <option value="false">false</option>
                                     </select></td>
                                 </tr>
-
-                                <!-- <tr *ngIf="htmlBool14=='true'">
-                                    <th>Break Duration</th>
-                                    <td><select [(ngModel)]="timing4" id= "changeThisName" class="form-control">
-                                        <option value="" disabled selected hidden>Change Break Duration Type</option>
-                                        <option value="exact">Exact Time (seconds)</option>
-                                        <option value="range">Time Range (seconds)</option>
-                                    </select></td>
-                                    <td *ngIf = "timing4 == 'range'">
-                                        <div class="form-group row">
-                                            <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                            <div class="col-sm-4">
-                                                <input id="local_break_end_output_min" class="form-control" type="number" step=any value="{{item.value[36]}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="break_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                            <div class="col-sm-4">
-                                                <input id="local_break_end_output_max" class="form-control" type="number" step=any value="{{item.value[37]}}">
-                                            </div>
-                                        </div>                
-                                    </td>
-                                    <td *ngIf = "timing4 == 'exact'">
-                                        <div class="form-group row">
-                                            <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
-                                            <div class="col-sm-4">
-                                                <input id="local_break_end_output_min" class="form-control" type="number" step=any value="{{item.value[36]}}">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr> -->
   
                             </tbody>
                         </table>
@@ -753,35 +681,26 @@
                   <br><h4>Program Configuration:</h4>
                   <br>
 
-                  <form class="form-inline">
-                      <div class="form-group">
-                          <label for="program_time_specified_flag">Time Specified Flag: </label>
-                          <select [(ngModel)]="htmlBool68" class="form-control" name="program_time_specified_flag" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:200px">
-                            <option *ngFor='let options of bool68' [value]="options">{{options}}</option>
-                          </select>
-                      </div>
-                  </form>
-
                   <br><label style="font-size: larger;color:#00A8E0">Start Trigger</label>
 
                   <br>
                   <!-- <label for="program_start_table" style="font-size: larger;color:#00A8E0">Input Trigger</label> -->
                   <table id="program_start_table" class ="table table-striped">
                       <tbody>
+
+                        <tr>
+                        <th>Splice Command Type</th><td></td>
+                        <td><select id="program_start_input_splice_command_type" [(ngModel)]="program_start_input_splice_command_type" class="form-control">
+                            <option value="{{item.value[2]}}">{{item.value[2]}}</option>
+                            <option value="6">[6] time_signal</option>
+                        </select></td>
+                        </tr>
                       
-                      <tr>
-                      <th>segmentation_type_id</th><td></td>
+                        <tr *ngIf="program_start_input_splice_command_type=='6'">
+                      <th>Segmentation Type Id</th><td></td>
                       <td><select id="program_start_input_segmentation_type_id" class="form-control">
                         <option value="{{item.value[1]}}">{{item.value[1]}}</option>
                         <option value="10">10</option>
-                      </select></td>
-                      </tr>
-
-                      <tr>
-                      <th>Splice Command Type</th><td></td>
-                      <td><select id="program_start_input_splice_command_type" class="form-control">
-                        <option value="{{item.value[2]}}">{{item.value[2]}}</option>
-                        <option value="6">[6] time_signal</option>
                       </select></td>
                       </tr>
 
@@ -794,37 +713,45 @@
                       </select></td>
                       </tr> -->
 
-                      <tr>
+                      <tr *ngIf="program_start_input_splice_command_type=='6'">
                         <th>Segmentation Duration Flag</th><td></td>
                         <td><select [(ngModel)]="htmlBool61" id="program_start_input_duration_flag" class="form-control">    
                             <option *ngFor='let options of bool61' [value]="options">{{options}}</option>
                         </select></td>
                       </tr>
 
-                      <tr *ngIf="htmlBool61=='true'">
-                        <th>Segmentation Duration</th>
-                        <td><select id= "changeThisName" class="form-control">
-                            <option value="" disabled selected hidden>Change Break Duration Type</option>
-                            <option>Exact Time (seconds)</option>
-                            <option>Time Range (seconds)</option>
-                        </select></td>
-                        <td>
-                            <div class="form-group row">
-                                <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
-                                <div class="col-sm-4">
-                                    <input id="program_start_input_segmentation_duration_min" class="form-control" type="number" step=any value="{{item.value[4]}}">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
-                                <div class="col-sm-4">
-                                    <input id="program_start_input_segmentation_duration_max" class="form-control" type="number" step=any value="{{item.value[5]}}">
-                                </div>
-                            </div>                
-                        </td>
-                      </tr>
+                      <tr *ngIf="program_start_input_splice_command_type=='6' && htmlBool61=='true'">
+                      <th>Segmentation Duration</th>
+                      <td ><select [(ngModel)]="program_start_timing" name= "program_start_output_break_duration" class="form-control">
+                          <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
+                          <option value=exact>Exact Time (seconds)</option>
+                          <option value=range>Time Range (seconds)</option>
+                      </select></td>
+                      <td *ngIf= "program_start_timing == 'range'">
+                          <div class="form-group row">
+                              <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                              <div class="col-sm-4">
+                                  <input  id="program_start_input_segmentation_duration_min" class="form-control" type="number" step=any value="{{item.value[4]}}">
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                              <div class="col-sm-4">
+                                  <input  id="program_start_input_segmentation_duration_max" class="form-control" type="number" step=any value="{{item.value[5]}}">
+                              </div>
+                          </div> 
+                      </td>
+                      <td *ngIf = "program_start_timing == 'exact'">
+                          <div class="form-group row">
+                              <label for="segmentation_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                              <div class="col-sm-4">
+                                  <input id="program_start_input_break_duration_min" class="form-control" type="number" step=any value="{{item.value[4]}}">
+                              </div>
+                          </div>
+                      </td>
+                  </tr>
 
-                      <tr>
+                      <!-- <tr>
                           <th>Segmentation Event Cancel Indicator</th><td></td>
                           <td><select [(ngModel)]="htmlBool62" id="program_start_input_event_cancel_indicator" class="form-control">
                             <option *ngFor='let options of bool62' [value]="options">{{options}}</option>
@@ -859,7 +786,16 @@
                               <option value="{{item.value[10]}}">{{item.value[10]}}</option>
                               <option value="8">8</option>
                           </select></td>
-                      </tr>
+                      </tr> -->
+
+                      <form class="form-inline">
+                        <div class="form-group">
+                            <label for="program_time_specified_flag">Time Specified Flag: </label>
+                            <select [(ngModel)]="htmlBool68" class="form-control" name="program_time_specified_flag" id="program_time_specified_flag" style="display:inline-block;margin-left:10px;width:200px">
+                              <option *ngFor='let options of bool68' [value]="options">{{options}}</option>
+                            </select>
+                        </div>
+                    </form>
               
                       </tbody>
                   </table>
@@ -973,12 +909,14 @@
             <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeNational()" style="margin-left: auto; font-size:large;">Remove</button></h3>
             </div>
                 <ng-template ngbPanelContent>
+                <body ng-controller="validate_splice_count_national">
                   <div class="custom-control custom-switch">
-                    <input [(ngModel)]="validate_splice_count" type="checkbox" class="custom-control-input" id="validate_splice_count">
-                    <label class="custom-control-label" for="validate_splice_count">Validate Number of Breaks</label>
-                </div>
+                    <input [(ngModel)]="validate_splice_count_national" type="checkbox" class="custom-control-input" id="validate_splice_count_national" ng-true-value="true" ng-false-value="false" ng-checked="validate_splice_count_national">
+                    <label class="custom-control-label" for="validate_splice_count_national">Validate Number of Breaks</label>
+                </div>      
+                </body>
                 <form class=form-inline>
-                    <div *ngIf="validate_splice_count" class="form-group">
+                    <div *ngIf="validate_splice_count_national" class="form-group">
                         <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
                         <input value="{{item.value[0]}}" id ="national_break_expected_splices_hour" class="form-control" name="expected_splices_hour"  type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
                     </div>
@@ -1015,22 +953,18 @@
                             <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="23">23&nbsp;  [ Break End ]</option>
-                                <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
+                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                             </select></td>
                         </tr>
                         
                         <tr *ngIf="htmlSplice5=='5'"> 
                             <th>Out of Network Indicator</th><td></td>
                             <td><select [(ngModel)]="htmlBool41" id="national_break_start_input_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool41' [value]="options">{{options}}</option>
+                                <!-- <option *ngFor='let options of bool1' [value]="options">{{options}}</option> -->
+                                <option value="true">true</option>
                             </select></td>
                         </tr>
 
@@ -1059,12 +993,12 @@
 
                         <tr *ngIf="htmlBool43=='true'">
                             <th>Break Duration</th>
-                            <td><select [(ngModel)]="timing1" id= "changeThisName" class="form-control">
+                            <td><select [(ngModel)]="timing3" id= "changeThisName" class="form-control">
                                 <!-- <option value="" disabled selected hidden>Change Break Duration Type</option> -->
                                 <option value="exact">Exact Time (seconds)</option>
                                 <option value="range">Time Range (seconds)</option>
                             </select></td>
-                            <td *ngIf = "timing1 == 'range'">
+                            <td *ngIf = "timing3 == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -1078,7 +1012,7 @@
                                     </div>
                                 </div>                
                             </td>
-                            <td *ngIf = "timing1 == 'exact'">
+                            <td *ngIf = "timing3 == 'exact'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
                                     <div class="col-sm-4">
@@ -1088,12 +1022,12 @@
                             </td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice5=='5' && htmlBool43=='true'">
+                        <tr *ngIf="htmlSplice5=='5' && htmlBool43=='true'">
                             <th>Break Auto Return</th><td></td>
                             <td><select [(ngModel)]="htmlBool44" id="national_break_start_input_break_auto_return" class ="form-control">
                                 <option *ngFor='let options of bool44' [value]="options">{{options}}</option>
                             </select></td>
-                        </tr> -->
+                        </tr>
   
                     </tbody>
                 </table>
@@ -1125,22 +1059,18 @@
                             <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
                                 <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="23">23&nbsp;  [ Break End ]</option>
-                                <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
+                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                             </select></td>
                         </tr>
                         
                         <tr *ngIf="htmlSplice6=='5'">
                             <th>Out of Network Indicator</th><td></td>
                             <td><select [(ngModel)]="htmlBool45" id="national_break_start_output_out_of_network_indicator" class="form-control">
-                                <option *ngFor='let options of bool45' [value]="options">{{options}}</option>
+                                <!-- <option *ngFor='let options of bool5' [value]="options">{{options}}</option> -->
+                                <option value="true">true</option>
                             </select></td>
                         </tr>
 
@@ -1169,12 +1099,12 @@
 
                         <tr *ngIf="htmlBool47=='true'">
                             <th>Break Duration</th>
-                            <td><select [(ngModel)]="timing2" id= "changeThisName" class="form-control">
+                            <td><select [(ngModel)]="timing4" id= "changeThisName" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
                                 <option value="exact">Exact Time (seconds)</option>
                                 <option value="range">Time Range (seconds)</option>
                             </select></td>
-                            <td *ngIf = "timing2 == 'range'">
+                            <td *ngIf = "timing4 == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -1188,7 +1118,7 @@
                                     </div>
                                 </div>                
                             </td>
-                            <td *ngIf = "timing2 == 'exact'">
+                            <td *ngIf = "timing4 == 'exact'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
                                     <div class="col-sm-4">
@@ -1198,12 +1128,13 @@
                             </td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice6=='5' && htmlBool47=='true'">
+                        <tr *ngIf="htmlSplice6=='5' && htmlBool47=='true'">
+                        <!-- <tr *ngIf="htmlBool7=='true'"> -->
                             <th>Break Auto Return</th><td></td>
                             <td><select [(ngModel)]="htmlBool48" id="national_break_start_output_break_auto_return" class ="form-control">
                                 <option *ngFor='let options of bool48' [value]="options">{{options}}</option>
                             </select></td>
-                        </tr> -->
+                        </tr>
 
                         </tbody>
                     </table>
@@ -1252,23 +1183,19 @@
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[34]}}"> {{item.value[34]}}</option>
-                                    <option value="22">22&nbsp;  [ Break Start ]</option>
-                                    <option value="23">23&nbsp;  [ Break End ]</option>
-                                    <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                    <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                    <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                    <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                    <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                    <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                    <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                    <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
+                                    <option value="23">22&nbsp;  [ Break End ]</option>
+                                    <option value="31">30&nbsp;  [ Provider Advertisement End ]</option>
+                                    <option value="33">32&nbsp;  [ Distributor Advertisement End ]</option>
+                                    <option value="35">34&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                    <option value="37">36&nbsp;  [ Distributor Placement Opportunity End ]</option>
                                 </select></td>
                             </tr>
 
                             <tr *ngIf="htmlSplice7=='5'">
                                 <th>Out of Network Indicator</th><td></td>
                                 <td><select [(ngModel)]="htmlBool49" id="national_break_end_input_out_of_network_indicator" class="form-control">
-                                    <option *ngFor='let options of bool49' [value]="options">{{options}}</option>
+                                    <!-- <option *ngFor='let options of bool9' [value]="options">{{options}}</option> -->
+                                    <option value="false">false</option>
                                 </select></td>
                             </tr>
 
@@ -1291,12 +1218,12 @@
                             <tr>
                                 <th>Duration Flag</th><td></td>
                                 <td><select [(ngModel)]="htmlBool51" id="national_break_end_input_break_duration_flag" class="form-control">
-                                    <!-- <option *ngFor='let options of bool51' [value]="options">{{options}}</option> -->
+                                    <!-- <option *ngFor='let options of bool11' [value]="options">{{options}}</option> -->
                                     <option value="false">false</option>
                                 </select></td>
                             </tr>
                             
-                            <!-- <tr *ngIf="htmlBool51=='true'">
+                            <!-- <tr *ngIf="htmlBool11=='true'">
                                 <th>Break Duration</th>
                                 <td><select [(ngModel)]="timing3" id= "changeThisName" class="form-control">
                                     <option value="" disabled selected hidden>Change Break Duration Type</option>
@@ -1347,23 +1274,19 @@
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
-                                        <option value="22">22&nbsp;  [ Break Start ]</option>
-                                        <option value="23">23&nbsp;  [ Break End ]</option>
-                                        <option value="30">10&nbsp;  [ Provider Advertisement Start ]</option>
-                                        <option value="31">10&nbsp;  [ Provider Advertisement End ]</option>
-                                        <option value="32">10&nbsp;  [ Distributor Start ]</option>
-                                        <option value="33">10&nbsp;  [ Distributor End ]</option>
-                                        <option value="34">10&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                        <option value="35">10&nbsp;  [ Provider Placement Opportunity End ]</option>
-                                        <option value="36">10&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                                        <option value="37">10&nbsp;  [ Distributor Placement Opportunity End ]</option>
+                                        <option value="23">22&nbsp;  [ Break End ]</option>
+                                        <option value="31">30&nbsp;  [ Provider Advertisement End ]</option>
+                                        <option value="33">32&nbsp;  [ Distributor Advertisement End ]</option>
+                                        <option value="35">34&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                        <option value="37">36&nbsp;  [ Distributor Placement Opportunity End ]</option>
                                     </select></td>
                                 </tr>
 
                                 <tr *ngIf="htmlSplice8=='5'">
                                     <th>Out of Network Indicator</th><td></td>
                                     <td><select [(ngModel)]="htmlBool52" id="national_break_end_output_out_of_network_indicator" class="form-control">
-                                        <option *ngFor='let options of bool52' [value]="options">{{options}}</option>
+                                        <!-- <option *ngFor='let options of bool12' [value]="options">{{options}}</option> -->
+                                        <option value="false">false</option>
                                     </select></td>
                                 </tr>
 
@@ -1379,19 +1302,19 @@
                                 <tr *ngIf="htmlSplice8=='5'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool43" id="national_break_end_output_splice_immediate_flag" class="form-control">
-                                        <option *ngFor='let options of bool53' [value]="options">{{options}}</option>
+                                        <option *ngFor='let options of bool43' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
                                 <tr>
                                     <th>Duration Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool54" id="national_break_end_output_break_duration_flag" class="form-control">
-                                        <!-- <option *ngFor='let options of bool54' [value]="options">{{options}}</option> -->
+                                        <!-- <option *ngFor='let options of bool14' [value]="options">{{options}}</option> -->
                                         <option value="false">false</option>
                                     </select></td>
                                 </tr>
 
-                                <!-- <tr *ngIf="htmlBool54=='true'">
+                                <!-- <tr *ngIf="htmlBool14=='true'">
                                     <th>Break Duration</th>
                                     <td><select [(ngModel)]="timing4" id= "changeThisName" class="form-control">
                                         <option value="" disabled selected hidden>Change Break Duration Type</option>
