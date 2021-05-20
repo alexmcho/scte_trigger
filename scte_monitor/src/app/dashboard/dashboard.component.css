@@ -1,0 +1,32 @@
+  .table {
+    margin-top: 30px;
+    /* width: 92%; */
+    /* width: 87%; */
+    /* width: 99%; */
+    width: 86%;
+  }
+
+  a {
+    /* color: #5bc0de; */
+    /* font-size: 12px; */
+
+    /* color: #292b2c; */
+    color: #5ba3de;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* font-size: 14px;
+    color: #007bff; */
+    font-weight: 600;
+  }
+
+  /* Add New Segment Button - Outline Thickness */
+
+/* .btn {
+    border: 2px solid #5bc0de;
+    font-weight: 500;
+} */
+
+/* .fa-chart-network {
+  color:#5cb85c;
+  font-size: 40px;
+} */
