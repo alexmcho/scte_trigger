@@ -16,10 +16,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { NetworkNamesService } from './network-names.service';
 import { AddControlComponent } from './add-control/add-control.component';
-import {LbcComponent } from './lbc/lbc.component';
-import {CicComponent } from './cic/cic.component';
-import {PcComponent } from './pc/pc.component';
-import {NbcComponent } from './nbc/nbc.component';
+import { LbcComponent } from './lbc/lbc.component';
+import { CicComponent } from './cic/cic.component';
+import { PcComponent } from './pc/pc.component';
+import { NbcComponent } from './nbc/nbc.component';
 
 const routes: Routes = [ 
 ];

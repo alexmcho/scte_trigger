@@ -425,21 +425,13 @@ export class AddControlComponent implements OnInit {
         
           if(this.contentIsOn){
           const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
-          const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
           const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
-          const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
-          const content_id_program_segmentation_flag = <HTMLInputElement> document.getElementById("content_id_program_segmentation_flag");
-          const content_id_segmentation_duration_flag = <HTMLInputElement> document.getElementById("content_id_segmentation_duration_flag");
-          const content_id_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("content_id_delivery_not_restricted_flag");
-          const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
-          const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
+          const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+          const content_id_segmentation_upid= <HTMLInputElement> document.getElementById("content_id_segmentation_upid");
           const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
-      
-    
        
-                let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
-                    content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
-                    content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
+                let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, 
+                    content_id_segmentation_upid.value, content_id_time_specified_flag.value]
                 
                 let contentJson = JSON.stringify(contentIdArray)
                 var content = JSON.parse(contentJson)
@@ -492,70 +484,31 @@ export class AddControlComponent implements OnInit {
         
       
           
+
+              try{var_program_start_input_splice_command_type = program_start_input_splice_command_type.value}catch{ var_program_start_input_splice_command_type = "None"}
+              try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
+              try{var_program_start_input_duration_flag = program_start_input_duration_flag.value}catch{ var_program_start_input_duration_flag = "None"}
+              try{var_program_start_input_segmentation_duration_min = program_start_input_segmentation_duration_min.value}catch{ var_program_start_input_segmentation_duration_min = "None"}
+              try{var_program_start_input_segmentation_duration_max = program_start_input_segmentation_duration_max.value}catch{ var_program_start_input_segmentation_duration_max = "None"}
+
               try{var_program_time_specified_flag = program_time_specified_flag.value}catch{ var_program_time_specified_flag = "None"}
               
-              try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
-        
-              try{var_program_start_input_splice_command_type = program_start_input_splice_command_type.value}catch{ var_program_start_input_splice_command_type = "None"}
-              
-              try{var_program_start_input_duration_flag = program_start_input_duration_flag.value}catch{ var_program_start_input_duration_flag = "None"}
-        
-              try{var_program_start_input_segmentation_duration_min = program_start_input_segmentation_duration_min.value}catch{ var_program_start_input_segmentation_duration_min = "None"}
-              
-              try{var_program_start_input_segmentation_duration_max = program_start_input_segmentation_duration_max.value}catch{ var_program_start_input_segmentation_duration_max = "None"}
-        
-              try{var_program_start_input_event_cancel_indicator = program_start_input_event_cancel_indicator.value}catch{ var_program_start_input_event_cancel_indicator = "None"}
-              
-              try{var_program_start_input_delivery_not_restricted_flag = program_start_input_delivery_not_restricted_flag.value}catch{ var_program_start_input_delivery_not_restricted_flag = "None"}
-        
-        
-              try{var_program_start_input_segmentation_flag = program_start_input_segmentation_flag.value}catch{ var_program_start_input_segmentation_flag = "None"}
-        
-              try{var_program_start_input_upid_type = program_start_input_upid_type.value}catch{ var_program_start_input_upid_type = "None"}
-              
-              try{var_program_start_input_upid_length = program_start_input_upid_length.value}catch{ var_program_start_input_upid_length = "None"}
-        
-              try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
-              
               try{var_program_end_input_splice_command_type = program_end_input_splice_command_type.value}catch{ var_program_end_input_splice_command_type = "None"}
-        
-              
-              
+              try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
               try{var_program_end_input_duration_flag = program_end_input_duration_flag.value}catch{ var_program_end_input_duration_flag = "None"}
         
-              try{var_program_end_input_event_cancel_indicator = program_end_input_event_cancel_indicator.value}catch{ var_program_end_input_event_cancel_indicator = "None"}
-              
-              try{var_program_end_input_segmentation_flag = program_end_input_segmentation_flag.value}catch{ var_program_end_input_segmentation_flag = "None"}
-        
-              try{var_program_end_input_delivery_not_restricted_flag = program_end_input_delivery_not_restricted_flag.value}catch{ var_program_end_input_delivery_not_restricted_flag = "None"}
-              
-              try{var_program_end_input_upid_type = program_end_input_upid_type.value}catch{ var_program_end_input_upid_type = "None"}
-        
-              try{var_program_end_input_upid_length = program_end_input_upid_length.value}catch{ var_program_end_input_upid_length = "None"}
-        
-        
-        
               let programArray = [
-                var_program_time_specified_flag,
-                var_program_start_input_segmentation_type_id,
-                var_program_start_input_splice_command_type,
+                  var_program_start_input_splice_command_type,
+                  var_program_start_input_segmentation_type_id,
                   var_program_start_input_duration_flag,
                   var_program_start_input_segmentation_duration_min,
                   var_program_start_input_segmentation_duration_max,
-                  var_program_start_input_event_cancel_indicator,
-                  var_program_start_input_segmentation_flag,
-                  var_program_start_input_delivery_not_restricted_flag,
-                  var_program_start_input_upid_type,
-                  var_program_start_input_upid_length,
+                  var_program_time_specified_flag,
         
-                  var_program_end_input_segmentation_type_id,
                   var_program_end_input_splice_command_type,
+                  var_program_end_input_segmentation_type_id,
                   var_program_end_input_duration_flag,
-                  var_program_end_input_event_cancel_indicator,
-                  var_program_end_input_segmentation_flag,
-                  var_program_end_input_delivery_not_restricted_flag,
-                  var_program_end_input_upid_type,
-                  var_program_end_input_upid_length]
+                ]
         
                   let programJson = JSON.stringify(programArray)
                   var program = JSON.parse(programJson)

@@ -27,9 +27,11 @@ export class ControlComponent implements OnInit {
 
   listOfOptionsForActions = ["NOOP","DELETE","REPLACE"]
   listOfOptionsForBoolean = ["true","false"]
-
   listOfSpliceCommandType = ["5","6"]
-  
+
+  listOfContentCommandType = ["5"]
+  listOfProgramCommandType = ["6"]
+
   //filtering list
   action1:String [] = []
   action2:String [] = []
@@ -101,23 +103,30 @@ export class ControlComponent implements OnInit {
   bool67:String [] = []
   bool68:String [] = []
 
-
+  //Local Break
   spliceCommand1:String [] = []
   spliceCommand2:String [] = []
   spliceCommand3:String [] = []
   spliceCommand4:String [] = [] 
 
+  //National Break
   spliceCommand5:String [] = []
   spliceCommand6:String [] = []
   spliceCommand7:String [] = []
   spliceCommand8:String [] = [] 
   
+  //Content
+  contentCommand9:String [] = [] 
+
+  //Program
+  programCommand10:String [] = [] 
+  programCommand11:String [] = [] 
+
   recipient_emails: string;
   frequency: string;
   network_id: string;
   local_break: string;
   expected_splices_hour: string;
-  validate_splice_count: string;
   local_break_start: string;
   splice_command_type: string;
   action: string;
@@ -165,6 +174,11 @@ export class ControlComponent implements OnInit {
   htmlSplice6;
   htmlSplice7;
   htmlSplice8;
+
+  htmlSplice9;
+
+  htmlSplice10;
+  htmlSplice11;
 
   htmlBool41;
   htmlBool42;
@@ -265,6 +279,19 @@ public formSubmitAttempt: boolean;
 		this.spliceCommand8.push(this.config.value[0].value[6].value[24])
 		this.htmlSplice8 = this.config.value[0].value[6].value[24]
 
+		//Splice Command - Content 
+		var list13 = [this.contentCommand9] 
+		this.contentCommand9.push(this.config.value[0].value[4].value[0])
+		this.htmlSplice9 = this.config.value[0].value[4].value[0]
+
+		//Splice Command - Program
+		var list14 = [this.programCommand10] 
+		this.programCommand10.push(this.config.value[0].value[7].value[0])
+		this.htmlSplice10 = this.config.value[0].value[7].value[0]
+
+		var list15 = [this.programCommand11] 
+		this.programCommand11.push(this.config.value[0].value[7].value[6])
+		this.htmlSplice11 = this.config.value[0].value[7].value[6]
 
 		var list5 = [this.bool41,this.bool42,this.bool43,this.bool44,this.bool45,this.bool46,this.bool47, 
 		this.bool48,this.bool49, this.bool50,this.bool51,this.bool52,this.bool53,this.bool54]
@@ -311,30 +338,30 @@ public formSubmitAttempt: boolean;
 		this.htmlBool14 = this.config.value[0].value[5].value[28]
 		
 		//ContentId - 
-		this.bool19.push(this.config.value[0].value[6].value[2])
-		this.bool20.push(this.config.value[0].value[6].value[3])
-		this.bool21.push(this.config.value[0].value[6].value[4])
-		this.bool21.push(this.config.value[0].value[6].value[5])
-		this.bool22.push(this.config.value[0].value[6].value[8])
+		// this.bool19.push(this.config.value[0].value[6].value[2])
+		// this.bool20.push(this.config.value[0].value[6].value[3])
+		// this.bool21.push(this.config.value[0].value[6].value[4])
+		// this.bool21.push(this.config.value[0].value[6].value[5])
+		this.bool22.push(this.config.value[0].value[4].value[8])
 		
 		//Program - 
-		this.htmlBool68 = this.config.value[0].value[7].value[0]
-		this.htmlBool61 = this.config.value[0].value[7].value[3]
-		this.htmlBool62 = this.config.value[0].value[7].value[6]
-		this.htmlBool63 = this.config.value[0].value[7].value[7]
-		this.htmlBool64 = this.config.value[0].value[7].value[8]
-		this.htmlBool65 = this.config.value[0].value[7].value[14]
-		this.htmlBool66 = this.config.value[0].value[7].value[15]
-		this.htmlBool67 = this.config.value[0].value[7].value[16]
+		this.htmlBool68 = this.config.value[0].value[7].value[5]
+		this.htmlBool61 = this.config.value[0].value[7].value[2]
+		// this.htmlBool62 = this.config.value[0].value[7].value[6]
+		// this.htmlBool63 = this.config.value[0].value[7].value[7]
+		// this.htmlBool64 = this.config.value[0].value[7].value[8]
+		// this.htmlBool65 = this.config.value[0].value[7].value[14]
+		// this.htmlBool66 = this.config.value[0].value[7].value[15]
+		// this.htmlBool67 = this.config.value[0].value[7].value[16]
 
-		this.bool68.push(this.config.value[0].value[7].value[0])
-		this.bool61.push(this.config.value[0].value[7].value[3])
-		this.bool62.push(this.config.value[0].value[7].value[6])
-		this.bool63.push(this.config.value[0].value[7].value[7])
-		this.bool64.push(this.config.value[0].value[7].value[8])
-		this.bool65.push(this.config.value[0].value[7].value[14])
-		this.bool66.push(this.config.value[0].value[7].value[15])
-		this.bool67.push(this.config.value[0].value[7].value[16])
+		this.bool68.push(this.config.value[0].value[7].value[5])
+		this.bool61.push(this.config.value[0].value[7].value[2])
+		// this.bool62.push(this.config.value[0].value[7].value[6])
+		// this.bool63.push(this.config.value[0].value[7].value[7])
+		// this.bool64.push(this.config.value[0].value[7].value[8])
+		// this.bool65.push(this.config.value[0].value[7].value[14])
+		// this.bool66.push(this.config.value[0].value[7].value[15])
+		// this.bool67.push(this.config.value[0].value[7].value[16])
 		
 		//National Break - 
 		this.action3.push(this.config.value[0].value[6].value[1])
@@ -448,6 +475,24 @@ public formSubmitAttempt: boolean;
 			for(let j = 0; j < 2; j++)
 			if(list12[i].indexOf(this.listOfSpliceCommandType[j]) == -1){
 				list12[i].push(this.listOfSpliceCommandType[j])
+			}
+		}
+		for(let i = 0; i < list13.length; i++){
+			for(let j = 0; j < 1; j++)
+			if(list13[i].indexOf(this.listOfContentCommandType[j]) == -1){
+				list13[i].push(this.listOfContentCommandType[j])
+			}
+		}
+		for(let i = 0; i < list14.length; i++){
+			for(let j = 0; j < 1; j++)
+			if(list14[i].indexOf(this.listOfProgramCommandType[j]) == -1){
+				list14[i].push(this.listOfProgramCommandType[j])
+			}
+		}
+		for(let i = 0; i < list15.length; i++){
+			for(let j = 0; j < 1; j++)
+			if(list15[i].indexOf(this.listOfProgramCommandType[j]) == -1){
+				list15[i].push(this.listOfProgramCommandType[j])
 			}
 		}
 
@@ -646,7 +691,7 @@ public formSubmitAttempt: boolean;
 
   saveLocalBreak() {
 	
-	const validate_splice_count = <HTMLInputElement> document.getElementById("validate_splice_count");
+	const local_break_validate_splice_count = <HTMLInputElement> document.getElementById("local_break_validate_splice_count");
 
 	const emails = <HTMLInputElement> document.getElementById("emails");
 	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
@@ -700,7 +745,10 @@ public formSubmitAttempt: boolean;
 
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
-	let var_local_break_expected_splices_hour
+
+	let var_local_break_validate_splice_count;
+
+	let var_local_break_expected_splices_hour;
 
 	let var_local_break_start_input_action;
 	 let var_local_break_start_input_splice_command; 
@@ -745,6 +793,8 @@ public formSubmitAttempt: boolean;
 
 	 let var_local_break_end_deviation_tolerance;
 
+	
+	try{ var_local_break_validate_splice_count = local_break_validate_splice_count.value}catch{ var_local_break_validate_splice_count = this.config.value[0].value[4].value[40]}
 	try{ var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = this.config.value[0].value[4].value[0]}
 
 	try{ var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = this.config.value[0].value[4].value[1]}
@@ -834,14 +884,9 @@ public formSubmitAttempt: boolean;
 	var localbreak = JSON.parse(localbreakJson)
 
 	const contentIdTrue = <HTMLInputElement> document.getElementById("contentIdTrue");
-	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
 	const content_id_splice_command_type = <HTMLInputElement> document.getElementById("content_id_splice_command_type");
-	const content_id_segmentation_event_cancel_indicator = <HTMLInputElement> document.getElementById("content_id_segmentation_event_cancel_indicator");
-	const content_id_program_segmentation_flag = <HTMLInputElement> document.getElementById("content_id_program_segmentation_flag");
-	const content_id_segmentation_duration_flag = <HTMLInputElement> document.getElementById("content_id_segmentation_duration_flag");
-	const content_id_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("content_id_delivery_not_restricted_flag");
-	const content_id_segmentation_upid_type = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_type");
-	const content_id_segmentation_upid_length = <HTMLInputElement> document.getElementById("content_id_segmentation_upid_length");
+	const content_id_segmentation_type_id = <HTMLInputElement> document.getElementById("content_id_segmentation_type_id");
+	const content_id_segmentation_upid = <HTMLInputElement> document.getElementById("content_id_segmentation_upid");
 	const content_id_time_specified_flag = <HTMLInputElement> document.getElementById("content_id_time_specified_flag");
 
 try{
@@ -852,9 +897,8 @@ try{
 
 if(this.contentIdViewCheck){
 	if (this.contentIsOn || contentIdTrue.value == "true") {
-        let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, content_id_segmentation_event_cancel_indicator.value, 
-            content_id_program_segmentation_flag.value, content_id_segmentation_duration_flag.value, content_id_delivery_not_restricted_flag.value, 
-            content_id_segmentation_upid_type.value, content_id_segmentation_upid_length.value, content_id_time_specified_flag.value]
+        let contentIdArray= [content_id_splice_command_type.value, content_id_segmentation_type_id.value, 
+            content_id_segmentation_upid.value, content_id_time_specified_flag.value]
         
         let contentJson = JSON.stringify(contentIdArray)
         var content = JSON.parse(contentJson)
@@ -870,47 +914,27 @@ if(this.contentIdViewCheck){
 	const programEndSwitch = <HTMLInputElement> document.getElementById("programEndSwitch");
 	const programTrue = <HTMLInputElement> document.getElementById("programTrue");
 
-	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
-	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
 	const program_start_input_splice_command_type = <HTMLInputElement> document.getElementById("program_start_input_splice_command_type");
+	const program_start_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_start_input_segmentation_type_id");
 	const program_start_input_duration_flag = <HTMLInputElement> document.getElementById("program_start_input_duration_flag");
 	const program_start_input_segmentation_duration_min = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_min");
 	const program_start_input_segmentation_duration_max = <HTMLInputElement> document.getElementById("program_start_input_segmentation_duration_max");
-	const program_start_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_start_input_event_cancel_indicator");
-	const program_start_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_start_input_segmentation_flag");
-	const program_start_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_start_input_delivery_not_restricted_flag");
-	const program_start_input_upid_type = <HTMLInputElement> document.getElementById("program_start_input_upid_type");
-	const program_start_input_upid_length = <HTMLInputElement> document.getElementById("program_start_input_upid_length");
+	const program_time_specified_flag = <HTMLInputElement> document.getElementById("program_time_specified_flag");
 
 	const program_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("program_end_input_segmentation_type_id");
 	const program_end_input_splice_command_type = <HTMLInputElement> document.getElementById("program_end_input_splice_command_type");
 	const program_end_input_duration_flag = <HTMLInputElement> document.getElementById("program_end_input_duration_flag");
-	const program_end_input_event_cancel_indicator = <HTMLInputElement> document.getElementById("program_end_input_event_cancel_indicator");
-	const program_end_input_segmentation_flag = <HTMLInputElement> document.getElementById("program_end_input_segmentation_flag");
-	const program_end_input_delivery_not_restricted_flag = <HTMLInputElement> document.getElementById("program_end_input_delivery_not_restricted_flag");
-	const program_end_input_upid_type = <HTMLInputElement> document.getElementById("program_end_input_upid_type");
-	const program_end_input_upid_length = <HTMLInputElement> document.getElementById("program_end_input_upid_length");
 
-	let var_program_time_specified_flag;
-	let var_program_start_input_segmentation_type_id;
 	let var_program_start_input_splice_command_type;
+	let var_program_start_input_segmentation_type_id;
 	let var_program_start_input_duration_flag;
 	let var_program_start_input_segmentation_duration_min;
 	let var_program_start_input_segmentation_duration_max;
-	let var_program_start_input_event_cancel_indicator;
-	let var_program_start_input_segmentation_flag;
-	let var_program_start_input_delivery_not_restricted_flag;
-	let var_program_start_input_upid_type;
-	let var_program_start_input_upid_length
+	let var_program_time_specified_flag;
 
-	let var_program_end_input_segmentation_type_id;
 	let var_program_end_input_splice_command_type;
+	let var_program_end_input_segmentation_type_id;
 	let var_program_end_input_duration_flag;
-	let var_program_end_input_event_cancel_indicator;
-	let var_program_end_input_segmentation_flag;
-	let var_program_end_input_delivery_not_restricted_flag;
-	let var_program_end_input_upid_type;
-	let var_program_end_input_upid_length;
 
 	try{
 		if(programTrue.value  == "true"){
@@ -919,76 +943,33 @@ if(this.contentIdViewCheck){
 	}catch{}
 	
 		if(this.programViewCheck){
-			try{var_program_time_specified_flag = program_time_specified_flag.value}catch{ var_program_time_specified_flag = "None"}
-			
-			try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
-
 			try{var_program_start_input_splice_command_type = program_start_input_splice_command_type.value}catch{ var_program_start_input_splice_command_type = "None"}
-			
+			try{var_program_start_input_segmentation_type_id = program_start_input_segmentation_type_id.value}catch{ var_program_start_input_segmentation_type_id = "None"}
 			try{var_program_start_input_duration_flag = program_start_input_duration_flag.value}catch{ var_program_start_input_duration_flag = "None"}
-
 			try{var_program_start_input_segmentation_duration_min = program_start_input_segmentation_duration_min.value}catch{ var_program_start_input_segmentation_duration_min = "None"}
-			
 			try{var_program_start_input_segmentation_duration_max = program_start_input_segmentation_duration_max.value}catch{ var_program_start_input_segmentation_duration_max = "None"}
+			try{var_program_time_specified_flag = program_time_specified_flag.value}catch{ var_program_time_specified_flag = "None"}
 
-			try{var_program_start_input_event_cancel_indicator = program_start_input_event_cancel_indicator.value}catch{ var_program_start_input_event_cancel_indicator = "None"}
-			
-			try{var_program_start_input_delivery_not_restricted_flag = program_start_input_delivery_not_restricted_flag.value}catch{ var_program_start_input_delivery_not_restricted_flag = "None"}
-
-
-			try{var_program_start_input_segmentation_flag = program_start_input_segmentation_flag.value}catch{ var_program_start_input_segmentation_flag = "None"}
-
-			try{var_program_start_input_upid_type = program_start_input_upid_type.value}catch{ var_program_start_input_upid_type = "None"}
-			
-			try{var_program_start_input_upid_length = program_start_input_upid_length.value}catch{ var_program_start_input_upid_length = "None"}
-
-			try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
-			
 			try{var_program_end_input_splice_command_type = program_end_input_splice_command_type.value}catch{ var_program_end_input_splice_command_type = "None"}
-
-			
-			
+			try{var_program_end_input_segmentation_type_id = program_end_input_segmentation_type_id.value}catch{ var_program_end_input_segmentation_type_id = "None"}
 			try{var_program_end_input_duration_flag = program_end_input_duration_flag.value}catch{ var_program_end_input_duration_flag = "None"}
 
-			try{var_program_end_input_event_cancel_indicator = program_end_input_event_cancel_indicator.value}catch{ var_program_end_input_event_cancel_indicator = "None"}
-			
-			try{var_program_end_input_segmentation_flag = program_end_input_segmentation_flag.value}catch{ var_program_end_input_segmentation_flag = "None"}
-
-			try{var_program_end_input_delivery_not_restricted_flag = program_end_input_delivery_not_restricted_flag.value}catch{ var_program_end_input_delivery_not_restricted_flag = "None"}
-			
-			try{var_program_end_input_upid_type = program_end_input_upid_type.value}catch{ var_program_end_input_upid_type = "None"}
-
-			try{var_program_end_input_upid_length = program_end_input_upid_length.value}catch{ var_program_end_input_upid_length = "None"}
-
-
-
 			let programArray = [
-				var_program_time_specified_flag,
-				var_program_start_input_segmentation_type_id,
 				var_program_start_input_splice_command_type,
-				  var_program_start_input_duration_flag,
-				  var_program_start_input_segmentation_duration_min,
-				  var_program_start_input_segmentation_duration_max,
-				  var_program_start_input_event_cancel_indicator,
-				  var_program_start_input_segmentation_flag,
-				  var_program_start_input_delivery_not_restricted_flag,
-				  var_program_start_input_upid_type,
-				  var_program_start_input_upid_length,
+				var_program_start_input_segmentation_type_id,
+				var_program_start_input_duration_flag,
+				var_program_start_input_segmentation_duration_min,
+				var_program_start_input_segmentation_duration_max,
+				var_program_time_specified_flag,
 
-				  var_program_end_input_segmentation_type_id,
-				  var_program_end_input_splice_command_type,
-				  var_program_end_input_duration_flag,
-				  var_program_end_input_event_cancel_indicator,
-				  var_program_end_input_segmentation_flag,
-				  var_program_end_input_delivery_not_restricted_flag,
-				  var_program_end_input_upid_type,
-				  var_program_end_input_upid_length]
+				var_program_end_input_splice_command_type,
+				var_program_end_input_segmentation_type_id,
+				var_program_end_input_duration_flag,
+				]
 
-				  let programJson = JSON.stringify(programArray)
-				  var program = JSON.parse(programJson)
+				let programJson = JSON.stringify(programArray)
+				var program = JSON.parse(programJson)
 		}
-		
-	
 
 		// const validate_splice_count = <HTMLInputElement> document.getElementById("validate_splice_count");
 		// const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
@@ -1314,5 +1295,6 @@ if(this.contentIdViewCheck){
 	// 		this.endOutput = false;
 	// 	}
 	// 	}
+	
 }
 export class AppModule {}
