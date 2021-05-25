@@ -148,6 +148,11 @@ export class ControlComponent implements OnInit {
   local_break_start_output_break_duration: string; 
   local_break_include_break_end: boolean;
 
+  national_break_validate_splice_count: boolean;
+  national_break_start_input_break_duration: string; 
+  national_break_start_output_break_duration: string; 
+  national_break_include_break_end: boolean; 
+
   htmlAction1;
   htmlAction2;
   htmlAction3;
@@ -396,6 +401,11 @@ public formSubmitAttempt: boolean;
 		this.bool52.push(this.config.value[0].value[6].value[25])
 		this.bool53.push(this.config.value[0].value[6].value[29])
 		this.bool54.push(this.config.value[0].value[6].value[30])
+
+		this.national_break_validate_splice_count = this.config.value[0].value[6].value[34]
+		this.national_break_start_input_break_duration = this.config.value[0].value[6].value[35]
+		this.national_break_start_output_break_duration = this.config.value[0].value[6].value[36]
+		this.national_break_include_break_end = this.config.value[0].value[6].value[37]
 		
 		this.htmlBool41 = this.config.value[0].value[6].value[3]
 		this.htmlBool42 = this.config.value[0].value[6].value[5]
@@ -1020,9 +1030,6 @@ if(this.contentIdViewCheck){
 	
 		// const emails = <HTMLInputElement> document.getElementById("emails");
 		// const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
-
-		const validate_splice_count2 = <HTMLInputElement> document.getElementById("validate_splice_count2");
-		const nationalBreakEndSwitch = <HTMLInputElement> document.getElementById("nationalBreakEndSwitch");
 	
 		const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
 		const national_break_expected_splices_hour = <HTMLInputElement> document.getElementById("national_break_expected_splices_hour");
@@ -1070,8 +1077,12 @@ if(this.contentIdViewCheck){
 		const national_break_end_output_min= <HTMLInputElement> document.getElementById("national_break_end_output_min");
 		const national_break_end_output_max= <HTMLInputElement> document.getElementById("national_break_end_output_max");
 	
-	
 		const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
+
+		const national_break_validate_splice_count = <HTMLInputElement> document.getElementById("national_break_validate_splice_count");
+		const national_break_start_input_break_duration = <HTMLInputElement> document.getElementById("national_break_start_input_break_duration");
+		const national_break_start_output_break_duration = <HTMLInputElement> document.getElementById("national_break_start_output_break_duration");
+		const national_break_include_break_end = <HTMLInputElement> document.getElementById("national_break_include_break_end");
 	
 		let var_national_break_expected_splices_hour
 	
@@ -1117,6 +1128,11 @@ if(this.contentIdViewCheck){
 		 let var_national_break_end_output_max;
 	
 		 let var_national_break_end_deviation_tolerance;
+
+		 let var_national_break_validate_splice_count;
+		 let var_national_break_start_input_break_duration;
+		 let var_national_break_start_output_break_duration;
+		 let var_national_break_include_break_end;
 	
 		try{ var_national_break_expected_splices_hour = national_break_expected_splices_hour.value}catch{ var_national_break_expected_splices_hour = this.config.value[0].value[5].value[0]}
 		try{ var_national_break_start_input_action = national_break_start_input_action.value}catch{ var_national_break_start_input_action = this.config.value[0].value[5].value[1]}
@@ -1160,6 +1176,11 @@ if(this.contentIdViewCheck){
 		try{ var_national_break_start_output_segmentation_type_id = national_break_start_output_segmentation_type_id.value}catch{var_national_break_start_output_segmentation_type_id = this.config.value[0].value[5].value[33]}
 		try{ var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = this.config.value[0].value[5].value[34]}
 		try{ var_national_break_end_output_segmentation_type_id = national_break_end_output_segmentation_type_id.value}catch{var_national_break_end_output_segmentation_type_id = this.config.value[0].value[5].value[35]}
+
+		try{ var_national_break_validate_splice_count = national_break_validate_splice_count.checked}catch{ var_national_break_validate_splice_count = this.config.value[0].value[5].value[37]}
+		try{ var_national_break_start_input_break_duration = national_break_start_input_break_duration.value}catch{var_national_break_start_input_break_duration = this.config.value[0].value[5].value[38]}
+		try{ var_national_break_start_output_break_duration = national_break_start_output_break_duration.value}catch{var_national_break_start_output_break_duration = this.config.value[0].value[5].value[39]}
+		try{ var_national_break_include_break_end = national_break_include_break_end.checked}catch{var_national_break_include_break_end = this.config.value[0].value[5].value[40]}
 	
 		let nationalBreakArray= [
 			var_national_break_expected_splices_hour
@@ -1201,7 +1222,11 @@ if(this.contentIdViewCheck){
 			,var_national_break_start_output_segmentation_type_id
 			,var_national_break_end_input_segmentation_type_id
 			,var_national_break_end_output_segmentation_type_id
-	
+
+			,var_national_break_validate_splice_count
+			,var_national_break_start_input_break_duration
+			,var_national_break_start_output_break_duration
+			,var_national_break_include_break_end
 		]
 	
 		let nationalbreakJson = JSON.stringify(nationalBreakArray)

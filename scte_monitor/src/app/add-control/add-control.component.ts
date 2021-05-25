@@ -540,6 +540,11 @@ export class AddControlComponent implements OnInit {
           const national_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_output_splice_event_id");
           const national_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_output_break_duration_flag");
           const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
+
+          const national_break_validate_splice_count = <HTMLInputElement> document.getElementById("national_break_validate_splice_count");
+          const national_break_start_input_break_duration = <HTMLInputElement> document.getElementById("national_break_start_input_break_duration");
+          const national_break_start_output_break_duration = <HTMLInputElement> document.getElementById("national_break_start_output_break_duration");
+          const national_break_include_break_end = <HTMLInputElement> document.getElementById("national_break_include_break_end");
           
           let var_national_break_expected_splices_hour
           
@@ -580,6 +585,11 @@ export class AddControlComponent implements OnInit {
             let var_national_break_end_output_splice_event_id;
             let var_national_break_end_output_break_duration_flag;
             let var_national_break_end_deviation_tolerance;
+
+            let var_national_break_validate_splice_count;
+            let var_national_break_start_input_break_duration;
+            let var_national_break_start_output_break_duration;
+            let var_national_break_include_break_end;
           
           try{var_national_break_expected_splices_hour = national_break_expected_splices_hour.value}catch{ var_national_break_expected_splices_hour = "none"}
           
@@ -622,6 +632,12 @@ export class AddControlComponent implements OnInit {
           try{ var_national_break_end_output_splice_event_id = national_break_end_output_splice_event_id.value}catch{ var_national_break_end_output_splice_event_id = "None"}
           
           try{var_national_break_end_deviation_tolerance = national_break_end_deviation_tolerance.value}catch{ var_national_break_end_deviation_tolerance ="none"}
+
+          try{ var_national_break_validate_splice_count = national_break_validate_splice_count.checked}catch{ var_national_break_validate_splice_count = "none"}
+          try{ var_national_break_start_input_break_duration = national_break_start_input_break_duration.value}catch{var_national_break_start_input_break_duration = "none"}
+          try{ var_national_break_start_output_break_duration = national_break_start_output_break_duration.value}catch{var_national_break_start_output_break_duration = "none"}
+          try{ var_national_break_include_break_end = national_break_include_break_end.checked}catch{var_national_break_include_break_end = "none"}
+
           
           let nationalBreakArray= [
           
@@ -663,7 +679,13 @@ export class AddControlComponent implements OnInit {
             var_national_break_start_input_segmentation_type_id,
             var_national_break_start_output_segmentation_type_id,
             var_national_break_end_input_segmentation_type_id,
-            var_national_break_end_output_segmentation_type_id
+            var_national_break_end_output_segmentation_type_id, 
+
+            var_national_break_validate_splice_count,
+            var_national_break_start_input_break_duration,
+            var_national_break_start_output_break_duration,
+            var_national_break_include_break_end,
+
           ]
           
           let nationalbreakJson = JSON.stringify(nationalBreakArray)
