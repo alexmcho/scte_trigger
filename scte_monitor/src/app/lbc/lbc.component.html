@@ -7,13 +7,13 @@
           </div>
               <ng-template ngbPanelContent>
                 <div class="custom-control custom-switch">
-                  <input [(ngModel)]="validate_splice_count" type="checkbox" class="custom-control-input" id="validate_splice_count">
-                  <label class="custom-control-label" for="validate_splice_count">Validate Number of Breaks</label>
+                  <input [(ngModel)]="local_break_validate_splice_count" type="checkbox" class="custom-control-input" id="local_break_validate_splice_count">
+                  <label class="custom-control-label" for="local_break_validate_splice_count">Validate Number of Breaks</label>
               </div>
               <br>
               <form class=form-inline>
 
-                  <div *ngIf="validate_splice_count" class="form-group">
+                  <div *ngIf="local_break_validate_splice_count" class="form-group">
                       <!-- <div> -->
                       <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
                       <input id="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
@@ -31,7 +31,7 @@
               <table  class ="table table-striped">
                   <tbody>
 
-                      <tr *ngIf="local_break_start_input_splice_command=='5'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'">
                         <!-- <tr> -->
                           <th>Action</th><td></td>
                           <td><select [(ngModel)]="local_break_start_input_action"  class="form-control" id="local_break_start_input_action">
@@ -44,12 +44,12 @@
                       <tr>
                           <th>Splice Command Type</th><td></td>
                           <td><select id="local_break_start_input_splice_command" [(ngModel)]="local_break_start_input_splice_command" name="splice_command_type_start" class="form-control" >
-                              <option value="5">[5] splice_insert</option>
-                              <option value="6">[6] time_signal</option>
+                              <option value="[5] splice_insert">[5] splice_insert</option>
+                              <option value="[6] time_signal">[6] time_signal</option>
                           </select></td>
                       </tr>
                   
-                      <tr *ngIf="local_break_start_input_splice_command=='6'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[6] time_signal'">
                           <!-- <tr> -->
                           <th>Segmentation Type Id</th><td></td>
                           <td><select id="local_break_start_input_segmentation_type_id" class="form-control" >
@@ -61,7 +61,7 @@
                           </select></td>
                       </tr>
                       
-                      <tr *ngIf="local_break_start_input_splice_command=='5'"> 
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'"> 
                         <!-- <tr> -->
                           <th>Out of Network Indicator</th><td></td>
                           <td><select id="local_break_start_input_out_of_network_indicator" class="form-control">
@@ -69,7 +69,7 @@
                           </select></td>
                       </tr>
 
-                      <tr *ngIf="local_break_start_input_splice_command=='5'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'">
                         <!-- <tr> -->
                           <th>Splice Event Id</th><td></td>
                           <td><select id="local_break_start_input_splice_event_id" class="form-control">
@@ -78,7 +78,7 @@
                           </select></td>
                       </tr>
                       
-                      <tr *ngIf="local_break_start_input_splice_command=='5'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'">
                           <th>Immediate Flag</th><td></td>
                           <td><select id="local_break_start_input_splice_immediate_flag" class="form-control">
                               <option value="true">true</option>
@@ -86,7 +86,7 @@
                           </select></td>
                       </tr>
 
-                      <tr *ngIf="local_break_start_input_splice_command=='6'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[6] time_signal'">
                         <th>Immediate Flag</th><td></td>
                         <td><select id="local_break_start_input_splice_immediate_flag" class="form-control">
                             <option value="true">true</option>
@@ -94,7 +94,7 @@
                         </select></td>
                     </tr>
 
-                      <tr *ngIf="local_break_start_input_splice_command=='5'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'">
                           <th>Duration Flag</th><td></td>
                           <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
                               <option value="true" >true</option>
@@ -102,7 +102,7 @@
                           </select></td>
                       </tr>
 
-                      <tr *ngIf="local_break_start_input_splice_command=='6'">
+                      <tr *ngIf="local_break_start_input_splice_command=='[6] time_signal'">
                         <th>Duration Flag</th><td></td>
                         <td><select id="local_break_start_input_duration_flag" class="form-control" [(ngModel)]="local_break_duration_flag">
                             <option value="true" >true</option>
@@ -113,13 +113,13 @@
                       <tr *ngIf="local_break_duration_flag=='true'">
                         <!-- <tr> -->
                           <th>Break Duration</th>
-                          <td><select [(ngModel)]="timing1" name= "local_break_start_input_break_duration" class="form-control">
+                          <td><select [(ngModel)]="local_break_start_input_break_duration" id="local_break_start_input_break_duration" name= "local_break_start_input_break_duration" class="form-control">
                             <option value="" disabled selected hidden>Change Break Duration Type</option>
                               <option value="exact">Exact Time (seconds)</option>
                               <option value="range">Time Range (seconds)</option>
                           </select></td>
 
-                          <td *ngIf= "timing1 == 'range'">
+                          <td *ngIf= "local_break_start_input_break_duration == 'range'">
                               <div class="form-group row">
                                   <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                   <div class="col-sm-4">
@@ -133,7 +133,7 @@
                                   </div>
                               </div>                
                           </td>
-                          <td *ngIf = "timing1 == 'exact'">
+                          <td *ngIf = "local_break_start_input_break_duration == 'exact'">
                             <div class="form-group row">
                                 <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
                                 <div class="col-sm-4">
@@ -143,8 +143,8 @@
                         </td>
                       </tr>
 
-                      <!-- <tr *ngIf="local_break_start_input_splice_command=='5' && local_break_duration_flag=='true'"> -->
-                      <tr *ngIf="local_break_start_input_splice_command=='5' && local_break_duration_flag=='true'">
+                      <!-- <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert' && local_break_duration_flag=='true'"> -->
+                      <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert' && local_break_duration_flag=='true'">
                           <th>Break Auto Return</th><td></td>
                           <td><select id="local_break_start_input_break_auto_return" class ="form-control">
                               <option value="true">true</option>
@@ -156,29 +156,29 @@
               </table>
 
                 <!-- Local Break Start - Output Trigger -->
-                <div *ngIf="local_break_start_input_action=='REPLACE' || local_break_start_input_splice_command=='6'">
+                <div *ngIf="local_break_start_input_action=='REPLACE' || local_break_start_input_splice_command=='[6] time_signal'">
                     <!-- <div> -->
                     <label for="local_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
                         <tbody>
 
-                        <!-- <tr *ngIf="local_break_start_input_splice_command=='5'"> -->
+                        <!-- <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'"> -->
                         <tr>
                             <th>Splice Command Type</th><td></td>
                             <td><select id="local_break_start_output_splice_command" [(ngModel)]="local_break_start_output_splice_command" class="form-control">
-                                <option value="5">[5] splice_insert</option>
-                                <option value="6">[6] time_signal</option>
+                                <option value="[5] splice_insert">[5] splice_insert</option>
+                                <option value="[6] time_signal">[6] time_signal</option>
                             </select></td>
                         </tr>
 
-                        <!-- <tr *ngIf="local_break_start_input_splice_command=='6'">
+                        <!-- <tr *ngIf="local_break_start_input_splice_command=='[6] time_signal'">
                             <th>Splice Command Type</th><td></td>
                             <td><select id="local_break_start_output_splice_command" class="form-control">
-                                <option value="6">[6] time_signal</option>
+                                <option value="[6] time_signal">[6] time_signal</option>
                             </select></td>
                         </tr> -->
 
-                        <tr *ngIf="local_break_start_output_splice_command=='6'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[6] time_signal'">
                         <!-- <tr> -->
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
@@ -190,7 +190,7 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="local_break_start_output_splice_command=='5'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                             <th>Out of Network Indicator</th><td></td>
                             <td><select id="local_break_start_output_out_of_network_indicator" class="form-control">
@@ -199,7 +199,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_output_splice_command=='5'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_output_splice_event_id" class="form-control">
@@ -208,7 +208,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_output_splice_command=='5'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[5] splice_insert'">
                             <th>Immediate Flag</th><td></td>
                             <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
                                 <option value="true">true</option>
@@ -216,7 +216,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_output_splice_command=='6'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[6] time_signal'">
                             <th>Immediate Flag</th><td></td>
                             <td><select id="local_break_start_output_splice_immediate_flag" class="form-control">
                                 <option value="true">true</option>
@@ -224,7 +224,7 @@
                             </select></td>
                         </tr>
                         
-                        <tr *ngIf="local_break_start_output_splice_command=='5'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[5] splice_insert'">
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_output_duration_flag" [(ngModel)]="local_break_duration_flag_start_output" class="form-control">
                                 <option value="true">true</option>
@@ -232,7 +232,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_output_splice_command=='6'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[6] time_signal'">
                             <th>Duration Flag</th><td></td>
                             <td><select id="local_break_start_output_duration_flag" [(ngModel)]="local_break_duration_flag_start_output" class="form-control">
                                 <option value="true">true</option>
@@ -243,12 +243,12 @@
                         <tr *ngIf="local_break_duration_flag_start_output=='true'">
                             <!-- <tr> -->
                             <th>Break Duration</th>
-                            <td><select [(ngModel)]="timing2" id= "local_break_start_output_break_duration" class="form-control">
+                            <td><select [(ngModel)]="local_break_start_output_break_duration" id= "local_break_start_output_break_duration" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
                                 <option value="exact">Exact Time (seconds)</option>
                                 <option value="range">Time Range (seconds)</option>
                             </select></td>
-                            <td *ngIf="timing2 == 'range'">
+                            <td *ngIf="local_break_start_output_break_duration == 'range'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
                                     <div class="col-sm-4">
@@ -262,7 +262,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td *ngIf = "timing2 == 'exact'">
+                            <td *ngIf = "local_break_start_output_break_duration == 'exact'">
                                 <div class="form-group row">
                                     <label for="break_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
                                     <div class="col-sm-4">
@@ -272,7 +272,7 @@
                             </td>
                         </tr>
 
-                        <tr *ngIf="local_break_start_output_splice_command=='5' && local_break_duration_flag_start_output=='true'">
+                        <tr *ngIf="local_break_start_output_splice_command=='[5] splice_insert' && local_break_duration_flag_start_output=='true'">
                             <th>Break Auto Return</th><td></td>
                             <td><select id="local_break_start_output_break_auto_return" class ="form-control">
                                 <option value="true">true</option>
@@ -286,8 +286,8 @@
 
           <!-- Break End Trigger -->
               <div class="custom-control custom-switch">
-                  <input  [(ngModel)]="local_break_include_break_end" type="checkbox" class="custom-control-input" id="localBreakEndSwitch">
-                  <label class="custom-control-label" for="localBreakEndSwitch">Include Break End</label>
+                  <input  [(ngModel)]="local_break_include_break_end" type="checkbox" class="custom-control-input" id="local_break_include_break_end">
+                  <label class="custom-control-label" for="local_break_include_break_end">Include Break End</label>
               </div>
 
           <!-- Local Break End -->
@@ -303,7 +303,7 @@
                   <table id="local_break_end_table" class="table table-striped" >
                       <tbody>
 
-                          <tr *ngIf="local_break_end_input_splice_command=='5'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                               <th>Action</th><td></td>
                               <td><select id="local_break_end_input_action" [(ngModel)]="local_break_end_input_action" class="form-control">
@@ -313,23 +313,23 @@
                               </select></td>
                           </tr>
 
-                          <!-- <tr *ngIf="local_break_start_input_splice_command=='5'"> -->
+                          <!-- <tr *ngIf="local_break_start_input_splice_command=='[5] splice_insert'"> -->
                           <tr>
                             <th>Splice Command Type</th><td></td>
                             <td><select id="local_break_end_input_splice_command" [(ngModel)]="local_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
-                                <option value="5">[5] splice_insert</option>
-                                <option value="6">[6] time_signal</option>
+                                <option value="[5] splice_insert">[5] splice_insert</option>
+                                <option value="[6] time_signal">[6] time_signal</option>
                             </select></td>
                           </tr>
 
-                          <!-- <tr *ngIf="local_break_start_input_splice_command=='6'">
+                          <!-- <tr *ngIf="local_break_start_input_splice_command=='[6] time_signal'">
                               <th>Splice Command Type</th><td></td>
                               <td><select id="local_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
-                                  <option value="6">[6] time_signal</option>
+                                  <option value="[6] time_signal">[6] time_signal</option>
                               </select></td>
                           </tr> -->
 
-                          <tr *ngIf="local_break_end_input_splice_command=='6'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[6] time_signal'">
                           <!-- <tr> -->
                               <th>Segmentation Type Id</th><td></td>
                               <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
@@ -341,7 +341,7 @@
                               </select></td>
                           </tr>
 
-                          <tr *ngIf="local_break_end_input_splice_command=='5'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                               <th>Out of Network Indicator</th><td></td>
                               <td><select id="local_break_end_input_out_of_network_indicator" class="form-control">
@@ -349,7 +349,7 @@
                               </select></td>
                           </tr>
 
-                          <tr *ngIf="local_break_end_input_splice_command=='5'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                               <th>Splice Event Id</th><td></td>
                               <td><select id="local_break_end_input_splice_event_id" class="form-control">
@@ -358,7 +358,7 @@
                               </select></td>
                           </tr>
                           
-                          <tr *ngIf="local_break_end_input_splice_command=='5'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert'">
                             <!-- <tr> -->
                               <th>Immediate Flag</th><td></td>
                               <td><select id="local_break_end_input_splice_immediate_flag" class="form-control">
@@ -368,7 +368,7 @@
                           </tr>
 
                           <!-- <tr> -->
-                          <tr *ngIf="local_break_end_input_splice_command=='5' || local_break_end_input_splice_command=='6'">
+                          <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert' || local_break_end_input_splice_command=='[6] time_signal'">
                               <th>Duration Flag</th><td></td>
                               <td><select id="local_break_end_input_break_duration_flag" class="form-control">
                                   <option value="false">false</option>
@@ -378,28 +378,28 @@
                       </tbody>
                   </table>
           <!-- Local Break End - Output Trigger -->
-                    <div *ngIf="local_break_end_input_action=='REPLACE' || local_break_start_input_splice_command=='6'">
+                    <div *ngIf="local_break_end_input_action=='REPLACE' || local_break_start_input_splice_command=='[6] time_signal'">
                       <label for="local_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                       <table id="local_break_end_table" class="table table-striped" >
                           <tbody>
   
-                              <!-- <tr *ngIf="local_break_end_input_splice_command=='5'"> -->
+                              <!-- <tr *ngIf="local_break_end_input_splice_command=='[5] splice_insert'"> -->
                               <tr>
                                 <th>Splice Command Type</th><td></td>
                                 <td><select id="local_break_end_output_splice_command" [(ngModel)]="local_break_end_output_splice_command" name="splice_command_type_end" class="form-control" >
-                                    <option value="5">[5] splice_insert</option>
-                                    <option value="6">[6] time_signal</option>
+                                    <option value="[5] splice_insert">[5] splice_insert</option>
+                                    <option value="[6] time_signal">[6] time_signal</option>
                                 </select></td>
                               </tr>
 
-                              <!-- <tr *ngIf="local_break_end_input_splice_command=='6'">
+                              <!-- <tr *ngIf="local_break_end_input_splice_command=='[6] time_signal'">
                                   <th>Splice Command Type</th><td></td>
                                   <td><select id="local_break_end_output_splice_command" name="splice_command_type_start" class="form-control" >
-                                      <option value="6">[6] time_signal</option>
+                                      <option value="[6] time_signal">[6] time_signal</option>
                                   </select></td>
                               </tr> -->
 
-                              <tr *ngIf="local_break_end_output_splice_command=='6'">
+                              <tr *ngIf="local_break_end_output_splice_command=='[6] time_signal'">
                                 <!-- <tr> -->
                                   <th>Segmentation Type Id</th><td></td>
                                   <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
@@ -411,7 +411,7 @@
                                   </select></td>
                               </tr>
 
-                              <tr *ngIf="local_break_end_output_splice_command=='5'">
+                              <tr *ngIf="local_break_end_output_splice_command=='[5] splice_insert'">
                                 <!-- <tr> -->
                                   <th>Out of Network Indicator</th><td></td>
                                   <td><select id="local_break_end_output_out_of_network_indicator" class="form-control">
@@ -419,7 +419,7 @@
                                   </select></td>
                               </tr>
 
-                              <tr *ngIf="local_break_end_output_splice_command=='5'">
+                              <tr *ngIf="local_break_end_output_splice_command=='[5] splice_insert'">
                                 <!-- <tr> -->
                                   <th>Splice Event Id</th><td></td>
                                   <td><select id="local_break_end_output_splice_event_id" class="form-control">
@@ -428,7 +428,7 @@
                                   </select></td>
                               </tr>
                               
-                              <tr *ngIf="local_break_end_output_splice_command=='5'">
+                              <tr *ngIf="local_break_end_output_splice_command=='[5] splice_insert'">
                                 <!-- <tr> -->
                                   <th>Immediate Flag</th><td></td>
                                   <td><select id="local_break_end_output_splice_immediate_flag" class="form-control">
@@ -437,7 +437,7 @@
                                   </select></td>
                               </tr>
                               
-                              <tr *ngIf="local_break_end_output_splice_command=='5' || local_break_end_output_splice_command=='6'">
+                              <tr *ngIf="local_break_end_output_splice_command=='[5] splice_insert' || local_break_end_output_splice_command=='[6] time_signal'">
                                   <th>Duration Flag</th><td></td>
                                   <td><select id="local_break_end_output_break_duration_flag" class="form-control">
                                       <option value="false">false</option>

@@ -27,7 +27,7 @@ export class ControlComponent implements OnInit {
 
   listOfOptionsForActions = ["NOOP","DELETE","REPLACE"]
   listOfOptionsForBoolean = ["true","false"]
-  listOfSpliceCommandType = ["5","6"]
+  listOfSpliceCommandType = ["[5] splice_insert","[6] time_signal"]
 
   listOfContentCommandType = ["5"]
   listOfProgramCommandType = ["6"]
@@ -142,6 +142,11 @@ export class ControlComponent implements OnInit {
   local_break_end: string;
   break_duration_deviation_tolerance: string;
   stringArr: [];
+
+  local_break_validate_splice_count: boolean;
+  local_break_start_input_break_duration: string; 
+  local_break_start_output_break_duration: string; 
+  local_break_include_break_end: boolean;
 
   htmlAction1;
   htmlAction2;
@@ -321,6 +326,11 @@ public formSubmitAttempt: boolean;
 		this.bool12.push(this.config.value[0].value[5].value[25])
 		this.bool13.push(this.config.value[0].value[5].value[29])
 		this.bool14.push(this.config.value[0].value[5].value[30])
+
+		this.local_break_validate_splice_count = this.config.value[0].value[5].value[34]
+		this.local_break_start_input_break_duration = this.config.value[0].value[5].value[35]
+		this.local_break_start_output_break_duration = this.config.value[0].value[5].value[36]
+		this.local_break_include_break_end = this.config.value[0].value[5].value[37]
 
 		this.htmlBool1 = this.config.value[0].value[5].value[3]
 		this.htmlBool2 = this.config.value[0].value[5].value[5]
@@ -745,6 +755,10 @@ public formSubmitAttempt: boolean;
 
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
+	const local_break_start_input_break_duration = <HTMLInputElement> document.getElementById("local_break_start_input_break_duration");
+	const local_break_start_output_break_duration = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration");
+
+	const local_break_include_break_end = <HTMLInputElement> document.getElementById("local_break_include_break_end");
 
 	let var_local_break_validate_splice_count;
 
@@ -790,11 +804,14 @@ public formSubmitAttempt: boolean;
 	 let var_local_break_end_output_break_duration_flag;
 	 let var_local_break_end_output_min;
 	 let var_local_break_end_output_max;
-
 	 let var_local_break_end_deviation_tolerance;
 
+	 let var_local_break_start_input_break_duration;
+	 let var_local_break_start_output_break_duration;
+	 let var_local_break_include_break_end;
+
 	
-	try{ var_local_break_validate_splice_count = local_break_validate_splice_count.value}catch{ var_local_break_validate_splice_count = this.config.value[0].value[4].value[40]}
+	try{ var_local_break_validate_splice_count = local_break_validate_splice_count.checked}catch{ var_local_break_validate_splice_count = this.config.value[0].value[4].value[37]}
 	try{ var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = this.config.value[0].value[4].value[0]}
 
 	try{ var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = this.config.value[0].value[4].value[1]}
@@ -839,46 +856,73 @@ public formSubmitAttempt: boolean;
 	try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = this.config.value[0].value[4].value[33]}
 	try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = this.config.value[0].value[4].value[34]}
 	try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = this.config.value[0].value[4].value[35]}
+
+	try{ var_local_break_start_input_break_duration = local_break_start_input_break_duration.value}catch{var_local_break_start_input_break_duration = this.config.value[0].value[4].value[38]}
+	try{ var_local_break_start_output_break_duration = local_break_start_output_break_duration.value}catch{var_local_break_start_output_break_duration = this.config.value[0].value[4].value[39]}
+	
+	try{ var_local_break_include_break_end = local_break_include_break_end.checked}catch{var_local_break_include_break_end = this.config.value[0].value[4].value[40]}
+	
 	
 	let localBreakArray= [
 		var_local_break_expected_splices_hour
 		,var_local_break_start_input_action
+
 		,var_local_break_start_input_splice_command
 		,var_local_break_start_input_out_of_network_indicator
+
 		,var_local_break_start_input_splice_event_id
 		,var_local_break_start_input_splice_immediate_flag
+
 		,var_local_break_start_input_duration_flag
 		,var_local_break_start_input_break_duration_min
+
 		,var_local_break_start_input_break_duration_max
 		,var_local_break_start_input_break_auto_return
 
 		,var_local_break_start_output_splice_command
 		,var_local_break_start_output_out_of_network_indicator
+
 		,var_local_break_start_output_splice_event_id
 		,var_local_break_start_output_splice_immediate_flag
+
 		,var_local_break_start_output_duration_flag
 		,var_local_break_start_output_break_duration_min
+
 		,var_local_break_start_output_break_duration_max
 		,var_local_break_start_output_break_auto_return
 
 		,var_local_break_end_input_action
 		,var_local_break_end_input_splice_command
+
 		,var_local_break_end_input_out_of_network_indicator
 		,var_local_break_end_input_splice_event_id
+
 		,var_local_break_end_input_splice_immediate_flag
 		,var_local_break_end_input_break_duration_flag
 
 		,var_local_break_end_output_splice_command
 		,var_local_break_end_output_out_of_network_indicator
+
 		,var_local_break_end_output_splice_immediate_flag
 		,var_local_break_end_output_splice_event_id
+
 		,var_local_break_end_output_break_duration_flag
 		,var_local_break_end_deviation_tolerance
+
 		,var_local_break_start_input_segmentation_type_id
 		,var_local_break_start_output_segmentation_type_id
+
 		,var_local_break_end_input_segmentation_type_id
 		,var_local_break_end_output_segmentation_type_id
+
+		,var_local_break_validate_splice_count
+
+		,var_local_break_start_input_break_duration
+		,var_local_break_start_output_break_duration
+		,var_local_break_include_break_end
 	]
+
+	console.log(var_local_break_validate_splice_count.checked)
 
 	let localbreakJson = JSON.stringify(localBreakArray)
 	var localbreak = JSON.parse(localbreakJson)
