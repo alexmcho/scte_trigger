@@ -172,21 +172,17 @@ export class ControlComponent implements OnInit {
   htmlBool12;
   htmlBool13;
   htmlBool14;
-
   htmlBool20;
 
   htmlSplice1;
   htmlSplice2;
   htmlSplice3;
   htmlSplice4;
-
   htmlSplice5;
   htmlSplice6;
   htmlSplice7;
   htmlSplice8;
-
   htmlSplice9;
-
   htmlSplice10;
   htmlSplice11;
 
@@ -274,16 +270,16 @@ public formSubmitAttempt: boolean;
 
 		//Splice Command - National Break
 		var list9 = [this.spliceCommand5] 
-		this.spliceCommand5.push(this.config.value[0].value[6].value[24])
-		this.htmlSplice5 = this.config.value[0].value[6].value[24]
+		this.spliceCommand5.push(this.config.value[0].value[6].value[2])
+		this.htmlSplice5 = this.config.value[0].value[6].value[2]
 
 		var list10 = [this.spliceCommand6] 
-		this.spliceCommand6.push(this.config.value[0].value[6].value[24])
-		this.htmlSplice6 = this.config.value[0].value[6].value[24]
+		this.spliceCommand6.push(this.config.value[0].value[6].value[10])
+		this.htmlSplice6 = this.config.value[0].value[6].value[10]
 
 		var list11 = [this.spliceCommand7] 
-		this.spliceCommand7.push(this.config.value[0].value[6].value[24])
-		this.htmlSplice7 = this.config.value[0].value[6].value[24]
+		this.spliceCommand7.push(this.config.value[0].value[6].value[19])
+		this.htmlSplice7 = this.config.value[0].value[6].value[19]
 
 		var list12 = [this.spliceCommand8] 
 		this.spliceCommand8.push(this.config.value[0].value[6].value[24])
@@ -319,38 +315,42 @@ public formSubmitAttempt: boolean;
 		this.bool2.push(this.config.value[0].value[5].value[5])
 		this.bool3.push(this.config.value[0].value[5].value[6])
 		this.bool4.push(this.config.value[0].value[5].value[9])
-		this.bool5.push(this.config.value[0].value[5].value[11])
 
-		this.bool6.push(this.config.value[0].value[5].value[14])
+		this.bool5.push(this.config.value[0].value[5].value[11])
+		this.bool6.push(this.config.value[0].value[5].value[13])
 		this.bool7.push(this.config.value[0].value[5].value[14])
-		
 		this.bool8.push(this.config.value[0].value[5].value[17])
+
 		this.bool9.push(this.config.value[0].value[5].value[20])
 		this.bool10.push(this.config.value[0].value[5].value[22])
 		this.bool11.push(this.config.value[0].value[5].value[23])
 		this.bool12.push(this.config.value[0].value[5].value[25])
-		this.bool13.push(this.config.value[0].value[5].value[29])
-		this.bool14.push(this.config.value[0].value[5].value[30])
 
-		this.local_break_validate_splice_count = this.config.value[0].value[5].value[34]
-		this.local_break_start_input_break_duration = this.config.value[0].value[5].value[35]
-		this.local_break_start_output_break_duration = this.config.value[0].value[5].value[36]
-		this.local_break_include_break_end = this.config.value[0].value[5].value[37]
+		this.bool13.push(this.config.value[0].value[5].value[27])
+		this.bool14.push(this.config.value[0].value[5].value[28])
 
 		this.htmlBool1 = this.config.value[0].value[5].value[3]
 		this.htmlBool2 = this.config.value[0].value[5].value[5]
 		this.htmlBool3 = this.config.value[0].value[5].value[6]
 		this.htmlBool4 = this.config.value[0].value[5].value[9]
+
 		this.htmlBool5 = this.config.value[0].value[5].value[11]
 		this.htmlBool6 = this.config.value[0].value[5].value[13]
 		this.htmlBool7 = this.config.value[0].value[5].value[14]
 		this.htmlBool8 = this.config.value[0].value[5].value[17]
+
 		this.htmlBool9 = this.config.value[0].value[5].value[20]
 		this.htmlBool10 = this.config.value[0].value[5].value[22]
 		this.htmlBool11 = this.config.value[0].value[5].value[23]
 		this.htmlBool12 = this.config.value[0].value[5].value[25]
+
 		this.htmlBool13 = this.config.value[0].value[5].value[27]
 		this.htmlBool14 = this.config.value[0].value[5].value[28]
+
+		this.local_break_validate_splice_count = this.config.value[0].value[5].value[34]
+		this.local_break_start_input_break_duration = this.config.value[0].value[5].value[35]
+		this.local_break_start_output_break_duration = this.config.value[0].value[5].value[36]
+		this.local_break_include_break_end = this.config.value[0].value[5].value[37]
 		
 		//ContentId - 
 		// this.bool19.push(this.config.value[0].value[6].value[2])
@@ -389,23 +389,19 @@ public formSubmitAttempt: boolean;
 		this.bool42.push(this.config.value[0].value[6].value[5])
 		this.bool43.push(this.config.value[0].value[6].value[6])
 		this.bool44.push(this.config.value[0].value[6].value[9])
+
 		this.bool45.push(this.config.value[0].value[6].value[11])
-
-		this.bool46.push(this.config.value[0].value[6].value[14])
+		this.bool46.push(this.config.value[0].value[6].value[13])
 		this.bool47.push(this.config.value[0].value[6].value[14])
-
 		this.bool48.push(this.config.value[0].value[6].value[17])
+
 		this.bool49.push(this.config.value[0].value[6].value[20])
 		this.bool50.push(this.config.value[0].value[6].value[22])
 		this.bool51.push(this.config.value[0].value[6].value[23])
 		this.bool52.push(this.config.value[0].value[6].value[25])
-		this.bool53.push(this.config.value[0].value[6].value[29])
-		this.bool54.push(this.config.value[0].value[6].value[30])
 
-		this.national_break_validate_splice_count = this.config.value[0].value[6].value[34]
-		this.national_break_start_input_break_duration = this.config.value[0].value[6].value[35]
-		this.national_break_start_output_break_duration = this.config.value[0].value[6].value[36]
-		this.national_break_include_break_end = this.config.value[0].value[6].value[37]
+		this.bool53.push(this.config.value[0].value[6].value[27])
+		this.bool54.push(this.config.value[0].value[6].value[28])
 		
 		this.htmlBool41 = this.config.value[0].value[6].value[3]
 		this.htmlBool42 = this.config.value[0].value[6].value[5]
@@ -421,9 +417,15 @@ public formSubmitAttempt: boolean;
 		this.htmlBool50 = this.config.value[0].value[6].value[22]
 		this.htmlBool51 = this.config.value[0].value[6].value[23]
 		this.htmlBool52 = this.config.value[0].value[6].value[25]
+
 		this.htmlBool53 = this.config.value[0].value[6].value[27]
 		this.htmlBool54 = this.config.value[0].value[6].value[28]
 		
+		this.national_break_validate_splice_count = this.config.value[0].value[6].value[34]
+		this.national_break_start_input_break_duration = this.config.value[0].value[6].value[35]
+		this.national_break_start_output_break_duration = this.config.value[0].value[6].value[36]
+		this.national_break_include_break_end = this.config.value[0].value[6].value[37]
+
 		for(let i = 0; i < list.length; i++){
 			for(let j = 0; j < 3; j++)
 			if(list[i].indexOf(this.listOfOptionsForActions[j]) == -1){
@@ -711,14 +713,13 @@ public formSubmitAttempt: boolean;
 
   saveLocalBreak() {
 	
-	const local_break_validate_splice_count = <HTMLInputElement> document.getElementById("local_break_validate_splice_count");
+
 
 	const emails = <HTMLInputElement> document.getElementById("emails");
 	const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
-
-	const localBreakEndSwitch = <HTMLInputElement> document.getElementById("localBreakEndSwitch");
-
 	const localBreakTrue = <HTMLInputElement> document.getElementById("localBreakTrue");
+
+	const local_break_validate_splice_count = <HTMLInputElement> document.getElementById("local_break_validate_splice_count");
 	const local_break_expected_splices_hour = <HTMLInputElement> document.getElementById("local_break_expected_splices_hour");
 
 	const local_break_start_input_action = <HTMLInputElement> document.getElementById("local_break_start_input_action");
@@ -742,8 +743,6 @@ public formSubmitAttempt: boolean;
 	const local_break_start_output_break_duration_max = <HTMLInputElement> document.getElementById("local_break_start_output_break_duration_max");
 	const local_break_start_output_break_auto_return = <HTMLInputElement> document.getElementById("local_break_start_output_break_auto_return");
 
-	const local_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_duration_flag");
-
 	const local_break_end_input_action = <HTMLInputElement> document.getElementById("local_break_end_input_action");
 	const local_break_end_input_splice_command = <HTMLInputElement> document.getElementById("local_break_end_input_splice_command");
 	const local_break_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_input_segmentation_type_id");
@@ -751,8 +750,6 @@ public formSubmitAttempt: boolean;
 	const local_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_input_splice_event_id");
 	const local_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_input_splice_immediate_flag");
 	const local_break_end_input_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_input_break_duration_flag");
-	const local_break_end_input_min = <HTMLInputElement> document.getElementById("local_break_end_input_min");
-	const local_break_end_input_max = <HTMLInputElement> document.getElementById("local_break_end_input_max");
 
 	const local_break_end_output_splice_command = <HTMLInputElement> document.getElementById("local_break_end_output_splice_command");
 	const local_break_end_output_segmentation_type_id = <HTMLInputElement> document.getElementById("local_break_end_output_segmentation_type_id");
@@ -760,8 +757,6 @@ public formSubmitAttempt: boolean;
 	const local_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("local_break_end_output_splice_immediate_flag");
 	const local_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("local_break_end_output_splice_event_id");
 	const local_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("local_break_end_output_break_duration_flag");
-	const local_break_end_output_min= <HTMLInputElement> document.getElementById("local_break_end_output_min");
-	const local_break_end_output_max= <HTMLInputElement> document.getElementById("local_break_end_output_max");
 
 	const local_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("local_break_end_deviation_tolerance");
 
@@ -795,7 +790,6 @@ public formSubmitAttempt: boolean;
 	 let var_local_break_start_output_break_duration_max;
 	 let var_local_break_start_output_break_auto_return; 
 
-	 let var_local_break_duration_flag; 
 	 let var_local_break_end_input_action;
 	 let var_local_break_end_input_splice_command;
 	 let var_local_break_end_input_segmentation_type_id;
@@ -803,8 +797,6 @@ public formSubmitAttempt: boolean;
 	 let var_local_break_end_input_splice_event_id;
 	 let var_local_break_end_input_splice_immediate_flag ;
 	 let var_local_break_end_input_break_duration_flag; 
-	 let var_local_break_end_input_min;
-	 let var_local_break_end_input_max;
 	
 	 let var_local_break_end_output_splice_command; 
 	 let var_local_break_end_output_segmentation_type_id; 
@@ -812,8 +804,6 @@ public formSubmitAttempt: boolean;
 	 let var_local_break_end_output_splice_immediate_flag;
 	 let var_local_break_end_output_splice_event_id;
 	 let var_local_break_end_output_break_duration_flag;
-	 let var_local_break_end_output_min;
-	 let var_local_break_end_output_max;
 	 let var_local_break_end_deviation_tolerance;
 
 	 let var_local_break_start_input_break_duration;
@@ -821,9 +811,7 @@ public formSubmitAttempt: boolean;
 	 let var_local_break_include_break_end;
 
 	
-	try{ var_local_break_validate_splice_count = local_break_validate_splice_count.checked}catch{ var_local_break_validate_splice_count = this.config.value[0].value[4].value[37]}
 	try{ var_local_break_expected_splices_hour = local_break_expected_splices_hour.value}catch{ var_local_break_expected_splices_hour = this.config.value[0].value[4].value[0]}
-
 	try{ var_local_break_start_input_action = local_break_start_input_action.value}catch{ var_local_break_start_input_action = this.config.value[0].value[4].value[1]}
 	try{ var_local_break_start_input_splice_command = local_break_start_input_splice_command.value}catch{var_local_break_start_input_splice_command =this.config.value[0].value[4].value[2]}
 	try{ var_local_break_start_input_out_of_network_indicator = local_break_start_input_out_of_network_indicator.value}catch{var_local_break_start_input_out_of_network_indicator = this.config.value[0].value[4].value[3]}
@@ -835,104 +823,86 @@ public formSubmitAttempt: boolean;
 	try{ var_local_break_start_input_break_auto_return = local_break_start_input_break_auto_return.value}catch{var_local_break_start_input_break_auto_return = this.config.value[0].value[4].value[9]}
 
 	try{ var_local_break_start_output_splice_command = local_break_start_output_splice_command.value}catch{ var_local_break_start_output_splice_command = this.config.value[0].value[4].value[10]}
-	try{ var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = this.config.value[0].value[4].value[12]}
-	try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = this.config.value[0].value[4].value[13]}
-	try{ var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = this.config.value[0].value[4].value[14]}
-	try{ var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = this.config.value[0].value[4].value[15]}
-	try{ var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = this.config.value[0].value[4].value[16]}
+	try{ var_local_break_start_output_out_of_network_indicator = local_break_start_output_out_of_network_indicator.value}catch{ var_local_break_start_output_out_of_network_indicator = this.config.value[0].value[4].value[11]}
+	try{ var_local_break_start_output_splice_event_id = local_break_start_output_splice_event_id.value}catch{var_local_break_start_output_splice_event_id = this.config.value[0].value[4].value[12]}
+	try{ var_local_break_start_output_splice_immediate_flag = local_break_start_output_splice_immediate_flag.value}catch{ var_local_break_start_output_splice_immediate_flag = this.config.value[0].value[4].value[13]}
+
+	try{ var_local_break_start_output_duration_flag = local_break_start_output_duration_flag.value}catch{var_local_break_start_output_duration_flag = this.config.value[0].value[4].value[14]}
+	try{ var_local_break_start_output_break_duration_min = local_break_start_output_break_duration_min.value}catch{var_local_break_start_output_break_duration_min = this.config.value[0].value[4].value[15]}
 	try{ var_local_break_start_output_break_duration_max = local_break_start_output_break_duration_max.value}catch{var_local_break_start_output_break_duration_max = "none"}
-	try{ var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return =this.config.value[0].value[4].value[18]}
+	try{ var_local_break_start_output_break_auto_return = local_break_start_output_break_auto_return.value}catch{var_local_break_start_output_break_auto_return =this.config.value[0].value[4].value[17]}
 
-	try{ var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = this.config.value[0].value[4].value[19]}
-	try{ var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = this.config.value[0].value[4].value[20]}
-	try{ var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = this.config.value[0].value[4].value[21]}
-	try{ var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = this.config.value[0].value[4].value[22]}
-	try{ var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = this.config.value[0].value[4].value[23]}
-	try{ var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = this.config.value[0].value[4].value[24]}
-	try{ var_local_break_end_input_min = local_break_end_input_min.value}catch{var_local_break_end_input_min= this.config.value[0].value[4].value[25]}
-	try{ var_local_break_end_input_max = local_break_end_input_max.value}catch{var_local_break_end_input_max = "none"}
+	try{ var_local_break_end_input_action = local_break_end_input_action.value}catch{var_local_break_end_input_action = this.config.value[0].value[4].value[18]}
+	try{ var_local_break_end_input_splice_command = local_break_end_input_splice_command.value}catch{var_local_break_end_input_splice_command = this.config.value[0].value[4].value[19]}
+	try{ var_local_break_end_input_out_of_network_indicator = local_break_end_input_out_of_network_indicator.value}catch{var_local_break_end_input_out_of_network_indicator = this.config.value[0].value[4].value[20]}
+	try{ var_local_break_end_input_splice_event_id = local_break_end_input_splice_event_id.value}catch{var_local_break_end_input_splice_event_id = this.config.value[0].value[4].value[21]}
+	try{ var_local_break_end_input_splice_immediate_flag = local_break_end_input_splice_immediate_flag.value}catch{var_local_break_end_input_splice_immediate_flag = this.config.value[0].value[4].value[22]}
+	try{ var_local_break_end_input_break_duration_flag = local_break_end_input_break_duration_flag.value}catch{var_local_break_end_input_break_duration_flag = this.config.value[0].value[4].value[23]}
 
-	try{ var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = this.config.value[0].value[4].value[27]}
-	try{ var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = this.config.value[0].value[4].value[28]}
-	try{ var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = this.config.value[0].value[4].value[29]}
-	try{ var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = this.config.value[0].value[4].value[30]}
-	try{ var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag =this.config.value[0].value[4].value[31]}
-	try{ var_local_break_end_output_min = local_break_end_output_min.value}catch{var_local_break_end_output_min = this.config.value[0].value[4].value[36]}
-	try{ var_local_break_end_output_max = local_break_end_output_max.value}catch{var_local_break_end_output_min = "none"}
+	try{ var_local_break_end_output_splice_command = local_break_end_output_splice_command.value}catch{var_local_break_end_output_splice_command = this.config.value[0].value[4].value[24]}
+	try{ var_local_break_end_output_out_of_network_indicator = local_break_end_output_out_of_network_indicator.value}catch{var_local_break_end_output_out_of_network_indicator = this.config.value[0].value[4].value[25]}
+	try{ var_local_break_end_output_splice_event_id = local_break_end_output_splice_event_id.value}catch{ var_local_break_end_output_splice_event_id = this.config.value[0].value[4].value[26]}
+	try{ var_local_break_end_output_splice_immediate_flag = local_break_end_output_splice_immediate_flag.value}catch{ var_local_break_end_output_splice_immediate_flag = this.config.value[0].value[4].value[27]}
+	try{ var_local_break_end_output_break_duration_flag = local_break_end_output_break_duration_flag.value}catch{var_local_break_end_output_break_duration_flag =this.config.value[0].value[4].value[28]}
+	try{ var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = this.config.value[0].value[4].value[29]}
 
-	try{ var_local_break_end_deviation_tolerance = local_break_end_deviation_tolerance.value}catch{ var_local_break_end_deviation_tolerance = this.config.value[0].value[4].value[32]}
+	try{ var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = this.config.value[0].value[4].value[30]}
+	try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = this.config.value[0].value[4].value[31]}
+	try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = this.config.value[0].value[4].value[32]}
+	try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = this.config.value[0].value[4].value[33]}
 
-	try{ var_local_break_start_input_segmentation_type_id = local_break_start_input_segmentation_type_id.value}catch{ var_local_break_start_input_segmentation_type_id = this.config.value[0].value[4].value[32]}
-	try{ var_local_break_start_output_segmentation_type_id = local_break_start_output_segmentation_type_id.value}catch{var_local_break_start_output_segmentation_type_id = this.config.value[0].value[4].value[33]}
-	try{ var_local_break_end_input_segmentation_type_id = local_break_end_input_segmentation_type_id.value}catch{var_local_break_end_input_segmentation_type_id = this.config.value[0].value[4].value[34]}
-	try{ var_local_break_end_output_segmentation_type_id = local_break_end_output_segmentation_type_id.value}catch{var_local_break_end_output_segmentation_type_id = this.config.value[0].value[4].value[35]}
-
-	try{ var_local_break_start_input_break_duration = local_break_start_input_break_duration.value}catch{var_local_break_start_input_break_duration = this.config.value[0].value[4].value[38]}
-	try{ var_local_break_start_output_break_duration = local_break_start_output_break_duration.value}catch{var_local_break_start_output_break_duration = this.config.value[0].value[4].value[39]}
-	
-	try{ var_local_break_include_break_end = local_break_include_break_end.checked}catch{var_local_break_include_break_end = this.config.value[0].value[4].value[40]}
+	try{ var_local_break_validate_splice_count = local_break_validate_splice_count.checked}catch{ var_local_break_validate_splice_count = this.config.value[0].value[4].value[34]}
+	try{ var_local_break_start_input_break_duration = local_break_start_input_break_duration.value}catch{var_local_break_start_input_break_duration = this.config.value[0].value[4].value[35]}
+	try{ var_local_break_start_output_break_duration = local_break_start_output_break_duration.value}catch{var_local_break_start_output_break_duration = this.config.value[0].value[4].value[36]}
+	try{ var_local_break_include_break_end = local_break_include_break_end.checked}catch{var_local_break_include_break_end = this.config.value[0].value[4].value[37]}
 	
 	
 	let localBreakArray= [
 		var_local_break_expected_splices_hour
 		,var_local_break_start_input_action
-
 		,var_local_break_start_input_splice_command
 		,var_local_break_start_input_out_of_network_indicator
-
 		,var_local_break_start_input_splice_event_id
 		,var_local_break_start_input_splice_immediate_flag
-
 		,var_local_break_start_input_duration_flag
 		,var_local_break_start_input_break_duration_min
-
 		,var_local_break_start_input_break_duration_max
 		,var_local_break_start_input_break_auto_return
 
 		,var_local_break_start_output_splice_command
 		,var_local_break_start_output_out_of_network_indicator
-
 		,var_local_break_start_output_splice_event_id
 		,var_local_break_start_output_splice_immediate_flag
-
 		,var_local_break_start_output_duration_flag
 		,var_local_break_start_output_break_duration_min
-
 		,var_local_break_start_output_break_duration_max
 		,var_local_break_start_output_break_auto_return
 
 		,var_local_break_end_input_action
 		,var_local_break_end_input_splice_command
-
 		,var_local_break_end_input_out_of_network_indicator
 		,var_local_break_end_input_splice_event_id
-
 		,var_local_break_end_input_splice_immediate_flag
 		,var_local_break_end_input_break_duration_flag
 
 		,var_local_break_end_output_splice_command
 		,var_local_break_end_output_out_of_network_indicator
-
-		,var_local_break_end_output_splice_immediate_flag
 		,var_local_break_end_output_splice_event_id
-
+		,var_local_break_end_output_splice_immediate_flag
 		,var_local_break_end_output_break_duration_flag
 		,var_local_break_end_deviation_tolerance
 
 		,var_local_break_start_input_segmentation_type_id
 		,var_local_break_start_output_segmentation_type_id
-
 		,var_local_break_end_input_segmentation_type_id
 		,var_local_break_end_output_segmentation_type_id
 
 		,var_local_break_validate_splice_count
-
 		,var_local_break_start_input_break_duration
 		,var_local_break_start_output_break_duration
 		,var_local_break_include_break_end
 	]
 
-	console.log(var_local_break_validate_splice_count.checked)
 
 	let localbreakJson = JSON.stringify(localBreakArray)
 	var localbreak = JSON.parse(localbreakJson)
@@ -1030,8 +1000,10 @@ if(this.contentIdViewCheck){
 	
 		// const emails = <HTMLInputElement> document.getElementById("emails");
 		// const validation_frequency = <HTMLInputElement> document.getElementById("validation_frequency");
-	
+
 		const nationalBreakTrue = <HTMLInputElement> document.getElementById("nationalBreakTrue");
+
+		const national_break_validate_splice_count = <HTMLInputElement> document.getElementById("national_break_validate_splice_count");
 		const national_break_expected_splices_hour = <HTMLInputElement> document.getElementById("national_break_expected_splices_hour");
 	
 		const national_break_start_input_action = <HTMLInputElement> document.getElementById("national_break_start_input_action");
@@ -1055,7 +1027,7 @@ if(this.contentIdViewCheck){
 		const national_break_start_output_break_duration_max = <HTMLInputElement> document.getElementById("national_break_start_output_break_duration_max");
 		const national_break_start_output_break_auto_return = <HTMLInputElement> document.getElementById("national_break_start_output_break_auto_return");
 	
-		const national_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_duration_flag");
+		// const national_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_duration_flag");
 	
 		const national_break_end_input_action = <HTMLInputElement> document.getElementById("national_break_end_input_action");
 		const national_break_end_input_splice_command = <HTMLInputElement> document.getElementById("national_break_end_input_splice_command");
@@ -1064,8 +1036,8 @@ if(this.contentIdViewCheck){
 		const national_break_end_input_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_input_splice_event_id");
 		const national_break_end_input_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_input_splice_immediate_flag");
 		const national_break_end_input_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_input_break_duration_flag");
-		const national_break_end_input_min = <HTMLInputElement> document.getElementById("national_break_end_input_min");
-		const national_break_end_input_max = <HTMLInputElement> document.getElementById("national_break_end_input_max");
+		// const national_break_end_input_min = <HTMLInputElement> document.getElementById("national_break_end_input_min");
+		// const national_break_end_input_max = <HTMLInputElement> document.getElementById("national_break_end_input_max");
 	
 		
 		const national_break_end_output_splice_command = <HTMLInputElement> document.getElementById("national_break_end_output_splice_command");
@@ -1074,16 +1046,19 @@ if(this.contentIdViewCheck){
 		const national_break_end_output_splice_immediate_flag = <HTMLInputElement> document.getElementById("national_break_end_output_splice_immediate_flag");
 		const national_break_end_output_splice_event_id = <HTMLInputElement> document.getElementById("national_break_end_output_splice_event_id");
 		const national_break_end_output_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_end_output_break_duration_flag");
-		const national_break_end_output_min= <HTMLInputElement> document.getElementById("national_break_end_output_min");
-		const national_break_end_output_max= <HTMLInputElement> document.getElementById("national_break_end_output_max");
+		// const national_break_end_output_min= <HTMLInputElement> document.getElementById("national_break_end_output_min");
+		// const national_break_end_output_max= <HTMLInputElement> document.getElementById("national_break_end_output_max");
 	
 		const national_break_end_deviation_tolerance = <HTMLInputElement> document.getElementById("national_break_end_deviation_tolerance");
 
-		const national_break_validate_splice_count = <HTMLInputElement> document.getElementById("national_break_validate_splice_count");
 		const national_break_start_input_break_duration = <HTMLInputElement> document.getElementById("national_break_start_input_break_duration");
 		const national_break_start_output_break_duration = <HTMLInputElement> document.getElementById("national_break_start_output_break_duration");
+
 		const national_break_include_break_end = <HTMLInputElement> document.getElementById("national_break_include_break_end");
 	
+
+		let var_national_break_validate_splice_count;
+		
 		let var_national_break_expected_splices_hour
 	
 		let var_national_break_start_input_action;
@@ -1107,7 +1082,6 @@ if(this.contentIdViewCheck){
 		 let var_national_break_start_output_break_duration_max;
 		 let var_national_break_start_output_break_auto_return; 
 	
-		 let var_national_break_duration_flag; 
 		 let var_national_break_end_input_action;
 		 let var_national_break_end_input_splice_command;
 		 let var_national_break_end_input_segmentation_type_id;
@@ -1115,8 +1089,6 @@ if(this.contentIdViewCheck){
 		 let var_national_break_end_input_splice_event_id;
 		 let var_national_break_end_input_splice_immediate_flag ;
 		 let var_national_break_end_input_break_duration_flag; 
-		 let var_national_break_end_input_min;
-		 let var_national_break_end_input_max;
 		
 		 let var_national_break_end_output_splice_command; 
 		 let var_national_break_end_output_segmentation_type_id; 
@@ -1124,67 +1096,61 @@ if(this.contentIdViewCheck){
 		 let var_national_break_end_output_splice_immediate_flag;
 		 let var_national_break_end_output_splice_event_id;
 		 let var_national_break_end_output_break_duration_flag;
-		 let var_national_break_end_output_min;
-		 let var_national_break_end_output_max;
-	
+
 		 let var_national_break_end_deviation_tolerance;
 
-		 let var_national_break_validate_splice_count;
 		 let var_national_break_start_input_break_duration;
 		 let var_national_break_start_output_break_duration;
 		 let var_national_break_include_break_end;
-	
+
 		try{ var_national_break_expected_splices_hour = national_break_expected_splices_hour.value}catch{ var_national_break_expected_splices_hour = this.config.value[0].value[5].value[0]}
+
 		try{ var_national_break_start_input_action = national_break_start_input_action.value}catch{ var_national_break_start_input_action = this.config.value[0].value[5].value[1]}
 		try{ var_national_break_start_input_splice_command = national_break_start_input_splice_command.value}catch{var_national_break_start_input_splice_command =this.config.value[0].value[5].value[2]}
 		try{ var_national_break_start_input_out_of_network_indicator = national_break_start_input_out_of_network_indicator.value}catch{var_national_break_start_input_out_of_network_indicator = this.config.value[0].value[5].value[3]}
-		try{ var_national_break_start_input_splice_event_id = national_break_start_input_splice_event_id.value}catch{ var_national_break_start_input_splice_event_id = this.config.value[0].value[5].value[5]}
+		try{ var_national_break_start_input_splice_event_id = national_break_start_input_splice_event_id.value}catch{ var_national_break_start_input_splice_event_id = this.config.value[0].value[5].value[4]}
 		try{ var_national_break_start_input_splice_immediate_flag = national_break_start_input_splice_immediate_flag.value}catch{var_national_break_start_input_splice_immediate_flag = this.config.value[0].value[5].value[5]}
 		try{ var_national_break_start_input_duration_flag = national_break_start_input_duration_flag.value}catch{ var_national_break_start_input_duration_flag = this.config.value[0].value[5].value[6]}
 		try{ var_national_break_start_input_break_duration_min = national_break_start_input_break_duration_min.value}catch{var_national_break_start_input_break_duration_min = this.config.value[0].value[5].value[7]}
-		try{ var_national_break_start_input_break_duration_max = national_break_start_input_break_duration_max.value}catch{ var_national_break_start_input_break_duration_max = "none"}
+		try{ var_national_break_start_input_break_duration_max = national_break_start_input_break_duration_max.value}catch{ var_national_break_start_input_break_duration_max = this.config.value[0].value[5].value[8]}
 		try{ var_national_break_start_input_break_auto_return = national_break_start_input_break_auto_return.value}catch{var_national_break_start_input_break_auto_return = this.config.value[0].value[5].value[9]}
-		
-		try{ var_national_break_start_output_splice_command = national_break_start_output_splice_command.value}catch{ var_national_break_start_output_splice_command = this.config.value[0].value[5].value[10]}
-		try{ var_national_break_start_output_out_of_network_indicator = national_break_start_output_out_of_network_indicator.value}catch{ var_national_break_start_output_out_of_network_indicator = this.config.value[0].value[5].value[12]}
-		try{ var_national_break_start_output_splice_event_id = national_break_start_output_splice_event_id.value}catch{var_national_break_start_output_splice_event_id = this.config.value[0].value[5].value[13]}
-		try{ var_national_break_start_output_splice_immediate_flag = national_break_start_output_splice_immediate_flag.value}catch{ var_national_break_start_output_splice_immediate_flag = this.config.value[0].value[5].value[14]}
-		try{ var_national_break_start_output_duration_flag = national_break_start_output_duration_flag.value}catch{var_national_break_start_output_duration_flag = this.config.value[0].value[5].value[15]}
-		try{ var_national_break_start_output_break_duration_min = national_break_start_output_break_duration_min.value}catch{var_national_break_start_output_break_duration_min = this.config.value[0].value[5].value[16]}
-		try{ var_national_break_start_output_break_duration_max = national_break_start_output_break_duration_max.value}catch{var_national_break_start_output_break_duration_max = "none"}
-		try{ var_national_break_start_output_break_auto_return = national_break_start_output_break_auto_return.value}catch{var_national_break_start_output_break_auto_return =this.config.value[0].value[5].value[18]}
-		
-		try{ var_national_break_end_input_action = national_break_end_input_action.value}catch{var_national_break_end_input_action = this.config.value[0].value[5].value[19]}
-		try{ var_national_break_end_input_splice_command = national_break_end_input_splice_command.value}catch{var_national_break_end_input_splice_command = this.config.value[0].value[5].value[20]}
-		try{ var_national_break_end_input_out_of_network_indicator = national_break_end_input_out_of_network_indicator.value}catch{var_national_break_end_input_out_of_network_indicator = this.config.value[0].value[5].value[21]}
-		try{ var_national_break_end_input_splice_event_id = national_break_end_input_splice_event_id.value}catch{var_national_break_end_input_splice_event_id = this.config.value[0].value[5].value[22]}
-		try{ var_national_break_end_input_splice_immediate_flag = national_break_end_input_splice_immediate_flag.value}catch{var_national_break_end_input_splice_immediate_flag = this.config.value[0].value[5].value[23]}
-		try{ var_national_break_end_input_break_duration_flag = national_break_end_input_break_duration_flag.value}catch{var_national_break_end_input_break_duration_flag = this.config.value[0].value[5].value[24]}
-		try{ var_national_break_end_input_min = national_break_end_input_min.value}catch{var_national_break_end_input_min= this.config.value[0].value[5].value[25]}
-		try{ var_national_break_end_input_max = national_break_end_input_max.value}catch{var_national_break_end_input_max = "none"}
-		
-		try{ var_national_break_end_output_splice_command = national_break_end_output_splice_command.value}catch{var_national_break_end_output_splice_command = this.config.value[0].value[5].value[27]}
-		try{ var_national_break_end_output_out_of_network_indicator = national_break_end_output_out_of_network_indicator.value}catch{var_national_break_end_output_out_of_network_indicator = this.config.value[0].value[5].value[28]}
-		try{ var_national_break_end_output_splice_event_id = national_break_end_output_splice_event_id.value}catch{ var_national_break_end_output_splice_event_id = this.config.value[0].value[5].value[29]}
-		try{ var_national_break_end_output_splice_immediate_flag = national_break_end_output_splice_immediate_flag.value}catch{ var_national_break_end_output_splice_immediate_flag = this.config.value[0].value[5].value[30]}
-		try{ var_national_break_end_output_break_duration_flag = national_break_end_output_break_duration_flag.value}catch{var_national_break_end_output_break_duration_flag =this.config.value[0].value[5].value[31]}
-		try{ var_national_break_end_output_min = national_break_end_output_min.value}catch{var_national_break_end_output_min = this.config.value[0].value[5].value[36]}
-		try{ var_national_break_end_output_max = national_break_end_output_max.value}catch{var_national_break_end_output_min = "none"}
-		try{ var_national_break_end_deviation_tolerance = national_break_end_deviation_tolerance.value}catch{ var_national_break_end_deviation_tolerance = this.config.value[0].value[5].value[32]}
-		
-		try{ var_national_break_start_input_segmentation_type_id = national_break_start_input_segmentation_type_id.value}catch{ var_national_break_start_input_segmentation_type_id = this.config.value[0].value[5].value[32]}
-		try{ var_national_break_start_output_segmentation_type_id = national_break_start_output_segmentation_type_id.value}catch{var_national_break_start_output_segmentation_type_id = this.config.value[0].value[5].value[33]}
-		try{ var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = this.config.value[0].value[5].value[34]}
-		try{ var_national_break_end_output_segmentation_type_id = national_break_end_output_segmentation_type_id.value}catch{var_national_break_end_output_segmentation_type_id = this.config.value[0].value[5].value[35]}
 
-		try{ var_national_break_validate_splice_count = national_break_validate_splice_count.checked}catch{ var_national_break_validate_splice_count = this.config.value[0].value[5].value[37]}
-		try{ var_national_break_start_input_break_duration = national_break_start_input_break_duration.value}catch{var_national_break_start_input_break_duration = this.config.value[0].value[5].value[38]}
-		try{ var_national_break_start_output_break_duration = national_break_start_output_break_duration.value}catch{var_national_break_start_output_break_duration = this.config.value[0].value[5].value[39]}
-		try{ var_national_break_include_break_end = national_break_include_break_end.checked}catch{var_national_break_include_break_end = this.config.value[0].value[5].value[40]}
-	
+		try{ var_national_break_start_output_splice_command = national_break_start_output_splice_command.value}catch{ var_national_break_start_output_splice_command = this.config.value[0].value[5].value[10]}
+		try{ var_national_break_start_output_out_of_network_indicator = national_break_start_output_out_of_network_indicator.value}catch{ var_national_break_start_output_out_of_network_indicator = this.config.value[0].value[5].value[11]}
+		try{ var_national_break_start_output_splice_event_id = national_break_start_output_splice_event_id.value}catch{var_national_break_start_output_splice_event_id = this.config.value[0].value[5].value[12]}
+		try{ var_national_break_start_output_splice_immediate_flag = national_break_start_output_splice_immediate_flag.value}catch{ var_national_break_start_output_splice_immediate_flag = this.config.value[0].value[5].value[13]}
+
+		try{ var_national_break_start_output_duration_flag = national_break_start_output_duration_flag.value}catch{var_national_break_start_output_duration_flag = this.config.value[0].value[5].value[14]}
+		try{ var_national_break_start_output_break_duration_min = national_break_start_output_break_duration_min.value}catch{var_national_break_start_output_break_duration_min = this.config.value[0].value[5].value[15]}
+		try{ var_national_break_start_output_break_duration_max = national_break_start_output_break_duration_max.value}catch{var_national_break_start_output_break_duration_max = this.config.value[0].value[5].value[16]}
+		try{ var_national_break_start_output_break_auto_return = national_break_start_output_break_auto_return.value}catch{var_national_break_start_output_break_auto_return =this.config.value[0].value[5].value[17]}
+
+		try{ var_national_break_end_input_action = national_break_end_input_action.value}catch{var_national_break_end_input_action = this.config.value[0].value[5].value[18]}
+		try{ var_national_break_end_input_splice_command = national_break_end_input_splice_command.value}catch{var_national_break_end_input_splice_command = this.config.value[0].value[5].value[19]}
+		try{ var_national_break_end_input_out_of_network_indicator = national_break_end_input_out_of_network_indicator.value}catch{var_national_break_end_input_out_of_network_indicator = this.config.value[0].value[5].value[20]}
+		try{ var_national_break_end_input_splice_event_id = national_break_end_input_splice_event_id.value}catch{var_national_break_end_input_splice_event_id = this.config.value[0].value[5].value[21]}
+		try{ var_national_break_end_input_splice_immediate_flag = national_break_end_input_splice_immediate_flag.value}catch{var_national_break_end_input_splice_immediate_flag = this.config.value[0].value[5].value[22]}
+		try{ var_national_break_end_input_break_duration_flag = national_break_end_input_break_duration_flag.value}catch{var_national_break_end_input_break_duration_flag = this.config.value[0].value[5].value[23]}
+
+		try{ var_national_break_end_output_splice_command = national_break_end_output_splice_command.value}catch{var_national_break_end_output_splice_command = this.config.value[0].value[5].value[24]}
+		try{ var_national_break_end_output_out_of_network_indicator = national_break_end_output_out_of_network_indicator.value}catch{var_national_break_end_output_out_of_network_indicator = this.config.value[0].value[5].value[25]}
+		try{ var_national_break_end_output_splice_event_id = national_break_end_output_splice_event_id.value}catch{ var_national_break_end_output_splice_event_id = this.config.value[0].value[5].value[26]}
+		try{ var_national_break_end_output_splice_immediate_flag = national_break_end_output_splice_immediate_flag.value}catch{ var_national_break_end_output_splice_immediate_flag = this.config.value[0].value[6].value[27]}
+		try{ var_national_break_end_output_break_duration_flag = national_break_end_output_break_duration_flag.value}catch{var_national_break_end_output_break_duration_flag =this.config.value[0].value[5].value[28]}
+		try{ var_national_break_end_deviation_tolerance = national_break_end_deviation_tolerance.value}catch{ var_national_break_end_deviation_tolerance = this.config.value[0].value[5].value[29]}
+
+		try{ var_national_break_start_input_segmentation_type_id = national_break_start_input_segmentation_type_id.value}catch{ var_national_break_start_input_segmentation_type_id = this.config.value[0].value[5].value[30]}
+		try{ var_national_break_start_output_segmentation_type_id = national_break_start_output_segmentation_type_id.value}catch{var_national_break_start_output_segmentation_type_id = this.config.value[0].value[5].value[31]}
+		try{ var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = this.config.value[0].value[5].value[32]}
+		try{ var_national_break_end_output_segmentation_type_id = national_break_end_output_segmentation_type_id.value}catch{var_national_break_end_output_segmentation_type_id = this.config.value[0].value[5].value[33]}
+
+		try{ var_national_break_validate_splice_count = national_break_validate_splice_count.checked}catch{ var_national_break_validate_splice_count = this.config.value[0].value[5].value[34]}
+		try{ var_national_break_start_input_break_duration = national_break_start_input_break_duration.value}catch{var_national_break_start_input_break_duration = this.config.value[0].value[5].value[35]}
+		try{ var_national_break_start_output_break_duration = national_break_start_output_break_duration.value}catch{var_national_break_start_output_break_duration = this.config.value[0].value[5].value[36]}
+		try{ var_national_break_include_break_end = national_break_include_break_end.checked}catch{var_national_break_include_break_end = this.config.value[0].value[5].value[37]}
+
 		let nationalBreakArray= [
 			var_national_break_expected_splices_hour
-	
 			,var_national_break_start_input_action
 			,var_national_break_start_input_splice_command
 			,var_national_break_start_input_out_of_network_indicator
@@ -1213,8 +1179,8 @@ if(this.contentIdViewCheck){
 	
 			,var_national_break_end_output_splice_command
 			,var_national_break_end_output_out_of_network_indicator
-			,var_national_break_end_output_splice_immediate_flag
 			,var_national_break_end_output_splice_event_id
+			,var_national_break_end_output_splice_immediate_flag
 			,var_national_break_end_output_break_duration_flag
 			,var_national_break_end_deviation_tolerance
 

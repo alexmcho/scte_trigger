@@ -31,10 +31,10 @@
               <table  class ="table table-striped">
                   <tbody>
 
-                      <tr *ngIf="national_break_start_input_splice_command=='[5] splice_insert'">
+                      <tr *ngIf="national_break_start_input_splice_command=='[5] splice_insert' || national_break_start_input_splice_command=='[6] time_signal'">
                         <!-- <tr> -->
                           <th>Action</th><td></td>
-                          <td><select [(ngModel)]="national_break_start_input_action"  class="form-control" id="national_break_start_input_action">
+                          <td width="45%"><select [(ngModel)]="national_break_start_input_action"  class="form-control" id="national_break_start_input_action">
                               <option value="NOOP">NOOP</option>
                               <option value="DELETE">DELETE</option>
                               <option value="REPLACE">REPLACE</option>
@@ -156,7 +156,8 @@
               </table>
 
                 <!-- National Break Start - Output Trigger -->
-                <div *ngIf="national_break_start_input_action=='REPLACE' || national_break_start_input_splice_command=='[6] time_signal'">
+                <!-- <div *ngIf="national_break_start_input_action=='REPLACE' || national_break_start_input_splice_command=='[6] time_signal'"> -->
+                <div *ngIf="national_break_start_input_action=='REPLACE'">
                     <!-- <div> -->
                     <label for="national_break_start_table" style="font-size: larger;color:#00A8E0">Output Trigger</label>
                     <table  class ="table table-striped">
@@ -165,7 +166,7 @@
                         <!-- <tr *ngIf="national_break_start_input_splice_command=='[5] splice_insert'"> -->
                         <tr>
                             <th>Splice Command Type</th><td></td>
-                            <td><select id="national_break_start_output_splice_command" [(ngModel)]="national_break_start_output_splice_command" class="form-control">
+                            <td width="45%"><select id="national_break_start_output_splice_command" [(ngModel)]="national_break_start_output_splice_command" class="form-control">
                                 <option value="[5] splice_insert">[5] splice_insert</option>
                                 <option value="[6] time_signal">[6] time_signal</option>
                             </select></td>
@@ -303,10 +304,10 @@
                   <table id="national_break_end_table" class="table table-striped" >
                       <tbody>
 
-                          <tr *ngIf="national_break_end_input_splice_command=='[5] splice_insert'">
+                          <tr *ngIf="national_break_end_input_splice_command=='[5] splice_insert' || national_break_end_input_splice_command=='[6] time_signal'">
                             <!-- <tr> -->
                               <th>Action</th><td></td>
-                              <td><select id="national_break_end_input_action" [(ngModel)]="national_break_end_input_action" class="form-control">
+                              <td width="45%"><select id="national_break_end_input_action" [(ngModel)]="national_break_end_input_action" class="form-control">
                                   <option value="NOOP">NOOP</option>
                                   <option value="DELETE">DELETE</option>
                                   <option value="REPLACE">REPLACE</option>
@@ -316,7 +317,7 @@
                           <!-- <tr *ngIf="national_break_start_input_splice_command=='[5] splice_insert'"> -->
                           <tr>
                             <th>Splice Command Type</th><td></td>
-                            <td><select id="national_break_end_input_splice_command" [(ngModel)]="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
+                            <td width="45%"><select id="national_break_end_input_splice_command" [(ngModel)]="national_break_end_input_splice_command" name="splice_command_type_end" class="form-control" >
                                 <option value="[5] splice_insert">[5] splice_insert</option>
                                 <option value="[6] time_signal">[6] time_signal</option>
                             </select></td>
@@ -333,11 +334,11 @@
                           <!-- <tr> -->
                               <th>Segmentation Type Id</th><td></td>
                               <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
-                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
+                                <option value="23">23&nbsp;  [ Break End ]</option>
+                                <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
+                                <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
+                                <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
                               </select></td>
                           </tr>
 
@@ -378,7 +379,8 @@
                       </tbody>
                   </table>
           <!-- National Break End - Output Trigger -->
-                    <div *ngIf="national_break_end_input_action=='REPLACE' || national_break_start_input_splice_command=='[6] time_signal'">
+                    <!-- <div *ngIf="national_break_end_input_action=='REPLACE' || national_break_start_input_splice_command=='[6] time_signal'"> -->
+                    <div *ngIf="national_break_end_input_action=='REPLACE'">
                       <label for="national_break_end_table" style="font-size: larger; color:#00A8E0">Output Trigger</label>
                       <table id="national_break_end_table" class="table table-striped" >
                           <tbody>
@@ -386,7 +388,7 @@
                               <!-- <tr *ngIf="national_break_end_input_splice_command=='[5] splice_insert'"> -->
                               <tr>
                                 <th>Splice Command Type</th><td></td>
-                                <td><select id="national_break_end_output_splice_command" [(ngModel)]="national_break_end_output_splice_command" name="splice_command_type_end" class="form-control" >
+                                <td width="45%"><select id="national_break_end_output_splice_command" [(ngModel)]="national_break_end_output_splice_command" name="splice_command_type_end" class="form-control" >
                                     <option value="[5] splice_insert">[5] splice_insert</option>
                                     <option value="[6] time_signal">[6] time_signal</option>
                                 </select></td>
@@ -403,11 +405,11 @@
                                 <!-- <tr> -->
                                   <th>Segmentation Type Id</th><td></td>
                                   <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                    <option value="22">22&nbsp;  [ Break Start ]</option>
-                                    <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
-                                    <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
-                                    <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                    <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
+                                    <option value="23">23&nbsp;  [ Break End ]</option>
+                                    <option value="31">31&nbsp;  [ Provider Advertisement End ]</option>
+                                    <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
+                                    <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
+                                    <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
                                   </select></td>
                               </tr>
 
