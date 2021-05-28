@@ -190,7 +190,7 @@
                             </select></td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice1=='[6] time_signal'">
+                        <tr *ngIf="htmlSplice1=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
@@ -199,18 +199,6 @@
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                            </select></td>
-                        </tr> -->
-
-                        <tr *ngIf="htmlSplice1=='[6] time_signal'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
-                                <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
-                                <option value="[22] Break Start">[22]&nbsp; Break Start </option>
-                                <option value="[30] Provider Advertisement Start">[30]&nbsp; Provider Advertisement Start </option>
-                                <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
-                                <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
-                                <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
                             </select></td>
                         </tr>
                         
@@ -299,27 +287,15 @@
                             </select></td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice2=='[6] time_signal'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
-                                <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
-                                <option value="22">22&nbsp;  [ Break Start ]</option>
-                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
-                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
-                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
-                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                            </select></td>
-                        </tr> -->
-
                         <tr *ngIf="htmlSplice2=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
-                                <option value="[22] Break Start">[22]&nbsp; Break Start </option>
-                                <option value="[30] Provider Advertisement Start">[30]&nbsp; Provider Advertisement Start </option>
-                                <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
-                                <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
-                                <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
+                                <option value="22 ">22&nbsp;  [ Break Start ]</option>
+                                <option value="30">30&nbsp;  [ Provider Advertisement Start ]</option>
+                                <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
+                                <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
+                                <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
                             </select></td>
                         </tr>
                         
@@ -429,7 +405,7 @@
                                 </select></td>
                             </tr>
 
-                            <!-- <tr *ngIf="htmlSplice3=='[6] time_signal'">
+                            <tr *ngIf="htmlSplice3=='[6] time_signal'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
@@ -438,18 +414,6 @@
                                     <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
                                     <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
                                     <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                </select></td>
-                            </tr> -->
-
-                            <tr *ngIf="htmlSplice3=='[6] time_signal'">
-                                <th>Segmentation Type Id</th><td></td>
-                                <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
-                                    <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
-                                    <option value="[23] Break End">[23]&nbsp; Break End </option>
-                                    <option value="[31] Provider Advertisement End">[31]&nbsp; Provider Advertisement End </option>
-                                    <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
-                                    <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
-                                    <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
                                 </select></td>
                             </tr>
 
@@ -470,7 +434,7 @@
                                 </select></td>
                             </tr>
                             
-                            <tr *ngIf="htmlSplice3=='[5] splice_insert' || htmlSplice3=='[6] time_signal'">
+                            <tr *ngIf="htmlSplice3=='[5] splice_insert'">
                                 <th>Immediate Flag</th><td></td>
                                 <td><select [(ngModel)]="htmlBool10" id="local_break_end_input_splice_immediate_flag" class="form-control">
                                     <option *ngFor='let options of bool10' [value]="options">{{options}}</option>
@@ -501,7 +465,7 @@
                                     </select></td>
                                 </tr>
 
-                                <!-- <tr *ngIf="htmlSplice4=='[6] time_signal'">
+                                <tr *ngIf="htmlSplice4=='[6] time_signal'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
@@ -510,18 +474,6 @@
                                         <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
                                         <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
                                         <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                    </select></td>
-                                </tr> -->
-
-                                <tr *ngIf="htmlSplice4=='[6] time_signal'">
-                                    <th>Segmentation Type Id</th><td></td>
-                                    <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                        <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
-                                        <option value="[23] Break End">[23]&nbsp; Break End </option>
-                                        <option value="[31] Provider Advertisement End">[31]&nbsp; Provider Advertisement End </option>
-                                        <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
-                                        <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
-                                        <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
                                     </select></td>
                                 </tr>
 
@@ -542,7 +494,7 @@
                                     </select></td>
                                 </tr>
 
-                                <tr *ngIf="htmlSplice4=='[5] splice_insert' || htmlSplice4=='[6] time_signal'">
+                                <tr *ngIf="htmlSplice4=='[5] splice_insert'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool13" id="local_break_end_output_splice_immediate_flag" class="form-control">
                                         <option *ngFor='let options of bool13' [value]="options">{{options}}</option>
@@ -893,7 +845,7 @@
                             </select></td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice5=='[6] time_signal'">
+                        <tr *ngIf="htmlSplice5=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
@@ -902,18 +854,6 @@
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                            </select></td>
-                        </tr> -->
-
-                        <tr *ngIf="htmlSplice5=='[6] time_signal'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
-                                <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
-                                <option value="[22] Break Start">[22]&nbsp; Break Start </option>
-                                <option value="[30] Provider Advertisement Start">[30]&nbsp; Provider Advertisement Start </option>
-                                <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
-                                <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
-                                <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
                             </select></td>
                         </tr>
                         
@@ -934,7 +874,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice5=='[5] splice_insert' || htmlSplice5=='[6] time_signal'">
+                        <tr>
                             <th>Immediate Flag</th><td></td>
                             <td><select [(ngModel)]="htmlBool42" id="national_break_start_input_splice_immediate_flag" class="form-control">
                                 <option *ngFor='let options of bool42' [value]="options">{{options}}</option>
@@ -1002,7 +942,7 @@
                             </select></td>
                         </tr>
 
-                        <!-- <tr *ngIf="htmlSplice6=='[6] time_signal'">
+                        <tr *ngIf="htmlSplice6=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
@@ -1011,18 +951,6 @@
                                 <option value="32">32&nbsp;  [ Distributor Advertisement Start ]</option>
                                 <option value="34">34&nbsp;  [ Provider Placement Opportunity Start ]</option>
                                 <option value="36">36&nbsp;  [ Distributor Placement Opportunity Start ]</option>
-                            </select></td>
-                        </tr> -->
-
-                        <tr *ngIf="htmlSplice6=='[6] time_signal'">
-                            <th>Segmentation Type Id</th><td></td>
-                            <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
-                                <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
-                                <option value="[22] Break Start">[22]&nbsp; Break Start </option>
-                                <option value="[30] Provider Advertisement Start">[30]&nbsp; Provider Advertisement Start </option>
-                                <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
-                                <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
-                                <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
                             </select></td>
                         </tr>
                         
@@ -1043,7 +971,7 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice6=='[5] splice_insert' || htmlSplice6=='[6] time_signal'">
+                        <tr>
                             <th>Immediate Flag</th><td></td>
                             <td><select [(ngModel)]="htmlBool46" id="national_break_start_output_splice_immediate_flag" class="form-control">
                                 <option *ngFor='let options of bool46' [value]="options">{{options}}</option>
@@ -1132,7 +1060,7 @@
                                 </select></td>
                             </tr>
 
-                            <!-- <tr *ngIf="htmlSplice7=='[6] time_signal'">
+                            <tr *ngIf="htmlSplice7=='[6] time_signal'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
@@ -1141,18 +1069,6 @@
                                     <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
                                     <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
                                     <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                </select></td>
-                            </tr> -->
-
-                            <tr *ngIf="htmlSplice7=='[6] time_signal'">
-                                <th>Segmentation Type Id</th><td></td>
-                                <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
-                                    <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
-                                    <option value="[23] Break End">[23]&nbsp; Break End </option>
-                                    <option value="[31] Provider Advertisement End">[31]&nbsp; Provider Advertisement End </option>
-                                    <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
-                                    <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
-                                    <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
                                 </select></td>
                             </tr>
 
@@ -1173,7 +1089,7 @@
                                 </select></td>
                             </tr>
                             
-                            <tr *ngIf="htmlSplice7=='[5] splice_insert' || htmlSplice7=='[6] time_signal'">
+                            <tr *ngIf="htmlSplice7=='[5] splice_insert'">
                                 <th>Immediate Flag</th><td></td>
                                 <td><select [(ngModel)]="htmlBool50" id="national_break_end_input_splice_immediate_flag" class="form-control">
                                     <option *ngFor='let options of bool50' [value]="options">{{options}}</option>
@@ -1204,7 +1120,7 @@
                                     </select></td>
                                 </tr>
 
-                                <!-- <tr *ngIf="htmlSplice8=='[6] time_signal'">
+                                <tr *ngIf="htmlSplice8=='[6] time_signal'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
@@ -1213,18 +1129,6 @@
                                         <option value="33">33&nbsp;  [ Distributor Advertisement End ]</option>
                                         <option value="35">35&nbsp;  [ Provider Placement Opportunity End ]</option>
                                         <option value="37">37&nbsp;  [ Distributor Placement Opportunity End ]</option>
-                                    </select></td>
-                                </tr> -->
-
-                                <tr *ngIf="htmlSplice8=='[6] time_signal'">
-                                    <th>Segmentation Type Id</th><td></td>
-                                    <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
-                                        <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
-                                        <option value="[23] Break End">[23]&nbsp; Break End </option>
-                                        <option value="[31] Provider Advertisement End">[31]&nbsp; Provider Advertisement End </option>
-                                        <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
-                                        <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
-                                        <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
                                     </select></td>
                                 </tr>
 
@@ -1245,7 +1149,7 @@
                                     </select></td>
                                 </tr>
 
-                                <tr *ngIf="htmlSplice8=='[5] splice_insert' || htmlSplice8=='[6] time_signal'">
+                                <tr *ngIf="htmlSplice8=='[5] splice_insert'">
                                     <th>Immediate Flag</th><td></td>
                                     <td><select [(ngModel)]="htmlBool53" id="national_break_end_output_splice_immediate_flag" class="form-control">
                                         <option *ngFor='let options of bool53' [value]="options">{{options}}</option>

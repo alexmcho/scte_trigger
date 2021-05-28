@@ -299,9 +299,9 @@ export class AddControlComponent implements OnInit {
           
            let var_local_break_end_output_splice_command; 
            let var_local_break_end_output_segmentation_type_id; 
-           let var_local_break_end_output_out_of_network_indicator ;
-           let var_local_break_end_output_splice_immediate_flag;
+           let var_local_break_end_output_out_of_network_indicator;
            let var_local_break_end_output_splice_event_id;
+           let var_local_break_end_output_splice_immediate_flag;
            let var_local_break_end_output_break_duration_flag;
            let var_local_break_end_deviation_tolerance;
 
@@ -380,7 +380,6 @@ export class AddControlComponent implements OnInit {
             var_local_break_start_output_break_auto_return,
             
             var_local_break_end_input_action,
-        
             var_local_break_end_input_splice_command,
             var_local_break_end_input_out_of_network_indicator,
             var_local_break_end_input_splice_event_id,
@@ -389,8 +388,8 @@ export class AddControlComponent implements OnInit {
         
             var_local_break_end_output_splice_command,
             var_local_break_end_output_out_of_network_indicator,
-            var_local_break_end_output_splice_immediate_flag,
             var_local_break_end_output_splice_event_id,
+            var_local_break_end_output_splice_immediate_flag,
             var_local_break_end_output_break_duration_flag,
             var_local_break_end_deviation_tolerance,
             
@@ -523,8 +522,6 @@ export class AddControlComponent implements OnInit {
           const national_break_start_output_break_duration_max = <HTMLInputElement> document.getElementById("national_break_start_output_break_duration_max");
           const national_break_start_output_break_auto_return = <HTMLInputElement> document.getElementById("national_break_start_output_break_auto_return");
           
-          const national_break_duration_flag = <HTMLInputElement> document.getElementById("national_break_duration_flag");
-          
           const national_break_end_input_action = <HTMLInputElement> document.getElementById("national_break_end_input_action");
           const national_break_end_input_splice_command = <HTMLInputElement> document.getElementById("national_break_end_input_splice_command");
           const national_break_end_input_segmentation_type_id = <HTMLInputElement> document.getElementById("national_break_end_input_segmentation_type_id");
@@ -569,7 +566,6 @@ export class AddControlComponent implements OnInit {
             let var_national_break_start_output_break_duration_max;
             let var_national_break_start_output_break_auto_return; 
           
-            let var_national_break_duration_flag; 
             let var_national_break_end_input_action;
             let var_national_break_end_input_splice_command;
             let var_national_break_end_input_segmentation_type_id;
@@ -581,8 +577,8 @@ export class AddControlComponent implements OnInit {
             let var_national_break_end_output_splice_command; 
             let var_national_break_end_output_segmentation_type_id; 
             let var_national_break_end_output_out_of_network_indicator ;
-            let var_national_break_end_output_splice_immediate_flag;
             let var_national_break_end_output_splice_event_id;
+            let var_national_break_end_output_splice_immediate_flag;
             let var_national_break_end_output_break_duration_flag;
             let var_national_break_end_deviation_tolerance;
 
@@ -613,8 +609,6 @@ export class AddControlComponent implements OnInit {
           try{ var_national_break_start_output_break_duration_min = national_break_start_output_break_duration_min.value}catch{var_national_break_start_output_break_duration_min = "none"}
           try{ var_national_break_start_output_break_duration_max = national_break_start_output_break_duration_max.value}catch{var_national_break_start_output_break_duration_max = "none"}
           try{ var_national_break_start_output_break_auto_return = national_break_start_output_break_auto_return.value}catch{var_national_break_start_output_break_auto_return ="none"}
-          
-          try{ var_national_break_duration_flag = national_break_duration_flag.value}catch{var_national_break_duration_flag = "none"}
           
           try{ var_national_break_end_input_segmentation_type_id = national_break_end_input_segmentation_type_id.value}catch{var_national_break_end_input_segmentation_type_id = "none"}
           try{ var_national_break_end_input_splice_command = national_break_end_input_splice_command.value}catch{var_national_break_end_input_splice_command = "none"}
@@ -671,8 +665,8 @@ export class AddControlComponent implements OnInit {
           
             var_national_break_end_output_splice_command,
             var_national_break_end_output_out_of_network_indicator,
-            var_national_break_end_output_splice_immediate_flag,
             var_national_break_end_output_splice_event_id,
+            var_national_break_end_output_splice_immediate_flag,
             var_national_break_end_output_break_duration_flag,
             var_national_break_end_deviation_tolerance,
             
