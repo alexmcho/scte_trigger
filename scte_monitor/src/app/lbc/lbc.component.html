@@ -16,7 +16,7 @@
                   <div *ngIf="local_break_validate_splice_count" class="form-group">
                       <!-- <div> -->
                       <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
-                      <input id="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
+                      <input id="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any min="0" style="display:inline-block;margin-left:10px;width:60px">
                   </div>
               </form>
               <!-- Local Break Start -->
@@ -123,7 +123,7 @@
                       <tr *ngIf="local_break_duration_flag=='true'">
                         <!-- <tr> -->
                           <th>Break Duration</th>
-                          <td><select [(ngModel)]="local_break_start_input_break_duration" id="local_break_start_input_break_duration" name= "local_break_start_input_break_duration" class="form-control">
+                          <td width="30%"><select [(ngModel)]="local_break_start_input_break_duration" id="local_break_start_input_break_duration" name= "local_break_start_input_break_duration" class="form-control">
                             <option value="" disabled selected hidden>Change Break Duration Type</option>
                               <option value="exact">Exact Time (seconds)</option>
                               <option value="range">Time Range (seconds)</option>
@@ -264,7 +264,7 @@
                         <tr *ngIf="local_break_duration_flag_start_output=='true'">
                             <!-- <tr> -->
                             <th>Break Duration</th>
-                            <td><select [(ngModel)]="local_break_start_output_break_duration" id= "local_break_start_output_break_duration" class="form-control">
+                            <td width="30%"><select [(ngModel)]="local_break_start_output_break_duration" id= "local_break_start_output_break_duration" class="form-control">
                                 <option value="" disabled selected hidden>Change Break Duration Type</option>
                                 <option value="exact">Exact Time (seconds)</option>
                                 <option value="range">Time Range (seconds)</option>

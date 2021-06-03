@@ -32,6 +32,10 @@ export class ControlComponent implements OnInit {
   listOfContentCommandType = ["5"]
   listOfProgramCommandType = ["6"]
 
+  listOfSpliceEvent = ["Must Be Numeric", "Not Numeric"]
+  listOfSegmentationTypeStart = ["[22] Break Start", "[30] Provider Advertisement Start", "[32] Distributor Advertisement Start", "[34] Provider Placement Opportunity Start", "[36] Distributor Placement Opportunity Start"]
+  listOfSegmentationTypeEnd = ["[23] Break End", "[31] Provider Advertisement End", "[33] Distributor Advertisement End", "[35] Provider Placement Opportunity End", "[37] Distributor Placement Opportunity End"]
+
   //filtering list
   action1:String [] = []
   action2:String [] = []
@@ -109,11 +113,51 @@ export class ControlComponent implements OnInit {
   spliceCommand3:String [] = []
   spliceCommand4:String [] = [] 
 
+  spliceEvent1:String [] = [] 
+  spliceEvent2:String [] = [] 
+  spliceEvent3:String [] = []
+  spliceEvent4:String [] = [] 
+
+  segmentationTypeStart1:String [] = [] 
+  segmentationTypeStart2:String [] = [] 
+  segmentationTypeEnd1:String [] = [] 
+  segmentationTypeEnd2:String [] = [] 
+
+  htmlEvent1; 
+  htmlEvent2;
+  htmlEvent3;
+  htmlEvent4;
+
+  htmlSegmentation1;
+  htmlSegmentation2;
+  htmlSegmentation3;
+  htmlSegmentation4;
+
   //National Break
   spliceCommand5:String [] = []
   spliceCommand6:String [] = []
   spliceCommand7:String [] = []
   spliceCommand8:String [] = [] 
+
+  spliceEvent5:String [] = [] 
+  spliceEvent6:String [] = [] 
+  spliceEvent7:String [] = []
+  spliceEvent8:String [] = [] 
+
+  segmentationTypeStart3:String [] = [] 
+  segmentationTypeStart4:String [] = [] 
+  segmentationTypeEnd3:String [] = [] 
+  segmentationTypeEnd4:String [] = [] 
+
+  htmlEvent5;
+  htmlEvent6;
+  htmlEvent7;
+  htmlEvent8;
+
+  htmlSegmentation5;
+  htmlSegmentation6;
+  htmlSegmentation7;
+  htmlSegmentation8;
   
   //Content
   contentCommand9:String [] = [] 
@@ -246,12 +290,12 @@ public formSubmitAttempt: boolean;
 		this.config = data;
 		var stringChecker:String;
 		
-		var list = [this.action1, this.action2]
+		var list = [this.action1, this.action2, this.action3, this.action4]
 
 		var list2 = [this.bool1, this.bool2, this.bool3, this.bool4, this.bool5, this.bool6, this.bool7, 
 		this.bool8, this.bool9, this.bool10, this.bool11,this.bool12, this.bool13, this.bool14]
 
-		//Splice Command - Local Break 
+		//Splice Command && Splice Event && Segmentation Type - Local Break 
 		var list3 = [this.spliceCommand1] 
 		this.spliceCommand1.push(this.config.value[0].value[5].value[2])
 		this.htmlSplice1 = this.config.value[0].value[5].value[2]
@@ -268,7 +312,39 @@ public formSubmitAttempt: boolean;
 		this.spliceCommand4.push(this.config.value[0].value[5].value[24])
 		this.htmlSplice4 = this.config.value[0].value[5].value[24]
 
-		//Splice Command - National Break
+		var list16 = [this.spliceEvent1]
+		this.spliceEvent1.push(this.config.value[0].value[5].value[4])
+		this.htmlEvent1 = this.config.value[0].value[5].value[4]
+
+		var list17 = [this.spliceEvent2]
+		this.spliceEvent2.push(this.config.value[0].value[5].value[12])
+		this.htmlEvent2 = this.config.value[0].value[5].value[12]
+
+		var list18 = [this.spliceEvent3]
+		this.spliceEvent3.push(this.config.value[0].value[5].value[21])
+		this.htmlEvent3 = this.config.value[0].value[5].value[21]
+
+		var list19 = [this.spliceEvent4]
+		this.spliceEvent4.push(this.config.value[0].value[5].value[26])
+		this.htmlEvent4 = this.config.value[0].value[5].value[26]
+
+		var list24 = [this.segmentationTypeStart1]
+		this.segmentationTypeStart1.push(this.config.value[0].value[5].value[30])
+		this.htmlSegmentation1 = this.config.value[0].value[5].value[30]
+
+		var list25 = [this.segmentationTypeStart2]
+		this.segmentationTypeStart2.push(this.config.value[0].value[5].value[31])
+		this.htmlSegmentation2 = this.config.value[0].value[5].value[31]
+
+		var list26 = [this.segmentationTypeEnd1]
+		this.segmentationTypeEnd1.push(this.config.value[0].value[5].value[32])
+		this.htmlSegmentation3 = this.config.value[0].value[5].value[32]
+
+		var list27 = [this.segmentationTypeEnd2]
+		this.segmentationTypeEnd2.push(this.config.value[0].value[5].value[33])
+		this.htmlSegmentation4 = this.config.value[0].value[5].value[33]
+
+		//Splice Command && Splice Event && Segmentation Type - National Break
 		var list9 = [this.spliceCommand5] 
 		this.spliceCommand5.push(this.config.value[0].value[6].value[2])
 		this.htmlSplice5 = this.config.value[0].value[6].value[2]
@@ -284,6 +360,40 @@ public formSubmitAttempt: boolean;
 		var list12 = [this.spliceCommand8] 
 		this.spliceCommand8.push(this.config.value[0].value[6].value[24])
 		this.htmlSplice8 = this.config.value[0].value[6].value[24]
+
+		var list20 = [this.spliceEvent5]
+		this.spliceEvent5.push(this.config.value[0].value[6].value[4])
+		this.htmlEvent5 = this.config.value[0].value[6].value[4]
+
+		var list21 = [this.spliceEvent6]
+		this.spliceEvent6.push(this.config.value[0].value[6].value[12])
+		this.htmlEvent6 = this.config.value[0].value[6].value[12]
+
+		var list22 = [this.spliceEvent7]
+		this.spliceEvent7.push(this.config.value[0].value[6].value[21])
+		this.htmlEvent7 = this.config.value[0].value[6].value[21]
+
+		var list23 = [this.spliceEvent8]
+		this.spliceEvent8.push(this.config.value[0].value[6].value[26])
+		this.htmlEvent8 = this.config.value[0].value[6].value[26]
+
+
+		var list28 = [this.segmentationTypeStart3]
+		this.segmentationTypeStart3.push(this.config.value[0].value[6].value[30])
+		this.htmlSegmentation5 = this.config.value[0].value[6].value[30]
+
+		var list29 = [this.segmentationTypeStart4]
+		this.segmentationTypeStart4.push(this.config.value[0].value[6].value[31])
+		this.htmlSegmentation6 = this.config.value[0].value[6].value[31]
+
+		var list30 = [this.segmentationTypeEnd3]
+		this.segmentationTypeEnd3.push(this.config.value[0].value[6].value[32])
+		this.htmlSegmentation7 = this.config.value[0].value[6].value[32]
+
+		var list31 = [this.segmentationTypeEnd4]
+		this.segmentationTypeEnd4.push(this.config.value[0].value[6].value[33])
+		this.htmlSegmentation8 = this.config.value[0].value[6].value[33]
+
 
 		//Splice Command - Content 
 		var list13 = [this.contentCommand9] 
@@ -517,6 +627,110 @@ public formSubmitAttempt: boolean;
 				list15[i].push(this.listOfProgramCommandType[j])
 			}
 		}
+		for(let i = 0; i < list16.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list16[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list16[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list17.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list17[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list17[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list18.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list18[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list18[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list19.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list19[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list19[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list20.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list20[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list20[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list21.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list21[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list21[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list22.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list22[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list22[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+		for(let i = 0; i < list23.length; i++){
+			for(let j = 0; j < 2; j++)
+			if(list23[i].indexOf(this.listOfSpliceEvent[j]) == -1){
+				list23[i].push(this.listOfSpliceEvent[j])
+			}
+		}
+
+
+
+		for(let i = 0; i < list24.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list24[i].indexOf(this.listOfSegmentationTypeStart[j]) == -1){
+				list24[i].push(this.listOfSegmentationTypeStart[j])
+			}
+		}
+		for(let i = 0; i < list25.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list25[i].indexOf(this.listOfSegmentationTypeStart[j]) == -1){
+				list25[i].push(this.listOfSegmentationTypeStart[j])
+			}
+		}
+
+		for(let i = 0; i < list26.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list26[i].indexOf(this.listOfSegmentationTypeEnd[j]) == -1){
+				list26[i].push(this.listOfSegmentationTypeEnd[j])
+			}
+		}
+		for(let i = 0; i < list27.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list27[i].indexOf(this.listOfSegmentationTypeEnd[j]) == -1){
+				list27[i].push(this.listOfSegmentationTypeEnd[j])
+			}
+		}
+		for(let i = 0; i < list28.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list28[i].indexOf(this.listOfSegmentationTypeStart[j]) == -1){
+				list28[i].push(this.listOfSegmentationTypeStart[j])
+			}
+		}
+		for(let i = 0; i < list29.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list29[i].indexOf(this.listOfSegmentationTypeStart[j]) == -1){
+				list29[i].push(this.listOfSegmentationTypeStart[j])
+			}
+		}
+
+		for(let i = 0; i < list30.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list30[i].indexOf(this.listOfSegmentationTypeEnd[j]) == -1){
+				list30[i].push(this.listOfSegmentationTypeEnd[j])
+			}
+		}
+		for(let i = 0; i < list31.length; i++){
+			for(let j = 0; j < 5; j++)
+			if(list31[i].indexOf(this.listOfSegmentationTypeEnd[j]) == -1){
+				list31[i].push(this.listOfSegmentationTypeEnd[j])
+			}
+		}
+
+
+
 
 	})
   }
@@ -689,7 +903,7 @@ public formSubmitAttempt: boolean;
   console.log(this.config)
   this.form = this.formBuilder.group({
 		"emails":  [null, [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]],
-		"network_id":  [null, [Validators.required, Validators.pattern("")]]
+		"network_id":  [null, [Validators.required, Validators.pattern("")]],
 	})
   }
 

@@ -104,7 +104,7 @@
           <span *ngIf="item.key=='validation_frequency'"> 
             <div>
               <!-- <p style="font-weight:500;">Validation Frequency (sec):  -->
-              <input [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" id="validation_frequency" type=number step=any class="form-control" style="width:70px; display:inline-block"> 
+              <input [(ngModel)]="con?.value[i].value" placeholder="{{con?.value[i].value}}" id="validation_frequency" type=number step=any class="form-control" min="0" style="width:70px; display:inline-block"> 
             </div> 
           </span>
       </div>
@@ -160,7 +160,7 @@
               <form class=form-inline>
                   <div *ngIf="local_break_validate_splice_count" class="form-group">
                       <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
-                      <input value="{{item.value[0]}}" id ="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour"  type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
+                      <input value="{{item.value[0]}}" id ="local_break_expected_splices_hour" class="form-control" name="expected_splices_hour"  type="number" step=any  min="0" style="display:inline-block;margin-left:10px;width:60px">
                   </div>
               </form>
             
@@ -202,7 +202,7 @@
                             </select></td>
                         </tr> -->
 
-                        <tr *ngIf="htmlSplice1=='[6] time_signal'">
+                        <!-- <tr *ngIf="htmlSplice1=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
@@ -211,6 +211,13 @@
                                 <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
                                 <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
                                 <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice1=='[6] time_signal'">
+                            <th>Segmentation Type Id</th><td></td>
+                            <td><select [(ngModel)]="htmlSegmentation1" id="local_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option *ngFor='let options of segmentationTypeStart1' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
@@ -222,12 +229,19 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice1=='[5] splice_insert'">
+                        <!-- <tr *ngIf="htmlSplice1=='[5] splice_insert'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_input_splice_event_id" class="form-control">
                                 <option value="{{item.value[4]}}">{{item.value[4]}}</option>
                                 <option value="Must Be Numeric">Must Be Numeric</option>
                                 <option value="Not Numeric">Not Numeric</option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice1=='[5] splice_insert'">
+                            <th>Splice Event Id</th><td></td>
+                            <td><select [(ngModel)]="htmlEvent1" id="local_break_start_input_splice_event_id" class="form-control">
+                                <option *ngFor='let options of spliceEvent1' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -311,7 +325,7 @@
                             </select></td>
                         </tr> -->
 
-                        <tr *ngIf="htmlSplice2=='[6] time_signal'">
+                        <!-- <tr *ngIf="htmlSplice2=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="local_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
@@ -320,6 +334,13 @@
                                 <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
                                 <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
                                 <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice2=='[6] time_signal'">
+                            <th>Segmentation Type Id</th><td></td>
+                            <td><select [(ngModel)]="htmlSegmentation2" id="local_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option *ngFor='let options of segmentationTypeStart2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
@@ -331,12 +352,19 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice2=='[5] splice_insert'">
+                        <!-- <tr *ngIf="htmlSplice2=='[5] splice_insert'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="local_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
                                 <option value="Must Be Numeric">Must Be Numeric</option>
                                 <option value="Not Numeric">Not Numeric</option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice2=='[5] splice_insert'">
+                            <th>Splice Event Id</th><td></td>
+                            <td><select [(ngModel)]="htmlEvent2" id="local_break_start_output_splice_event_id" class="form-control">
+                                <option *ngFor='let options of spliceEvent2' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -441,7 +469,7 @@
                                 </select></td>
                             </tr> -->
 
-                            <tr *ngIf="htmlSplice3=='[6] time_signal'">
+                            <!-- <tr *ngIf="htmlSplice3=='[6] time_signal'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
@@ -450,6 +478,13 @@
                                     <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
                                     <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
                                     <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
+                                </select></td>
+                            </tr> -->
+
+                            <tr *ngIf="htmlSplice3=='[6] time_signal'">
+                                <th>Segmentation Type Id</th><td></td>
+                                <td><select [(ngModel)]="htmlSegmentation3" id="local_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
+                                    <option *ngFor='let options of segmentationTypeEnd1' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
@@ -461,12 +496,19 @@
                                 </select></td>
                             </tr>
 
-                            <tr *ngIf="htmlSplice3=='[5] splice_insert'">
+                            <!-- <tr *ngIf="htmlSplice3=='[5] splice_insert'">
                                 <th>Splice Event Id</th><td></td>
                                 <td><select id="local_break_end_input_splice_event_id" class="form-control">
                                     <option value="{{item.value[21]}}">{{item.value[21]}}</option>
                                     <option value="Must Be Numeric">Must Be Numeric</option>
                                     <option value="Not Numeric">Not Numeric</option>
+                                </select></td>
+                            </tr> -->
+
+                            <tr *ngIf="htmlSplice3=='[5] splice_insert'">
+                                <th>Splice Event Id</th><td></td>
+                                <td><select [(ngModel)]="htmlEvent3" id="local_break_end_input_splice_event_id" class="form-control">
+                                    <option *ngFor='let options of spliceEvent3' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
                             
@@ -513,7 +555,7 @@
                                     </select></td>
                                 </tr> -->
 
-                                <tr *ngIf="htmlSplice4=='[6] time_signal'">
+                                <!-- <tr *ngIf="htmlSplice4=='[6] time_signal'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
@@ -522,6 +564,13 @@
                                         <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
                                         <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
                                         <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
+                                    </select></td>
+                                </tr> -->
+
+                                <tr *ngIf="htmlSplice4=='[6] time_signal'">
+                                    <th>Segmentation Type Id</th><td></td>
+                                    <td><select [(ngModel)]="htmlSegmentation4" id="local_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
+                                        <option *ngFor='let options of segmentationTypeEnd2' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
@@ -533,12 +582,19 @@
                                     </select></td>
                                 </tr>
 
-                                <tr *ngIf="htmlSplice4=='[5] splice_insert'">
+                                <!-- <tr *ngIf="htmlSplice4=='[5] splice_insert'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="local_break_end_output_splice_event_id" class="form-control">
                                         <option value="{{item.value[26]}}">{{item.value[26]}}</option>
                                         <option value="Must Be Numeric">Must Be Numeric</option>
                                         <option value="Not Numeric">Not Numeric</option>
+                                    </select></td>
+                                </tr> -->
+
+                                <tr *ngIf="htmlSplice4=='[5] splice_insert'">
+                                    <th>Splice Event Id</th><td></td>
+                                    <td><select [(ngModel)]="htmlEvent4" id="local_break_end_output_splice_event_id" class="form-control">
+                                        <option *ngFor='let options of spliceEvent4' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
@@ -863,7 +919,7 @@
                 <form class=form-inline>
                     <div *ngIf="national_break_validate_splice_count" class="form-group">
                         <label for="expected_splices_hour">Expected Number of Breaks per Hour: </label>
-                        <input value="{{item.value[0]}}" id ="national_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any  style="display:inline-block;margin-left:10px;width:60px">
+                        <input value="{{item.value[0]}}" id ="national_break_expected_splices_hour" class="form-control" name="expected_splices_hour" type="number" step=any min="0" style="display:inline-block;margin-left:10px;width:60px">
                     </div>
                 </form>
               
@@ -905,7 +961,7 @@
                             </select></td>
                         </tr> -->
 
-                        <tr *ngIf="htmlSplice5=='[6] time_signal'">
+                        <!-- <tr *ngIf="htmlSplice5=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
                                 <option value="{{item.value[30]}}"> {{item.value[30]}}</option>
@@ -914,6 +970,13 @@
                                 <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
                                 <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
                                 <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice5=='[6] time_signal'">
+                            <th>Segmentation Type Id</th><td></td>
+                            <td><select [(ngModel)]="htmlSegmentation5" id="national_break_start_input_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option *ngFor='let options of segmentationTypeStart3' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
@@ -925,12 +988,19 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice5=='[5] splice_insert'">
+                        <!-- <tr *ngIf="htmlSplice5=='[5] splice_insert'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_input_splice_event_id" class="form-control">
                                 <option value="{{item.value[4]}}">{{item.value[4]}}</option>
                                 <option value="Must Be Numeric">Must Be Numeric</option>
                                 <option value="Not Numeric">Not Numeric</option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice5=='[5] splice_insert'">
+                            <th>Splice Event Id</th><td></td>
+                            <td><select [(ngModel)]="htmlEvent5" id="national_break_start_input_splice_event_id" class="form-control">
+                                <option *ngFor='let options of spliceEvent5' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -1014,7 +1084,7 @@
                             </select></td>
                         </tr> -->
 
-                        <tr *ngIf="htmlSplice6=='[6] time_signal'">
+                        <!-- <tr *ngIf="htmlSplice6=='[6] time_signal'">
                             <th>Segmentation Type Id</th><td></td>
                             <td><select id="national_break_start_output_segmentation_type_id" class="form-control">
                                 <option value="{{item.value[31]}}"> {{item.value[31]}}</option>
@@ -1023,6 +1093,13 @@
                                 <option value="[32] Distributor Advertisement Start">[32]&nbsp; Distributor Advertisement Start </option>
                                 <option value="[34] Provider Placement Opportunity Start">[34]&nbsp; Provider Placement Opportunity Start </option>
                                 <option value="[36] Distributor Placement Opportunity Start">[36]&nbsp; Distributor Placement Opportunity Start </option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice6=='[6] time_signal'">
+                            <th>Segmentation Type Id</th><td></td>
+                            <td><select [(ngModel)]="htmlSegmentation6" id="national_break_start_output_segmentation_type_id" name="segmentation_type_id_start" class="form-control" >
+                                <option *ngFor='let options of segmentationTypeStart4' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
                         
@@ -1034,12 +1111,19 @@
                             </select></td>
                         </tr>
 
-                        <tr *ngIf="htmlSplice6=='[5] splice_insert'">
+                        <!-- <tr *ngIf="htmlSplice6=='[5] splice_insert'">
                             <th>Splice Event Id</th><td></td>
                             <td><select id="national_break_start_output_splice_event_id" class="form-control">
                                 <option value="{{item.value[12]}}">{{item.value[12]}}</option>
                                 <option value="Must Be Numeric">Must Be Numeric</option>
                                 <option value="Not Numeric">Not Numeric</option>
+                            </select></td>
+                        </tr> -->
+
+                        <tr *ngIf="htmlSplice6=='[5] splice_insert'">
+                            <th>Splice Event Id</th><td></td>
+                            <td><select [(ngModel)]="htmlEvent6" id="national_break_start_output_splice_event_id" class="form-control">
+                                <option *ngFor='let options of spliceEvent6' [value]="options">{{options}}</option>
                             </select></td>
                         </tr>
 
@@ -1144,7 +1228,7 @@
                                 </select></td>
                             </tr> -->
 
-                            <tr *ngIf="htmlSplice7=='[6] time_signal'">
+                            <!-- <tr *ngIf="htmlSplice7=='[6] time_signal'">
                                 <th>Segmentation Type Id</th><td></td>
                                 <td><select id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control">
                                     <option value="{{item.value[32]}}"> {{item.value[32]}}</option>
@@ -1153,6 +1237,13 @@
                                     <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
                                     <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
                                     <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
+                                </select></td>
+                            </tr> -->
+
+                            <tr *ngIf="htmlSplice7=='[6] time_signal'">
+                                <th>Segmentation Type Id</th><td></td>
+                                <td><select [(ngModel)]="htmlSegmentation7" id="national_break_end_input_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
+                                    <option *ngFor='let options of segmentationTypeEnd3' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
 
@@ -1164,12 +1255,19 @@
                                 </select></td>
                             </tr>
 
-                            <tr *ngIf="htmlSplice7=='[5] splice_insert'">
+                            <!-- <tr *ngIf="htmlSplice7=='[5] splice_insert'">
                                 <th>Splice Event Id</th><td></td>
                                 <td><select id="national_break_end_input_splice_event_id" class="form-control">
                                     <option value="{{item.value[21]}}">{{item.value[21]}}</option>
                                     <option value="Must Be Numeric">Must Be Numeric</option>
                                     <option value="Not Numeric">Not Numeric</option>
+                                </select></td>
+                            </tr> -->
+
+                            <tr *ngIf="htmlSplice7=='[5] splice_insert'">
+                                <th>Splice Event Id</th><td></td>
+                                <td><select [(ngModel)]="htmlEvent7" id="national_break_end_input_splice_event_id" class="form-control">
+                                    <option *ngFor='let options of spliceEvent7' [value]="options">{{options}}</option>
                                 </select></td>
                             </tr>
                             
@@ -1216,7 +1314,7 @@
                                     </select></td>
                                 </tr> -->
 
-                                <tr *ngIf="htmlSplice8=='[6] time_signal'">
+                                <!-- <tr *ngIf="htmlSplice8=='[6] time_signal'">
                                     <th>Segmentation Type Id</th><td></td>
                                     <td><select id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
                                         <option value="{{item.value[33]}}"> {{item.value[33]}}</option>
@@ -1225,6 +1323,13 @@
                                         <option value="[33] Distributor Advertisement End">[33]&nbsp; Distributor Advertisement End </option>
                                         <option value="[35] Provider Placement Opportunity End">[35]&nbsp; Provider Placement Opportunity End </option>
                                         <option value="[37] Distributor Placement Opportunity End">[37]&nbsp; Distributor Placement Opportunity End </option>
+                                    </select></td>
+                                </tr> -->
+
+                                <tr *ngIf="htmlSplice8=='[6] time_signal'">
+                                    <th>Segmentation Type Id</th><td></td>
+                                    <td><select [(ngModel)]="htmlSegmentation8" id="national_break_end_output_segmentation_type_id" name="segmentation_type_id_end" class="form-control" >
+                                        <option *ngFor='let options of segmentationTypeEnd4' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 
@@ -1236,12 +1341,19 @@
                                     </select></td>
                                 </tr>
 
-                                <tr *ngIf="htmlSplice8=='[5] splice_insert'">
+                                <!-- <tr *ngIf="htmlSplice8=='[5] splice_insert'">
                                     <th>Splice Event Id</th><td></td>
                                     <td><select id="national_break_end_output_splice_event_id" class="form-control">
                                         <option value="{{item.value[26]}}">{{item.value[26]}}</option>
                                         <option value="Must Be Numeric">Must Be Numeric</option>
                                         <option value="Not Numeric">Not Numeric</option>
+                                    </select></td>
+                                </tr> -->
+
+                                <tr *ngIf="htmlSplice8=='[5] splice_insert'">
+                                    <th>Splice Event Id</th><td></td>
+                                    <td><select [(ngModel)]="htmlEvent8" id="national_break_end_output_splice_event_id" class="form-control">
+                                        <option *ngFor='let options of spliceEvent8' [value]="options">{{options}}</option>
                                     </select></td>
                                 </tr>
 

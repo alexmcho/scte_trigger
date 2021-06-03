@@ -67,7 +67,7 @@ local_break_end.value, break_duration_deviation_tolerance.value)">Confirm</butto
       <div *ngIf="isFieldInvalid('emails')" class="text-danger" style="display: inline-block">*Email Invalid</div> -->
   </div>
   <div>
-    <h6>Enter Validation Frequency (minutes): </h6><input id="validation_frequency" type=number step=any class="form-control" style="width:40%">
+    <h6>Enter Validation Frequency (minutes): </h6><input id="validation_frequency" type=number step=any class="form-control" min="0" style="width:40%">
       <!-- <div *ngIf="isFieldRequired('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Required</div>
       <div *ngIf="isFieldInvalid('validation_frequency')" class="text-danger" style="display: inline-block">*Validation Frequency Invalid</div> -->
   </div>
