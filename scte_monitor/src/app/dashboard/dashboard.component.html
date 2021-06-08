@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <div style="margin-top:10px"><h4>SCTE MONITOR DASHBOARD</h4></div>
+  <div class="btn-toolbar mb-2 mb-md-0">
+
+    <!-- Add New Network and Confirm Modal -->
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Create Network</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Network Name:</label>
+            <br><br>
+            <input type="networkname" class="form-control" id="networkName" placeholder="Network Name" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="saveButton();modal.dismiss()">Save</button>
+      </div>
+    </ng-template>
+      <hr>
+      <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-dark" routerLink="/add-control">Add New Network</button>
+      </div>
+  </div>
+</div>
+<pre>{{ closeResult }}</pre>
+
+<!--Available Networks-->
+<div class="table-responsive" style="margin-top: 30px;">
+  <h5>Available Networks:</h5>
+  <table class="table table-bordered table-hover">
+    <thead class="">
+      <!-- <th><h6>Network ID</h6></th> -->
+    </thead>
+    <tbody id="tbody1">
+      <div *ngFor="let con of config?.value">
+        <div *ngFor="let item of con?.value">
+          <a routerLink="/control" *ngIf="item.key=='network_id'"></a>
+        </div>
+      </div>
+      <tr *ngFor="let strings of networks">
+        <td><a (click)="func(strings)" routerLink="/control">{{strings}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <i class="fas fa-chart-network"></i> -->

@@ -1,0 +1,134 @@
+    <ngb-accordion style="margin: 10px" id="RemoveProgram" [destroyOnHide]="false">
+      <ngb-panel>
+          <ng-template ngbPanelHeader let-opened="opened">
+            <div class="d-flex align-items-center justify-content-between">
+            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" style="margin-left: auto; font-size:large;">Program</button></h3>
+            <h3 class="m-0"><button ngbPanelToggle class="btn btn-link p-0" (click)="removeProgram()" style="margin-left: auto; font-size:large;">Remove</button></h3>
+            </div>
+            <ng-template ngbPanelContent>
+
+                <!-- Program Start -->
+                <div> 
+                    <br><h4>Program Configuration:</h4>
+                    <br>
+                    <br><label style="font-size: larger;color:#00A8E0">Start Trigger</label>
+                    <br>
+                    <table id="program_start_table" class ="table table-striped">
+                        <tbody>
+
+                        <tr>
+                        <th>Splice Command Type</th><td></td>
+                        <td><select id="program_start_input_splice_command_type" [(ngModel)]="program_start_input_splice_command_type" class="form-control">
+                            <option value="6">6</option>
+                        </select></td>
+                        </tr>
+
+                        <tr *ngIf="program_start_input_splice_command_type=='6'">
+                            <th>segmentation_type_id</th><td></td>
+                            <td><select id="program_start_input_segmentation_type_id" class="form-control">
+                                <option value="10">10</option>
+                            </select></td>
+                        </tr>
+
+                        <tr *ngIf="program_start_input_splice_command_type=='6'">
+                        <th>Segmentation Duration Flag</th><td></td>
+                        <td><select id="program_start_input_duration_flag" [(ngModel)]="program_start_input_duration_flag" class="form-control">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select></td>
+                        </tr>
+
+                        <tr *ngIf="program_start_input_splice_command_type=='6' && program_start_input_duration_flag=='true'">
+                            <th>Segmentation Duration</th>
+                            <td ><select [(ngModel)]="program_start_timing" name= "program_start_output_break_duration" class="form-control">
+                                <option value="" disabled selected hidden>Change Segmentation Duration Type</option>
+                                <option value=exact>Exact Time (seconds)</option>
+                                <option value=range>Time Range (seconds)</option>
+                            </select></td>
+                            <td *ngIf= "program_start_timing == 'range'">
+                                <div class="form-group row">
+                                    <label for="segmentation_duration_min" class="col-sm-3 col-form-label">min (sec):</label>
+                                    <div class="col-sm-4">
+                                        <input  id="program_start_input_segmentation_duration_min" class="form-control" type="number" step=any >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="segmentation_duration_max" class="col-sm-3 col-form-label">max (sec):</label>
+                                    <div class="col-sm-4">
+                                        <input  id="program_start_input_segmentation_duration_max" class="form-control" type="number" step=any >
+                                    </div>
+                                </div> 
+                            </td>
+                            <td *ngIf = "program_start_timing == 'exact'">
+                                <div class="form-group row">
+                                    <label for="segmentation_duration_min" class="col-sm-3 col-form-label">Exact: (sec)</label>
+                                    <div class="col-sm-4">
+                                        <input id="program_start_input_break_duration_min" class="form-control" type="number" step=any>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr *ngIf="program_start_input_splice_command_type=='6'">
+                            <th>Time Specified Flag</th><td></td>
+                            <td><select id="program_time_specified_flag" class="form-control">
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                <!-- Properties End -->
+                <!-- Properties VCR Hide -->
+                </div>
+
+                <!-- Include Program End Trigger  -->
+                <div class="custom-control custom-switch">
+                    <input [(ngModel)]="program_include_break_end" type="checkbox" id="programEndSwitch" class="custom-control-input">
+                    <label class="custom-control-label" for="programEndSwitch">Include Program End</label>
+                </div>
+
+                <!-- Program End -->
+                <div *ngIf="program_include_break_end">
+                    <br><label style="font-size: larger;color:#00A8E0">End Trigger</label>
+                    <form class="form-inline">
+                        <div class="form-group">
+                        </div>
+                    </form>
+                    <br>
+                    <table id="program_end_table" class ="table table-striped">
+                        <tbody>
+
+                        <tr>
+                        <th>Splice Command Type</th><td></td>
+                        <td><select id="program_end_input_splice_command_type" [(ngModel)]="program_end_input_splice_command_type"  class="form-control">
+                            <option value="6">6</option>
+                        </select></td>
+                        </tr>
+                        
+                        <tr *ngIf="program_end_input_splice_command_type=='6'">
+                        <th>Segmentation Type Id</th><td></td>
+                        <td><select id="program_end_input_segmentation_type_id" class="form-control">
+                            <option value="11">11</option>
+                        </select></td>
+                        </tr>
+
+                        <tr *ngIf="program_end_input_splice_command_type=='6'">
+                        <th>Duration Flag</th><td></td>
+                        <td><select id="program_end_input_duration_flag" [(ngModel)]="program_end_input_duration_flag"  class="form-control">
+                            <option value="false">false</option>
+                        </select></td>
+                        </tr>
+                        
+                    <!-- Properties End -->
+                        </tbody>
+                    </table>
+                    <!-- Properties End -->
+                    <!-- Properties VCR Hide -->
+                </div>
+                </ng-template>
+          </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
