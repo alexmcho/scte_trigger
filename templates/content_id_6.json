@@ -1,5 +1,6 @@
 {
     "content_id": {
+        "action": "NOOP",
         "splice_command_type": 6,
         "time_specified_flag": true,
         "tag": 2,

@@ -11,6 +11,7 @@ import neovalidator
 import neoalert
 import threading
 import time
+import translator
 import logging
 import sys
 import pymongo
@@ -18,6 +19,7 @@ from flask import jsonify
 from flask import request
 from bson.json_util import dumps
 import requests
+import threading
 
 
 
@@ -54,8 +56,17 @@ def trigger_monitor_daemon(env_file, config_file):
     '''
     Function that runs on interval and calls the validator tool over a file
     '''
+    #for nodes in x.find({"_id":1}):
+
+    #t = threading.Thread(target=neovalidator.logverify(body_log, config), args=(10,))
+
+    #t.start()
+
+    #t.join()
+
     while True:
-        f = open("./logs/test1.log", "r")
+        translator.network_translate()
+        f = open("./logs/only-insert.log", "r")
         for nodes in x.find({"_id": 1}):
             pass
         body_log = str(f.read()).strip().splitlines()

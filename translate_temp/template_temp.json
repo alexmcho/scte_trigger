@@ -1,0 +1,162 @@
+{
+    "recipient_emails": [
+        ""
+    ],
+    "frequency": -1,
+    "network_id": "",
+    "content_id": {
+        "splice_command_type": -1,
+        "time_specified_flag": null,
+        "tag": -1,
+        "identifier": "",
+        "name": "",
+        "segmentation_event_id": "",
+        "segmentation_event_cancel_indicator": null,
+        "program_segmentation_flag": null,
+        "segmentation_duration_flag": null,
+        "delivery_not_restricted_flag": null,
+        "segmentation_upid_type": -1,
+        "segmentation_upid_length": -1,
+        "segmentation_upid": "",
+        "segmentation_type_id": -1,
+        "segmentation_message": "",
+        "segment_num": -1,
+        "segments_expected": -1,
+        "descriptor_length": -1
+    },
+    "local_break": {
+      "expected_splices_hour": -1,
+      "validate_splice_count": null,
+      "local_break_start": {
+        "action": "",
+        "input_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "break_auto_return": null,
+          "break_duration_min": -1,
+          "break_duration_max": -1,
+          "segmentation_type_id": -1
+        },
+        "output_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "break_auto_return": null,
+          "break_duration_min": -1,
+          "break_duration_max": -1,
+          "segmentation_type_id": -1
+        }
+      },
+      "local_break_end": {
+        "action": "",
+        "input_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "segmentation_type_id": -1
+        },
+        "output_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "segmentation_type_id": -1
+        }
+      },
+      "break_duration_deviation_tolerance": -1
+    },
+    "national_break": {
+      "expected_splices_hour": -1,
+      "validate_splice_count": null,
+      "national_break_start": {
+        "action": "",
+        "input_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "break_auto_return": null,
+          "break_duration_min": -1,
+          "break_duration_max": -1,
+          "segmentation_type_id": -1
+        },
+        "output_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "break_auto_return": null,
+          "break_duration_min": -1,
+          "break_duration_max": -1,
+          "segmentation_type_id": -1
+        }
+      },
+      "national_break_end": {
+        "action": "",
+        "input_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "segmentation_type_id": -1
+        },
+        "output_trigger": {
+          "splice_event_id": "",
+          "splice_command_type": -1,
+          "out_of_network_indicator": null,
+          "duration_flag": null,
+          "splice_immediate_flag": null,
+          "segmentation_type_id": -1
+        }
+      },
+      "break_duration_deviation_tolerance": -1
+    },
+    "program": {
+      "time_specified_flag": null,
+      "program_end": {
+          "identifier": "",
+          "splice_command_type": -1,
+          "segmentation_event_id": "",
+          "segmentation_event_cancel_indicator": null,
+          "program_segmentation_flag": null,
+          "segmentation_duration_flag": null,
+          "delivery_not_restricted_flag": null,
+          "segmentation_upid_type": -1,
+          "segmentation_upid_length": -1,
+          "segmentation_upid": "",
+          "segmentation_type_id": -1,
+          "segment_num": -1,
+          "segments_expected": -1
+      },
+      "program_start": {
+          "tag": -1,
+          "identifier": "",
+          "name": "",
+          "splice_command_type": -1,
+          "segmentation_event_id": "",
+          "segmentation_event_cancel_indicator": null,
+          "program_segmentation_flag": null,
+          "segmentation_duration_flag": null,
+          "delivery_not_restricted_flag": null,
+          "segmentation_duration_min": -1,
+          "segmentation_duration_max": -1,
+          "segmentation_upid_type": -1,
+          "segmentation_upid_length": -1,
+          "segmentation_upid": "",
+          "segmentation_type_id": -1,
+          "segment_num": -1,
+          "segments_expected": -1
+      }
+  }
+}
