@@ -6,25 +6,29 @@ from threefive import Cue
 import json
 import pymongo
 import neoalert
+import datetime
 
 error_list = []
 error_list2 = []
+error_list3 = []
+
+
+#network_id,config,nodes,q
+inputs = "ccc16:hhh21"
+#splitter = inputs[1].split(":")
+splitter = inputs.split(":")
+username = splitter[0]
+password = splitter[1]
+connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
+client = pymongo.MongoClient(connection)
+db = client.test
+print(db)
+col = client["Configurations"]
+x = col["Adspace"]
+z = col["BackendConfigs"]
 
 #insert network_id
 def getfrommongo():
-    #network_id,config,nodes,q
-    inputs = "ccc16:hhh21"
-    #splitter = inputs[1].split(":")
-    splitter = inputs.split(":")
-    username = splitter[0]
-    password = splitter[1]
-    connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
-    client = pymongo.MongoClient(connection)
-    db = client.test
-    print(db)
-    col = client["Configurations"]
-    x = col["Adspace"]
-    z = col["BackendConfigs"]
     
     for config in z.find({"network_id" : "MSNBC-4000"}):
         pass
@@ -32,7 +36,7 @@ def getfrommongo():
     #for nodes in x.find({"_id" :ObjectId('60b80a323b77502dce74aae1')}, {"0"}):
         #pass
 
-    #for config in z.distinct({"network_id"}):
+    #for j in z.distinct({"network_id"}):
         #for nodes in x.find({"NetworkId": j}):
             #pass
 
@@ -42,7 +46,7 @@ def getfrommongo():
         action = nodes["Action"].strip()
         uuid = nodes["Uuid"]
         result = log_verify(decode_input, decode_output, action, uuid, config)
-        neoalert.alert_issues(result[0], str(result[1]), str(result[2]), config)
+        neoalert.alert_issues(result[0], result[1], result[2], uuid, config)
 
     # decode_input = Cue(nodes["inputBase64"])
     # decode_output = Cue(nodes["OutputBase64"])
@@ -88,9 +92,27 @@ def table_of_seg_type_id(cue, config):
         read_pointer = config["program"]["program_end"]
 
 
+def verify_splice_count(expected_splices_hour):
+    now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    t = datetime.datetime.strptime(now, "%Y%m%d%H%M%S") - datetime.timedelta(hours=1)
+    s = datetime.timedelta(hours=1)
+    t1 = t-s
+    t = t.strftime("%Y%m%d%H%M%S")
+    count = 0
+    for i in x.find({"Timestamp": {"$gt": t, "$lt": now}}):
+        count+=1
+        print(i)
+        print(count)
+    if count > expected_splices_hour:
+        error_list2.append(count)
+        error_list2.append(expected_splices_hour)
+
+
+
 def log_verify(decode_input, decode_output, action, uuid ,config):
     error_list.clear()
     error_list2.clear()
+    error_list3.clear()
     #if action is NOOP or DELETE only check for one of the triggers
     if action == "NOOP" or action == "DELETE":
         splice_command_type = decode_input.get_info_section()["splice_command_type"]
@@ -109,7 +131,8 @@ def log_verify(decode_input, decode_output, action, uuid ,config):
                 if action == c_lbs_action:
                     pass
                 else:
-                    pass
+                    error_list3.append("local_break_start"  + str(action))
+                    error_list3.append(c_lbs_action)
             else:
                 try:
                     c_lbe_input = config["local_break"]["local_break_end"]["input_trigger"]
@@ -123,7 +146,10 @@ def log_verify(decode_input, decode_output, action, uuid ,config):
                 if action == c_lbe_action:
                     pass
                 else:
-                    pass
+                    error_list3.append("local_break_end" + str(action))
+                    error_list3.append(c_lbe_action)
+            if config["local_break"]["validate_splice_count"] == True:
+                verify_splice_count(config["local_break"]["expected_splices_hour"])
     else:
         pass
 
@@ -138,7 +164,8 @@ def log_verify(decode_input, decode_output, action, uuid ,config):
         check_compare(decode_input, c_lbe_output, splice_command_type)
     print(error_list)
     print(error_list2)
-    return [error_list, uuid, str(decode_input.get_command())]
+    #return [error_list, uuid, str(decode_input.get_command())]
+    return [error_list,error_list2, error_list3]
 
 
 def check_compare(decode, config_part, command_type):
@@ -152,16 +179,20 @@ def check_compare(decode, config_part, command_type):
                 print("compare running")
                 pass
             elif i != "splice_event_id":
-                list_append(i,decode,config_part)
+                #list_append(i,decode,config_part)
+                pass
     if event_id_check(decode, config_part) and command_type == 5:
         pass
     else:
-        error_list.append("splice_event_id is not in the correct format : " + "log : " + str(decode.get_command()["splice_event_id"]) + "config : " + str(config_part["splice_event_id"]))
+        pass
+        #error_list.append("splice_event_id is not in the correct format : " + "log : " + str(decode.get_command()["splice_event_id"]) + "config : " + str(config_part["splice_event_id"]))
     if decode.get_command()["duration_flag"] == True and command_type == 5:
         if duration_check(decode, config_part):
             pass
         else:
-            error_list.append("break_duration does not complie with config, value is not in between " + str(config_part["break_duration_min"]) + " and " + str(config_part["break_duration_max"]))
+            #error_list.append("break_duration does not complie with config, value is not in between " + str(config_part["break_duration_min"]) + " and " + str(config_part["break_duration_max"]))
+            error_list.append(decode.get_command()["break_duration"])
+            error_list.append("between "+(str(config_part["break_duration_min"]) + " and " + str(config_part["break_duration_max"])))
     
 
 
