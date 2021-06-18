@@ -206,7 +206,7 @@ def check_compare(cue, command_type, config_part):
     if event_id_check(cue, config_part) and command_type == 5:
         pass
     else:
-        error_list.append("splice_event_id is not in the correct format : " + "log : " + str(cue.get_command["splice_event_id"]) + "config : " + str(config_part["splice_event_id"]))
+        error_list.append("splice_event_id is not in the correct format : " + "log : " + str(cue.get_command()["splice_event_id"]) + "config : " + str(config_part["splice_event_id"]))
     if cue.get_command()["duration_flag"] == True and command_type == 5:
         if duration_check(cue, config_part):
             pass

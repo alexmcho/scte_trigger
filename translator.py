@@ -22,21 +22,21 @@ def network_translate():
     col = client["Configurations"]
     x = col["Configs"]
 
-    for nodes in x.find({"_id": 236}):
-        pass
+    #for nodes in x.find({"_id": 249}):
+        #pass
 
-    temp_config = load_temp()
-    translate_gen(nodes,temp_config)
-    clean_up_pre(temp_config)
-    sendtodb(temp_config)
-    print(temp_config)
+    # temp_config = load_temp()
+    # translate_gen(nodes,temp_config)
+    # clean_up_pre(temp_config)
+    # sendtodb(temp_config)
+    # print(temp_config)
 
-    #for networks in x.distinct("network_id"):
-        #for nodes in x.find({"network_id" : networks}):
-            #temp_config = load_temp()
-            #translate_gen(nodes, temp_config)
-            #clean_up_pre(temp_config)
-            #sendtodb(temp_config)
+    for networks in x.distinct("network_id"):
+        for nodes in x.find({"network_id" : networks}):
+            temp_config = load_temp()
+            translate_gen(nodes, temp_config)
+            clean_up_pre(temp_config)
+            sendtodb(temp_config)
 
 
 
@@ -78,30 +78,30 @@ def localbreak_translate(localbreak, temp_config, switch):
                 num = int(localbreak[i].split(" ")[0].split("[")[1].split("]")[0])
                 temp_config[placeholder][placeholder+"_start"]["input_trigger"]["splice_command_type"] = num
             elif i == 3:
-                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["out_of_network_indicator"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["out_of_network_indicator"] = t_o_f(localbreak[i])
             elif i == 4:
                 temp_config[placeholder][placeholder+"_start"]["input_trigger"]["splice_event_id"] = localbreak[i]
             elif i == 5:
-                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["splice_immediate_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["splice_immediate_flag"] = t_o_f(localbreak[i])
             elif i == 6:
-                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["duration_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["duration_flag"] = t_o_f(localbreak[i])
             elif i == 7:
                 temp_config[placeholder][placeholder+"_start"]["input_trigger"]["break_duration_min"] = int(localbreak[i])
             elif i == 8:
                 temp_config[placeholder][placeholder+"_start"]["input_trigger"]["break_duration_max"] = int(localbreak[i])
             elif i == 9:
-                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["break_auto_return"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["input_trigger"]["break_auto_return"] = t_o_f(localbreak[i])
             elif i == 10:
                 num = int(localbreak[i].split(" ")[0].split("[")[1].split("]")[0])
                 temp_config[placeholder][placeholder+"_start"]["output_trigger"]["splice_command_type"] = num
             elif i == 11:
-                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["out_of_network_indicator"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["out_of_network_indicator"] = t_o_f(localbreak[i])
             elif i == 12:
                 temp_config[placeholder][placeholder+"_start"]["output_trigger"]["splice_event_id"] = localbreak[i]
             elif i == 13:
-                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["splice_immediate_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["splice_immediate_flag"] = t_o_f(localbreak[i])
             elif i == 14:
-                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["duration_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_start"]["output_trigger"]["duration_flag"] = t_o_f(localbreak[i])
             elif i == 15:
                 temp_config[placeholder][placeholder+"_start"]["output_trigger"]["break_duration_min"] = int(localbreak[i])
             elif i == 16:
@@ -114,24 +114,24 @@ def localbreak_translate(localbreak, temp_config, switch):
                 num = int(localbreak[i].split(" ")[0].split("[")[1].split("]")[0])
                 temp_config[placeholder][placeholder+"_end"]["input_trigger"]["splice_command_type"] = num
             elif i == 20:
-                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["out_of_network_indicator"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["out_of_network_indicator"] = t_o_f(localbreak[i])
             elif i == 21:
                 temp_config[placeholder][placeholder+"_end"]["input_trigger"]["splice_event_id"] = localbreak[i]
             elif i == 22:
-                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["splice_immediate_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["splice_immediate_flag"] = t_o_f(localbreak[i])
             elif i == 23:
-                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["duration_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["input_trigger"]["duration_flag"] = t_o_f(localbreak[i])
             elif i == 24:
                 num = int(localbreak[i].split(" ")[0].split("[")[1].split("]")[0])
                 temp_config[placeholder][placeholder+"_end"]["output_trigger"]["splice_command_type"] = num
             elif i == 25:
-                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["out_of_network_indicator"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["out_of_network_indicator"] = t_o_f(localbreak[i])
             elif i == 26:
                 temp_config[placeholder][placeholder+"_end"]["output_trigger"]["splice_event_id"] = localbreak[i]
             elif i == 27:
-                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["splice_immediate_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["splice_immediate_flag"] = t_o_f(localbreak[i])
             elif i == 28:
-                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["duration_flag"] = localbreak[i]
+                temp_config[placeholder][placeholder+"_end"]["output_trigger"]["duration_flag"] = t_o_f(localbreak[i])
             elif i == 29:
                 temp_config[placeholder]["break_duration_deviation_tolerance"] = float(localbreak[i])
             elif i == 30:
@@ -211,6 +211,13 @@ def program_translate(program, temp_config):
             elif i == 18:
                 temp_config["program"]["program_end"]["segmentation_upid_length"] = program[i]
 
+
+def t_o_f(i):
+    if i == "true":
+        return True
+    else:
+        return False
+
 def clean_up_pre(temp_config):
     for i in list(temp_config):
         if i != "recipient_emails" and i != "frequency" and i != "network_id":
@@ -248,4 +255,8 @@ def sendtodb(temp_config):
     connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
     client = pymongo.MongoClient(connection)
     db = client.Configurations
+
+    if db.BackendConfigs.find({"network_id": temp_config["network_id"]}):
+        db.BackendConfigs.delete_one({"network_id": temp_config["network_id"]})
+        
     db.BackendConfigs.insert_one(temp_config)

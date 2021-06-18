@@ -20,7 +20,6 @@ from flask import request
 from bson.json_util import dumps
 import requests
 import threading
-import controller
 
 
 
@@ -66,12 +65,32 @@ def trigger_monitor_daemon(env_file, config_file):
     #t.join()
 
     while True:
-        #translator.network_translate()
-        controller.controller()
-        print("Running verification ...")
-        #seconds = config["frequency"] * 60
-        #print("Thread will pause", seconds, "seconds")
-        #time.sleep(seconds)
+        translator.network_translate()
+        f = open("./logs/only-insert.log", "r")
+        for nodes in x.find({"_id": 1}):
+            pass
+        body_log = str(f.read()).strip().splitlines()
+        #config = json.loads(open(config_file, "r").read())
+        config = nodes
+        env = json.loads(open(ENV_FILE, "r").read())
+        if triggervalidator.verifyconfiguration(config):
+            print("Running verification ...")
+
+            # Call trigger verification tool
+            for item in body_log:
+                for itex in reversed(body_log):
+                    neovalidator.devi_func(itex, config)
+                result = neovalidator.logverify(item, config)
+                neoalert.alert_issues(result[0], str(result[1]), str(result[2]), config)
+            neovalidator.action_dict_clear()
+            # Set interval
+            # config frequency is in minutes, convert to seconds
+            seconds = config["frequency"] * 60
+            print("Thread will pause", seconds, "seconds")
+            time.sleep(seconds)
+        else:
+            print("Configuration file is invalid, please verify the config.json is valid.")
+            time.sleep(120) # Sleep for 2 minutes before re-trying
 
 # Configure the thread
 monitor_svc = threading.Thread(
