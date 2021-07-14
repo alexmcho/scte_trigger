@@ -229,17 +229,27 @@ def verify_triggers(response: Response, body: str = Body(..., media_type="text/p
     Method PUT
 '''
 
+# @app.put("/update/{network}", status_code=status.HTTP_200_OK)
+# async def update_configuration(network: str, body=Body(..., media_type="application/json")):
+#     try:
+#         string = str(network)
+#         query = {'network_id': string}
+#         newvalues = {"$set": body}
+#         x.update_one(query,  newvalues)
+        
+#         return "Data has been successfully inserted"
+#     except Exception as ex:
+#         return str(ex)
+
 @app.put("/update/{network}", status_code=status.HTTP_200_OK)
 async def update_configuration(network: str, body=Body(..., media_type="application/json")):
     try:
-        string = str(network)
-        query = {'network_id': string}
-        newvalues = {"$set": body}
-        x.update_one(query,  newvalues)
-        
+        string= str(network)
+        b = es.search(index="Config", body={"query":{"match": {"network_id":string}}})
+        es.update(index="Config", id=b["hits"]["hitss"][0]["_id"], body=body)
         return "Data has been successfully inserted"
-    except Exception as ex:
-        return str(ex)
+    except:
+        return "problem with update"
 
 
 @app.put("/updateCounterId", status_code=status.HTTP_200_OK)
@@ -266,8 +276,10 @@ def update_count():
 async def read_user_item(network: str):
     try:
         string = str(network)
-        query = {"network_id": string}
-        x.delete_one(query)
+        # query = {"network_id": string}
+        # x.delete_one(query)
+        b = es.search(index="Config", body={"query":{"match": {"network_id":string}}})
+        es.delete(index="Config", id=b["hits"]["hitss"][0]["_id"])
         return "Data has been successfully removed"
     except:
         return "Please Make sure that the data providied is valid and follows configs rules"
