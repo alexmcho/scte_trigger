@@ -14,6 +14,11 @@ import sys
 import pymongo
 from flask import jsonify
 from flask import request
+from bson.json_util import dumps
+
+
+
+
 
 
 # Program Constants
@@ -99,12 +104,13 @@ def read_root():
 @app.get("/config")
 def read_configuration():
     return json.loads(open(CONFIG_FILE, "r").read())
+    
 '''
 Connection to database req. 'username:password' when running program
 '''
-inputs = "ccc16:hhh21"
-#splitter = inputs[1].split(":")
-splitter = inputs.split(":")
+
+inputs = sys.argv
+splitter = inputs[1].split(":")
 username = splitter[0]
 password = splitter[1]
 connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
@@ -134,7 +140,7 @@ async def read_user_item(network: str):
     for nodes in x.find({"network_id": string}):
         networks.append(nodes)
     return networks
-    
+
 
 @app.get("/networks")
 def networks():
@@ -151,6 +157,14 @@ def networks():
         return "list empty"
     return final_network_list
     
+
+@app.get("/idCounter")
+def networks():
+    for t in x.find({"_id":0}):
+        counter = str(t)
+    counter = int(counter.split(":")[2].split("}")[0])
+    return counter
+    
 '''
     Method POST
 '''
@@ -164,16 +178,7 @@ def write_configuration(body=Body(..., media_type="application/json")):
         return "Data has been successfully inserted"
     except:
         return "Please Make sure that the data providied is valid and follows configs rules"
-
-@app.post("/addNetworkName", status_code=status.HTTP_200_OK)
-def addNetwork(body=Body(..., media_type="application/json")):
-    try:
-        x.insert_one(body)
-        return "Network has been added"
-    except:
-        return "Network not added"
-
-
+    
 
 @app.post("/config", status_code=status.HTTP_200_OK)
 def write_configuration(body=Body(..., media_type="application/json")):
@@ -193,7 +198,7 @@ def verify_triggers(response: Response, body: str = Body(..., media_type="text/p
     # Load the configuration and env info
     config = json.loads(open(CONFIG_FILE, "r").read())
     env = json.loads(open(ENV_FILE, "r").read())
-    # Verify if configuration is valid then proceed
+#    Verify if configuration is valid then proceed
     if triggervalidator.verifyconfiguration(config):
         # Call trigger verification tool
         # [template_issues, action_issues, timing_issues]
@@ -211,17 +216,52 @@ def verify_triggers(response: Response, body: str = Body(..., media_type="text/p
 
 
 '''
+    Method PUT
+'''
+
+@app.put("/update/{network}", status_code=status.HTTP_200_OK)
+async def update_configuration(network: str, body=Body(..., media_type="application/json")):
+    try:
+        string = str(network)
+        query = {'network_id': string}
+        newvalues = {"$set": body}
+        x.update_one(query,  newvalues)
+        
+        return "Data has been successfully inserted"
+    except Exception as ex:
+        return str(ex)
+
+
+@app.put("/updateCounterId", status_code=status.HTTP_200_OK)
+def update_count():
+    try:
+        counter = ""
+        for t in x.find({"_id":0}):
+            counter = str(t)
+        counter = int(counter.split(":")[2].split("}")[0])
+
+        query = {'_id': 0}
+        newCount = {"$set":{ "COUNTER_ID": counter+1}}
+        
+        x.update_one(query,  newCount)
+        
+        return "Data has been successfully inserted"
+    except Exception as ex:
+        return str(ex)
+'''
     Method DELETE
 '''
+
 @app.delete("/remove/{network}")
 async def read_user_item(network: str):
     try:
-        query = {'network_id': network}
-        s.delete_one(query)
+        string = str(network)
+        query = {"network_id": string}
+        x.delete_one(query)
         return "Data has been successfully removed"
     except:
         return "Please Make sure that the data providied is valid and follows configs rules"
-
+   
 
 '''
     App Run
