@@ -1,3 +1,4 @@
+from pymongo import results
 import uvicorn
 from typing import Optional
 from fastapi import status, Body, Form, FastAPI
@@ -15,6 +16,7 @@ import pymongo
 from flask import jsonify
 from flask import request
 from bson.json_util import dumps
+from elasticsearch import Elasticsearch, connection
 
 
 
@@ -109,19 +111,22 @@ def read_configuration():
 Connection to database req. 'username:password' when running program
 '''
 
-inputs = sys.argv
-splitter = inputs[1].split(":")
-username = splitter[0]
-password = splitter[1]
-connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
+# inputs = sys.argv
+# splitter = inputs[1].split(":")
+# username = splitter[0]
+# password = splitter[1]
+# connection = "mongodb+srv://"+ username + ":" + password + "@scte.cfbun.mongodb.net/Configurations?retryWrites=true&w=majority"
 
-client = pymongo.MongoClient(connection)
-db = client.test
-print(db)
-col = client["Configurations"]
-x = col["Configs"]
+# client = pymongo.MongoClient(connection)
+# db = client.test
+# print(db)
+# col = client["Configurations"]
+# x = col["Configs"]
 
-result = x.find_one()
+# result = x.find_one()
+
+es = Elasticsearch(["http://3.22.227.72:20000/"])
+
 
 '''
 Proof of connection this will show database
@@ -129,7 +134,11 @@ Proof of connection this will show database
 
 @app.get("/database")
 def show_connection_test():
-    return result
+    try:
+        result = es.search(index="", body={"query":{"match_all": {}}})
+        return "connection fine"
+    except:
+        return "connection problem"
 
 
 
@@ -174,7 +183,8 @@ def networks():
 @app.post("/addConfig", status_code=status.HTTP_200_OK)
 def write_configuration(body=Body(..., media_type="application/json")):
     try:
-        x.insert_one(body)
+        #x.insert_one(body)
+        es.index(index="Config",body=body)
         return "Data has been successfully inserted"
     except:
         return "Please Make sure that the data providied is valid and follows configs rules"
