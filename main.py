@@ -246,7 +246,7 @@ async def update_configuration(network: str, body=Body(..., media_type="applicat
     try:
         string= str(network)
         b = es.search(index="Config", body={"query":{"match": {"network_id":string}}})
-        es.update(index="Config", id=b["hits"]["hitss"][0]["_id"], body=body)
+        es.update(index="Config", id=b["hits"]["hits"][0]["_id"], body=body)
         return "Data has been successfully inserted"
     except:
         return "problem with update"
@@ -279,11 +279,10 @@ async def read_user_item(network: str):
         # query = {"network_id": string}
         # x.delete_one(query)
         b = es.search(index="Config", body={"query":{"match": {"network_id":string}}})
-        es.delete(index="Config", id=b["hits"]["hitss"][0]["_id"])
+        es.delete(index="Config", id=b["hits"]["hits"][0]["_id"])
         return "Data has been successfully removed"
     except:
         return "Please Make sure that the data providied is valid and follows configs rules"
-   
 
 '''
     App Run
