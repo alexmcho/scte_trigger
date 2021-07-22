@@ -41,12 +41,13 @@
       <!-- <th><h6>Network ID</h6></th> -->
     </thead>
     <tbody id="tbody1">
-      <div *ngFor="let con of config?.value">
+      <!-- <div *ngFor="let con of config?.value">
         <div *ngFor="let item of con?.value">
-          <a routerLink="/control" *ngIf="item.key=='network_id'"></a>
+          <a routerLink="/control" *ngIf="item.key=='network_id'">ttsytse</a>
         </div>
-      </div>
-      <tr *ngFor="let strings of networks">
+      </div> -->
+      <tr *ngFor="let strings of name_of_networks_elastic">
+        <!-- <td><a (click)="func(strings)" routerLink="/control">{{strings}}</a></td> -->
         <td><a (click)="func(strings)" routerLink="/control">{{strings}}</a></td>
       </tr>
     </tbody>

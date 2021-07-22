@@ -14,6 +14,7 @@ import { NetworkNamesService } from '../network-names.service';
 @Injectable()
 export class DashboardComponent implements OnInit {
   public config: KeyObject;
+  name_of_networks_elastic = [];
   public existingTemplates = <string[]>[];
   closeResult = ''; 
   networks:String;
@@ -45,7 +46,12 @@ export class DashboardComponent implements OnInit {
     let url = "http://127.0.0.1:8000/get/"+this.NetworkNamesService.getName();
       this.LoadJsonService.getConfig(url).subscribe(data => {
       this.config = data;
+
       console.log(this.config)
+      for( let i = 0; i < this.config.value.length; i++){
+      this.name_of_networks_elastic.push((String(this.config.value[i]["value"])))
+      }
+      console.log(this.name_of_networks_elastic)
       for(let i = 3; i < this.config.value.length; i++) {
         this.existingTemplates.push(this.config.value[i].key)
       }
@@ -70,6 +76,7 @@ export class DashboardComponent implements OnInit {
     }
 
     getNetworks(){
+      console.log(this.httpClient.get<String>("http://127.0.0.1:8000/networks"))
       return this.httpClient.get<String>("http://127.0.0.1:8000/networks")
     }
 
@@ -267,5 +274,6 @@ export class DashboardComponent implements OnInit {
     this.getNetworks().subscribe(
 			networkArr => this.networks = networkArr
     )
+
   }
 }
